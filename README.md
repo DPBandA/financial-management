@@ -1,2 +1,2 @@
-# finserve
-A financial services  enterprise application
+# Financial Services (FinServe)
+A financial services  enterprise application.
