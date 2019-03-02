@@ -1,2 +1,2 @@
-# Financial Services (FinServe)
-A financial services  enterprise application.
+# Financial Management 
+A financial services  enterprise application module.
