@@ -1,2 +1,2 @@
 # Financial Management 
-A financial services  enterprise application module.
+A financial management enterprise application module.
