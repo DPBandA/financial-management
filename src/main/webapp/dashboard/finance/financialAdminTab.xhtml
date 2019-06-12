@@ -49,7 +49,7 @@ Email: info@dpbennett.com.jm
                                      icon="ui-icon-plus"
                                      onstart="PF('longProcessDialogVar').show();" 
                                      oncomplete="longProcessDialogVar.hide();"
-                                     actionListener="#{financeManager.createNewSupplier}" 
+                                     actionListener="#{purchasingManager.createNewSupplier}" 
                                      process="@this" >
 
                         <p:ajax event="dialogReturn" 
@@ -99,7 +99,7 @@ Email: info@dpbennett.com.jm
                                      style="text-align: left;background: none;border: 0;"
                                      title="Open suppliers tab"
                                      onstart="PF('longProcessDialogVar').show();" 
-                                     actionListener="#{financeManager.openSuppliersTab}" 
+                                     actionListener="#{purchasingManager.openSuppliersTab}" 
                                      oncomplete="longProcessDialogVar.hide();"
                                      process="@this" />
 
