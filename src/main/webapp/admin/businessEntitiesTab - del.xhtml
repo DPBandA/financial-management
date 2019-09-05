@@ -23,40 +23,46 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-
-    <p:tabView id="financialAdminTabView"  
-               dynamic="true">
-
-        <p:tab title="Accounting Codes">
-            <ui:include src="accountingCodesTab.xhtml"/>
-        </p:tab>
-
-        <p:tab title="Currencies">
-            <ui:include src="currenciesTab.xhtml"/>
-        </p:tab>
-
-        <p:tab title="Discounts">
-            <ui:include src="discountsTab.xhtml"/>
-        </p:tab>
-
-        <p:tab title="Taxes">
-            <ui:include src="taxesTab.xhtml"/>
-        </p:tab>
-
+    <p:tabView id="dataListsTabView" 
+               widgetVar="dataListsTabViewVar"       
+               scrollable="false"
+               dynamic="true">                                         
         <p:tab title="Classifications">
             <ui:include src="classificationsTab.xhtml" />  
         </p:tab>
-
+        <p:tab title="Job categories">
+            <ui:include src="jobCategoriesTab.xhtml" />
+        </p:tab>
+        <p:tab title="Job subcategories">
+            <ui:include src="jobSubcategoriesTab.xhtml" />
+        </p:tab>
         <p:tab title="Sectors">
             <ui:include src="sectorsTab.xhtml" />   
+        </p:tab>    
+        <p:tab title="Opened jobs">
+            <ui:include src="openedJobsTab.xhtml" />
+        </p:tab> 
+        <p:tab title="Document types">
+            <ui:include src="documentTypesTab.xhtml" />   
+        </p:tab>    
+        <p:tab title="Report templates">
+            <ui:include src="../report/reportTemplatesTab.xhtml" /> 
+        </p:tab> 
+        <p:tab title="Email templates">
+            <ui:include src="emailTemplatesTab.xhtml" /> 
+        </p:tab> 
+        <p:tab title="Services">
+            <ui:include src="servicesTab.xhtml" /> 
         </p:tab>
+        <ui:remove>
+            <p:tab title="Form templates">
 
-        <p:tab title="Miscellaneous">                  
-            <ui:include src="financialMiscTab.xhtml"/> 
-        </p:tab>        
+            </p:tab>
+            <p:tab title="Letter templates">
 
-    </p:tabView>
-
+            </p:tab>
+        </ui:remove>
+    </p:tabView>         
 </html>
 
 

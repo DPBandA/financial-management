@@ -65,35 +65,35 @@
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>classificationDialog</from-outcome>
-            <to-view-id>/admin/classificationDialog.xhtml</to-view-id>
+            <to-view-id>/finance/classificationDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>jobCategoryDialog</from-outcome>
-            <to-view-id>/admin/jobCategoryDialog.xhtml</to-view-id>
+            <to-view-id>/finance/jobCategoryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>jobSubcategoryDialog</from-outcome>
-            <to-view-id>/admin/jobSubcategoryDialog.xhtml</to-view-id>
+            <to-view-id>/finance/jobSubcategoryDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>     
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>sectorDialog</from-outcome>
-            <to-view-id>/admin/sectorDialog.xhtml</to-view-id>
+            <to-view-id>/finance/sectorDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>serviceDialog</from-outcome>
-            <to-view-id>/admin/serviceDialog.xhtml</to-view-id>
+            <to-view-id>/finance/serviceDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
