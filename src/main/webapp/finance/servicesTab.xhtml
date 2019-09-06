@@ -1,5 +1,5 @@
 <!--
-Job Management & Tracking System (JMTS) 
+Financial Management (FM) 
 Copyright (C) 2017  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -28,31 +28,31 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new service"                                  
                              value="New"
-                             actionListener="#{systemManager.createNewService}"
+                             actionListener="#{financeManager.createNewService}"
                              onstart="PF('longProcessDialogVar').show();"  
                              oncomplete="PF('longProcessDialogVar').hide();"
                              onerror="PF('connectionErrorDialog').show();"
-                             update=":mainTabViewForm:mainTabView:centerTabView:dataListsTabView:servicesTable"
+                             update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
                              global="true"
                              process="@this"
                              icon="ui-icon ui-icon-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doServiceSearch}"
-                        update=":mainTabViewForm:mainTabView:centerTabView:dataListsTabView:servicesTable" />
+                        listener="#{financeManager.doServiceSearch}"
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
             <p:inputText id="serviceSearchText" 
-                         value="#{systemManager.serviceSearchText}"
+                         value="#{financeManager.serviceSearchText}"
                          style="width:150px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
                         onstart="PF('longProcessDialogVar').show();" 
                         oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:centerTabView:dataListsTabView:servicesTable"
-                        listener="#{systemManager.doServiceSearch}"
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
+                        listener="#{financeManager.doServiceSearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
@@ -62,9 +62,9 @@ Email: info@dpbennett.com.jm
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeServicesOnly"
-                                         value="#{systemManager.isActiveServicesOnly}" >
-                    <p:ajax  update=":mainTabViewForm:mainTabView:centerTabView:dataListsTabView:servicesTable"
-                             listener="#{systemManager.doServiceSearch}"
+                                         value="#{financeManager.isActiveServicesOnly}" >
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
+                             listener="#{financeManager.doServiceSearch}"
                              event="change"                                      
                              process="@this"/>
                 </p:selectBooleanCheckbox>            
@@ -85,9 +85,9 @@ Email: info@dpbennett.com.jm
                  style="margin-top: 1px;"
                  widgetVar="servicesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundServices}">
+                 value="#{financeManager.foundServices}">
 
-        <p:ajax event="cellEdit" listener="#{systemManager.onServiceCellEdit}" />
+        <p:ajax event="cellEdit" listener="#{financeManager.onServiceCellEdit}" />
 
         <f:facet name="header">
             Services
@@ -121,7 +121,7 @@ Email: info@dpbennett.com.jm
 
         <p:column style="width:32px">
             <p:commandButton title="View or edit service"   
-                             actionListener="#{systemManager.editService}"
+                             actionListener="#{financeManager.editService}"
                              onstart="PF('longProcessDialogVar').show();" 
                              oncomplete="PF('longProcessDialogVar').hide();"
                              onerror="PF('connectionErrorDialog').show();"
@@ -130,10 +130,10 @@ Email: info@dpbennett.com.jm
                              icon="ui-icon ui-icon-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:centerTabView:dataListsTabView:servicesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable" />
 
                 <f:setPropertyActionListener value="#{service}"                                                                    
-                                             target="#{systemManager.selectedService}" />
+                                             target="#{financeManager.selectedService}" />
             </p:commandButton>           
         </p:column>
 

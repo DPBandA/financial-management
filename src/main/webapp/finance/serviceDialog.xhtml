@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedService}"
+                                     actionListener="#{financeManager.saveSelectedService}"
                                      onstart="PF('longProcessDialogVar').show();"
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-check"
@@ -51,7 +51,7 @@ Email: info@dpbennett.com.jm
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{systemManager.cancelDialogEdit}" 
+                                     actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-close" /> 
@@ -64,16 +64,16 @@ Email: info@dpbennett.com.jm
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceActive"
-                                             value="#{systemManager.selectedService.active}" />    
+                                             value="#{financeManager.selectedService.active}" />    
 
                     <p:outputLabel value="Internal:" for="serviceInternal" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceInternal"
-                                             value="#{systemManager.selectedService.internal}" />  
+                                             value="#{financeManager.selectedService.internal}" />  
                     
                     <h:outputText value="Name:" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.selectedService.name}"    
+                    <p:inputText value="#{financeManager.selectedService.name}"    
                                  id="serviceName"
                                  style="width:300px" >
                         <f:validator validatorId="requiredFieldValidator" />
@@ -87,16 +87,16 @@ Email: info@dpbennett.com.jm
                                     scrollHeight="200" 
                                     size="35"
                                     maxlength="40"
-                                    value="#{systemManager.selectedService.accountingCode}"
-                                    title="#{systemManager.selectedService.accountingCode}"
+                                    value="#{financeManager.selectedService.accountingCode}"
+                                    title="#{financeManager.selectedService.accountingCode}"
                                     itemValue="#{accountingCode}"
                                     itemLabel="#{accountingCode.code} (#{accountingCode.name})"
                                     converter="accountingCodeConverter"
                                     validator="businessEntityValidator"
-                                    completeMethod="#{systemManager.completeAccountingCode}" />
+                                    completeMethod="#{financeManager.completeAccountingCode}" />
 
                     <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{systemManager.selectedService.description}"
+                    <p:inputTextarea  value="#{financeManager.selectedService.description}"
                                       id="serviceDescription"
                                       maxlength="1000"
                                       rows="4"
@@ -111,7 +111,7 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedService}"
+                                     actionListener="#{financeManager.saveSelectedService}"
                                      onstart="PF('longProcessDialogVar').show();"
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-check"
@@ -119,7 +119,7 @@ Email: info@dpbennett.com.jm
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{systemManager.cancelDialogEdit}" 
+                                     actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-close" /> 

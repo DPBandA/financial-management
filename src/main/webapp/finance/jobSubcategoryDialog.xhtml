@@ -1,5 +1,5 @@
 <!--
-Job Management & Tracking System (JMTS) 
+Financial Management (FM) 
 Copyright (C) 2017  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedJobSubcategory}"
+                                     actionListener="#{financeManager.saveSelectedJobSubcategory}"
                                      onstart="PF('longProcessDialogVar').show();"
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-check"
@@ -51,7 +51,7 @@ Email: info@dpbennett.com.jm
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{systemManager.cancelJobSubcategoryEdit}" 
+                                     actionListener="#{financeManager.cancelJobSubcategoryEdit}" 
                                      immediate="true" 
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-close" /> 
@@ -64,17 +64,17 @@ Email: info@dpbennett.com.jm
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="jobSubcategoryActive"
-                                             value="#{systemManager.selectedJobSubcategory.active}" />    
+                                             value="#{financeManager.selectedJobSubcategory.active}" />    
 
                     <h:outputText value="Name:" style="font-weight: bold;" />
-                    <p:inputText value="#{systemManager.selectedJobSubcategory.name}"    
+                    <p:inputText value="#{financeManager.selectedJobSubcategory.name}"    
                                  id="jobSubcategoryName"
                                  style="width:300px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText> 
 
                     <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{systemManager.selectedJobSubcategory.description}"
+                    <p:inputTextarea  value="#{financeManager.selectedJobSubcategory.description}"
                                       id="jobSubcategoryDescription"
                                       maxlength="1000"
                                       rows="4"
@@ -86,7 +86,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="For job earnings:" for="earningsJob" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="earningsJob"
-                                             value="#{systemManager.selectedJobSubcategory.isEarning}" /> 
+                                             value="#{financeManager.selectedJobSubcategory.isEarning}" /> 
 
                 </h:panelGrid>
             </p:panel>
@@ -94,7 +94,7 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{systemManager.saveSelectedJobSubcategory}"
+                                     actionListener="#{financeManager.saveSelectedJobSubcategory}"
                                      onstart="PF('longProcessDialogVar').show();"
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-check"
@@ -102,7 +102,7 @@ Email: info@dpbennett.com.jm
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{systemManager.cancelJobSubcategoryEdit}" 
+                                     actionListener="#{financeManager.cancelJobSubcategoryEdit}" 
                                      immediate="true" 
                                      oncomplete="PF('longProcessDialogVar').hide();"
                                      icon="ui-icon ui-icon-close" /> 
