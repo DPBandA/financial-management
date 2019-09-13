@@ -17,15 +17,15 @@
     <dependencies>      
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>system-management</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>             
-        <dependency>
-            <groupId>${project.groupId}</groupId>
             <artifactId>financial-management-lib</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>system-management</artifactId>
+            <version>0.1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>                    
     </dependencies>
 
     <build>
