@@ -53,6 +53,10 @@
         <validator-class>jm.com.dpbennett.fm.validator.TaxValidator</validator-class>
     </validator>
     <validator>
+        <validator-id>currencyValidator</validator-id>
+        <validator-class>jm.com.dpbennett.fm.validator.CurrencyValidator</validator-class>
+    </validator>
+    <validator>
         <validator-id>discountValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.DiscountValidator</validator-class>
     </validator>
