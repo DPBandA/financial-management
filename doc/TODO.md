@@ -1,4 +1,0 @@
-- Implement PF status monitor for file downloads and remove code the deals with it otherwise.
-- Impl adding the other business entity tabs and dialogs.
-- Implement default search.
-- Search for any part of classification, sector etc. and not just first part.
