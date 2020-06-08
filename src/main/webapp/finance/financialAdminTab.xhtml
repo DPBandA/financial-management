@@ -27,6 +27,10 @@ Email: info@dpbennett.com.jm
     <p:tabView id="financialAdminTabView"  
                dynamic="true">
 
+        <p:ajax event="tabChange" 
+                onstart="PF('longProcessDialogVar').show();"  
+                oncomplete="PF('longProcessDialogVar').hide();" />  
+
         <p:tab title="Accounting Codes">
             <ui:include src="accountingCodesTab.xhtml"/>
         </p:tab>
@@ -58,7 +62,7 @@ Email: info@dpbennett.com.jm
         <p:tab title="Job Subcategories">
             <ui:include src="jobSubcategoriesTab.xhtml" />
         </p:tab>
-        
+
         <p:tab title="Services">
             <ui:include src="servicesTab.xhtml" /> 
         </p:tab>
