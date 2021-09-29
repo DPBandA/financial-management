@@ -25,8 +25,21 @@ Email: info@dpbennett.com.jm
     <p:toolbar style="margin-bottom: 1px;" >
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >  
+                
+                <p:menuitem value="Cost estimate"
+                            title="Create new cost estimate"
+                            icon="ui-icon-plus"
+                            onstart="PF('longProcessDialogVar').show();" 
+                            oncomplete="longProcessDialogVar.hide();"
+                            actionListener="#{financeManager.createNewJobCostingAndPayment}" 
+                            process="@this" >
 
-                <p:menuitem value="Financial configuration"
+                    <p:ajax event="dialogReturn" 
+                            update=""/>
+
+                </p:menuitem>
+
+                <p:menuitem value="Configuration"
                             title="Create new system configuration"
                             icon="ui-icon-plus"
                             onstart="PF('longProcessDialogVar').show();" 

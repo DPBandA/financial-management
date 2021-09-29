@@ -68,6 +68,13 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>jobCostEstimateDialog</from-outcome>
+            <to-view-id>/dashboard/finance/jobCostEstimateDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>classificationDialog</from-outcome>
             <to-view-id>/finance/classificationDialog.xhtml</to-view-id>
         </navigation-case>
