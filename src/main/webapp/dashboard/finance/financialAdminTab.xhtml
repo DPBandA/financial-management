@@ -21,11 +21,11 @@ Email: info@dpbennett.com.jm
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-
+   
     <p:toolbar style="margin-bottom: 1px;" >
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >  
-                
+
                 <p:menuitem value="Cost estimate"
                             title="Create new cost estimate"
                             icon="ui-icon-plus"
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
                             update=""/>
 
                 </p:menuitem>
-
+                <p:separator />
                 <p:menuitem value="Configuration"
                             title="Create new system configuration"
                             icon="ui-icon-plus"
@@ -58,14 +58,19 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">
 
             <p:menuButton value="Tools" >  
+                <p:menuitem value="Price List"
+                            title="Open Price List"
+                            onstart="PF('longProcessDialogVar').show();" 
+                            actionListener="#{financeManager.openPriceList}"
+                            oncomplete="PF('longProcessDialogVar').hide();"
+                            process="@this" />
+                <p:separator /> 
                 <p:menuitem value="Administration"
                             title="Open Financial Administration"
                             onstart="PF('longProcessDialogVar').show();" 
                             actionListener="#{financeManager.openFinancialAdministration}" 
                             oncomplete="longProcessDialogVar.hide();"
-                            process="@this" />
-
-             
+                            process="@this" />            
 
             </p:menuButton>         
         </p:toolbarGroup>
