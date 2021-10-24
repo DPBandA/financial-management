@@ -29,6 +29,7 @@ Email: info@dpbennett.com.jm
                 <p:menuitem value="Cost estimate"
                             title="Create new cost estimate"
                             icon="ui-icon-plus"
+                            disabled="true"
                             onstart="PF('longProcessDialogVar').show();" 
                             oncomplete="longProcessDialogVar.hide();"
                             actionListener="#{financeManager.createNewJobCostingAndPayment}" 
@@ -60,6 +61,7 @@ Email: info@dpbennett.com.jm
             <p:menuButton value="Tools" >  
                 <p:menuitem value="Price List"
                             title="Open Price List"
+                            disabled="true"
                             onstart="PF('longProcessDialogVar').show();" 
                             actionListener="#{financeManager.openPriceList}"
                             oncomplete="PF('longProcessDialogVar').hide();"
