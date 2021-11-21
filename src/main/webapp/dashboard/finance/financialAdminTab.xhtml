@@ -25,21 +25,7 @@ Email: info@dpbennett.com.jm
     <p:toolbar style="margin-bottom: 1px;" >
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >  
-
-                <p:menuitem value="Cost estimate"
-                            title="Create new cost estimate"
-                            icon="ui-icon-plus"
-                            rendered="true"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            oncomplete="longProcessDialogVar.hide();"
-                            actionListener="#{financeManager.createNewJobCostingAndPayment}" 
-                            process="@this" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=""/>
-
-                </p:menuitem>
-                <p:separator />
+              
                 <p:menuitem value="Configuration"
                             title="Create new system configuration"
                             icon="ui-icon-plus"
@@ -58,15 +44,7 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
         <p:toolbarGroup align="right">
 
-            <p:menuButton value="Tools" >  
-                <p:menuitem value="Price List"
-                            title="Open Price List"
-                            rendered="true"
-                            onstart="PF('longProcessDialogVar').show();" 
-                            actionListener="#{financeManager.openPriceList}"
-                            oncomplete="PF('longProcessDialogVar').hide();"
-                            process="@this" />
-                <p:separator /> 
+            <p:menuButton value="Tools" >                 
                 <p:menuitem value="Administration"
                             title="Open Financial Administration"
                             onstart="PF('longProcessDialogVar').show();" 

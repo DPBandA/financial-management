@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">   
-                                        
+
                     <h:outputText value="Name:" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedCurrency.name}"    
                                  id="currencyName"
@@ -69,7 +69,7 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="currencyValidator" />
 
                     </p:inputText> 
-                    
+
                     <h:outputText value="Code:" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedCurrency.code}"    
                                  id="currencyCode"
@@ -78,7 +78,7 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="currencyValidator" />
 
                     </p:inputText>
-                    
+
                     <h:outputText value="Symbol:" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedCurrency.symbol}"    
                                  id="currencySymbol"
@@ -108,7 +108,7 @@ Email: info@dpbennett.com.jm
                                      icon="ui-icon ui-icon-close" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-
+            <p:spacer height="10" />
         </h:form> 
     </h:body>
 </html>
