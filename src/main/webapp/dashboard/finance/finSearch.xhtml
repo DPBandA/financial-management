@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Financial Management(FM)  
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -94,12 +94,8 @@ Email: info@dpbennett.com.jm
 
                 <p:spacer width="5" />
                 <p:commandButton value="Search"
-                                 onstart="PF('longProcessDialogVar').show();"
                                  actionListener="#{financeManager.doSearch}"
-                                 oncomplete="PF('longProcessDialogVar').hide();"
-                                 onerror="PF('connectionErrorDialog').show();"
-                                 update=":headerForm:growl3"
-                                 icon="ui-icon-search"
+                                 icon="pi pi-search"
                                  process="@form"/>
             </p:toolbarGroup>
         </p:toolbar>

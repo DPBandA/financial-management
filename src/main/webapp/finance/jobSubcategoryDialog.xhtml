@@ -34,9 +34,10 @@ Email: info@dpbennett.com.jm
         <title>Job Subcategory</title>
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
-    <h:body >  
-        <ui:include src="../common/longProcessDialog.xhtml"/>  
+    <h:body > 
+        
         <ui:include src="../common/commonDialogs.xhtml"/>  
+        
         <h:form id="jobSubcategoryDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -44,17 +45,14 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedJobSubcategory}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelJobSubcategoryEdit}" 
                                      immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
 
@@ -95,17 +93,14 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedJobSubcategory}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelJobSubcategoryEdit}" 
-                                     immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     immediate="true"
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />

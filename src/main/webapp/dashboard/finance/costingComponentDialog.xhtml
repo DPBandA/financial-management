@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+    
     <h:form id="costingComponentDialogForm">
         <p:dialog width="450"
                   height="auto"
@@ -35,18 +36,15 @@ Email: info@dpbennett.com.jm
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.okCostingComponent}"
                                      update=":jobCostingDialogForm:jobCosting_growl,:jobCostingDialogForm:costComponentsPanel,:jobCostingDialogForm:costingSummaryPanel"
-                                     onstart="PF('longProcessDialogVar').show();" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel" 
                                      immediate="true"
                                      actionListener="#{financeManager.cancelCostComponentEdit}"
                                      update=":jobCostingDialogForm:costComponentsPanel,:jobCostingDialogForm:costingSummaryPanel"
-                                     onstart="PF('longProcessDialogVar').show();"                              
-                                     oncomplete="PF('costingComponentDialog').hide();PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon-close"/>
+                                     oncomplete="PF('costingComponentDialog').hide();"
+                                     icon="pi pi-times"/>
                 </p:toolbarGroup>
             </p:toolbar>            
             <p:panel>
@@ -172,18 +170,15 @@ Email: info@dpbennett.com.jm
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.okCostingComponent}"
                                      update=":jobCostingDialogForm:jobCosting_growl,:jobCostingDialogForm:costComponentsPanel,:jobCostingDialogForm:costingSummaryPanel"
-                                     onstart="PF('longProcessDialogVar').show();"                              
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"       
                                      immediate="true"
                                      actionListener="#{financeManager.cancelCostComponentEdit}"
                                      update=":jobCostingDialogForm:costComponentsPanel,:jobCostingDialogForm:costingSummaryPanel"
-                                     onstart="PF('longProcessDialogVar').show();"                              
-                                     oncomplete="PF('costingComponentDialog').hide();PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon-close"/>
+                                     oncomplete="PF('costingComponentDialog').hide();"
+                                     icon="pi pi-times"/>
                 </p:toolbarGroup>
             </p:toolbar> 
             <p/>

@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Financial Management(FM)  
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -30,27 +30,22 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new currency"                                  
                              value="New"
                              actionListener="#{financeManager.createNewCurrency}"                                                     
-                             onstart="PF('longProcessDialogVar').show();"
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus" >
+                             icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doCurrencySearch}"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"/>
+                        update=":appForm:mainTabView:financialAdminTabView:currenciesTable"/>
 
 
             </p:commandButton>
             <p:spacer width="20" />
             <p:inputText value="#{financeManager.currencySearchText}"                                             
-                         style="width:250px" placeholder="Enter any part of currency name">
+                         style="width:300px" placeholder="Enter any part of currency name">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"
+                        update=":appForm:mainTabView:financialAdminTabView:currenciesTable"
                         listener="#{financeManager.doCurrencySearch}"
                         process="@this"/>
             </p:inputText>
@@ -110,19 +105,16 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px">
             <p:commandButton title="View or edit currency"   
                              actionListener="#{financeManager.editCurrency}"
-                             onstart="PF('longProcessDialogVar').show();"  
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <f:setPropertyActionListener value="#{currency}"                                                                    
                                              target="#{financeManager.selectedCurrency}" />
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doCurrencySearch}"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"/>
+                        update=":appForm:mainTabView:financialAdminTabView:currenciesTable"/>
 
             </p:commandButton>           
         </p:column>

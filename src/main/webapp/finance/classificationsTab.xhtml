@@ -29,28 +29,23 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new classification"                                  
                              value="New"
                              actionListener="#{financeManager.createNewClassification}"
-                             onstart="PF('longProcessDialogVar').show();"                                                    
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus">
+                             icon="pi pi-plus">
 
                 <p:ajax event="dialogReturn"  
                         listener="#{financeManager.doClassificationSearch}"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable" />
 
             </p:commandButton>
             <p:spacer width="20" />        
             <p:inputText id="classificationSearchText" 
                          value="#{financeManager.classificationSearchText}"
-                         style="width:150px" 
+                         style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable"
+                        update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable"
                         listener="#{financeManager.doClassificationSearch}"
                         process="@this"/>
             </p:inputText>
@@ -62,7 +57,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeClassificationsOnly"
                                          value="#{financeManager.isActiveClassificationsOnly}" >
-                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable"
+                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable"
                              listener="#{financeManager.doClassificationSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -139,15 +134,12 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px">
             <p:commandButton title="View or edit classification"   
                              actionListener="#{financeManager.editClassification}"
-                             onstart="PF('longProcessDialogVar').show();" 
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn"                         
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable" />
 
                 <f:setPropertyActionListener value="#{classification}"                                                                    
                                              target="#{financeManager.selectedClassification}" />
