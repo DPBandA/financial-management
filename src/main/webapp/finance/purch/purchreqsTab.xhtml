@@ -40,11 +40,11 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <ui:remove>
-                <p:spacer width="10" rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}" />
+                <p:spacer width="10" rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
                 <p:inputText id="purchaseReqSearchText" 
                              placeholder="Enter search text"
                              style="width:110px" 
-                             rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                             rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                              value="#{purchasingManager.purchaseReqSearchText}" >
 
                     <p:ajax event="keyup"                            
@@ -54,9 +54,9 @@ Email: info@dpbennett.com.jm
                             process="@this"/>
 
                 </p:inputText>
-                <p:spacer width="10" rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}" />
+                <p:spacer width="10" rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
                 <p:selectOneMenu value="#{purchasingManager.dateSearchPeriod.dateField}" 
-                                 rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                                 rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                                  id="purchDateField" >
                     <p:ajax                        
                         update=":appForm:mainTabView:purchasereqsTable"
@@ -66,12 +66,12 @@ Email: info@dpbennett.com.jm
                     <f:selectItems value="#{financeManager.dateSearchFields}" />
 
                 </p:selectOneMenu>
-                <h:outputText value=" : " rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}" />
+                <h:outputText value=" : " rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
                 <p:calendar id="purchStartSearchDate"
                             value="#{purchasingManager.dateSearchPeriod.startDate}"                    
                             size="17"
                             navigator="true"
-                            rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                            rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                             validator="requiredFieldValidator"
                             pattern="MMM dd, yyyy" >
 
@@ -85,12 +85,12 @@ Email: info@dpbennett.com.jm
 
 
                 </p:calendar>
-                <h:outputText value=" to " rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"/>
+                <h:outputText value=" to " rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"/>
                 <p:calendar id="purchEndSearchDate"
                             value="#{purchasingManager.dateSearchPeriod.endDate}"                    
                             size="17"
                             navigator="true"
-                            rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                            rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                             validator="requiredFieldValidator"
                             pattern="MMM dd, yyyy" >
 

@@ -39,11 +39,11 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:suppliersTable"/>
 
             </p:commandButton>
-            <p:spacer width="20" rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}" />
+            <p:spacer width="20" rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
             <p:inputText id="supplierSearchText" 
                          placeholder="Enter search text"
                          style="width:200px" 
-                         rendered="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                         rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                          value="#{purchasingManager.supplierSearchText}" >
 
                 <p:ajax event="keyup"                            
@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
             </p:inputText>
         </p:toolbarGroup>
 
-        <p:toolbarGroup align="right" rendered="#{purchasingManager.user.privilege.canBeJMTSAdministrator}" >
+        <p:toolbarGroup align="right" rendered="#{purchasingManager.user.can('BeJMTSAdministrator')}" >
             <h:outputLabel value="Active suppliers only: " for="activeSuppliersOnly" />  
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
@@ -113,7 +113,7 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column headerText="Active?" 
-                  rendered="#{purchasingManager.user.privilege.canAddSupplier}">                                                                         
+                  rendered="#{purchasingManager.user.can('AddSupplier')}">                                                                         
             <p:cellEditor>                
                 <f:facet name="output">
                     <h:outputText value="#{supplier.isActive}" />

@@ -59,7 +59,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox id="autoGeneratePO" 
                                          itemLabel="auto"
                                          style="vertical-align: middle"                                         
-                                         rendered="#{purchasingManager.user.privilege.canBeJMTSAdministrator}"
+                                         rendered="#{purchasingManager.user.can('BeJMTSAdministrator')}"
                                          value="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}" >
 
                     <p:ajax listener="#{purchasingManager.updateAutoGeneratePONumber}" 

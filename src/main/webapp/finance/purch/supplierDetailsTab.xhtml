@@ -29,7 +29,7 @@ Email: info@dpbennett.com.jm
         <h:panelGroup>
             <p:selectBooleanCheckbox style="vertical-align: middle"
                                      id="supplierActive"
-                                     disabled="#{!purchasingManager.user.privilege.canBeJMTSAdministrator}"
+                                     disabled="#{!purchasingManager.user.can('BeJMTSAdministrator')}"
                                      value="#{purchasingManager.selectedSupplier.active}" >
                 <p:ajax listener="#{purchasingManager.updateSupplier}"
                         event="change"                                      

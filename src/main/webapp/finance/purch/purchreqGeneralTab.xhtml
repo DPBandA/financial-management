@@ -59,7 +59,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox id="autoGenerate" 
                                          itemLabel="auto"
                                          style="vertical-align: middle"
-                                         rendered="#{purchasingManager.user.privilege.canBeJMTSAdministrator}"
+                                         rendered="#{purchasingManager.user.can('BeJMTSAdministrator')}"
                                          value="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}" >
 
                     <p:ajax listener="#{purchasingManager.updateAutoGeneratePRNumber}" 
@@ -116,7 +116,7 @@ Email: info@dpbennett.com.jm
                     <p:menuitem 
                         value="Add new supplier"
                         icon="pi pi-plus"                    
-                        disabled="#{!purchasingManager.user.privilege.canAddSupplier}"
+                        disabled="#{!purchasingManager.user.can('AddSupplier')}"
                         actionListener="#{purchasingManager.createNewPurhaseReqSupplier}"                                            
                         process="@this"
                         title="Add a new supplier">
@@ -244,7 +244,7 @@ Email: info@dpbennett.com.jm
             <p:column style="width:32px" >                                   
                 <p:commandButton   
                     onclick="purchreqApproverDeleteConfirmDialog.show();"
-                    disabled="#{!purchasingManager.user.privilege.canBeFinancialAdministrator}"
+                    disabled="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                     title="Delete this approval"
                     icon="pi pi-trash"
                     process="@this">
