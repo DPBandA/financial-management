@@ -9,7 +9,7 @@
     </converter>
     <converter>
         <converter-id>activeSupplierConverter</converter-id>
-        <converter-class>jm.com.dpbennett.pm.converter.ActiveSupplierConverter</converter-class>
+        <converter-class>jm.com.dpbennett.fm.converter.ActiveSupplierConverter</converter-class>
     </converter>
     <converter>
         <converter-id>accountingCodeConverter</converter-id>
@@ -62,15 +62,15 @@
     </validator>
     <validator>
         <validator-id>supplierValidator</validator-id>
-        <validator-class>jm.com.dpbennett.pm.validator.SupplierValidator</validator-class>
+        <validator-class>jm.com.dpbennett.fm.validator.SupplierValidator</validator-class>
     </validator>
     <validator>
         <validator-id>purchaseReqNumberValidator</validator-id>
-        <validator-class>jm.com.dpbennett.pm.validator.PurchaseReqNumberValidator</validator-class>
+        <validator-class>jm.com.dpbennett.fm.validator.PurchaseReqNumberValidator</validator-class>
     </validator>
     <validator>
         <validator-id>purchaseOrderNumberValidator</validator-id>
-        <validator-class>jm.com.dpbennett.pm.validator.PurchaseOrderNumberValidator</validator-class>
+        <validator-class>jm.com.dpbennett.fm.validator.PurchaseOrderNumberValidator</validator-class>
     </validator>
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
@@ -180,7 +180,7 @@
     
     <managed-bean>
         <managed-bean-name>purchasingManager</managed-bean-name>
-        <managed-bean-class>jm.com.dpbennett.pm.manager.PurchasingManager</managed-bean-class>
+        <managed-bean-class>jm.com.dpbennett.fm.manager.PurchasingManager</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>
