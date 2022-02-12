@@ -58,7 +58,7 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">   
-                    <p:outputLabel for="active" value="Active:" style="font-weight: bold;" />  
+                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="active"
@@ -69,7 +69,7 @@ Email: info@dpbennett.com.jm
 
                     </h:panelGroup>
 
-                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <h:outputText value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedTax.name}"    
                                  id="taxName"
                                  style="width:300px" >
@@ -78,7 +78,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText> 
 
-                    <h:outputText value="Accounting code:" style="font-weight: bold;" />
+                    <h:outputText value="Accounting code" style="font-weight: bold;" />
                     <p:autoComplete id="accountingCode"  
                                     var="accountingCode"
                                     forceSelection="true"      
@@ -94,7 +94,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{financeManager.completeAccountingCode}" />            
 
-                    <h:outputText value="Value:" style="font-weight: bold;" />
+                    <h:outputText value="Value" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedTax.taxValue}"
                                  converterMessage="Please enter a valid tax value."
                                  styleClass="number-field"
@@ -107,7 +107,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <h:outputText value="Value type:" style="font-weight: bold;" />                    
+                    <h:outputText value="Value type" style="font-weight: bold;" />                    
                     <p:selectOneMenu id="taxValueType"    
                                      value="#{financeManager.selectedTax.taxValueType}">
 
@@ -118,7 +118,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
+                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedTax.description}"
                                       id="taxDescription"
                                       maxlength="1000"
@@ -130,7 +130,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputTextarea>   
 
-                    <p:outputLabel for="taxExempt" value="Exempt:" style="font-weight: bold;" />  
+                    <p:outputLabel for="taxExempt" value="Exempt" style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="taxExempt"

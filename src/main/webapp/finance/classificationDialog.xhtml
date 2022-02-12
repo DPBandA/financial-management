@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
                                              id="classificationActive"
                                              value="#{financeManager.selectedClassification.active}" /> 
 
-                    <h:outputText value="Category:" style="font-weight: bold;" />
+                    <h:outputText value="Category" style="font-weight: bold;" />
                     <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
                                      id="classificationCategory" >
 
@@ -74,7 +74,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <h:outputText value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedClassification.name}"    
                                  id="classificationName"
                                  style="width:300px" >
@@ -83,7 +83,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText> 
 
-                    <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
+                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
                                       id="classificationDescription"
                                       maxlength="1000"
@@ -95,7 +95,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputTextarea>  
 
-                    <h:outputText value="Default tax (%/$):" style="font-weight: bold" />
+                    <h:outputText value="Default tax (%/$)" style="font-weight: bold" />
                     <p:autoComplete id="tax"  
                                     var="tax"
                                     forceSelection="true"      
@@ -111,7 +111,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{financeManager.completeTax}" />
 
-                    <p:outputLabel for="earningsJob" value="Earnings:" style="font-weight: bold" />               
+                    <p:outputLabel for="earningsJob" value="Earnings" style="font-weight: bold" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="earningsJob"
                                              value="#{financeManager.selectedClassification.isEarning}" /> 

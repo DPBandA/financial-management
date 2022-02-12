@@ -58,26 +58,26 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel value="Active:" for="serviceActive" 
+                    <p:outputLabel value="Active" for="serviceActive" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceActive"
                                              value="#{financeManager.selectedService.active}" />    
 
-                    <p:outputLabel value="Internal:" for="serviceInternal" 
+                    <p:outputLabel value="Internal" for="serviceInternal" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="serviceInternal"
                                              value="#{financeManager.selectedService.internal}" />  
                     
-                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <h:outputText value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedService.name}"    
                                  id="serviceName"
                                  style="width:300px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText>                     
 
-                    <h:outputText value="Accounting code:" style="font-weight: bold;" />
+                    <h:outputText value="Accounting code" style="font-weight: bold;" />
                     <p:autoComplete id="accountingCode"  
                                     var="accountingCode"
                                     forceSelection="true"      
@@ -93,7 +93,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{financeManager.completeAccountingCode}" />
 
-                    <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
+                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedService.description}"
                                       id="serviceDescription"
                                       maxlength="1000"

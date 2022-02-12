@@ -25,24 +25,24 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
     <h:panelGrid columns="4" cellspacing="10">
 
-        <h:outputText value="Entered by:" />           
+        <h:outputText value="Entered by" />           
         <p:inputText value="#{purchasingManager.selectedSupplier.enteredBy.name}"
                      readonly="true" 
                      style="background-color: lightgray !important;" />  
 
-        <h:outputText value="Date entered: " />
+        <h:outputText value="Date entered" />
         <p:calendar value="#{purchasingManager.selectedSupplier.dateEntered}"                                                            
                     readonly="true"
                     readonlyInput="true"
                     showOn="none"   
                     pattern="MMM dd, yyyy" />     
 
-        <h:outputText value="Edited by:" />            
+        <h:outputText value="Edited by" />            
         <p:inputText value="#{purchasingManager.selectedSupplier.editedBy.name}"                        
                      readonly="true" 
                      style="background-color: lightgray !important;" />  
 
-        <h:outputText value="Date edited: " />
+        <h:outputText value="Date edited" />
         <p:calendar value="#{purchasingManager.selectedSupplier.dateEdited}"  
                     readonly="true"
                     readonlyInput="true"

@@ -28,7 +28,7 @@ Email: info@dpbennett.com.jm
             <h:panelGroup>
                 <h:panelGrid columns="2">
 
-                    <h:outputLabel value="Work progress: " 
+                    <h:outputLabel value="Work progress" 
                                    style="font-weight: bold;"
                                    for="workProgress"/>
                     <p:selectOneMenu id="workProgress"     
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Purchasing department: " style="font-weight: bold" />
+                    <h:outputText value="Purchasing department" style="font-weight: bold" />
                     <p:autoComplete id="purchasingDepartment"                          
                                     readonly="true"
                                     styleClass="read-only-inputfield"
@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{humanResourceManager.completeActiveDepartment}" /> 
 
-                    <h:outputText value="Procurement officer: " style="font-weight: bold" />       
+                    <h:outputText value="Procurement officer" style="font-weight: bold" />       
                     <p:autoComplete id="officer"
                                     readonly="true"
                                     styleClass="read-only-inputfield"
@@ -80,23 +80,23 @@ Email: info@dpbennett.com.jm
                                     scrollHeight="200" 
                                     completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
-                    <h:outputText value="Completion date: " />
+                    <h:outputText value="Completion date" />
                     <p:inputText readonly="true"
                                  style="background-color: lightyellow"
                                  value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.dateOfCompletion)}" />
 
-                    <h:outputText value="Last edited by: "/>
+                    <h:outputText value="Last edited by"/>
                     <p:inputText readonly="true"
                                  maxlength="250"
                                  style="background-color: lightgrey"
                                  value="#{purchasingManager.selectedPurchaseRequisition.editedBy.firstName} #{purchasingManager.selectedPurchaseRequisition.editedBy.lastName}" />
 
-                    <h:outputText value="Date edited: " />
+                    <h:outputText value="Date edited" />
                     <p:inputText readonly="true"
                                  style="background-color: lightgray;"
                                  value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.dateEdited)}" />  
                     
-                    <h:outputText value="Date required: "/>
+                    <h:outputText value="Date required"/>
                     <p:calendar pattern="MMM dd, yyyy"
                                 navigator="true"          
                                 readonlyInput="true"
@@ -112,7 +112,7 @@ Email: info@dpbennett.com.jm
 
                     </p:calendar>
 
-                    <h:outputText value="Expected date of completion: "/>
+                    <h:outputText value="Expected date of completion"/>
                     <p:calendar pattern="MMM dd, yyyy"
                                 navigator="true"     
                                 disabled="#{!purchasingManager.isProcurementOfficer}"
