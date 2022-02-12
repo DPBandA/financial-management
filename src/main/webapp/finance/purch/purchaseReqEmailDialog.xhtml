@@ -61,11 +61,11 @@ Email: info@dpbennett.com.jm
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">   
 
-                    <p:outputLabel for="fromEmployee" value="From:" style="font-weight: bold;" />
+                    <p:outputLabel for="fromEmployee" value="From" style="font-weight: bold;" />
                     <h:outputText id="fromEmployee" 
                                   value="#{purchasingManager.user.employee.firstName} #{purchasingManager.user.employee.lastName}" />
 
-                    <p:outputLabel for="toEmployees" value="To:" style="font-weight: bold;" />       
+                    <p:outputLabel for="toEmployees" value="To" style="font-weight: bold;" />       
                     <p:autoComplete id="toEmployees"
                                     var="employee"   
                                     value="#{purchasingManager.toEmployees}"
@@ -81,7 +81,7 @@ Email: info@dpbennett.com.jm
                                     completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
 
-                    <h:outputLabel value="Subject:" for="emailSubject" style="font-weight: bold;" />
+                    <h:outputLabel value="Subject" for="emailSubject" style="font-weight: bold;" />
                     <p:inputText value="#{purchasingManager.purchaseReqEmailSubject}"
                                  id="emailSubject" 
                                  style="width: 100%;" 

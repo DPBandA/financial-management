@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
     <p:panel id="purchSearchPanel" header="Search" toggleable="false" collapsed="false">
 
         <h:panelGrid columns="2" cellspacing="5">
-            <h:outputText value="Search type: " />
+            <h:outputText value="Search type" />
             <p:selectOneMenu value="#{purchasingManager.searchType}" 
                              style="width: 95%;">
 
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText id="purchDateFieldLabel" value="Date field: " 
+            <h:outputText id="purchDateFieldLabel" value="Date field" 
                           rendered="#{purchasingManager.renderDateSearchFields}" />
             <p:selectOneMenu value="#{purchasingManager.dateSearchPeriod.dateField}" 
                              id="purchDateField"
@@ -52,7 +52,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Date period: " rendered="#{purchasingManager.renderDateSearchFields}" />               
+            <h:outputText value="Date period" rendered="#{purchasingManager.renderDateSearchFields}" />               
             <p:selectOneMenu value= "#{purchasingManager.dateSearchPeriod.name}" 
                              rendered="#{purchasingManager.renderDateSearchFields}"
                              id="purchDatePeriod"
@@ -65,7 +65,7 @@ Email: info@dpbennett.com.jm
                 <f:selectItems value="#{systemManager.datePeriods}"/>
 
             </p:selectOneMenu>
-            <h:outputText value="Start:"  
+            <h:outputText value="Start"  
                           rendered="#{purchasingManager.renderDateSearchFields}" />
             <p:calendar id="purchStartSearchDate"
                         rendered="#{purchasingManager.renderDateSearchFields}"
@@ -76,7 +76,7 @@ Email: info@dpbennett.com.jm
                         disabled="#{purchasingManager.dateSearchPeriod.startDateDisabled}"
                         pattern="MMM dd, yyyy" />
 
-            <h:outputText value="End:" rendered="#{purchasingManager.renderDateSearchFields}" />
+            <h:outputText value="End" rendered="#{purchasingManager.renderDateSearchFields}" />
             <p:calendar id="purchEndSearchDate"
                         rendered="#{purchasingManager.renderDateSearchFields}"
                         value="#{purchasingManager.dateSearchPeriod.endDate}"

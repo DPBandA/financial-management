@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-            <h:outputLabel value="No.: " style="font-weight: bold;font-size: 14px;" />
+            <h:outputLabel value="No." style="font-weight: bold;font-size: 14px;" />
             <h:panelGroup>
                 <h:panelGroup id="prNumberGroup">
 
@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <h:outputText value="Supplier: " style="font-weight: bold" />
+            <h:outputText value="Supplier" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
                                 var="supplier"
@@ -130,12 +130,12 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <h:outputText value="Date: " style="font-weight: bold" />
+            <h:outputText value="Date" style="font-weight: bold" />
             <p:inputText readonly="true"
                          style="background-color: lightyellow;"
                          value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
 
-            <h:outputText value="Originator: " style="font-weight: bold" />       
+            <h:outputText value="Originator" style="font-weight: bold" />       
             <p:autoComplete id="originator"
                             readonly="true"
                             styleClass="read-only-inputfield"
@@ -151,7 +151,7 @@ Email: info@dpbennett.com.jm
                             scrollHeight="200" 
                             completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
-            <h:outputText value="Originating dep't: " style="font-weight: bold" />
+            <h:outputText value="Originating dep't" style="font-weight: bold" />
             <p:autoComplete id="originatingDepartment"                          
                             readonly="true"
                             styleClass="read-only-inputfield"
@@ -168,7 +168,7 @@ Email: info@dpbennett.com.jm
                             validator="businessEntityValidator"
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" />             
 
-            <h:outputLabel value="Priority code: " 
+            <h:outputLabel value="Priority code" 
                            for="priorityCode"/>
             <p:selectOneMenu id="priorityCode"     
                              style="width: 100px;"
@@ -186,7 +186,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Purpose/Description: " style="font-weight: bold;vertical-align: top;" />       
+            <h:outputText value="Purpose/Description" style="font-weight: bold;vertical-align: top;" />       
             <p:inputTextarea
                 id="description"
                 value="#{purchasingManager.selectedPurchaseRequisition.description}"

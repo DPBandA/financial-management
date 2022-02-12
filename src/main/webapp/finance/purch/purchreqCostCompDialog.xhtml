@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
             </p:toolbar>            
             <p:panel>
                 <h:panelGrid id="costingComponentPanelGrid" columns="3" style="width: 100%">
-                    <h:outputLabel value="Cost type:" for="costComponentType" style="font-weight: bold;" />
+                    <h:outputLabel value="Cost type" for="costComponentType" style="font-weight: bold;" />
                     <p:spacer height="0" width="10"/>
                     <p:selectOneMenu id="costComponentType" 
                                      value="#{purchasingManager.selectedCostComponent.type}">
@@ -64,7 +64,7 @@ Email: info@dpbennett.com.jm
                         
                     </p:selectOneMenu>    
                     
-                    <h:outputLabel value="Cost code:" 
+                    <h:outputLabel value="Cost code" 
                                    rendered="#{!purchasingManager.selectedCostComponent.isHeading}" />
                     <p:spacer height="0" width="10"
                               rendered="#{!purchasingManager.selectedCostComponent.isHeading}" />
@@ -83,7 +83,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel value="Component:" style="font-weight: bold" />
+                    <h:outputLabel value="Component" style="font-weight: bold" />
                     <p:spacer height="0" width="10"/>                   
                     <p:inputTextarea  value="#{purchasingManager.selectedCostComponent.name}"
                                       id="costComponentName"
@@ -101,7 +101,7 @@ Email: info@dpbennett.com.jm
                     </p:inputTextarea>
 
                     <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                                   value="Hours/Qty:" 
+                                   value="Hours/Qty" 
                                    style="font-weight: bold;" />
                     <p:spacer rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                               height="0" width="10"/>
@@ -126,7 +126,7 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                                   value="Rate ($/hr/qty):" style="font-weight: bold;" />
+                                   value="Rate ($/hr/qty)" style="font-weight: bold;" />
                     <p:spacer rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                               height="0" width="10"/>
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -150,7 +150,7 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
                     
                     <h:outputLabel  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
-                                   value="Unit:" />
+                                   value="Unit" />
                     <p:spacer  rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
                               height="0" width="10"/>
                     <p:inputText  rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
@@ -171,7 +171,7 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
-                                   value="Cost ($):" style="font-weight: bold;" />
+                                   value="Cost ($)" style="font-weight: bold;" />
                     <p:spacer rendered="#{!purchasingManager.selectedCostComponent.isHeading}" height="0" width="10"/>
                     <p:inputText id="costComponentCost"
                                  style="width: 90%;"

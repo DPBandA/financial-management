@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="2">
             
-            <h:outputLabel value="Purchase Order No.: " style="font-weight: bold;font-size: 14px;" />
+            <h:outputLabel value="Purchase Order No." style="font-weight: bold;font-size: 14px;" />
             <h:panelGroup>
                 <h:panelGroup id="poNumberGroup">
 
@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <h:outputText value="Purchase Order Date:" />
+            <h:outputText value="Purchase Order Date" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderDate}" 
                         readonlyInput="false"
                         disabled="#{!purchasingManager.isProcurementOfficer}" 
@@ -90,7 +90,7 @@ Email: info@dpbennett.com.jm
 
             </p:calendar>
             
-            <h:outputText value="Quotation number:" />
+            <h:outputText value="Quotation number" />
             <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
                          value="#{purchasingManager.selectedPurchaseRequisition.quotationNumber}" > 
 
@@ -101,7 +101,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <h:outputText value="Import licence no.:" />
+            <h:outputText value="Import licence no." />
             <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
                          value="#{purchasingManager.selectedPurchaseRequisition.importLicenceNum}" > 
 
@@ -112,7 +112,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <h:outputText value="Import license date:" />
+            <h:outputText value="Import license date" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.importLicenceDate}" 
                         disabled="#{!purchasingManager.isProcurementOfficer}" 
                         readonlyInput="false"
@@ -129,7 +129,7 @@ Email: info@dpbennett.com.jm
 
             </p:calendar>
             
-            <h:outputText value="Delivery date required:" />
+            <h:outputText value="Delivery date required" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.deliveryDateRequired}"
                         disabled="#{!purchasingManager.isProcurementOfficer}" 
                         readonlyInput="false"
@@ -146,7 +146,7 @@ Email: info@dpbennett.com.jm
 
             </p:calendar>
             
-            <h:outputText value="Terms:" />       
+            <h:outputText value="Terms" />       
             <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
                          maxlength="20"
                          value="#{purchasingManager.selectedPurchaseRequisition.terms}" > 
@@ -158,7 +158,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
             
-            <h:outputText value="Shipping instructions:" />       
+            <h:outputText value="Shipping instructions" />       
             <p:inputTextarea
                 id="shippingInstructions"
                 value="#{purchasingManager.selectedPurchaseRequisition.shippingInstructions}"
@@ -179,7 +179,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value="&nbsp;&nbsp;" />
             <h:outputText id="shippingInstructionsCharsRemaining" /> 
             
-            <h:outputText value="Please supply:" />       
+            <h:outputText value="Please supply" />       
             <p:inputTextarea
                 id="pleaseSupply"
                 value="#{purchasingManager.selectedPurchaseRequisition.pleaseSupplyNote}"
