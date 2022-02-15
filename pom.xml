@@ -25,7 +25,13 @@
             <artifactId>system-management</artifactId>
             <version>2.0.0</version>
             <type>war</type>
-        </dependency>                    
+        </dependency>   
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>human-resource-management</artifactId>
+            <version>2.0.0</version>
+            <type>war</type>
+        </dependency>                  
     </dependencies>
 
     <build>
@@ -54,6 +60,15 @@
                         index.xhtml                        
                     </dependentWarExcludes>
                     <overlays>
+                        <overlay>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>human-resource-management</artifactId>
+                            <excludes>
+                                <exclude>dashboard/admin/*</exclude>
+                                <exclude>admin/*</exclude>    
+                                <exclude>common/*</exclude>          
+                            </excludes>                                           
+                        </overlay>
                         <overlay>
                             <groupId>${project.groupId}</groupId>
                             <artifactId>system-management</artifactId>

@@ -128,13 +128,25 @@ WHERE
 	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="logoURL" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/desbenn/NetBeansProjects/purchase-management/src/main/webapp/images/BSJ Logo - H41.png"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["http://localhost:8080/img/BSJ%20Logo%20-%20H41.png"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="orgAddressLine1" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["6 Winchester Road"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="orgAddressLine2" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["Kingston 10"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="QEMS_PR_Footnote1" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["FORM NO: F&A_70_F_01/00"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="QEMS_PR_Footnote2" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["ISSUE DATE: DECEMBER 2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="QEMS_PR_Footnote3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["REVISION NO: 01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="QEMS_PR_Footnote4" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["REVISION DATE: DEC 03, 2018"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
@@ -211,7 +223,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{orgAddressLine1}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="2" y="2" width="170" height="42" uuid="dca0a256-6da6-40fc-9c33-3a10940310b0"/>
+				<reportElement x="2" y="1" width="170" height="42" uuid="dca0a256-6da6-40fc-9c33-3a10940310b0"/>
 				<imageExpression><![CDATA[$P{logoURL}]]></imageExpression>
 			</image>
 			<textField textAdjust="ScaleFont">
@@ -1458,7 +1470,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["FORM NO: F&A_70_F_01/00"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{QEMS_PR_Footnote1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="1" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8e38743e-9e8c-4f7e-bfdb-da996d62408c"/>
@@ -1468,7 +1480,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ISSUE DATE: DECEMBER 2018"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{QEMS_PR_Footnote2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="461" y="41" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="89d5ab99-a295-425b-ae57-c78f21bcb89e"/>
@@ -1478,7 +1490,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["REVISION NO: 01"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{QEMS_PR_Footnote3}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="461" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="ebff7177-3261-4248-9894-86674c7e095f"/>
@@ -1488,7 +1500,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="6" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["REVISION DATE: DEC 03, 2018"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{QEMS_PR_Footnote4}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
