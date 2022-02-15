@@ -36,6 +36,13 @@ Email: info@dpbennett.com.jm
         <link rel="shortcut icon" type="image/x-icon" href="#{systemManager.appShortcutIconURL}" />
         <script type="text/javascript" src="js/javascripts.js" />   
         <link rel="stylesheet" href="css/main.css" />  
+        <style type="text/css">
+
+            .ui-widget {
+                font-size: 0.975em !important;
+            }
+
+        </style>
     </h:head>
     <h:body>
 
@@ -54,11 +61,11 @@ Email: info@dpbennett.com.jm
 
                         <h:panelGrid width="100%" 
                                      border="0" columns="3" >
-                            
+
                             <p:graphicImage value="#{systemManager.logoURL}"
                                             height="#{systemManager.logoURLImageHeight}" 
                                             width="#{systemManager.logoURLImageWidth}"/>
-                            
+
                             <h:panelGrid columns="1">   
 
                                 <h:outputText value="#{financeManager.applicationHeader}"
@@ -74,7 +81,7 @@ Email: info@dpbennett.com.jm
                                               id="userMenu"
                                               style="float: right;" >
 
-                                   <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                    <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
                                                 update=":userProfileDialogForm"
                                                 oncomplete="PF('userProfileDialog').show();"
                                                 icon="pi pi-cog"
@@ -123,7 +130,7 @@ Email: info@dpbennett.com.jm
                                             listener="#{systemManager.onDashboardTabChange}" />
 
                                     <p:tab title="#{t.name}" > 
-                                        
+
                                         <h:panelGroup rendered="#{t.id == 'System Administration'}">
                                             <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
                                         </h:panelGroup>
@@ -131,8 +138,8 @@ Email: info@dpbennett.com.jm
                                         <h:panelGroup rendered="#{t.id == 'Financial Administration'}">
                                             <ui:include src="dashboard/finance/financialAdminTab.xhtml" />
                                         </h:panelGroup>                                        
-                                        
-                                         <h:panelGroup rendered="#{t.id == 'Procurement'}">
+
+                                        <h:panelGroup rendered="#{t.id == 'Procurement'}">
                                             <ui:include src="dashboard/finance/purch/purchaseAdminTab.xhtml" />
                                         </h:panelGroup>
 
@@ -164,7 +171,7 @@ Email: info@dpbennett.com.jm
 
 
                                 <p:tab title="#{t.name}" closable="true"  >
-                                    
+
                                     <h:panelGroup rendered="#{t.id == 'System Administration'}" >
                                         <ui:include src="admin/generalAdminTab.xhtml" /> 
                                     </h:panelGroup>
@@ -172,7 +179,7 @@ Email: info@dpbennett.com.jm
                                     <h:panelGroup  rendered="#{t.id == 'Financial Administration'}">
                                         <ui:include src="finance/financialAdminTab.xhtml" /> 
                                     </h:panelGroup>                                      
-                                    
+
                                     <h:panelGroup rendered="#{t.id == 'Purchase Requisitions'}" >
                                         <ui:include src="finance/purch/purchreqsTab.xhtml" />                                                                
                                     </h:panelGroup>
