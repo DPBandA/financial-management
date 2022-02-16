@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2019  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,41 +29,36 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new sector"                                  
                              value="New"
                              actionListener="#{financeManager.createNewSector}"
-                             onstart="PF('longProcessDialogVar').show();"  
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
-                             update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
+                             update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus" >
+                             icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doSectorSearch}"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:SectorsTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
             <p:inputText id="sectorSearchText" 
                          value="#{financeManager.sectorSearchText}"
-                         style="width:150px" 
+                         style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
+                        update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
                         listener="#{financeManager.doSectorSearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeSectorsOnly" value="Active sectors only: " />  
+            <p:outputLabel for="activeSectorsOnly" value="Active sectors only" />  
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeSectorsOnly"
                                          value="#{financeManager.isActiveSectorsOnly}" >
-                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
+                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
                              listener="#{financeManager.doSectorSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -122,15 +117,12 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px">
             <p:commandButton title="View or edit sector"   
                              actionListener="#{financeManager.editSector}"
-                             onstart="PF('longProcessDialogVar').show();" 
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:SectorsTable" />
 
                 <f:setPropertyActionListener value="#{sector}"                                                                    
                                              target="#{financeManager.selectedSector}" />

@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -35,8 +35,9 @@ Email: info@dpbennett.com.jm
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
     <h:body >  
-        <ui:include src="../common/longProcessDialog.xhtml"/>  
+        
         <ui:include src="../common/commonDialogs.xhtml"/>  
+        
         <h:form id="jobCategoryDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -44,36 +45,33 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedJobCategory}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelJobCategoryEdit}" 
-                                     immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     immediate="true"
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel value="Active:" for="jobCategoryActive" 
+                    <p:outputLabel value="Active" for="jobCategoryActive" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="jobCategoryActive"
                                              value="#{financeManager.selectedJobCategory.active}" />    
 
-                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <h:outputText value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedJobCategory.name}"    
                                  id="jobCategoryName"
                                  style="width:300px" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputText> 
 
-                    <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
+                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedJobCategory.description}"
                                       id="jobCategoryDescription"
                                       maxlength="1000"
@@ -83,7 +81,7 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputTextarea>  
                     
-                    <p:outputLabel value="For job earnings:" for="earningsJob" />               
+                    <p:outputLabel value="For job earnings" for="earningsJob" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="earningsJob"
                                              value="#{financeManager.selectedJobCategory.isEarning}" /> 
@@ -95,19 +93,17 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedJobCategory}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelJobCategoryEdit}" 
-                                     immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     immediate="true"
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:spacer height="10" />
         </h:form> 
     </h:body>
 </html>

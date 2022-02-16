@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,45 +29,42 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new category"                                  
                              value="New"
                              actionListener="#{financeManager.createNewJobCategory}"
-                             onstart="PF('longProcessDialogVar').show();"  
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-plus">
+                             icon="pi pi-plus">
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doJobCategorySearch}"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
 
             </p:commandButton>  
             <p:spacer width="20" />        
             <p:inputText id="jobCategorySearchText" 
                          value="#{financeManager.jobCategorySearchText}"
-                         style="width:150px" 
+                         style="width:300px" 
                          placeholder="Enter any part of name">
                 <p:ajax event="keyup"
                         global="false"
-                        onstart="PF('longProcessDialogVar').show();" 
-                        oncomplete="PF('longProcessDialogVar').hide();"
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable"
+                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
                         listener="#{financeManager.doJobCategorySearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeJobCategoriesOnly" value="Active job categories only: " />  
+            <p:outputLabel for="activeJobCategoriesOnly" 
+                           value="Active job categories only" />  
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeJobCategoriesOnly"
                                          value="#{financeManager.isActiveJobCategoriesOnly}" >
-                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable"
+                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
                              listener="#{financeManager.doJobCategorySearch}"
                              event="change"                                      
                              process="@this"/>
                 </p:selectBooleanCheckbox>            
-                <p:tooltip for="activeJobCategoriesOnly" value="Check to show active job categories only" 
+                <p:tooltip for="activeJobCategoriesOnly" 
+                           value="Check to show active job categories only" 
                            showEffect="fade" hideEffect="fade" />
                 <p:spacer width="15" />                
             </h:panelGroup>
@@ -131,15 +128,12 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px">
             <p:commandButton title="View or edit job category"   
                              actionListener="#{financeManager.editJobCategory}"
-                             onstart="PF('longProcessDialogVar').show();"                             
-                             oncomplete="PF('longProcessDialogVar').hide();"
-                             onerror="PF('connectionErrorDialog').show();"
                              global="true"
                              process="@this"
-                             icon="ui-icon ui-icon-pencil">
+                             icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
+                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
 
                 <f:setPropertyActionListener value="#{jobCategory}"                                                                    
                                              target="#{financeManager.selectedJobCategory}" />

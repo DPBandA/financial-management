@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Financial Management(FM)  
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -34,9 +34,10 @@ Email: info@dpbennett.com.jm
         <title>Classification</title>
         <link rel="stylesheet" href="../css/main.css" />
     </h:head>
-    <h:body >  
-        <ui:include src="../common/longProcessDialog.xhtml"/>  
+    <h:body > 
+        
         <ui:include src="../common/commonDialogs.xhtml"/>  
+        
         <h:form id="classificationDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -44,17 +45,14 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedClassification}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelClassificationEdit}" 
                                      immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
 
@@ -66,7 +64,7 @@ Email: info@dpbennett.com.jm
                                              id="classificationActive"
                                              value="#{financeManager.selectedClassification.active}" /> 
 
-                    <h:outputText value="Category:" style="font-weight: bold;" />
+                    <h:outputText value="Category" style="font-weight: bold;" />
                     <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
                                      id="classificationCategory" >
 
@@ -76,7 +74,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Name:" style="font-weight: bold;" />
+                    <h:outputText value="Name" style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedClassification.name}"    
                                  id="classificationName"
                                  style="width:300px" >
@@ -85,7 +83,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText> 
 
-                    <h:outputText value="Description:" style="width: 50%;font-weight: bold;" />
+                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
                                       id="classificationDescription"
                                       maxlength="1000"
@@ -97,7 +95,7 @@ Email: info@dpbennett.com.jm
 
                     </p:inputTextarea>  
 
-                    <h:outputText value="Default tax (%/$):" style="font-weight: bold" />
+                    <h:outputText value="Default tax (%/$)" style="font-weight: bold" />
                     <p:autoComplete id="tax"  
                                     var="tax"
                                     forceSelection="true"      
@@ -113,7 +111,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{financeManager.completeTax}" />
 
-                    <p:outputLabel for="earningsJob" value="Earnings:" style="font-weight: bold" />               
+                    <p:outputLabel for="earningsJob" value="Earnings" style="font-weight: bold" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="earningsJob"
                                              value="#{financeManager.selectedClassification.isEarning}" /> 
@@ -125,19 +123,17 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
                                      actionListener="#{financeManager.saveSelectedClassification}"
-                                     onstart="PF('longProcessDialogVar').show();"
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-check"
+                                     icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
                                      actionListener="#{financeManager.cancelClassificationEdit}" 
                                      immediate="true" 
-                                     oncomplete="PF('longProcessDialogVar').hide();"
-                                     icon="ui-icon ui-icon-close" /> 
+                                     icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:spacer height="10" />
         </h:form> 
     </h:body>
 </html>

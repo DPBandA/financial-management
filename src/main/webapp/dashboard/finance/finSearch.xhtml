@@ -1,6 +1,6 @@
 <!--
-Job Management & Tracking System (JMTS) 
-Copyright (C) 2017  D P Bennett & Associates Limited
+Financial Management(FM)  
+Copyright (C) 2021  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText id="finDateFieldLabel" value="Date field: " 
+            <h:outputText id="finDateFieldLabel" value="Date field" 
                           rendered="#{financeManager.renderDateSearchFields}" />
             <p:selectOneMenu value="#{financeManager.dateSearchPeriod.dateField}" 
                              id="finDateField"
@@ -52,7 +52,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Date period: " rendered="#{financeManager.renderDateSearchFields}" />               
+            <h:outputText value="Date period" rendered="#{financeManager.renderDateSearchFields}" />               
             <p:selectOneMenu value= "#{financeManager.dateSearchPeriod.name}" 
                              rendered="#{financeManager.renderDateSearchFields}"
                              id="finDatePeriod"
@@ -65,7 +65,7 @@ Email: info@dpbennett.com.jm
                 <f:selectItems value="#{systemManager.datePeriods}"/>
 
             </p:selectOneMenu>
-            <h:outputText value="Start:"  rendered="#{financeManager.renderDateSearchFields}" />
+            <h:outputText value="Start"  rendered="#{financeManager.renderDateSearchFields}" />
             <p:calendar id="finStartSearchDate"
                         rendered="#{financeManager.renderDateSearchFields}"
                         value="#{financeManager.dateSearchPeriod.startDate}"                    
@@ -75,7 +75,7 @@ Email: info@dpbennett.com.jm
                         disabled="#{financeManager.dateSearchPeriod.startDateDisabled}"
                         pattern="MMM dd, yyyy" />
 
-            <h:outputText value="End:" rendered="#{financeManager.renderDateSearchFields}" />
+            <h:outputText value="End" rendered="#{financeManager.renderDateSearchFields}" />
             <p:calendar id="finEndSearchDate"
                         rendered="#{financeManager.renderDateSearchFields}"
                         value="#{financeManager.dateSearchPeriod.endDate}"
@@ -94,12 +94,8 @@ Email: info@dpbennett.com.jm
 
                 <p:spacer width="5" />
                 <p:commandButton value="Search"
-                                 onstart="PF('longProcessDialogVar').show();"
                                  actionListener="#{financeManager.doSearch}"
-                                 oncomplete="PF('longProcessDialogVar').hide();"
-                                 onerror="PF('connectionErrorDialog').show();"
-                                 update=":headerForm:growl3"
-                                 icon="ui-icon-search"
+                                 icon="pi pi-search"
                                  process="@form"/>
             </p:toolbarGroup>
         </p:toolbar>
