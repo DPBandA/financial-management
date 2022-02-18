@@ -59,12 +59,10 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>
 
-        <p:column style="width:32px" >
+        <p:column style="width: 32px;">
             <p:commandButton   
                 title="Remove attachment"
-                value=""
-                style="width: 300%;text-align: left;background: none;border: 0;"
-                onclick="purchreqAttachmentDeleteConfirmDialog.show();"
+                onclick="PF('purchreqAttachmentDeleteConfirmDialog').show();"
                 icon="pi pi-trash"
                 process="@this">
 
