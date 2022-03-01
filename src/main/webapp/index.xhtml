@@ -59,43 +59,54 @@ Email: info@dpbennett.com.jm
 
                         <p:growl id="growl3" life="5000" showDetail="true" />
 
-                        <h:panelGrid width="100%" 
-                                     border="0" columns="3" >
+                        <h:panelGrid columns="1" border="0" width="100%" >
 
-                            <p:graphicImage value="#{systemManager.logoURL}"
-                                            height="#{systemManager.logoURLImageHeight}" 
-                                            width="#{systemManager.logoURLImageWidth}"/>
+                            <h:panelGrid width="100%" 
+                                         border="0" columns="3" >
 
-                            <h:panelGrid columns="1">   
+                                <p:graphicImage value="#{systemManager.logoURL}"
+                                                height="#{systemManager.logoURLImageHeight}" 
+                                                width="#{systemManager.logoURLImageWidth}"/>
 
-                                <h:outputText value="#{financeManager.applicationHeader}"
-                                              style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
+                                <h:panelGrid columns="1">   
 
-                                <h:outputText value="#{systemManager.applicationSubheader}"
-                                              styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
+                                    <h:outputText value="#{financeManager.applicationHeader}"
+                                                  style="color: darkgrey; font-size: 14pt; font-weight: bold;" />
 
-                            </h:panelGrid>
-                            <h:panelGroup>
-                                <p:menuButton iconPos="left"
-                                              icon="pi pi-user"
-                                              id="userMenu"
-                                              style="float: right;" >
+                                    <h:outputText value="#{systemManager.applicationSubheader}"
+                                                  styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
 
-                                    <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
-                                                update=":userProfileDialogForm"
-                                                oncomplete="PF('userProfileDialog').show();"
-                                                icon="pi pi-cog"
-                                                value="Profile"
-                                                process="@this"/>
-                                    <p:separator />  
-                                    <p:menuitem actionListener="#{systemManager.logout}"                                             
-                                                icon="pi pi-sign-out"
-                                                value="Logout"
-                                                process="@this"/>    
+                                </h:panelGrid>
+                                <h:panelGroup>
+                                    <p:menuButton iconPos="left"
+                                                  icon="pi pi-user"
+                                                  title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
+                                                  id="userMenu"
+                                                  style="float: right;" >
 
-                                </p:menuButton>   
-                            </h:panelGroup>
-                        </h:panelGrid> 
+                                        <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                                    update=":userProfileDialogForm"
+                                                    oncomplete="PF('userProfileDialog').show();"
+                                                    icon="pi pi-cog"
+                                                    value="Profile"
+                                                    process="@this"/>
+                                        <p:separator />  
+                                        <p:menuitem actionListener="#{systemManager.logout}"                                             
+                                                    icon="pi pi-sign-out"
+                                                    value="Logout"
+                                                    oncomplete="window.location.reload();"
+                                                    process="@this"/>    
+
+                                    </p:menuButton>   
+                                </h:panelGroup>
+                            </h:panelGrid> 
+                            
+                            <ui:include src="menubar.xhtml"/>
+                            
+                        </h:panelGrid>
+                        
+                         <p:sticky target="main_menubar"/>
+                         
                     </p:splitterPanel>                          
 
                 </p:splitterPanel>
@@ -103,7 +114,7 @@ Email: info@dpbennett.com.jm
                     <p:splitter>
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
                                          size="30" minSize="0">
-                            <p:panel header="Dashboard">
+                            <p:panel id="dashboardPanel" header="Dashboard">
                                 <p:commandButton
                                     id="doGeneralSearchButton"
                                     style="visibility: hidden;"
@@ -115,41 +126,11 @@ Email: info@dpbennett.com.jm
                                     process="@form"/>                    
 
                                 <p:defaultCommand id="dashboardDefaultCommandButton" 
+                                                  scope="dashboardPanel"
                                                   target="doGeneralSearchButton" />
 
-                                <p:accordionPanel id="dashboardAccordion" 
-                                                  value="#{systemManager.dashboard.tabs}" 
-                                                  var="t" 
-                                                  widgetVar="dashboardAccordionVar"
-                                                  rendered="#{systemManager.dashboard.render}"
-                                                  multiple="false">
 
-                                    <p:ajax event="tabChange"       
-                                            immediate="true"
-                                            process="@this"
-                                            listener="#{systemManager.onDashboardTabChange}" />
-
-                                    <p:tab title="#{t.name}" > 
-
-                                        <h:panelGroup rendered="#{t.id == 'System Administration'}">
-                                            <ui:include src="dashboard/admin/generalAdminTab.xhtml" />
-                                        </h:panelGroup>
-
-                                        <h:panelGroup rendered="#{t.id == 'Human Resource'}" >
-                                            <ui:include src="dashboard/hrm/hrmTab.xhtml" /> 
-                                        </h:panelGroup>
-
-                                        <h:panelGroup rendered="#{t.id == 'Financial Administration'}">
-                                            <ui:include src="dashboard/finance/financialAdminTab.xhtml" />
-                                        </h:panelGroup>                                        
-
-                                        <h:panelGroup rendered="#{t.id == 'Procurement'}">
-                                            <ui:include src="dashboard/finance/purch/purchaseAdminTab.xhtml" />
-                                        </h:panelGroup>
-
-                                    </p:tab>   
-
-                                </p:accordionPanel>
+                                <ui:include src="dashboard/admin/generalAdminTab.xhtml" />                                    
                             </p:panel>
                         </p:splitterPanel>     
                         <p:splitterPanel styleClass="p-d-flex p-ai-center p-jc-center" 
