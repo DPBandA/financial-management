@@ -38,13 +38,6 @@ Email: info@dpbennett.com.jm
 
             <p:separator />
 
-            <p:menuitem value="Human Resource"
-                        title="Browse human resource"
-                        rendered="#{systemManager.user.hasModule('HRMModule')}"
-                        icon="pi pi-users"
-                        actionListener="#{humanResourceManager.openHumanResourceBrowser}" 
-                        process="@this" />  
-            <p:separator rendered="#{systemManager.user.hasModule('FinancialManagementModule')}" />
             <p:menuitem value="Financial"
                         icon="pi pi-fw pi-dollar"
                         title="Financial administration" 
