@@ -132,13 +132,13 @@ Email: info@dpbennett.com.jm
 
             <h:outputText value="Date" style="font-weight: bold" />
             <p:inputText readonly="true"
-                         style="background-color: lightyellow;"
+                         styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
 
             <h:outputText value="Originator" style="font-weight: bold" />       
             <p:autoComplete id="originator"
                             readonly="true"
-                            styleClass="read-only-inputfield"
+                            inputStyleClass="read-only-text-field"
                             var="originator"                            
                             maxlength="40" 
                             value="#{purchasingManager.selectedPurchaseRequisition.originator}"
@@ -154,7 +154,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value="Originating dep't" style="font-weight: bold" />
             <p:autoComplete id="originatingDepartment"                          
                             readonly="true"
-                            styleClass="read-only-inputfield"
+                            inputStyleClass="read-only-text-field"
                             var="department"
                             forceSelection="false"      
                             dropdown="false"

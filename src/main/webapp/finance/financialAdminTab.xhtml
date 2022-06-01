@@ -29,32 +29,34 @@ Email: info@dpbennett.com.jm
 
         <p:ajax event="tabChange" />  
 
-        <p:tab title="Charts of Accounts">
-            <div class="card">
-                <p:treeTable value="#{accountingManager.chartOfAccounts}" 
-                             editable="false"
-                             var="account">                   
-                    <p:column headerText="Name">
-                        <h:outputText value="#{account.name}"/>
-                    </p:column>
-                    <p:column headerText="Description">
-                        <h:outputText value="#{account.description}"/>
-                    </p:column>
-                    <p:column headerText="Total">
-                        <h:outputText value="#{account.total}"/>
-                    </p:column>   
-                    <p:column style="width:3rem">
-                        <p:commandButton update="" title="View Detail" icon="pi pi-search">
-                           
-                        </p:commandButton>
-                    </p:column>
-                </p:treeTable>
-            </div>
-        </p:tab>
+        <ui:remove>
+            <p:tab title="Charts of Accounts">
+                <div class="card">
+                    <p:treeTable value="#{accountingManager.chartOfAccounts}" 
+                                 editable="false"
+                                 var="account">                   
+                        <p:column headerText="Name">
+                            <h:outputText value="#{account.name}"/>
+                        </p:column>
+                        <p:column headerText="Description">
+                            <h:outputText value="#{account.description}"/>
+                        </p:column>
+                        <p:column headerText="Total">
+                            <h:outputText value="#{account.total}"/>
+                        </p:column>   
+                        <p:column style="width:3rem">
+                            <p:commandButton update="" title="View Detail" icon="pi pi-search">
 
-        <p:tab title="Accounts">
+                            </p:commandButton>
+                        </p:column>
+                    </p:treeTable>
+                </div>
+            </p:tab>
 
-        </p:tab>
+            <p:tab title="Accounts">
+
+            </p:tab>
+        </ui:remove>
 
         <p:tab title="Accounting Codes">
             <ui:include src="accountingCodesTab.xhtml"/>

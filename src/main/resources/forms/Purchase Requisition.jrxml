@@ -128,7 +128,7 @@ WHERE
 	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="logoURL" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["http://localhost:8080/img/BSJ%20Logo%20-%20H41.png"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["http://localhost:8080/fm/images/BSJLogo.png"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="orgAddressLine1" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["6 Winchester Road"]]></defaultValueExpression>
