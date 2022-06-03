@@ -71,7 +71,7 @@ WHERE
 		</variable>
 	</subDataset>
 	<parameter name="prId" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[2003203L]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[1948602L]]></defaultValueExpression>
 	</parameter>
 	<parameter name="purchReqNo" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["PR-09038992533"]]></defaultValueExpression>
