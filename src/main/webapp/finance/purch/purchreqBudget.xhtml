@@ -1,0 +1,154 @@
+<!--
+Purchase Management (PM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGrid columns="4" cellspacing="50">
+
+        <p:outputLabel value="Budgeted" for="budgeted" style="font-weight: bold;" /> 
+        <p:selectBooleanCheckbox id="budgeted" 
+                                 value="#{purchasingManager.selectedPurchaseRequisition.budgeted}" >
+
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+
+        </p:selectBooleanCheckbox>
+        <p:outputLabel value="" />
+        <p:outputLabel value="" />
+
+        <p:outputLabel value="" />
+        <p:outputLabel value="Budgeted Amt." style="font-weight: bold;" /> 
+        <p:outputLabel value="Year-to-Date" style="font-weight: bold;" /> 
+        <p:outputLabel value="Balance" style="font-weight: bold;" /> 
+
+        <p:outputLabel value="Recurrent ($)" style="font-weight: bold;" /> 
+        <p:inputText id="budgetedRecurrent"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.budgetedRecurrent}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+        <p:inputText id="yearToDateRecurrent"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.yearToDateRecurrent}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+        <p:inputText id="balanceRecurrent"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.balanceRecurrent}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText>
+
+        <p:outputLabel value="Capital ($)" style="font-weight: bold;" /> 
+        <p:inputText id="budgetedCapital"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.budgetedCapital}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+        <p:inputText id="yearToDateCapital"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.yearToDateCapital}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+        <p:inputText id="balanceCapital"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.balanceCapital}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText>  
+
+        <p:outputLabel value="Recoverable ($)" style="font-weight: bold;" /> 
+        <p:inputText id="budgetedRecoverable"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.budgetedRecoverable}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+        <p:inputText id="yearToDateRecoverable"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.yearToDateRecoverable}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText>  
+        <p:inputText id="balanceRecoverable"     
+                     style="width: 90%;"
+                     value="#{purchasingManager.selectedPurchaseRequisition.balanceRecoverable}"
+                     converterMessage="Invalid Component Cost"
+                     styleClass="number-field">
+            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <p:ajax event="change"                            
+                    update=":purchreqDialogForm:purchreqDetailToolbar1"
+                    listener="#{purchasingManager.updatePurchaseReq}"
+                    process="@this"/>
+        </p:inputText> 
+
+    </h:panelGrid>
+
+
+</html>

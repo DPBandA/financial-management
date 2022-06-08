@@ -126,7 +126,7 @@ WHERE
 	<parameter name="financeManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["Donna Marshall"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["Procurement Officer"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="shippingInstructions" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["Please provide shipping instructions."]]></defaultValueExpression>
@@ -741,7 +741,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{importLicenceNo}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="282" y="144" width="100" height="32" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="a45ae30e-5e54-4920-bc68-0ffab4fd2a44"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -789,7 +789,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Terms]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="50" y="144" width="111" height="32" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="aae4c68b-25da-4b09-b415-0acbbb1c2380"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -885,7 +885,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{quotationNumber}]]></textFieldExpression>
 			</textField>
-			<textField pattern="MMM d, yyyy" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" pattern="MMM d, yyyy" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="490" y="143" width="80" height="32" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="bb18f19b-6b8b-45aa-b221-ae24ae14f723"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -928,7 +928,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[BUREAU OF STANDARDS]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="382" y="434" width="188" height="32" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="1db3bb3a-67d3-45a2-8424-e58fd5dc24d6"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
