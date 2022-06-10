@@ -166,6 +166,30 @@ WHERE
 	<parameter name="budgetedRecurrent" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="yearToDateRecurrent" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="balanceRecurrent" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="budgetedCapital" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="yearToDateCapital" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="balanceCapital" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="budgetedRecoverable" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="yearToDateRecoverable" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="balanceRecoverable" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -823,7 +847,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{yearToDateRecurrent}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="513" y="117" width="58" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="915f84bd-271a-424e-b8f9-1e71f5b392ae"/>
@@ -833,7 +857,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{balanceRecurrent}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="332" y="137" width="60" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d77e5446-0d9d-4563-8222-90f148559967"/>
@@ -854,7 +878,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{budgetedCapital}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="455" y="137" width="58" height="21" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="3e2e9004-98da-46a8-8d29-11ab158c6d31"/>
@@ -865,7 +889,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{yearToDateCapital}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="513" y="137" width="58" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c148cbbe-7d18-43cc-82e6-42113700176c"/>
@@ -876,7 +900,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{balanceCapital}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="332" y="158" width="60" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="84cb406d-d386-46a6-be0d-267eef90ecbf"/>
@@ -897,7 +921,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{budgetedRecoverable}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="455" y="158" width="58" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8d680018-1b3f-41c0-a6d0-f4d8c2e6ddb5"/>
@@ -907,7 +931,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{yearToDateRecoverable}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement mode="Transparent" x="513" y="158" width="58" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="b6254e40-9ca6-4c0b-ad7a-2091f9e75d31"/>
@@ -918,7 +942,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["$"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{balanceRecoverable}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="238" width="99" height="43" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="36af738a-cf2c-4caf-9626-b8d766363c67"/>
