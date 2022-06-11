@@ -24,6 +24,72 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
+    <h:panelGrid columns="4" cellspacing="10">
+        <h:outputText value="Currency" />               
+        <p:autoComplete id="currency"  
+                        var="tax"
+                        forceSelection="true"      
+                        dropdown="true"
+                        scrollHeight="200" 
+                        maxlength="40"
+                        value="#{purchasingManager.selectedPurchaseRequisition.tax}"
+                        title="#{purchasingManager.selectedPurchaseRequisition.tax}"
+                        itemValue="#{tax}"
+                        itemLabel="#{tax.name}"
+                        converter="taxConverter"
+                        validator="businessEntityValidator"
+                        completeMethod="#{purchasingManager.completeTax}" >
+
+            <p:ajax event="itemSelect"
+                    update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                    listener="#{purchasingManager.updateTotalCost}"
+                    process="@this" />
+
+        </p:autoComplete>
+        <h:outputText value="Tax (%/$)" />               
+        <p:autoComplete id="tax"  
+                        var="tax"
+                        forceSelection="true"      
+                        dropdown="true"
+                        scrollHeight="200" 
+                        maxlength="40"
+                        value="#{purchasingManager.selectedPurchaseRequisition.tax}"
+                        title="#{purchasingManager.selectedPurchaseRequisition.tax}"
+                        itemValue="#{tax}"
+                        itemLabel="#{tax.name}"
+                        converter="taxConverter"
+                        validator="businessEntityValidator"
+                        completeMethod="#{purchasingManager.completeTax}" >
+
+            <p:ajax event="itemSelect"
+                    update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                    listener="#{purchasingManager.updateTotalCost}"
+                    process="@this" />
+
+        </p:autoComplete>
+        <h:outputText value="Discount (%/$)" />               
+        <p:autoComplete id="discount"  
+                        var="discount"
+                        forceSelection="true"      
+                        dropdown="true"
+                        scrollHeight="200" 
+                        maxlength="40"
+                        value="#{purchasingManager.selectedPurchaseRequisition.discount}"
+                        title="#{purchasingManager.selectedPurchaseRequisition.discount}"
+                        itemValue="#{discount}"
+                        itemLabel="#{discount.name}"
+                        converter="discountConverter"
+                        validator="businessEntityValidator"
+                        completeMethod="#{purchasingManager.completeDiscount}" >
+
+            <p:ajax event="itemSelect"
+                    update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                    listener="#{purchasingManager.updateTotalCost}"
+                    process="@this" />
+
+        </p:autoComplete>
+    </h:panelGrid>
+
     <p:toolbar style="margin-top: 1px;margin-bottom: 1px;">
         <p:toolbarGroup>
             <p:commandButton title="Add new cost component"
