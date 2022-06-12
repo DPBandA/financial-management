@@ -214,7 +214,7 @@ Email: info@dpbennett.com.jm
     <p:panel id="approvalsPanel" style="border: 0;" >
 
         <ui:include src="purchreqApprovalsToolbar.xhtml"/>
-
+         
         <p:dataTable  var="approver"
                       style="margin-top: 1px;margin-bottom: 1px;"
                       id="approverTable"
@@ -243,7 +243,7 @@ Email: info@dpbennett.com.jm
 
             <p:column style="width:32px" >                                   
                 <p:commandButton   
-                    onclick="purchreqApproverDeleteConfirmDialog.show();"
+                    onclick="PF('purchreqApproverDeleteConfirmDialog').show();"
                     disabled="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
                     title="Delete this approval"
                     icon="pi pi-trash"

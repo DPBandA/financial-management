@@ -116,16 +116,16 @@ WHERE
 	<parameter name="purchaseOrderNo" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["445786544"]]></defaultValueExpression>
 	</parameter>
-	<parameter name="teamLeaderApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="divisionalManagerApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="divisionalDirectorApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="executiveDirectorApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="teamLeaderApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="divisionalManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="divisionalDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approver1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approver2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approver3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approver4" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approver5" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approvalOrRecommendationDate1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approvalOrRecommendationDate2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approvalOrRecommendationDate3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approvalOrRecommendationDate4" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approvalOrRecommendationDate5" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="logoURL" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["http://localhost:8080/fm/images/BSJLogo.png"]]></defaultValueExpression>
@@ -189,6 +189,26 @@ WHERE
 	</parameter>
 	<parameter name="balanceRecoverable" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="recommender1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="recommender2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="recommender3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="recommender4" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="recommender5" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approverOrRecommenderTitle1" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["TEAM LEADER"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="approverOrRecommenderTitle2" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DIVISIONAL MANAGER"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="approverOrRecommenderTitle3" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["DIVISIONAL DIRECTOR"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="approverOrRecommenderTitle4" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["FINANCE MANAGER"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="approverOrRecommenderTitle5" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["EXECUTIVE DIRECTOR"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
@@ -1126,7 +1146,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[PURPOSE FOR WHICH ORDERED:]]></text>
 			</staticText>
-			<textField>
+			<textField textAdjust="ScaleFont">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="430" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="846dbd53-8d14-4e8c-9756-4b35e90598dd"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
@@ -1134,7 +1154,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TEAM LEADER"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" mode="Transparent" x="0" y="450" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="426a1134-c688-4411-b3ab-887410896d96"/>
@@ -1144,7 +1164,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["DIVISIONAL MANAGER"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" mode="Transparent" x="0" y="470" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="24459ffa-2e7e-4899-93f9-36fb14013f67"/>
@@ -1154,38 +1174,38 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["DIVISIONAL DIRECTOR"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle3}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="140" y="430" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="0f34d4df-1ff1-426e-a173-062845e6e51f"/>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="140" y="430" width="100" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="924d1b93-6ff4-4f7c-bdf6-02cd712eb47a"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="140" y="450" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="fc0a7220-930e-4463-9d1e-344b2cb8e711"/>
+				<textFieldExpression><![CDATA[$P{recommender1}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="140" y="450" width="100" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="2bb5af59-334b-474a-9221-140784462530"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="140" y="470" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="4e6ac44a-0a49-40e6-a5a0-80c0652f1697"/>
+				<textFieldExpression><![CDATA[$P{recommender2}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="140" y="470" width="100" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="b5f65034-e350-4fda-9a95-67acab59e24d"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{recommender3}]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement positionType="Float" mode="Transparent" x="0" y="490" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d2456758-ff73-4335-ba95-ff56b2af4e76"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
@@ -1194,7 +1214,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["FINANCE MANAGER"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle4}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement positionType="Float" mode="Transparent" x="0" y="510" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="85c8fc85-1d8b-46fa-b950-348ad5ab8def"/>
@@ -1204,7 +1224,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA["EXECUTIVE DIRECTOR"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle5}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement positionType="Float" mode="Transparent" x="141" y="410" width="90" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8276e5a9-deaa-411f-8d58-438ead398e3c"/>
@@ -1216,26 +1236,26 @@ WHERE
 				</textElement>
 				<text><![CDATA[Recommendation]]></text>
 			</staticText>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="140" y="490" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="6fd541fa-00da-44ee-883b-2d306831c21c"/>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="140" y="490" width="100" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="b3f9e000-3272-4e6e-8ec2-cb99f145891d"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="140" y="510" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="090b8011-b808-4ba3-a656-859ac1a16712"/>
+				<textFieldExpression><![CDATA[$P{recommender4}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="140" y="510" width="100" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f03a737d-b3d7-44ee-918c-32be6cd0c608"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
-					<font fontName="SansSerif" size="8" isBold="false"/>
+					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{recommender5}]]></textFieldExpression>
+			</textField>
 			<staticText>
 				<reportElement positionType="Float" mode="Transparent" x="231" y="410" width="110" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="5976795f-daeb-4268-8b3f-97b279014956"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
@@ -1328,54 +1348,54 @@ WHERE
 				<text><![CDATA[PURCHASE ORDER #]]></text>
 			</staticText>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="230" y="430" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c1638ffc-dc46-4142-a25c-670695595961"/>
+				<reportElement positionType="Float" mode="Transparent" x="240" y="430" width="100" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c1638ffc-dc46-4142-a25c-670695595961"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{teamLeaderApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approver1}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="230" y="450" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="aa4cf7e9-78db-40f2-836f-985535ab5145"/>
+				<reportElement positionType="Float" mode="Transparent" x="240" y="450" width="100" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="aa4cf7e9-78db-40f2-836f-985535ab5145"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{divisionalManagerApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approver2}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="230" y="470" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="55861ecc-ff6b-4785-b340-a527a4a96083"/>
+				<reportElement positionType="Float" mode="Transparent" x="240" y="470" width="100" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="55861ecc-ff6b-4785-b340-a527a4a96083"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{divisionalDirectorApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approver3}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="230" y="490" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="07d15371-1b51-429d-97ef-ee1adf28547c"/>
+				<reportElement positionType="Float" mode="Transparent" x="240" y="490" width="100" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="07d15371-1b51-429d-97ef-ee1adf28547c"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{financeManagerApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approver4}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="230" y="510" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d90eeff7-8a51-4fae-80f5-2ff0e559344f"/>
+				<reportElement positionType="Float" mode="Transparent" x="240" y="510" width="100" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d90eeff7-8a51-4fae-80f5-2ff0e559344f"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{executiveDirectorApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approver5}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="430" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="fdc2672c-94ab-466d-a057-ce1597967546"/>
@@ -1385,7 +1405,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{teamLeaderApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approvalOrRecommendationDate1}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="450" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="fc070cfc-6e6d-4f23-a6b6-edc94bd8ab2d"/>
@@ -1395,7 +1415,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{divisionalManagerApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approvalOrRecommendationDate2}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="470" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="fe028dd0-1c03-4ab1-ad61-d8e1dd96ae6c"/>
@@ -1405,7 +1425,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{divisionalDirectorApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approvalOrRecommendationDate3}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="490" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="25256971-6634-4970-9f43-7627a30f35dc"/>
@@ -1415,7 +1435,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{financeManagerApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approvalOrRecommendationDate4}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="510" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="ef97a094-adc1-43e7-b046-e216213660f2"/>
@@ -1425,7 +1445,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{executiveDirectorApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{approvalOrRecommendationDate5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Opaque" x="440" y="450" width="131" height="20" forecolor="#FF0000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="afe0d749-3993-42e4-93bd-a7b7347d88bc"/>

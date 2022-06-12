@@ -180,7 +180,7 @@ Email: info@dpbennett.com.jm
                                  readonly="#{purchasingManager.selectedCostComponent.isCostReadOnly}"
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Cost"
-                                 styleClass="number-field #{purchasingManager.selectedCostComponent.isCostReadOnly ? 'editableclass' : null}">
+                                 styleClass="number-field #{purchasingManager.selectedCostComponent.isCostReadOnly ? 'read-only-text-field' : null}">
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                         <p:ajax event="change"
                                 global="false"                            
