@@ -12,7 +12,7 @@
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>#{systemManager.user.userInterfaceThemeName}</param-value>
+        <param-value>#{systemManager.user.PFThemeName}</param-value>
     </context-param>
       
     <servlet>
