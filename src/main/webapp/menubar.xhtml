@@ -25,6 +25,50 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <p:menubar id="main_menubar">
+        
+        <p:submenu label="Finance" 
+                   rendered="true"
+                   icon="pi pi-fw pi-dollar">
+
+            <p:submenu label="Procurement" icon="pi pi-shopping-bag" >
+
+                <p:menuitem value="Purchase requisition"
+                            title="Create new purchase requisition"
+                            icon="pi pi-plus"
+                            actionListener="#{purchasingManager.createNewPurchaseReq}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:purchasereqsTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem value="Supplier"
+                            title="Create new supplier"
+                            icon="pi pi-plus"
+                            actionListener="#{purchasingManager.createNewSupplier}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:suppliersTable"/>
+
+                </p:menuitem>
+                <p:separator />
+                <p:menuitem value="Purchase Requisitions"
+                            title="Open purchase requisition tab" 
+                            icon="pi pi-copy"
+                            actionListener="#{purchasingManager.openPurchaseReqsTab}" 
+                            process="@this" />
+
+                <p:menuitem value="Suppliers"
+                            icon="pi pi-users"
+                            title="Open suppliers tab"
+                            actionListener="#{purchasingManager.openSuppliersTab}" 
+                            process="@this" />
+
+            </p:submenu>
+
+        </p:submenu>
 
         <p:submenu label="Administration" 
                    rendered="#{systemManager.user.hasModule('AdminModule')}"
@@ -44,18 +88,17 @@ Email: info@dpbennett.com.jm
                         rendered="#{systemManager.user.hasModule('FinancialManagementModule')}"
                         actionListener="#{financeManager.openFinancialAdministration}" 
                         process="@this" />
-        </p:submenu>
+            
+            <p:separator />
 
-        <ui:remove>
-            <f:facet name="options">
-                <div class="ui-input-icon-left p-mr-2">
-                    <i class="pi pi-fw pi-search" />
-                    <p:inputText placeholder="Search" 
-                                 valueChangeListener="#{systemManager.doDefaultSearch}"
-                                 value="#{systemManager.searchText}" />
-                </div>
-            </f:facet>
-        </ui:remove>
+            <p:menuitem value="Human Resource"
+                        title="Browse human resource"
+                        rendered="#{systemManager.user.hasModule('HRMModule')}"
+                        icon="pi pi-users"
+                        actionListener="#{humanResourceManager.openHumanResourceBrowser}" 
+                        process="@this" />  
+            
+        </p:submenu>      
 
     </p:menubar>
 
