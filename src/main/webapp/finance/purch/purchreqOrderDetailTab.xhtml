@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="2">
             
-            <h:outputLabel value="Purchase Order No." style="font-weight: bold;font-size: 14px;" />
+            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />
             <h:panelGroup>
                 <h:panelGroup id="poNumberGroup">
 
@@ -91,8 +91,7 @@ Email: info@dpbennett.com.jm
             </p:calendar>
             
             <h:outputText value="Quotation number" />
-            <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
-                         value="#{purchasingManager.selectedPurchaseRequisition.quotationNumber}" > 
+            <p:inputText value="#{purchasingManager.selectedPurchaseRequisition.quotationNumber}" > 
 
                 <p:ajax event="change"                            
                         update=":purchreqDialogForm:purchreqDetailToolbar1"
@@ -131,7 +130,6 @@ Email: info@dpbennett.com.jm
             
             <h:outputText value="Delivery date required" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.deliveryDateRequired}"
-                        disabled="#{!purchasingManager.isProcurementOfficer}" 
                         readonlyInput="false"
                         navigator="true" 
                         pattern="MMM dd, yyyy" >
@@ -157,27 +155,6 @@ Email: info@dpbennett.com.jm
                         process="@this"/>
 
             </p:inputText>
-            
-            <h:outputText value="Shipping instructions" />       
-            <p:inputTextarea
-                id="shippingInstructions"
-                value="#{purchasingManager.selectedPurchaseRequisition.shippingInstructions}"
-                disabled="#{!purchasingManager.isProcurementOfficer}" 
-                rows="2"
-                counter="shippingInstructionsCharsRemaining"
-                counterTemplate="{0} characters remaining."
-                autoResize="false"
-                maxlength="80"  
-                style="width: 150%;">
-
-                <p:ajax event="change"
-                        update=":purchreqDialogForm:purchreqDetailToolbar1"
-                        listener="#{purchasingManager.updatePurchaseReq}"
-                        process="@this"/>
-
-            </p:inputTextarea> 
-            <h:outputText value="&nbsp;&nbsp;" />
-            <h:outputText id="shippingInstructionsCharsRemaining" /> 
             
             <h:outputText value="Please supply" />       
             <p:inputTextarea

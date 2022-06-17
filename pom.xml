@@ -4,10 +4,10 @@
 
     <groupId>jm.com.dpbennett</groupId>
     <artifactId>financial-management</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <packaging>war</packaging>
 
-    <name>FM, v1</name>
+    <name>FM</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>financial-management-lib</artifactId>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
