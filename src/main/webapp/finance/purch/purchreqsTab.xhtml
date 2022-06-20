@@ -49,72 +49,7 @@ Email: info@dpbennett.com.jm
                 update="@this,:appForm:mainTabView:approve2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Approve the selected purchase requisitions" >
-            </p:commandButton>
-            <ui:remove>
-                <p:spacer width="10" rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
-                <p:inputText id="purchaseReqSearchText" 
-                             placeholder="Enter search text"
-                             style="width:110px" 
-                             rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
-                             value="#{purchasingManager.purchaseReqSearchText}" >
-
-                    <p:ajax event="keyup"                            
-                            global="false"
-                            update=":appForm:mainTabView:purchasereqsTable"
-                            listener="#{purchasingManager.doPurchaseReqSearch}"
-                            process="@this"/>
-
-                </p:inputText>
-                <p:spacer width="10" rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
-                <p:selectOneMenu value="#{purchasingManager.dateSearchPeriod.dateField}" 
-                                 rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
-                                 id="purchDateField" >
-                    <p:ajax                        
-                        update=":appForm:mainTabView:purchasereqsTable"
-                        listener="#{purchasingManager.doPurchaseReqSearch}"
-                        process="@this" />
-
-                    <f:selectItems value="#{financeManager.dateSearchFields}" />
-
-                </p:selectOneMenu>
-                <h:outputText value=" : " rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}" />
-                <p:calendar id="purchStartSearchDate"
-                            value="#{purchasingManager.dateSearchPeriod.startDate}"                    
-                            size="17"
-                            navigator="true"
-                            rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
-                            validator="requiredFieldValidator"
-                            pattern="MMM dd, yyyy" >
-
-                    <p:ajax event="dateSelect"
-                            update=":appForm:mainTabView:purchasereqsTable"
-                            listener="#{purchasingManager.doPurchaseReqSearch}" />
-
-                    <p:ajax event="keyup"
-                            update=":appForm:mainTabView:purchasereqsTable"
-                            listener="#{purchasingManager.doPurchaseReqSearch}" />
-
-
-                </p:calendar>
-                <h:outputText value=" to " rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"/>
-                <p:calendar id="purchEndSearchDate"
-                            value="#{purchasingManager.dateSearchPeriod.endDate}"                    
-                            size="17"
-                            navigator="true"
-                            rendered="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
-                            validator="requiredFieldValidator"
-                            pattern="MMM dd, yyyy" >
-
-                    <p:ajax event="dateSelect"
-                            update=":appForm:mainTabView:purchasereqsTable"
-                            listener="#{purchasingManager.doPurchaseReqSearch}" />
-
-                    <p:ajax event="keyup"
-                            update=":appForm:mainTabView:purchasereqsTable"
-                            listener="#{purchasingManager.doPurchaseReqSearch}" />
-
-                </p:calendar>
-            </ui:remove>
+            </p:commandButton>            
         </p:toolbarGroup>
 
     </p:toolbar>
