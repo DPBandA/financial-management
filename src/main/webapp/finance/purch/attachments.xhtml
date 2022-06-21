@@ -48,6 +48,16 @@ Email: info@dpbennett.com.jm
                 <p:fileDownload value="#{purchasingManager.getFileAttachment(attachment)}"/>
             </p:commandLink>
         </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Type" />
+            </f:facet>
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{attachment.contentType}" /></f:facet>
+                <f:facet name="input"><p:inputTextarea value="#{attachment.contentType}" style="width:96%"/></f:facet>
+            </p:cellEditor>                                         
+        </p:column>
         
         <p:column>
             <f:facet name="header">
