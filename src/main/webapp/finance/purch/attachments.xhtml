@@ -54,8 +54,18 @@ Email: info@dpbennett.com.jm
                 <h:outputText value="Type" />
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{attachment.contentType}" /></f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{attachment.contentType}" style="width:96%"/></f:facet>
+                <f:facet name="output"><h:outputText value="#{attachment.documentType}" /></f:facet>
+                <f:facet name="input">
+                    <p:selectOneMenu style="width: 96%;"
+                                     value="#{attachment.documentType}">
+
+                        <f:selectItems  value="#{purchasingManager.documentTypes}"
+                                        var="documentType"                            
+                                        itemValue="#{documentType}"
+                                        itemLabel="#{documentType}"/>
+
+                    </p:selectOneMenu>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>
         
