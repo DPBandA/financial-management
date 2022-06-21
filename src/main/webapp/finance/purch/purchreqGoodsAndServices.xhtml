@@ -101,7 +101,13 @@ Email: info@dpbennett.com.jm
                              process="@this">
             </p:commandButton>
 
-        </p:toolbarGroup>                    
+        </p:toolbarGroup>   
+        <p:toolbarGroup align="right">
+            <h:outputText 
+            id="PRJustificationStatusNote"
+            style="font-weight: bold; color: orange;"
+            value="#{purchasingManager.selectedPRJustificationStatusNote}" />
+        </p:toolbarGroup>
     </p:toolbar>
 
     <p:dataTable  var="costComponent"
@@ -209,7 +215,7 @@ Email: info@dpbennett.com.jm
 
                 <p:menuitem  
                     value="Delete"
-                    onclick="purchreqCostCompDeleteConfirmDialog.show();"
+                    onclick="PF('purchreqCostCompDeleteConfirmDialog').show();"
                     icon="pi pi-trash"
                     process="@this">
 
