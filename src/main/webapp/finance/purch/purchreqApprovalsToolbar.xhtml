@@ -27,6 +27,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup>
             <p:commandButton title="Approve this purchase requisition"
                              value="Approve"
+                             icon="pi pi-check-circle"
                              actionListener="#{purchasingManager.approveSelectedPurchaseRequisition}"
                              update=":purchreqDialogForm:purchreqDetailToolbar1,approvalsPanel,purhReqStatusAndTracking,:purchreqDialogForm:purchreq_growl"
                              process="@this">
@@ -36,6 +37,7 @@ Email: info@dpbennett.com.jm
             
             <p:commandButton title="Recommend approval of this purchase requisition"
                              value="Recommend"
+                             icon="pi pi-check-square"
                              actionListener="#{purchasingManager.recommendSelectedPurchaseRequisition}"
                              update=":purchreqDialogForm:purchreqDetailToolbar1,approvalsPanel,purhReqStatusAndTracking,:purchreqDialogForm:purchreq_growl"
                              process="@this">
