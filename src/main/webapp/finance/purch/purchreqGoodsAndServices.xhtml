@@ -27,18 +27,18 @@ Email: info@dpbennett.com.jm
     <h:panelGrid columns="4" cellspacing="10">
         <h:outputText value="Currency" />               
         <p:autoComplete id="currency"  
-                        var="tax"
+                        var="currency"
                         forceSelection="true"      
                         dropdown="true"
                         scrollHeight="200" 
                         maxlength="40"
-                        value="#{purchasingManager.selectedPurchaseRequisition.tax}"
-                        title="#{purchasingManager.selectedPurchaseRequisition.tax}"
-                        itemValue="#{tax}"
-                        itemLabel="#{tax.name}"
-                        converter="taxConverter"
+                        value="#{purchasingManager.selectedPurchaseRequisition.currency}"
+                        title="#{purchasingManager.selectedPurchaseRequisition.currency}"
+                        itemValue="#{currency}"
+                        itemLabel="#{currency.name}"
+                        converter="currencyConverter"
                         validator="businessEntityValidator"
-                        completeMethod="#{purchasingManager.completeTax}" >
+                        completeMethod="#{purchasingManager.completeCurrency}" >
 
             <p:ajax event="itemSelect"
                     update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
