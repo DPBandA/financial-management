@@ -195,21 +195,11 @@ WHERE
 	<parameter name="recommender3" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="recommender4" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="recommender5" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="approverOrRecommenderTitle1" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["TEAM LEADER"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="approverOrRecommenderTitle2" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["DIVISIONAL MANAGER"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="approverOrRecommenderTitle3" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["DIVISIONAL DIRECTOR"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="approverOrRecommenderTitle4" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["FINANCE MANAGER"]]></defaultValueExpression>
-	</parameter>
-	<parameter name="approverOrRecommenderTitle5" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["EXECUTIVE DIRECTOR"]]></defaultValueExpression>
-	</parameter>
+	<parameter name="approverOrRecommenderTitle1" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approverOrRecommenderTitle2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approverOrRecommenderTitle3" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approverOrRecommenderTitle4" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="approverOrRecommenderTitle5" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -1146,7 +1136,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[PURPOSE FOR WHICH ORDERED:]]></text>
 			</staticText>
-			<textField textAdjust="ScaleFont">
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="430" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="846dbd53-8d14-4e8c-9756-4b35e90598dd"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
@@ -1156,7 +1146,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle1}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="450" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="426a1134-c688-4411-b3ab-887410896d96"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
@@ -1166,7 +1156,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle2}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="470" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="24459ffa-2e7e-4899-93f9-36fb14013f67"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
@@ -1206,7 +1196,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{recommender3}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="490" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d2456758-ff73-4335-ba95-ff56b2af4e76"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
@@ -1216,7 +1206,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{approverOrRecommenderTitle4}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="510" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="85c8fc85-1d8b-46fa-b950-348ad5ab8def"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
