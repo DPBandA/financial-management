@@ -101,10 +101,10 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Total cost ($)"/>
+                <h:outputText value="Total cost"/>
             </f:facet>
-            <h:outputText value="#{pr.totalCost}" styleClass="datatable-number-field" >                
-                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            <h:outputText value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
+                
             </h:outputText>
         </p:column>
 
