@@ -43,8 +43,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:commandLink value="#{attachment.name}" 
                            onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)"
-                           ajax="false" 
-                           style="color: blue;">
+                           ajax="false" >
                 <p:fileDownload value="#{purchasingManager.getFileAttachment(attachment)}"/>
             </p:commandLink>
         </p:column>
