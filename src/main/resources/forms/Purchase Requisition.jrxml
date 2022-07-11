@@ -514,7 +514,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22">
-							<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+							<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="71" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="7e6aec7b-74c6-4de0-baba-39dff5c7ca94"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>

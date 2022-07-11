@@ -46,8 +46,9 @@ Email: info@dpbennett.com.jm
                     process="@this" />
 
         </p:autoComplete>
-        <h:outputText value="Tax (%/$)" />               
+        <h:outputText value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="false" />               
         <p:autoComplete id="tax"  
+                        rendered="false"
                         var="tax"
                         forceSelection="true"      
                         dropdown="true"
@@ -67,8 +68,10 @@ Email: info@dpbennett.com.jm
                     process="@this" />
 
         </p:autoComplete>
-        <h:outputText value="Discount (%/$)" />               
+
+        <h:outputText value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="false" />               
         <p:autoComplete id="discount"  
+                        rendered="false"
                         var="discount"
                         forceSelection="true"      
                         dropdown="true"
@@ -154,14 +157,14 @@ Email: info@dpbennett.com.jm
 
         <p:column  rendered="#{!costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value="Rate ($/hr/qty)" />
+                <h:outputText value="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" />
             </f:facet>
             <h:outputText value="#{costComponent.rate}" 
                           styleClass="datatable-number-field" >
                 <f:convertNumber />
             </h:outputText>
             <f:facet name="footer">
-                <h:outputText value="Total ($)"  />
+                <h:outputText value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
             </f:facet>
         </p:column>
 
@@ -174,7 +177,7 @@ Email: info@dpbennett.com.jm
 
         <p:column rendered="#{!costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value="Cost ($)" />
+                <h:outputText value="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" />
             </f:facet>
             <h:outputText value="#{costComponent.cost}"
                           styleClass="datatable-number-field" >

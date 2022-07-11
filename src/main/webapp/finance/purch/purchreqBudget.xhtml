@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="Year-to-Date" style="font-weight: bold;" /> 
         <p:outputLabel value="Balance" style="font-weight: bold;" /> 
 
-        <p:outputLabel value="Recurrent ($)" style="font-weight: bold;" /> 
+        <p:outputLabel value="Recurrent (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" /> 
         <p:inputText id="budgetedRecurrent"     
                      style="width: 90%;"
                      value="#{purchasingManager.selectedPurchaseRequisition.budgetedRecurrent}"
@@ -78,7 +78,7 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
         </p:inputText>
 
-        <p:outputLabel value="Capital ($)" style="font-weight: bold;" /> 
+        <p:outputLabel value="Capital (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" /> 
         <p:inputText id="budgetedCapital"     
                      style="width: 90%;"
                      value="#{purchasingManager.selectedPurchaseRequisition.budgetedCapital}"
@@ -113,7 +113,7 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
         </p:inputText>  
 
-        <p:outputLabel value="Recoverable ($)" style="font-weight: bold;" /> 
+        <p:outputLabel value="Recoverable (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" /> 
         <p:inputText id="budgetedRecoverable"     
                      style="width: 90%;"
                      value="#{purchasingManager.selectedPurchaseRequisition.budgetedRecoverable}"
