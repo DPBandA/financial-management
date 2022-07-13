@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-circle"
                 actionListener="#{purchasingManager.approvePurchaseReqs}"                                            
                 process="@this"
-                update="@this,:appForm:mainTabView:approve2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,recommend1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Approve the selected purchase requisitions" >
             </p:commandButton>  
@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-square"
                 actionListener="#{purchasingManager.recommendPurchaseReqs}"                                            
                 process="@this"
-                update="@this,:appForm:mainTabView:recommend2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,approve1,:appForm:mainTabView:recommend2,:appForm:mainTabView:approve2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Recommend the selected purchase requisitions" >
             </p:commandButton>
@@ -79,11 +79,11 @@ Email: info@dpbennett.com.jm
             <h:outputText value="#{purchasingManager.purchaseReqsTableHeader}" />
         </f:facet>
 
-        <p:ajax event="rowSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2"/>
-        <p:ajax event="rowUnselect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2"/>
-        <p:ajax event="rowSelectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2"/>
-        <p:ajax event="rowUnselectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2"/>
-        <p:ajax event="toggleSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2"/>
+        <p:ajax event="rowSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
+        <p:ajax event="rowUnselect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
+        <p:ajax event="rowSelectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
+        <p:ajax event="rowUnselectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
+        <p:ajax event="toggleSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
         
         <p:column selectionMode="multiple" exportable="false"></p:column>
 
@@ -173,7 +173,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-circle"
                 actionListener="#{purchasingManager.approvePurchaseReqs}"                                            
                 process="@this"
-                update="@this,:appForm:mainTabView:approve1,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,recommend2,:appForm:mainTabView:approve1,:appForm:mainTabView:recommend1,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Approve the selected purchase requisitions" >
             </p:commandButton>
@@ -184,7 +184,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-square"
                 actionListener="#{purchasingManager.recommendPurchaseReqs}"                                            
                 process="@this"
-                update="@this,:appForm:mainTabView:recommend1,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:approve1,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Recommend the selected purchase requisitions" >
             </p:commandButton>

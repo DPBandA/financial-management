@@ -46,9 +46,10 @@ Email: info@dpbennett.com.jm
                     process="@this" />
 
         </p:autoComplete>
-        <h:outputText value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="false" />               
+        <h:outputText value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+                            rendered="#{purchasingManager.applyTax}" />               
         <p:autoComplete id="tax"  
-                        rendered="false"
+                        rendered="#{purchasingManager.applyTax}"
                         var="tax"
                         forceSelection="true"      
                         dropdown="true"
@@ -69,9 +70,10 @@ Email: info@dpbennett.com.jm
 
         </p:autoComplete>
 
-        <h:outputText value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="false" />               
+        <h:outputText value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+                      rendered="#{purchasingManager.applyDiscount}" />               
         <p:autoComplete id="discount"  
-                        rendered="false"
+                        rendered="#{purchasingManager.applyDiscount}"
                         var="discount"
                         forceSelection="true"      
                         dropdown="true"
