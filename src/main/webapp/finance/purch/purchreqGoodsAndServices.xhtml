@@ -125,7 +125,7 @@ Email: info@dpbennett.com.jm
 
         <p:ajax event="cellEdit" listener="#{purchasingManager.onCostComponentCellEdit}" 
                 update=":purchreqDialogForm:purchreq_growl"/>
-        
+               
         <p:column headerText="Component" style="width:200px">
             <p:cellEditor>
             <f:facet name="output">
@@ -168,8 +168,8 @@ Email: info@dpbennett.com.jm
                                    itemValue="#{type}"
                                    itemLabel="#{type}"/>
 
-                        <p:ajax listener="#{purchasingManager.updateCostType(costComponent)}"
-                                update="costComponentTable"
+                   <p:ajax listener="#{purchasingManager.updateCostType(costComponent)}"                                
+                                update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                 process="@this" />
                         
                 </p:selectOneMenu> 
@@ -195,7 +195,7 @@ Email: info@dpbennett.com.jm
                <f:facet name="input">
                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" >
                          <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
-                                 update="costComponentTable"
+                                 update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                  process="@this" />
                    </p:inputNumber>
                </f:facet>
@@ -222,7 +222,7 @@ Email: info@dpbennett.com.jm
                <f:facet name="input">
                    <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
                          <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
-                                update="costComponentTable"
+                                update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                 process="@this" />
                    </p:inputNumber>
                </f:facet>
@@ -241,14 +241,24 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column rendered="#{!costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" />
+        <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.cost}" >
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
             </f:facet>
-            <h:outputText value="#{costComponent.cost}"
-                          styleClass="datatable-number-field" >
-                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-            </h:outputText>
+            <f:facet name="input">
+               <f:facet name="input">
+                   <p:inputNumber value="#{costComponent.cost}" style="width:100%" >
+                         <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                                update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                                process="@this" />
+                   </p:inputNumber>
+               </f:facet>
+            </f:facet>   
+            </p:cellEditor>
+
             <f:facet name="footer">
                 <h:outputText value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
                               styleClass="datatable-number-field" >
@@ -264,11 +274,15 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column rendered="#{!costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value="Unit" />
+        <p:column headerText="Unit" rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.unit}" /> 
             </f:facet>
-            <h:outputText value="#{costComponent.unit}" />
+            <f:facet name="input">
+               <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+            </f:facet>   
+            </p:cellEditor>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
