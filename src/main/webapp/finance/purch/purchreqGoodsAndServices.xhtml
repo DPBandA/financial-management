@@ -137,11 +137,15 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>
         </p:column>
 
-        <p:column rendered="#{!costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value="Cost Code" />
+        <p:column headerText="Cost Code" rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.code}" /> 
             </f:facet>
-            <h:outputText value="#{costComponent.code}" />
+            <f:facet name="input">
+               <p:inputText  value="#{costComponent.code}" style="width:100%"/>
+            </f:facet>   
+            </p:cellEditor>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
@@ -151,11 +155,26 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column rendered="#{!costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value="Type" />
+        <p:column headerText="Type" rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.type}" /> 
             </f:facet>
-            <h:outputText value="#{costComponent.type}" />
+            <f:facet name="input">
+                <p:selectOneMenu value="#{costComponent.type}" style="width:100%" >
+
+                   <f:selectItems  value="#{purchasingManager.costTypeList}"
+                                   var="type"                            
+                                   itemValue="#{type}"
+                                   itemLabel="#{type}"/>
+
+                        <p:ajax listener="#{purchasingManager.updateCostType(costComponent)}"
+                                update="costComponentTable"
+                                process="@this" />
+                        
+                </p:selectOneMenu> 
+            </f:facet>   
+            </p:cellEditor>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
@@ -165,14 +184,23 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column rendered="#{!costComponent.isHeading}" >
-            <f:facet name="header">
-                <h:outputText value="Hours/Qty"/>
+        <p:column headerText="Hours/Qty" rendered="#{!costComponent.isHeading}" >
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.hoursOrQuantity}" >
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
             </f:facet>
-            <h:outputText value="#{costComponent.hoursOrQuantity}"
-                          styleClass="datatable-number-field" >
-                <f:convertNumber />
-            </h:outputText>
+            <f:facet name="input">
+               <f:facet name="input">
+                   <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" >
+                         <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                                 update="costComponentTable"
+                                 process="@this" />
+                   </p:inputNumber>
+               </f:facet>
+            </f:facet>   
+            </p:cellEditor>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
@@ -182,14 +210,25 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column  rendered="#{!costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" />
+        <p:column headerText="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" 
+                  rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.rate}" >
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
             </f:facet>
-            <h:outputText value="#{costComponent.rate}" 
-                          styleClass="datatable-number-field" >
-                <f:convertNumber />
-            </h:outputText>
+            <f:facet name="input">
+               <f:facet name="input">
+                   <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
+                         <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                                update="costComponentTable"
+                                process="@this" />
+                   </p:inputNumber>
+               </f:facet>
+            </f:facet>   
+            </p:cellEditor>
+
             <f:facet name="footer">
                 <h:outputText value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
             </f:facet>
