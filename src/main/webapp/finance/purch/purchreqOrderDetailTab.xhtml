@@ -21,7 +21,8 @@ Email: info@dpbennett.com.jm
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <p:panel id="orderDetail" 
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="2">
@@ -31,10 +32,11 @@ Email: info@dpbennett.com.jm
                 <h:panelGroup id="poNumberGroup">
 
                     <h:outputText id="poNumber" 
-                                  rendered="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}"
+                                  rendered="true"
                                   value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" 
                                   styleClass="pr-number"/>
 
+                    <ui:remove>
                     <p:inputText id="poNumberEdit"                                 
                                  rendered="#{!purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}"
                                  size="35"
@@ -54,6 +56,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
 
                     </p:inputText>
+                    </ui:remove>
                 </h:panelGroup>
                 <p:spacer height="0" width="5"/>
                 <p:selectBooleanCheckbox id="autoGeneratePO" 

@@ -31,10 +31,11 @@ Email: info@dpbennett.com.jm
                 <h:panelGroup id="prNumberGroup">
 
                     <h:outputText id="prNumber" 
-                                  rendered="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}"
+                                  rendered="true"
                                   value="#{purchasingManager.selectedPurchaseRequisition.number}" 
                                   styleClass="pr-number"/>
 
+                    <ui:remove>
                     <p:inputText id="prNumberEdit"
                                  rendered="#{!purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}"
                                  size="35"
@@ -54,6 +55,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
 
                     </p:inputText>
+                    </ui:remove>
                 </h:panelGroup>
                 <p:spacer height="0" width="5"/>
                 <p:selectBooleanCheckbox id="autoGenerate" 

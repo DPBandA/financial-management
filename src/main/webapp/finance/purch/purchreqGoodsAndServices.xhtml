@@ -118,12 +118,37 @@ Email: info@dpbennett.com.jm
     <p:dataTable  var="costComponent"
                   id="costComponentTable"
                   rowStyleClass="#{costComponent.isHeading ? 'header' : null}"
+                  editable="true"
+                  editMode="cell"
+                  widgetVar="costComponentVar"
                   value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Component" />
+
+        <p:ajax event="cellEdit" listener="#{purchasingManager.onCostComponentCellEdit}" 
+                update=":purchreqDialogForm:purchreq_growl"/>
+        
+        <p:column headerText="Component" style="width:200px">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.name}" /> 
             </f:facet>
-            <h:outputText value="#{costComponent.name}" />                    
+            <f:facet name="input">
+               <p:inputText  value="#{costComponent.name}" style="width:100%"/>
+            </f:facet>   
+            </p:cellEditor>
+        </p:column>
+
+        <p:column rendered="#{!costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value="Cost Code" />
+            </f:facet>
+            <h:outputText value="#{costComponent.code}" />
+        </p:column>
+
+        <p:column rendered="#{costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value=" " />
+            </f:facet>
+            <h:outputText value=" " />
         </p:column>
 
         <p:column rendered="#{!costComponent.isHeading}">
@@ -191,6 +216,20 @@ Email: info@dpbennett.com.jm
                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                 </h:outputText>
             </f:facet>
+        </p:column>
+
+        <p:column rendered="#{costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value=" " />
+            </f:facet>
+            <h:outputText value=" " />
+        </p:column>
+
+        <p:column rendered="#{!costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value="Unit" />
+            </f:facet>
+            <h:outputText value="#{costComponent.unit}" />
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
