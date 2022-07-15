@@ -104,18 +104,7 @@ Email: info@dpbennett.com.jm
                              oncomplete="PF('costComponentVar').addRow();"
                              icon="pi pi-plus"
                              process="@this">
-            </p:commandButton>
-            <ui:remove>
-            <p:commandButton title="Add new cost component"   
-                             value="New"
-                             actionListener="#{purchasingManager.createNewCostComponent}"
-                             update=":purchreqCostingCompDialogForm"
-                             oncomplete="PF('purchreqCostingCompDialog').show();"
-                             icon="pi pi-plus"
-                             process="@this">
-            </p:commandButton>
-            </ui:remove>
-
+            </p:commandButton>  
         </p:toolbarGroup>   
         <p:toolbarGroup align="right">
             <h:outputText 
@@ -345,15 +334,13 @@ Email: info@dpbennett.com.jm
     <p:toolbar style="margin-top: 1px;">
         <p:toolbarGroup>
             <p:commandButton title="Add new cost component"
-                             rendered="false"
                              value="New"
-                             actionListener="#{purchasingManager.createNewCostComponent}"
-                             update=":purchreqCostingCompDialogForm"
-                             oncomplete="PF('purchreqCostingCompDialog').show();"
+                             action="#{purchasingManager.addNewCostComponent}"
+                             update=":purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"
+                             oncomplete="PF('costComponentVar').addRow();"
                              icon="pi pi-plus"
                              process="@this">
             </p:commandButton>
-
         </p:toolbarGroup>
     </p:toolbar>   
 
