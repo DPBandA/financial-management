@@ -191,15 +191,13 @@ Email: info@dpbennett.com.jm
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                </h:outputText>
             </f:facet>
-            <f:facet name="input">
-               <f:facet name="input">
+            <f:facet name="input">               
                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" >
                          <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
                                  update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                  process="@this" />
                    </p:inputNumber>
-               </f:facet>
-            </f:facet>   
+            </f:facet>
             </p:cellEditor>
         </p:column>
 
@@ -219,14 +217,12 @@ Email: info@dpbennett.com.jm
                </h:outputText>
             </f:facet>
             <f:facet name="input">
-               <f:facet name="input">
-                   <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
+                <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
                          <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
                                 update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                 process="@this" />
-                   </p:inputNumber>
-               </f:facet>
-            </f:facet>   
+                </p:inputNumber>
+            </f:facet>
             </p:cellEditor>
 
             <f:facet name="footer">
@@ -249,13 +245,11 @@ Email: info@dpbennett.com.jm
                </h:outputText>
             </f:facet>
             <f:facet name="input">
-               <f:facet name="input">
                    <p:inputNumber value="#{costComponent.cost}" style="width:100%" >
                          <p:ajax listener="#{purchasingManager.updateCostComponent(costComponent)}"
                                 update="costComponentTable,:purchreqDialogForm:purchreq_growl"
                                 process="@this" />
                    </p:inputNumber>
-               </f:facet>
             </f:facet>   
             </p:cellEditor>
 
