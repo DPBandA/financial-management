@@ -168,12 +168,28 @@ Email: info@dpbennett.com.jm
                             itemLabel="#{department.name}"
                             converter="activeDepartmentConverter"
                             validator="businessEntityValidator"
-                            completeMethod="#{humanResourceManager.completeActiveDepartment}" />             
+                            completeMethod="#{humanResourceManager.completeActiveDepartment}" />     
+
+            <h:outputLabel value="Procurement method" 
+                           for="procurementMethod"/>
+            <p:selectOneMenu id="procurementMethod" 
+                             value="#{purchasingManager.selectedPurchaseRequisition.procurementMethod}">
+
+                <f:selectItems  value="#{purchasingManager.procurementMethods}"
+                                var="procurementMethod"                            
+                                itemValue="#{procurementMethod}"
+                                itemLabel="#{procurementMethod}"/>
+
+                <p:ajax listener="#{purchasingManager.updatePurchaseReq}"
+                        update=":purchreqDialogForm:purchreqDetailToolbar1"
+                        global="false"
+                        process="@this"/>
+
+            </p:selectOneMenu>
 
             <h:outputLabel value="Priority code" 
                            for="priorityCode"/>
-            <p:selectOneMenu id="priorityCode"     
-                             style="width: 100px;"
+            <p:selectOneMenu id="priorityCode"
                              value="#{purchasingManager.selectedPurchaseRequisition.priorityCode}">
 
                 <f:selectItems  value="#{purchasingManager.priorityCodes}"
