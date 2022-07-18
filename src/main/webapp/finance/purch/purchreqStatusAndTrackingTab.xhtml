@@ -133,6 +133,92 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
         </h:panelGrid>
     </p:panel>
+    <p:panel id="cashPayments" header="Payments" >    
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+                <p:commandButton value="New"
+                                 title="Add new payment"
+                                 actionListener="#{purchasingManager.createNewCashPayment}"
+                                 disabled="#{!purchasingManager.isProcurementOfficer}"
+                                 update=":purchreqDialogForm:purchreq_growl"
+                                 icon="pi pi-plus"
+                                 process="@this" />
+            </p:toolbarGroup>
+        </p:toolbar>               
+        <p:dataTable id="cashPaymentTable"
+                     style="margin-top: 1px;margin-bottom: 1px;"
+                     paginator="true"
+                     rows="15"
+                     var="cashPayment"
+                     value="#{purchasingManager.selectedPurchaseRequisition.cashPayments}">
+
+            <f:facet name="header">
+                <h:outputText value="Cash Payments" />
+            </f:facet>
+
+            <p:column >
+                <f:facet name="header">
+                    <h:outputText value="Invoice #" />
+                </f:facet>
+                <h:outputText value="#{cashPayment.invoiceNumber}" />
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Payment type"/>
+                </f:facet>
+                <h:outputText value="#{cashPayment.type}"/>              
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Amount ($)"/>
+                </f:facet>
+                <h:outputText value="#{cashPayment.payment}"
+                              styleClass="datatable-number-field" >
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </h:outputText>
+            </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Purpose"/>
+                </f:facet>
+                <h:outputText value="#{cashPayment.paymentPurpose}"/>              
+            </p:column>
+            <p:column style="width:32px" >
+                <p:menuButton id="toolsButton" 
+                              disabled="#{!purchasingManager.isProcurementOfficer}"
+                              icon="pi pi-pencil" 
+                              title="Edit or delete payment" >
+                    
+                    
+                </p:menuButton>          
+            </p:column>            
+            <p:columnGroup type="footer">
+                <p:row>
+                    <p:column colspan="2" 
+                              style="text-align:right;" 
+                              footerText="Total payments ($)"/>                                        
+                    <p:column style="text-align:right;"> 
+                        <f:facet name="footer">
+                            <h:outputText value="5.00" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                            </h:outputText>
+                        </f:facet>                        
+                    </p:column>
+                </p:row>               
+            </p:columnGroup>
+        </p:dataTable>
+        <p:toolbar>
+            <p:toolbarGroup align="left">
+               <p:commandButton value="New"
+                                 title="Add new payment"
+                                 actionListener="#{purchasingManager.createNewCashPayment}"
+                                 disabled="#{!purchasingManager.isProcurementOfficer}"
+                                 update=":purchreqDialogForm:purchreq_growl"
+                                 icon="pi pi-plus"
+                                 process="@this" />
+            </p:toolbarGroup>
+        </p:toolbar>
+    </p:panel>
     <p:panel id="statusNote" header="Status Note" rendered="#{true}" >
         <p:inputTextarea
             value="#{purchasingManager.selectedPurchaseRequisition.status}"
