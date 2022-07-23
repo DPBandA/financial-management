@@ -139,22 +139,22 @@ Email: info@dpbennett.com.jm
                 <p:commandButton value="New"
                                  title="Add new payment"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
-                                 disabled="#{!purchasingManager.isProcurementOfficer}"
+                                 disabled="#{!purchasingManager.canCreateNewCashPayment}"
                                  update=":purchreqDialogForm:purchreq_growl"
                                  icon="pi pi-plus"
                                  process="@this" />
             </p:toolbarGroup>
         </p:toolbar>               
         <p:dataTable id="cashPaymentTable"
-                     style="margin-top: 1px;margin-bottom: 1px;"
-                     paginator="true"
-                     rows="15"
-                     var="cashPayment"
-                     value="#{purchasingManager.selectedPurchaseRequisition.cashPayments}">
+                      style="margin-top: 1px;margin-bottom: 1px;"
+                      var="cashPayment"
+                      editable="true"
+                      editMode="cell"
+                      widgetVar="cashPaymentVar"
+                      value="#{purchasingManager.selectedPurchaseRequisition.cashPayments}">
 
-            <f:facet name="header">
-                <h:outputText value="Cash Payments" />
-            </f:facet>
+            <p:ajax event="cellEdit" listener="#{purchasingManager.onCashPaymentCellEdit}"                 
+                    update="cashPaymentTable"/>
 
             <p:column >
                 <f:facet name="header">
@@ -199,7 +199,7 @@ Email: info@dpbennett.com.jm
                               footerText="Total payments ($)"/>                                        
                     <p:column style="text-align:right;"> 
                         <f:facet name="footer">
-                            <h:outputText value="5.00" >
+                            <h:outputText value="0.00" >
                                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
                             </h:outputText>
                         </f:facet>                        
@@ -212,7 +212,7 @@ Email: info@dpbennett.com.jm
                <p:commandButton value="New"
                                  title="Add new payment"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
-                                 disabled="#{!purchasingManager.isProcurementOfficer}"
+                                 disabled="#{!purchasingManager.canCreateNewCashPayment}"
                                  update=":purchreqDialogForm:purchreq_growl"
                                  icon="pi pi-plus"
                                  process="@this" />
