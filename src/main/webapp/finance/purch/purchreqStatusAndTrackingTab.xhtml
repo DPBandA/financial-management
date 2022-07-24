@@ -156,17 +156,32 @@ Email: info@dpbennett.com.jm
             <p:ajax event="cellEdit" listener="#{purchasingManager.onCashPaymentCellEdit}"                 
                     update="cashPaymentTable"/>
 
-            <p:column >
-                <f:facet name="header">
-                    <h:outputText value="Invoice #" />
-                </f:facet>
-                <h:outputText value="#{cashPayment.invoiceNumber}" />
+            <p:column headerText="Invoice #">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{cashPayment.invoiceNumber}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText  value="#{cashPayment.invoiceNumber}"/>                   
+                    </f:facet>   
+                </p:cellEditor>
             </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Payment type"/>
-                </f:facet>
-                <h:outputText value="#{cashPayment.type}"/>              
+            <p:column headerText="Payment type">       
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{cashPayment.type}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:selectOneMenu value="#{cashPayment.type}" style="width:100%" >
+
+                            <f:selectItems  value="#{purchasingManager.costTypeList}"
+                                   var="type"                            
+                                   itemValue="#{type}"
+                                   itemLabel="#{type}"/>
+                        
+                        </p:selectOneMenu> 
+                    </f:facet>   
+                </p:cellEditor>
             </p:column>
             <p:column>
                 <f:facet name="header">
