@@ -140,7 +140,7 @@ Email: info@dpbennett.com.jm
                                  title="Add new payment"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
-                                 update=":purchreqDialogForm:purchreq_growl"
+                                 update=":purchreqDialogForm:purchreq_growl,cashPaymentTable"
                                  icon="pi pi-plus"
                                  process="@this" />
             </p:toolbarGroup>
@@ -151,7 +151,7 @@ Email: info@dpbennett.com.jm
                       editable="true"
                       editMode="cell"
                       widgetVar="cashPaymentVar"
-                      value="#{purchasingManager.selectedPurchaseRequisition.cashPayments}">
+                      value="#{purchasingManager.cashPayments}">
 
             <p:ajax event="cellEdit" listener="#{purchasingManager.onCashPaymentCellEdit}"                 
                     update="cashPaymentTable"/>
@@ -199,7 +199,7 @@ Email: info@dpbennett.com.jm
                               footerText="Total payments ($)"/>                                        
                     <p:column style="text-align:right;"> 
                         <f:facet name="footer">
-                            <h:outputText value="0.00" >
+                            <h:outputText value="#{purchasingManager.totalCashPayments}" >
                                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
                             </h:outputText>
                         </f:facet>                        
@@ -213,7 +213,7 @@ Email: info@dpbennett.com.jm
                                  title="Add new payment"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
-                                 update=":purchreqDialogForm:purchreq_growl"
+                                 update=":purchreqDialogForm:purchreq_growl,cashPaymentTable"
                                  icon="pi pi-plus"
                                  process="@this" />
             </p:toolbarGroup>
