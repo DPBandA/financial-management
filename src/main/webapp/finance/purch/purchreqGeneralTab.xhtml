@@ -26,54 +26,22 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />
-            <h:panelGroup>
-                <h:panelGroup id="prNumberGroup">
+            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />          
+            <p:inputText id="prNumberEdit"
+                          size="15"
+                          style="font-weight: bold;"
+                          maxlength="40" 
+                          disabled="#{!purchasingManager.isProcurementOfficer}"
+                          required="true"
+                          title="#{purchasingManager.selectedPurchaseRequisition.number}"
+                          value="#{purchasingManager.selectedPurchaseRequisition.number}">
 
-                    <h:outputText id="prNumber" 
-                                  rendered="true"
-                                  value="#{purchasingManager.selectedPurchaseRequisition.number}" 
-                                  styleClass="pr-number"/>
+                <p:ajax event="change"                            
+                        update=":purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:orderDetail"
+                        listener="#{purchasingManager.updatePurchaseReq}"
+                        process="@this"/>
 
-                    <ui:remove>
-                    <p:inputText id="prNumberEdit"
-                                 rendered="#{!purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}"
-                                 size="35"
-                                 maxlength="40"      
-                                 validator="purchaseReqNumberValidator"
-                                 title="#{purchasingManager.selectedPurchaseRequisition.number}"
-                                 value="#{purchasingManager.selectedPurchaseRequisition.number}">
-
-                        <f:attribute name="selectedPurchaseReqId" 
-                                     value="#{purchasingManager.selectedPurchaseRequisition.id}" />
-                        <f:attribute name="autoGeneratePRNumber" 
-                                     value="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}" />
-
-                        <p:ajax event="change"                            
-                                update=":purchreqDialogForm:purchreqDetailToolbar1"
-                                listener="#{purchasingManager.updatePurchaseReq}"
-                                process="@this"/>
-
-                    </p:inputText>
-                    </ui:remove>
-                </h:panelGroup>
-                <p:spacer height="0" width="5"/>
-                <p:selectBooleanCheckbox id="autoGenerate" 
-                                         itemLabel="auto"
-                                         style="vertical-align: middle"
-                                         rendered="#{purchasingManager.user.can('BeJMTSAdministrator')}"
-                                         value="#{purchasingManager.selectedPurchaseRequisition.autoGenerateNumber}" >
-
-                    <p:ajax listener="#{purchasingManager.updateAutoGeneratePRNumber}" 
-                            event="change"
-                            update="prNumberGroup,poNumberGroup,autoGeneratePO,:purchreqDialogForm:purchreqDetailToolbar1"
-                            global="false"                        
-                            process="@this"/>
-
-                </p:selectBooleanCheckbox>            
-                <p:tooltip for="autoGenerate" value="Check to auto-generate number" showEffect="fade" hideEffect="fade" />
-
-            </h:panelGroup>
+            </p:inputText>               
 
             <h:outputText value="Supplier" style="font-weight: bold" />
             <h:panelGroup>                

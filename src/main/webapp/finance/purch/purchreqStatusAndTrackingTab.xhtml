@@ -166,7 +166,24 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            <p:column headerText="Payment type">       
+            <p:column headerText="Date">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{cashPayment.dateOfPayment}" >
+                            <f:convertDateTime pattern="MMM dd, yyyy"/>
+                        </h:outputText>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:calendar 
+                                value="#{cashPayment.dateOfPayment}"   
+                                navigator="true"
+                                validator="requiredFieldValidator"
+                                disabled="false"
+                                pattern="MMM dd, yyyy" />                   
+                    </f:facet>   
+                </p:cellEditor>
+            </p:column>
+            <p:column headerText="Type">       
                 <p:cellEditor>
                     <f:facet name="output">
                         <h:outputText value="#{cashPayment.type}" /> 
@@ -174,7 +191,7 @@ Email: info@dpbennett.com.jm
                     <f:facet name="input">
                         <p:selectOneMenu value="#{cashPayment.type}" style="width:100%" >
 
-                            <f:selectItems  value="#{purchasingManager.costTypeList}"
+                            <f:selectItems  value="#{purchasingManager.paymentTypes}"
                                    var="type"                            
                                    itemValue="#{type}"
                                    itemLabel="#{type}"/>
@@ -182,30 +199,44 @@ Email: info@dpbennett.com.jm
                         </p:selectOneMenu> 
                     </f:facet>   
                 </p:cellEditor>
+            </p:column>            
+            <p:column headerText="Amount ($)" >
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{cashPayment.payment}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </h:outputText>
+                    </f:facet>
+                    <f:facet name="input">               
+                        <p:inputNumber value="#{cashPayment.payment}" />                                                 
+                    </f:facet>
+                </p:cellEditor>
             </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Amount ($)"/>
-                </f:facet>
-                <h:outputText value="#{cashPayment.payment}"
-                              styleClass="datatable-number-field" >
-                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                </h:outputText>
-            </p:column>
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Purpose"/>
-                </f:facet>
-                <h:outputText value="#{cashPayment.paymentPurpose}"/>              
+            <p:column headerText="Purpose">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{cashPayment.paymentPurpose}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText  value="#{cashPayment.paymentPurpose}"/>                   
+                    </f:facet>   
+                </p:cellEditor>
             </p:column>
             <p:column style="width:32px" >
-                <p:menuButton id="toolsButton" 
+                <p:commandButton 
                               disabled="#{!purchasingManager.isProcurementOfficer}"
-                              icon="pi pi-pencil" 
-                              title="Edit or delete payment" >
+                              actionListener="#{purchasingManager.openCashPaymentDeleteConfirmDialog}"
+                              icon="pi pi-trash" 
+                              title="Delete payment" >
+
+                     <f:setPropertyActionListener value="#{cashPayment}"
+                                                  target="#{purchasingManager.selectedCashPayment}" />
+
+                     <p:ajax event="dialogReturn"               
+                                update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
+                                process="@this"/>
                     
-                    
-                </p:menuButton>          
+                </p:commandButton>          
             </p:column>            
             <p:columnGroup type="footer">
                 <p:row>
