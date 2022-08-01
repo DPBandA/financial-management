@@ -141,6 +141,7 @@ Email: info@dpbennett.com.jm
             <h:outputLabel value="Procurement method" 
                            for="procurementMethod"/>
             <p:selectOneMenu id="procurementMethod" 
+                             editable="true"
                              value="#{purchasingManager.selectedPurchaseRequisition.procurementMethod}">
 
                 <f:selectItems  value="#{purchasingManager.procurementMethods}"
