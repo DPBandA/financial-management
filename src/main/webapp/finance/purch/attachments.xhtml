@@ -25,6 +25,11 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <ui:include src="attachmentsTableHeader.xhtml"/>
+   
+    <h:outputText 
+        id="PRBidQuotesNote"
+        style="font-weight: bold; color: orange;"
+        value="#{purchasingManager.selectedPRBidQuotesNote}" />
 
     <p:dataTable  var="attachment"
                   editable="true" 
