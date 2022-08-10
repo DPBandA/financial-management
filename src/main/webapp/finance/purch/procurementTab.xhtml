@@ -1,0 +1,111 @@
+<!--
+Financial Management (FM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+    <h:panelGrid id="procurementTabPanel" columns="2" cellspacing="10">            
+        <h:outputLabel value="Current purchase order no." style="font-weight: bold;" />
+        <p:inputText value="[value]" />      
+    </h:panelGrid>
+
+    <p:toolbar>
+        <p:toolbarGroup align="left" >   
+            <p:commandButton title="Add new procurement method"                                  
+                             value="New"
+                             actionListener="#{purchasingManager.createNewProcurementMethod}"
+                             update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{purchasingManager.doProcurementMethodSearch}"
+                        update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
+
+            </p:commandButton>     
+            <p:spacer width="20" />        
+            <p:inputText id="procurementMethodSearchText" 
+                         value="#{purchasingManager.procurementMethodSearchText}"
+                         style="width:300px" 
+                         placeholder="Enter search text">
+                <p:ajax event="keyup"
+                        global="false"
+                        update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
+                        listener="#{purchasingManager.doProcurementMethodSearch}"
+                        process="@this"/>
+            </p:inputText>
+        </p:toolbarGroup>
+
+    </p:toolbar>  
+
+    <p:dataTable id="procurementMethodsTable"                                       
+                 var="procurementMethod"     
+                 editable="true" 
+                 editMode="cell"
+                 paginator="true"
+                 rows="15"
+                 style="margin-top: 1px;"
+                 widgetVar="procurementMethodsTableVar"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 value="#{purchasingManager.foundProcurementMethods}">
+
+        <p:ajax event="cellEdit" listener="#{purchasingManager.onProcurementMethodCellEdit}" />
+
+        <f:facet name="header">
+            Procurement Methods
+        </f:facet>
+
+        <p:column headerText="Name">
+            <p:cellEditor>
+                <f:facet name="output"> <h:outputText value="#{procurementMethod.name}" /></f:facet>
+                <f:facet name="input"><p:inputText value="#{procurementMethod.name}" style="width:96%"/></f:facet>
+            </p:cellEditor>                                           
+        </p:column>   
+
+        <p:column headerText="Description">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{procurementMethod.description}" /></f:facet>
+                <f:facet name="input"><p:inputTextarea value="#{procurementMethod.description}" style="width:96%"/></f:facet>
+            </p:cellEditor>                                         
+        </p:column>   
+
+        <p:column style="width:32px">
+            <p:commandButton title="View or edit procurement method"   
+                             actionListener="#{purchasingManager.editProcurementMethod}"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-pencil">
+
+                <p:ajax event="dialogReturn" 
+                        update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
+
+                <f:setPropertyActionListener value="#{procurementMethod}"                                                                    
+                                             target="#{purchasingManager.selectedProcurementMethod}" />
+            </p:commandButton>           
+        </p:column>
+
+    </p:dataTable>          
+</html>
+
+

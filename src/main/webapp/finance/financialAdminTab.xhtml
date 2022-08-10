@@ -95,13 +95,9 @@ Email: info@dpbennett.com.jm
         </p:tab>
 
         <p:tab title="Proccurement">
-            <h:panelGrid id="procurementTabPanel" columns="2" cellspacing="10">            
-                <h:outputLabel value="Current purchase order no." style="font-weight: bold;" />
-                <p:inputText value="[value]" />           
-
-            </h:panelGrid>
+            <ui:include src="purch/procurementTab.xhtml"/> 
         </p:tab>
-
+            
         <p:tab title="Miscellaneous">                  
             <ui:include src="financialMiscTab.xhtml"/> 
         </p:tab>        

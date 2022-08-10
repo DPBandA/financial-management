@@ -152,6 +152,13 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
+            <from-outcome>procurementMethodDialog</from-outcome>
+            <to-view-id>/finance/purch/procurementMethodDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
             <from-outcome>accountingCodeDialog</from-outcome>
             <to-view-id>/finance/accountingCodeDialog.xhtml</to-view-id>
         </navigation-case>
