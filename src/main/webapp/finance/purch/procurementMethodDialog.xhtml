@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM)  
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <meta http-equiv="expires" content="0" />
         <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
         <meta http-equiv="pragma" content="no-cache" />
-        <title>Service</title>
+        <title>Procurement Method</title>
         <link rel="stylesheet" href="../css/main.css" />
         <style type="text/css">
 
@@ -43,21 +43,21 @@ Email: info@dpbennett.com.jm
     </h:head>
     <h:body >  
         
-        <ui:include src="../common/commonDialogs.xhtml"/>  
+        <ui:include src="/common/commonDialogs.xhtml"/>  
         
-        <h:form id="serviceDialogForm">        
+        <h:form id="procurementMethodDialogForm">        
             <p:growl id="growl" life="5000" />
 
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{financeManager.saveSelectedService}"
+                                     actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{financeManager.cancelDialogEdit}" 
+                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
@@ -65,44 +65,20 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel value="Active" for="serviceActive" 
-                                   style="font-weight: bold;" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="serviceActive"
-                                             value="#{financeManager.selectedService.active}" />    
-
-                    <p:outputLabel value="Internal" for="serviceInternal" 
-                                   style="font-weight: bold;" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="serviceInternal"
-                                             value="#{financeManager.selectedService.internal}" />  
-                    
+                   
                     <h:outputText value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{financeManager.selectedService.name}"    
-                                 id="serviceName"
-                                 style="width:300px" >
-                        <f:validator validatorId="requiredFieldValidator" />
-                    </p:inputText>                     
+                    <p:selectOneMenu editable="true"
+                                     value="#{purchasingManager.selectedProcurementMethod.name}">
 
-                    <h:outputText value="Accounting code" style="font-weight: bold;" />
-                    <p:autoComplete id="accountingCode"  
-                                    var="accountingCode"
-                                    forceSelection="true"      
-                                    dropdown="true"
-                                    scrollHeight="200" 
-                                    size="35"
-                                    maxlength="40"
-                                    value="#{financeManager.selectedService.accountingCode}"
-                                    title="#{financeManager.selectedService.accountingCode}"
-                                    itemValue="#{accountingCode}"
-                                    itemLabel="#{accountingCode.code} (#{accountingCode.name})"
-                                    converter="accountingCodeConverter"
-                                    validator="businessEntityValidator"
-                                    completeMethod="#{financeManager.completeAccountingCode}" />
+                        <f:selectItems  value="#{purchasingManager.procurementMethods}"
+                                        var="procurementMethod"                            
+                                        itemValue="#{procurementMethod}"
+                                        itemLabel="#{procurementMethod}"/>
 
+                    </p:selectOneMenu>
+                    
                     <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{financeManager.selectedService.description}"
-                                      id="serviceDescription"
+                    <p:inputTextarea  value="#{purchasingManager.selectedProcurementMethod.description}"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
@@ -116,13 +92,13 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{financeManager.saveSelectedService}"
+                                     actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
                                      update="growl"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{financeManager.cancelDialogEdit}" 
+                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
