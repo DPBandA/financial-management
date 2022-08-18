@@ -53,7 +53,7 @@ Email: info@dpbennett.com.jm
                     <p:commandButton value="Ok"
                                      actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
-                                     update="growl"
+                                     update="growl,procurementMethodDialogForm"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
@@ -76,14 +76,30 @@ Email: info@dpbennett.com.jm
                                         itemLabel="#{procurementMethod}"/>
 
                     </p:selectOneMenu>
+
+                    <h:outputLabel value="Lower signing limit ($)" />                   
+                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.lowerSigningLimit}"
+                                 converterMessage="Please enter a valid lower signing limit"
+                                 validatorMessage="A valid lower signing limit is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
+
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+
+                        <f:validator validatorId="requiredFieldValidator" />
+                        
+                    </p:inputText>
                     
                     <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{purchasingManager.selectedProcurementMethod.description}"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
+                                      validatorMessage="A description is required" 
                                       style="width:300px" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputTextarea>  
 
                 </h:panelGrid>
@@ -94,7 +110,7 @@ Email: info@dpbennett.com.jm
                     <p:commandButton value="Ok"
                                      actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
-                                     update="growl"
+                                     update="growl,procurementMethodDialogForm"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
