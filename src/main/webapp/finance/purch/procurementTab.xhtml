@@ -78,8 +78,18 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Name">
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{procurementMethod.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{procurementMethod.name}" style="width:96%"/></f:facet>
+                <f:facet name="output"><h:outputText value="#{procurementMethod.name}" /></f:facet>
+                <f:facet name="input">
+                    <p:selectOneMenu editable="true"
+                                     value="#{procurementMethod.name}">
+
+                        <f:selectItems  value="#{purchasingManager.procurementMethods}"
+                                        var="method"                            
+                                        itemValue="#{method}"
+                                        itemLabel="#{method}"/>
+
+                    </p:selectOneMenu>
+                </f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
@@ -88,7 +98,19 @@ Email: info@dpbennett.com.jm
                 <f:facet name="output"><h:outputText value="#{procurementMethod.description}" /></f:facet>
                 <f:facet name="input"><p:inputTextarea value="#{procurementMethod.description}" style="width:96%"/></f:facet>
             </p:cellEditor>                                         
-        </p:column>   
+        </p:column>
+
+        <p:column headerText="Active">
+            <p:cellEditor>
+                <f:facet name="output"><h:outputText value="#{procurementMethod.usable}" /></f:facet>
+                <f:facet name="input">
+                    <p:selectOneMenu value="#{procurementMethod.usable}" style="width:96%">
+                        <f:selectItem itemLabel="Yes" itemValue="Yes"/>
+                        <f:selectItem itemLabel="No" itemValue="No"/>
+                    </p:selectOneMenu>
+                </f:facet>
+            </p:cellEditor>                                         
+        </p:column>
 
         <p:column style="width:32px">
             <p:commandButton title="View or edit procurement method"   
@@ -103,7 +125,7 @@ Email: info@dpbennett.com.jm
                 <f:setPropertyActionListener value="#{procurementMethod}"                                                                    
                                              target="#{purchasingManager.selectedProcurementMethod}" />
             </p:commandButton>           
-        </p:column>
+        </p:column>       
 
     </p:dataTable>          
 </html>

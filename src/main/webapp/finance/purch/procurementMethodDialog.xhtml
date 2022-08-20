@@ -65,9 +65,21 @@ Email: info@dpbennett.com.jm
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
+
+                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <h:panelGroup>
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="active"
+                                                 value="#{purchasingManager.selectedProcurementMethod.active}" />
+
+                        <p:tooltip for="active" value="Check to activate this procurement method" 
+                                   showEffect="fade" hideEffect="fade" />            
+
+                    </h:panelGroup>
                    
-                    <h:outputText value="Name" style="font-weight: bold;" />
+                    <p:outputLabel for="name" value="Name" style="font-weight: bold;" />
                     <p:selectOneMenu editable="true"
+                                     id="name"
                                      value="#{purchasingManager.selectedProcurementMethod.name}">
 
                         <f:selectItems  value="#{purchasingManager.procurementMethods}"
@@ -77,8 +89,10 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputLabel value="Lower signing limit ($)" />                   
+                    <h:outputLabel for="lowerSigningLimit" value="Lower signing limit ($)" 
+                                   style="font-weight: bold;" />                   
                     <p:inputText value="#{purchasingManager.selectedProcurementMethod.lowerSigningLimit}"
+                                 id="lowerSigningLimit"
                                  converterMessage="Please enter a valid lower signing limit"
                                  validatorMessage="A valid lower signing limit is required"
                                  styleClass="number-field"
@@ -89,9 +103,25 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="requiredFieldValidator" />
                         
                     </p:inputText>
+
+                    <h:outputLabel for="upperSigningLimit" value="Upper signing limit ($)" 
+                                    style="font-weight: bold;" />                   
+                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.upperSigningLimit}"
+                                 id="upperSigningLimit"
+                                 converterMessage="Please enter a valid upper signing limit"
+                                 validatorMessage="A valid upper signing limit is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
+
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+
+                        <f:validator validatorId="requiredFieldValidator" />
+                        
+                    </p:inputText>
                     
-                    <h:outputText value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel for="description" value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{purchasingManager.selectedProcurementMethod.description}"
+                                      id="description"   
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
