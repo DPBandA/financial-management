@@ -93,6 +93,32 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                           
         </p:column>   
 
+        <p:column headerText="Lower Signing Limit" >
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{procurementMethod.lowerSigningLimit}" >
+                   <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
+            </f:facet>
+            <f:facet name="input">
+                   <p:inputNumber value="#{procurementMethod.lowerSigningLimit}" />                         
+            </f:facet>   
+            </p:cellEditor>
+        </p:column>
+
+        <p:column headerText="Upper Signing Limit" >
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{procurementMethod.upperSigningLimit}" >
+                   <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
+            </f:facet>
+            <f:facet name="input">
+                   <p:inputNumber value="#{procurementMethod.upperSigningLimit}" />                         
+            </f:facet>   
+            </p:cellEditor>
+        </p:column>
+
         <p:column headerText="Description">
             <p:cellEditor>
                 <f:facet name="output"><h:outputText value="#{procurementMethod.description}" /></f:facet>

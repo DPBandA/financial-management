@@ -78,14 +78,15 @@ Email: info@dpbennett.com.jm
                     </h:panelGroup>
                    
                     <p:outputLabel for="name" value="Name" style="font-weight: bold;" />
-                    <p:selectOneMenu editable="true"
-                                     id="name"
+                    <p:selectOneMenu id="name"
                                      value="#{purchasingManager.selectedProcurementMethod.name}">
 
                         <f:selectItems  value="#{purchasingManager.procurementMethods}"
                                         var="procurementMethod"                            
                                         itemValue="#{procurementMethod}"
                                         itemLabel="#{procurementMethod}"/>
+
+                        <f:validator validatorId="requiredFieldValidator" />
 
                     </p:selectOneMenu>
 
@@ -118,6 +119,19 @@ Email: info@dpbennett.com.jm
                         <f:validator validatorId="requiredFieldValidator" />
                         
                     </p:inputText>
+
+                    <p:outputLabel for="positions" value="Required signatory position(s): " />       
+                    <p:autoComplete id="positions"
+                                    var="position"   
+                                    value="#{purchasingManager.selectedProcurementMethod.requiredSignatoryPositions}"
+                                    itemLabel="#{position.title}"
+                                    itemValue="#{position}"                                    
+                                    converter="activeEmployeePositionConverter"
+                                    forceSelection="true" 
+                                    dropdown="true"
+                                    scrollHeight="200"                         
+                                    multiple="true"
+                                    completeMethod="#{humanResourceManager.completeActiveEmployeePosition}" />
                     
                     <p:outputLabel for="description" value="Description" style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{purchasingManager.selectedProcurementMethod.description}"
