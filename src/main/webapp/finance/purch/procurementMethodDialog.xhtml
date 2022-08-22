@@ -90,6 +90,21 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
+                    <h:outputLabel for="quotationsRequired" value="Quotations required" 
+                                   style="font-weight: bold;" />                   
+                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.quotationsRequired}"
+                                 id="quotationsRequired"
+                                 converterMessage="Please enter a valid number of quotations"
+                                 validatorMessage="A valid number of quotations is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
+
+                        <f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+
+                        <f:validator validatorId="requiredFieldValidator" />
+                        
+                    </p:inputText>
+
                     <h:outputLabel for="lowerSigningLimit" value="Lower signing limit ($)" 
                                    style="font-weight: bold;" />                   
                     <p:inputText value="#{purchasingManager.selectedProcurementMethod.lowerSigningLimit}"

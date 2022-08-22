@@ -24,10 +24,12 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <h:panelGrid id="procurementTabPanel" columns="2" cellspacing="10">            
-        <h:outputLabel value="Current purchase order no." style="font-weight: bold;" />
-        <p:inputText value="[value]" />      
-    </h:panelGrid>
+    <ui:remove>
+        <h:panelGrid id="procurementTabPanel" columns="2" cellspacing="10">            
+            <h:outputLabel value="Current purchase order no." style="font-weight: bold;" />
+            <p:inputText value="[value]" />      
+        </h:panelGrid>
+    </ui:remove>
 
     <p:toolbar>
         <p:toolbarGroup align="left" >   
@@ -76,7 +78,7 @@ Email: info@dpbennett.com.jm
             Procurement Methods
         </f:facet>
 
-        <p:column headerText="Name">
+        <p:column headerText="Method">
             <p:cellEditor>
                 <f:facet name="output"><h:outputText value="#{procurementMethod.name}" /></f:facet>
                 <f:facet name="input">
@@ -91,31 +93,44 @@ Email: info@dpbennett.com.jm
                     </p:selectOneMenu>
                 </f:facet>
             </p:cellEditor>                                           
-        </p:column>   
+        </p:column> 
+
+        <p:column headerText="Quotations Required" >
+            <p:cellEditor>
+                <f:facet name="output">
+                   <h:outputText value="#{procurementMethod.quotationsRequired}" >
+                       <f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+                   </h:outputText>
+                </f:facet>
+                <f:facet name="input">
+                       <p:inputNumber value="#{procurementMethod.quotationsRequired}" />                         
+                </f:facet>   
+            </p:cellEditor>
+        </p:column>
 
         <p:column headerText="Lower Signing Limit" >
             <p:cellEditor>
-            <f:facet name="output">
-               <h:outputText value="#{procurementMethod.lowerSigningLimit}" >
-                   <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
-            </f:facet>
-            <f:facet name="input">
-                   <p:inputNumber value="#{procurementMethod.lowerSigningLimit}" />                         
-            </f:facet>   
+                <f:facet name="output">
+                   <h:outputText value="#{procurementMethod.lowerSigningLimit}" >
+                       <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                   </h:outputText>
+                </f:facet>
+                <f:facet name="input">
+                       <p:inputNumber value="#{procurementMethod.lowerSigningLimit}" />                         
+                </f:facet>   
             </p:cellEditor>
         </p:column>
 
         <p:column headerText="Upper Signing Limit" >
             <p:cellEditor>
-            <f:facet name="output">
-               <h:outputText value="#{procurementMethod.upperSigningLimit}" >
-                   <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
-            </f:facet>
-            <f:facet name="input">
-                   <p:inputNumber value="#{procurementMethod.upperSigningLimit}" />                         
-            </f:facet>   
+                <f:facet name="output">
+                   <h:outputText value="#{procurementMethod.upperSigningLimit}" >
+                       <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                   </h:outputText>
+                </f:facet>
+                <f:facet name="input">
+                       <p:inputNumber value="#{procurementMethod.upperSigningLimit}" />                         
+                </f:facet>   
             </p:cellEditor>
         </p:column>
 
