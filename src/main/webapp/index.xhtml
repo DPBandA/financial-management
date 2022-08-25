@@ -77,12 +77,16 @@ Email: info@dpbennett.com.jm
                                                   styleClass="#{systemManager.isDebugMode eq true ? 'debug-mode' : 'non-debug-mode'}" />  
 
                                 </h:panelGrid>
-                                <h:panelGroup>
+                               
+                                <h:panelGroup style="float: right;">
+                                    <p:badge value="99+" visible="true" severity="danger">
+                                        <p:commandButton icon="pi pi-bell" />
+                                    </p:badge>
+                                    <p:spacer height="9" width="30"/>
                                     <p:menuButton iconPos="left"
                                                   icon="pi pi-user"
                                                   title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
-                                                  id="userMenu"
-                                                  style="float: right;" >
+                                                  id="userMenu" >
 
                                         <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
                                                     update=":userProfileDialogForm"
@@ -99,13 +103,14 @@ Email: info@dpbennett.com.jm
 
                                     </p:menuButton>   
                                 </h:panelGroup>
+                                
                             </h:panelGrid> 
                             
                             <ui:include src="menubar.xhtml"/>
                             
                         </h:panelGrid>
                         
-                         <p:sticky target="main_menubar"/>
+                        <p:sticky target="main_menubar"/>
                          
                     </p:splitterPanel>                          
 
