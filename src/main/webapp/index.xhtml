@@ -82,11 +82,11 @@ Email: info@dpbennett.com.jm
                                     <p:badge value="99+" visible="true" severity="danger">
                                         <p:commandButton icon="pi pi-bell" />
                                     </p:badge>
-                                    <p:spacer height="9" width="30"/>
+                                    <p:spacer width="30"/>
                                     <p:menuButton iconPos="left"
                                                   icon="pi pi-user"
                                                   title="#{systemManager.user.employee.firstName} #{systemManager.user.employee.lastName} (#{systemManager.user.username})"
-                                                  id="userMenu" >
+                                                  id="userMenu" style="margin-right: 15px;" >
 
                                         <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
                                                     update=":userProfileDialogForm"
