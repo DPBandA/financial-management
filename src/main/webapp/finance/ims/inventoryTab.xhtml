@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
                 title="Add a new inventory" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{purchasingManager.inventoryDialogReturn}"
+                        listener="#{inventoryManager.inventoryDialogReturn}"
                         update=":appForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>           
@@ -53,7 +53,7 @@ Email: info@dpbennett.com.jm
                  value="#{purchasingManager.foundPurchaseReqs}">                        
 
         <f:facet name="header">
-            <h:outputText value="#{purchasingManager.purchaseReqsTableHeader}" />
+            <h:outputText value="Inventory" />
         </f:facet>
 
         <p:ajax event="rowSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
