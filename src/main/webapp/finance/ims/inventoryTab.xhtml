@@ -1,5 +1,5 @@
 <!--
-Purchase Management (PM) 
+Inventory Management (PM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -43,86 +43,87 @@ Email: info@dpbennett.com.jm
     </p:toolbar>
    
     <p:dataTable id="inventoryTable"
-                 var="pr"
+                 var="inventory"
                  style="margin-bottom: 1px;margin-top: 1px;"
                  paginator="true"                                 
                  rows="15"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 selection="#{purchasingManager.selectedPurchaseRequisitions}"
-                 rowKey="#{pr.id}"
-                 value="#{purchasingManager.foundPurchaseReqs}">                        
+                 selection="#{inventoryManager.selectedInventories}"
+                 rowKey="#{inventory.id}"
+                 value="#{inventoryManager.foundInventories}">                        
 
         <f:facet name="header">
             <h:outputText value="Inventory" />
         </f:facet>
 
-        <p:ajax event="rowSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
-        <p:ajax event="rowUnselect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
-        <p:ajax event="rowSelectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
-        <p:ajax event="rowUnselectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
-        <p:ajax event="toggleSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
+        <p:ajax event="rowSelect" update=""/>
+        <p:ajax event="rowUnselect" update=""/>
+        <p:ajax event="rowSelectCheckbox" update=""/>
+        <p:ajax event="rowUnselectCheckbox" update=""/>
+        <p:ajax event="toggleSelect" update=""/>
         
         <p:column selectionMode="multiple" exportable="false"></p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="No."/>
+                <h:outputText value="Product"/>
             </f:facet>
-            <h:outputText value="#{pr.number}" />
+            <h:outputText value="#{inventory.product.name}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Originator"/>
+                <h:outputText value="Type"/>
             </f:facet>
-            <h:outputText value="#{pr.originator}" />
+            <h:outputText value="#{inventory.type}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Requisition date"/>
+                <h:outputText value="Date edited"/>
             </f:facet>
-            <h:outputText value="#{pr.requisitionDate}">
+            <h:outputText value="#{inventory.dateEdited}">
                 <f:convertDateTime pattern="MMM dd, yyyy"/>
             </h:outputText>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Total cost"/>
+                <h:outputText value="Cost"/>
             </f:facet>
-            <h:outputText value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
+            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
+                          styleClass="datatable-number-field" >                
                 
             </h:outputText>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Progress"/>
+                <h:outputText value="Category"/>
             </f:facet>
-            <h:outputText value="#{pr.workProgress}" />                
+            <h:outputText value="#{inventory.category.name}" />                
         </p:column>
         
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <h:outputText value="UOM"/>
             </f:facet>
-            <h:outputText value="#{pr.description}" />                
+            <h:outputText value="#{inventory.measurementUnit}" />                
         </p:column>
 
         <p:column style="width:32px">
             
                 <p:commandButton icon="pi pi-pencil"
-                            actionListener="#{purchasingManager.editSelectedPurchaseReq}"
+                            actionListener="#{inventoryManager.editSelectedInventory}"
                             process="@this"
-                            title="View or edit this PR's detail">
+                            title="View or edit this inventory's detail">
 
-                <f:setPropertyActionListener value="#{pr}" 
-                                             target="#{purchasingManager.selectedPurchaseRequisition}" />
+                <f:setPropertyActionListener value="#{inventory}" 
+                                             target="#{inventoryManager.selectedInventory}" />
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{purchasingManager.purchaseReqDialogReturn}"
-                        update=":appForm:mainTabView:purchasereqsTable"/>
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":appForm:mainTabView:inventoryTable"/>
 
                 </p:commandButton>
                                        
@@ -139,7 +140,7 @@ Email: info@dpbennett.com.jm
                 title="Add a new inventory" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{purchasingManager.inventoryDialogReturn}"
+                        listener="#{inventoryManager.inventoryDialogReturn}"
                         update=":appForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>           
