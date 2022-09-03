@@ -31,9 +31,10 @@ Email: info@dpbennett.com.jm
             <p:selectOneMenu value="#{financeManager.searchType}" 
                              style="width: 95%;">
 
-                <f:selectItems value="#{financeManager.searchTypes}" />
+                <f:selectItems value="#{financeManager.groupedSearchTypes}" />
 
                 <p:ajax update="finSearchPanel" 
+                        global="false"
                         process="@this" />
 
             </p:selectOneMenu>
