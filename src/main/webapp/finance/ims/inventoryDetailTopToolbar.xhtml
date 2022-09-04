@@ -1,5 +1,5 @@
 <!--
-Purchase Management (PM) 
+Inventory Management (PM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -23,43 +23,44 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html" >
 
-    <p:toolbar id="purchreqDetailToolbar1">
+    <p:toolbar id="inventoryDetailToolbar1">
         <p:toolbarGroup align="left" >  
-            <p:commandButton actionListener="#{purchasingManager.saveSelectedPurchaseRequisition}"                            
+            <p:commandButton actionListener="#{inventoryManager.saveSelectedInventory}"                            
                              value="Save"
-                             update=":purchreqDialogForm"
-                             title="Save this purchase requisition"
+                             update=":inventoryDialogForm"
+                             title="Save this inventory item"
                              icon="pi pi-save"
                              process="@form" />
 
             <p:spacer height="0" width="10"/>
 
             <p:commandButton value="Close"     
-                             actionListener="#{purchasingManager.closePurchaseReqDialog}"
+                             actionListener="#{inventoryManager.closeDialog}"
                              immediate="true"                             
                              process="@this"
                              icon="pi pi-times" /> 
 
             <p:spacer width="20" />
 
-            <h:outputText style="color: red;" value="#{purchasingManager.selectedPurchaseRequisition.editStatus}" />
+            <h:outputText style="color: red;" value="#{inventoryManager.selectedInventory.editStatus}" />
 
 
         </p:toolbarGroup>
 
+        <ui:remove>
         <p:toolbarGroup align="right" >  
 
             <p:menuButton value="Tools" >  
 
                 <p:menuitem value="Request approval..."
-                            title="Send a request for approval for this purchase requisition"
-                            actionListener="#{purchasingManager.openRequestApprovalEmailDialog}" 
+                            title="Send a request for approval for this inventory"
+                            actionListener="#{inventoryManager.openRequestApprovalEmailDialog}" 
                             icon="pi pi-envelope"
                             process="@this" />
 
                 <p:menuitem value="Send message..."
                             title="Send a message"
-                            actionListener="#{purchasingManager.openSendEmailDialog}" 
+                            actionListener="#{inventoryManager.openSendEmailDialog}" 
                             icon="pi pi-envelope"
                             process="@this" />
 
@@ -68,28 +69,29 @@ Email: info@dpbennett.com.jm
             <p:spacer width="20" />
 
             <p:menuButton value="Forms" >
-                <p:menuitem value="Purchase Requisition"
+                <p:menuitem value="Inventory item"
                             icon="pi pi-file-pdf"
                             ajax="false" 
                             immediate="true"
-                            disabled="#{!purchasingManager.canExportPurchaseReqForm}" 
+                            disabled="#{!inventoryManager.canExportInventoryForm}" 
                             onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)" >
 
-                    <p:fileDownload value="#{purchasingManager.purchaseReqFile}" />
+                    <p:fileDownload value="#{inventoryManager.inventoryFile}" />
 
                 </p:menuitem>
-                <p:menuitem value="Purchase Order"
+                <p:menuitem value="Inventoryr"
                             icon="pi pi-file-pdf"
                             ajax="false" 
                             immediate="true"
-                            disabled="#{!purchasingManager.canExportPurchaseOrderForm}"    
+                            disabled="#{!inventoryManager.canExportInventoryForm}"    
                             onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)" >
 
-                    <p:fileDownload value="#{purchasingManager.purchaseOrderFile}" />
+                    <p:fileDownload value="#{inventoryManager.inventoryFile}" />
 
                 </p:menuitem>
             </p:menuButton>
         </p:toolbarGroup>
+        </ui:remove>
 
     </p:toolbar>
 

@@ -1,5 +1,5 @@
 <!--
-Purchase Management (PM) 
+Inventory Management (IM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -21,47 +21,26 @@ Email: info@dpbennett.com.jm
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <p:growl id="purchreq_growl" life="5000" showDetail="true" />
+    <p:growl id="inventory_growl" life="5000" showDetail="true" />
 
-    <ui:include src="purchreqDetailTopToolbar.xhtml"/>
+    <ui:include src="inventoryDetailTopToolbar.xhtml"/>
 
-    <p:tabView id="purchreqFormTabView"
+    <p:tabView id="inventoryFormTabView"
                style="margin-top: 1px;margin-bottom: 1px;"               
-               widgetVar="purchreqFormTabVar" >
+               widgetVar="inventoryFormTabVar" >
 
         <p:tab title="General" >
-            <ui:include src="purchreqGeneralTab.xhtml"/>
+            <ui:include src="inventoryGeneralTab.xhtml"/>
         </p:tab>  
-
         
-        <p:tab title="Goods &amp; Services" >
-            <ui:include src="purchreqGoodsAndServices.xhtml"/>
-        </p:tab>        
-        
-        <p:tab title="Order Detail" >
-            <ui:include src="purchreqOrderDetailTab.xhtml" />
-        </p:tab>
-        
-        <p:tab title="Attachments" >
-            <ui:include src="attachmentsTab.xhtml" />
-        </p:tab>
-        
-        <p:tab title="Shipping" >
-            <ui:include src="purchreqShipping.xhtml" />
-        </p:tab>
-        
-        <p:tab title="Budget" >
-            <ui:include src="purchreqBudget.xhtml" />
-        </p:tab>
-
         <p:tab title="Status &amp; Tracking" >
-            <ui:include src="purchreqStatusAndTrackingTab.xhtml" />
+            <ui:include src="inventoryStatusAndTrackingTab.xhtml" />
         </p:tab>  
         
 
     </p:tabView>
 
-    <ui:include src="purchreqDetailBottomToolbar.xhtml"/>
+    <ui:include src="inventoryDetailBottomToolbar.xhtml"/>
 
     <p/>       
 </html>

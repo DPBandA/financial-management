@@ -1,5 +1,5 @@
 <!--
-Purchase Management (PM) 
+Inventory Management (IM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -26,19 +26,18 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />          
-            <p:inputText id="prNumberEdit"
+            <h:outputLabel value="Inventory Id" style="font-weight: bold;" />          
+            <p:inputText id="idEdit"
                           size="15"
                           style="font-weight: bold;"
                           maxlength="40" 
-                          disabled="#{!purchasingManager.isProcurementOfficer}"
+                          disabled="true"
                           required="true"
-                          title="#{purchasingManager.selectedPurchaseRequisition.number}"
-                          value="#{purchasingManager.selectedPurchaseRequisition.number}">
+                          value="#{inventoryManager.selectedInventory.id}">
 
                 <p:ajax event="change"                            
-                        update=":purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:orderDetail"
-                        listener="#{purchasingManager.updatePurchaseReq}"
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
                         process="@this"/>
 
             </p:inputText>               
@@ -53,15 +52,15 @@ Email: info@dpbennett.com.jm
                                 maxlength="40"                             
                                 dropdown="false"
                                 scrollHeight="200" 
-                                value="#{purchasingManager.selectedPurchaseRequisition.supplier}"   
+                                value="#{inventoryManager.selectedinventory.supplier}"   
                                 converter="activeSupplierConverter"
                                 validator="supplierValidator"
                                 forceSelection="true"
                                 completeMethod="#{purchasingManager.completeActiveSupplier}" >
 
                     <p:ajax event="itemSelect"
-                            update="purchreqFormTabView:generalTabPanel,:purchreqDialogForm:purchreqDetailToolbar1"
-                            listener="#{purchasingManager.updatePurchaseReq}"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
                             process="@this"/>
 
                 </p:autoComplete>     
