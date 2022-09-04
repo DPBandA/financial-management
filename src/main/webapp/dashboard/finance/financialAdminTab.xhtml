@@ -22,7 +22,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
    
-    <p:toolbar style="margin-bottom: 1px;" >
+    <p:toolbar style="margin-bottom: 1px;" rendered="true">
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >  
               
@@ -30,10 +30,51 @@ Email: info@dpbennett.com.jm
                             title="Create new system configuration"
                             icon="pi pi-plus"
                             actionListener="#{systemManager.createNewFinancialSystemOption}" 
+                            rendered="#{systemManager.user.hasModule('FinancialManagementModule')}"
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
                             update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
+
+                </p:menuitem>
+
+                <p:separator />
+
+                <p:menuitem value="Inventory Item"
+                            title="Add new inventory item"
+                            icon="pi pi-plus"
+                            actionListener="#{inventoryManager.createNewInventory}" 
+                            rendered="#{systemManager.user.hasModule('InventoryManagementModule')}"
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":appForm:mainTabView:inventoryTable"/>
+
+                </p:menuitem>
+
+                <p:separator />
+
+                <p:menuitem value="Purchase requisition"
+                            title="Create new purchase requisition"
+                            icon="pi pi-plus"
+                            actionListener="#{purchasingManager.createNewPurchaseReq}" 
+                            rendered="#{systemManager.user.hasModule('PurchaseManagementModule')}"
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:purchasereqsTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem value="Supplier"
+                            title="Create new supplier"
+                            icon="pi pi-plus"
+                            actionListener="#{purchasingManager.createNewSupplier}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            update=":appForm:mainTabView:suppliersTable"/>
 
                 </p:menuitem>
 
@@ -42,11 +83,37 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
         <p:toolbarGroup align="right">
 
-            <p:menuButton value="Tools" >                 
-                <p:menuitem value="Administration"
-                            title="Open Financial Administration" 
+            <p:menuButton value="Tools" >  
+               
+                <p:menuitem value="Financial Administration"
+                            title="Open Financial Administration tab" 
+                            icon="pi pi-fw pi-dollar"
                             actionListener="#{financeManager.openFinancialAdministration}" 
-                            process="@this" />            
+                            rendered="#{systemManager.user.hasModule('FinancialManagementModule')}"
+                            process="@this" />  
+
+                <p:separator />
+
+                <p:menuitem value="Inventory"
+                            title="Open Inventory tab" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryTab}" 
+                            rendered="#{systemManager.user.hasModule('InventoryManagementModule')}"
+                            process="@this" /> 
+
+                <p:separator />
+
+                <p:menuitem value="Purchase Requisitions"
+                            title="Open purchase requisition tab" 
+                            icon="pi pi-fw pi-dollar"
+                            actionListener="#{purchasingManager.openPurchaseReqsTab}" 
+                            process="@this" />
+
+                <p:menuitem value="Suppliers"
+                            title="Open suppliers tab"
+                            icon="pi pi-fw pi-id-card"
+                            actionListener="#{purchasingManager.openSuppliersTab}" 
+                            process="@this" />
 
             </p:menuButton>         
         </p:toolbarGroup>
