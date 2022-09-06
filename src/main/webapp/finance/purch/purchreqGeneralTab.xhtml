@@ -69,11 +69,12 @@ Email: info@dpbennett.com.jm
                 <p:menuButton id="supplierActionsMenu" 
                               icon="pi pi-pencil" 
                               title="Add or edit supplier">
+
                     <p:menuitem value="Edit supplier"
                                 id="editSupplier"
                                 icon="pi pi-pencil" 
                                 disabled="${!purchasingManager.isSupplierNameValid}"                                
-                                actionListener="#{purchasingManager.editPurhaseReqSuppier}"  
+                                actionListener="#{purchasingManager.editSelectedSupplier}"  
                                 process="@this,supplier"                             
                                 title="View or edit this suppliers's detail">  
 
