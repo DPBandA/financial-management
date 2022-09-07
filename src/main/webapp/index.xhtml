@@ -88,7 +88,11 @@ Email: info@dpbennett.com.jm
                                                          icon="pi pi-bell" />
                                         <p:overlayPanel for="notifications"   
                                                         widgetVar="NotificationPanelVar"
-                                                        style="width:400px;border: 0;">
+                                                        style="width:400px;">
+
+                                            <h:outputText value="Notifications" 
+                                                          style="font-size: 18px;font-weight: bold;align-content: center;"/>               
+
                                             <p:orderList value="#{systemManager.notifications}" 
                                                          var="notification" 
                                                          itemValue="#{notification}"

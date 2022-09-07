@@ -127,12 +127,16 @@ Email: info@dpbennett.com.jm
                
         <p:column headerText="Component" style="width:200px">
             <p:cellEditor>
-                <f:facet name="output">
-                   <h:outputText value="#{costComponent.name}" /> 
-                </f:facet>
-                <f:facet name="input">
-                   <p:inputText  value="#{costComponent.name}" style="width:100%" />
-                </f:facet>   
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.name}" /> 
+            </f:facet>
+            <f:facet name="input">
+               <p:inputText  value="#{costComponent.name}" style="width:100%">
+                    <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+               </p:inputText>
+            </f:facet>   
             </p:cellEditor>
         </p:column>
 
@@ -142,7 +146,11 @@ Email: info@dpbennett.com.jm
                <h:outputText value="#{costComponent.code}" /> 
             </f:facet>
             <f:facet name="input">
-               <p:inputText  value="#{costComponent.code}" style="width:100%" />
+               <p:inputText  value="#{costComponent.code}" style="width:100%" >
+                    <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+               </p:inputText>
             </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -166,6 +174,10 @@ Email: info@dpbennett.com.jm
                                    var="type"                            
                                    itemValue="#{type}"
                                    itemLabel="#{type}"/>
+
+                   <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
                         
                 </p:selectOneMenu> 
             </f:facet>   
@@ -187,7 +199,11 @@ Email: info@dpbennett.com.jm
                </h:outputText>
             </f:facet>
             <f:facet name="input">               
-                   <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                   <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" >
+                        <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+                   </p:inputNumber>                         
             </f:facet>
             </p:cellEditor>
         </p:column>
@@ -208,7 +224,11 @@ Email: info@dpbennett.com.jm
                </h:outputText>
             </f:facet>
             <f:facet name="input">
-                <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+                <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
+                     <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+                </p:inputNumber>
             </f:facet>
             </p:cellEditor>
 
@@ -232,7 +252,11 @@ Email: info@dpbennett.com.jm
                </h:outputText>
             </f:facet>
             <f:facet name="input">
-                   <p:inputNumber value="#{costComponent.cost}" style="width:100%" />
+                   <p:inputNumber value="#{costComponent.cost}" style="width:100%" >
+                         <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+                   </p:inputNumber>
             </f:facet>   
             </p:cellEditor>
 
@@ -257,7 +281,11 @@ Email: info@dpbennett.com.jm
                <h:outputText value="#{costComponent.unit}" /> 
             </f:facet>
             <f:facet name="input">
-               <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+               <p:inputText  value="#{costComponent.unit}" style="width:100%" >
+                    <p:ajax update="costComponentTable,:purchreqDialogForm:purchreq_growl"
+                           listener="#{purchasingManager.updateCostComponent(costComponent)}"
+                           process="@this" />
+               </p:inputText>
             </f:facet>   
             </p:cellEditor>
         </p:column>
