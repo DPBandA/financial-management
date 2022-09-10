@@ -43,6 +43,10 @@
         <converter-id>serviceConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.ServiceConverter</converter-class>
     </converter>  
+    <converter>
+        <converter-id>activeMarketProductConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.ActiveMarketProductConverter</converter-class>
+    </converter>
     
     <validator>
         <validator-id>accountingCodeValidator</validator-id>
