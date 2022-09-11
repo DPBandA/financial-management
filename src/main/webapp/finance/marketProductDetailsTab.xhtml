@@ -1,6 +1,6 @@
 <!--
-Standards Compliance 
-Copyright (C) 2020  D P Bennett & Associates Limited
+Financial Management (FM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,9 +29,9 @@ Email: info@dpbennett.com.jm
         <h:panelGroup>
             <p:selectBooleanCheckbox style="vertical-align: middle"
                                      id="marketProductActive"
-                                     value="#{complianceManager.currentMarketProduct.active}" >
+                                     value="#{financeManager.selectedMarketProduct.active}" >
 
-                <p:ajax listener="#{complianceManager.updateMarketProduct}"
+                <p:ajax listener="#{financeManager.updateMarketProduct}"
                         event="change"                                      
                         process="@this"/>
 
@@ -43,51 +43,51 @@ Email: info@dpbennett.com.jm
         <h:outputText value="" />
 
         <h:outputText value="Code" />       
-        <p:inputText value="#{complianceManager.currentMarketProduct.code}" >
+        <p:inputText value="#{financeManager.selectedMarketProduct.code}" >
 
             <p:ajax event="change"
                     global="true"      
-                    listener="#{complianceManager.updateMarketProduct}"
+                    listener="#{financeManager.updateMarketProduct}"
                     process="@this"/>
 
         </p:inputText>     
         <h:outputText value="" />
 
         <h:outputText value="Name:" style="font-weight: bold;" />       
-        <p:inputText value="#{complianceManager.currentMarketProduct.type}"
+        <p:inputText value="#{financeManager.selectedMarketProduct.type}"
                      id="marketProductName"
                      style="width: 300px;"
                      validator="marketProductValidator">
 
             <p:ajax event="change"
                     global="true"  
-                    listener="#{complianceManager.updateMarketProduct}"
+                    listener="#{financeManager.updateMarketProduct}"
                     process="@this"/>
 
         </p:inputText>     
         <h:outputText value="" />
 
         <h:outputText value="Brand:" style="font-weight: bold;" />       
-        <p:inputText value="#{complianceManager.currentMarketProduct.brand}" 
+        <p:inputText value="#{financeManager.selectedMarketProduct.brand}" 
                      id="marketProductBrand"
                      validator="marketProductValidator" >
 
             <p:ajax event="change"
                     global="true"  
-                    listener="#{complianceManager.updateMarketProduct}"
+                    listener="#{financeManager.updateMarketProduct}"
                     process="@this"/>
 
         </p:inputText>     
         <h:outputText value="" />
 
         <h:outputText value="Model:" style="font-weight: bold;" />       
-        <p:inputText value="#{complianceManager.currentMarketProduct.model}"
+        <p:inputText value="#{financeManager.selectedMarketProduct.model}"
                      id="marketProductModel"
                      validator="marketProductValidator" >
 
             <p:ajax event="change"
                     global="true"  
-                    listener="#{complianceManager.updateMarketProduct}"
+                    listener="#{financeManager.updateMarketProduct}"
                     process="@this"/>
 
         </p:inputText>     
@@ -99,7 +99,7 @@ Email: info@dpbennett.com.jm
             <h:panelGrid columns="2">
                 <p:autoComplete id="categories"
                                 var="category"   
-                                value="#{complianceManager.currentMarketProduct.categories}"
+                                value="#{financeManager.selectedMarketProduct.categories}"
                                 itemLabel="#{category.name}"
                                 itemValue="#{category}"
                                 converter="activeCategoryConverter"
@@ -107,21 +107,21 @@ Email: info@dpbennett.com.jm
                                 dropdown="true"
                                 scrollHeight="200"                         
                                 multiple="true"
-                                completeMethod="#{complianceManager.completeActiveCategory}" >
+                                completeMethod="#{financeManager.completeActiveCategory}" >
 
                     <p:ajax event="itemSelect"
-                            listener="#{complianceManager.updateMarketProduct}"
+                            listener="#{financeManager.updateMarketProduct}"
                             process="@this"/>
 
                     <p:ajax event="itemUnselect"
-                            listener="#{complianceManager.updateMarketProduct}"
+                            listener="#{financeManager.updateMarketProduct}"
                             process="@this"/>
 
                 </p:autoComplete>
 
                 <p:commandButton 
                     icon="pi pi-plus" 
-                    actionListener="#{complianceManager.createNewMarketProductCategory}"                                            
+                    actionListener="#{financeManager.createNewMarketProductCategory}"                                            
                     process="@this"
                     title="Add a new category" >
 
@@ -136,7 +136,7 @@ Email: info@dpbennett.com.jm
         <h:outputText value="Description:" />                        
         <p:inputTextarea
             id="description"
-            value="#{complianceManager.currentMarketProduct.description}"
+            value="#{financeManager.selectedMarketProduct.description}"
             rows="3"
             counter="descriptionCharsRemaining"
             counterTemplate="{0} characters remaining."
@@ -146,7 +146,7 @@ Email: info@dpbennett.com.jm
             style="width: 500px;">
 
             <p:ajax event="change"
-                    listener="#{complianceManager.updateMarketProduct}"
+                    listener="#{financeManager.updateMarketProduct}"
                     process="@this"/>
 
         </p:inputTextarea> 
