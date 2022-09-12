@@ -126,12 +126,12 @@ Email: info@dpbennett.com.jm
 
         <p:column style="width:32px">
             <p:commandButton icon="pi pi-pencil"
-                             actionListener="#{financeManager.editCurrentMarketProduct}"
+                             actionListener="#{financeManager.editSelectedMarketProduct}"
                              process="@this"
-                             title="View or edit this market product's detail">
+                             title="View or edit this product's detail">
 
                 <f:setPropertyActionListener value="#{marketProduct}" 
-                                             target="#{financeManager.currentMarketProduct}" />
+                                             target="#{financeManager.selectedMarketProduct}" />
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doMarketProductSearch}"

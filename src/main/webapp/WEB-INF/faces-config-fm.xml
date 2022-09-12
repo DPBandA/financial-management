@@ -76,6 +76,11 @@
         <validator-id>purchaseOrderNumberValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.PurchaseOrderNumberValidator</validator-class>
     </validator>
+    <validator>
+        <validator-id>marketProductValidator</validator-id>
+        <validator-class>jm.com.dpbennett.fm.validator.MarketProductValidator</validator-class>
+    </validator>
+    
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -193,6 +198,13 @@
         <navigation-case>
             <from-outcome>currencyDialog</from-outcome>
             <to-view-id>/finance/currencyDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>marketProductDialog</from-outcome>
+            <to-view-id>/finance/marketProductDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     
