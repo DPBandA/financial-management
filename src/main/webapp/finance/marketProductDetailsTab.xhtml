@@ -54,7 +54,7 @@ Email: info@dpbennett.com.jm
         <h:outputText value="" />
 
         <h:outputText value="Name:" style="font-weight: bold;" />       
-        <p:inputText value="#{financeManager.selectedMarketProduct.type}"
+        <p:inputText value="#{financeManager.selectedMarketProduct.commonName}"
                      id="marketProductName"
                      style="width: 300px;"
                      validator="marketProductValidator">
@@ -67,10 +67,9 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <h:outputText value="" />
 
-        <h:outputText value="Brand:" style="font-weight: bold;" />       
+        <h:outputText value="Brand:" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.brand}" 
-                     id="marketProductBrand"
-                     validator="marketProductValidator" >
+                     id="marketProductBrand" >
 
             <p:ajax event="change"
                     global="true"  
@@ -80,10 +79,9 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <h:outputText value="" />
 
-        <h:outputText value="Model:" style="font-weight: bold;" />       
+        <h:outputText value="Model:" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.model}"
-                     id="marketProductModel"
-                     validator="marketProductValidator" >
+                     id="marketProductModel" >
 
             <p:ajax event="change"
                     global="true"  

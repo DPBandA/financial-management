@@ -63,8 +63,13 @@ Email: info@dpbennett.com.jm
                             listener="#{inventoryManager.updateInventory}"
                             process="@this" />
 
+                    <p:ajax event="change"    
+                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this" />
+
                 </p:autoComplete>                                
-                <p:spacer height="0" width="4"/>
+                <p:spacer height="0" width="5"/>
                 <p:menuButton icon="pi pi-pencil" 
                               id="marketProductMenuButton"
                               title="Add or edit product">
@@ -78,7 +83,7 @@ Email: info@dpbennett.com.jm
 
                         <p:ajax event="dialogReturn" 
                                 listener="#{inventoryManager.inventoryProductDialogReturn}"
-                                update="marketProduct,marketProductMenuButton" />
+                                update="marketProduct,marketProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
 
                     </p:menuitem>
 
@@ -91,7 +96,7 @@ Email: info@dpbennett.com.jm
 
                         <p:ajax event="dialogReturn"                                 
                                 listener="#{inventoryManager.inventoryProductDialogReturn}"
-                                update="marketProduct,marketProductMenuButton" />
+                                update="marketProduct,marketProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
 
                     </p:menuitem>
 
@@ -106,7 +111,7 @@ Email: info@dpbennett.com.jm
                                 itemValue="#{supplier}"
                                 size="35" 
                                 maxlength="40"                             
-                                dropdown="false"
+                                dropdown="true"
                                 scrollHeight="200" 
                                 value="#{inventoryManager.selectedInventory.supplier}"   
                                 converter="activeSupplierConverter"
@@ -119,11 +124,17 @@ Email: info@dpbennett.com.jm
                             listener="#{inventoryManager.updateInventory}"
                             process="@this"/>
 
-                </p:autoComplete>     
+                    <p:ajax event="change"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this"/>
 
+                </p:autoComplete>     
+                <p:spacer height="0" width="5"/>
                 <p:menuButton id="supplierActionsMenu" 
                               icon="pi pi-pencil" 
                               title="Add or edit supplier">
+
                     <p:menuitem value="Edit supplier"
                                 id="editSupplier"
                                 icon="pi pi-pencil" 
@@ -154,7 +165,6 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>      
 
             </h:panelGroup>
-
             
             <h:outputText value="&nbsp;&nbsp;" />
             <h:outputText id="descriptionCharsRemaining" /> 
