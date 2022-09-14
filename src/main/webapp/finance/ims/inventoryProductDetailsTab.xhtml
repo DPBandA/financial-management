@@ -1,0 +1,160 @@
+<!--
+Financial Management (FM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
+
+        <p:outputLabel for="inventoryProductActive" value="Active: " style="font-weight: bold;" />  
+        <h:panelGroup>
+            <p:selectBooleanCheckbox style="vertical-align: middle"
+                                     id="inventoryProductActive"
+                                     value="#{financeManager.selectedInventoryProduct.active}" >
+
+                <p:ajax listener="#{financeManager.updateInventoryProduct}"
+                        event="change"                                      
+                        process="@this"/>
+
+            </p:selectBooleanCheckbox>     
+
+            <p:tooltip for="inventoryProductActive" value="Check to activate this product" 
+                       showEffect="fade" hideEffect="fade" />            
+        </h:panelGroup>
+        <h:outputText value="" />
+
+        <h:outputText value="Code" />       
+        <p:inputText value="#{financeManager.selectedInventoryProduct.code}" >
+
+            <p:ajax event="change"
+                    global="true"      
+                    listener="#{financeManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <h:outputText value="" />
+
+        <h:outputText value="Name:" style="font-weight: bold;" />       
+        <p:inputText value="#{financeManager.selectedInventoryProduct.commonName}"
+                     id="inventoryProductName"
+                     style="width: 300px;"
+                     validator="marketProductValidator">
+
+            <p:ajax event="change"
+                    global="true"  
+                    listener="#{financeManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <h:outputText value="" />
+
+        <h:outputText value="Brand:" />       
+        <p:inputText value="#{financeManager.selectedInventoryProduct.brand}" 
+                     id="inventoryProductBrand" >
+
+            <p:ajax event="change"
+                    global="true"  
+                    listener="#{financeManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <h:outputText value="" />
+
+        <h:outputText value="Model:" />       
+        <p:inputText value="#{financeManager.selectedInventoryProduct.model}"
+                     id="inventoryProductModel" >
+
+            <p:ajax event="change"
+                    global="true"  
+                    listener="#{financeManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <h:outputText value="" />
+
+        <h:outputText style="vertical-align: top;"
+                      value="Categories:" />
+        <h:panelGroup>
+            <h:panelGrid columns="2">
+                <p:autoComplete id="categories"
+                                var="category"   
+                                value="#{financeManager.selectedInventoryProduct.categories}"
+                                itemLabel="#{category.name}"
+                                itemValue="#{category}"
+                                converter="activeCategoryConverter"
+                                forceSelection="true"
+                                dropdown="true"
+                                scrollHeight="200"                         
+                                multiple="true"
+                                completeMethod="#{financeManager.completeActiveCategory}" >
+
+                    <p:ajax event="itemSelect"
+                            listener="#{financeManager.updateInventoryProduct}"
+                            process="@this"/>
+
+                    <p:ajax event="itemUnselect"
+                            listener="#{financeManager.updateInventoryProduct}"
+                            process="@this"/>
+
+                </p:autoComplete>
+
+                <p:commandButton 
+                    icon="pi pi-plus" 
+                    actionListener="#{financeManager.createNewMarketProductCategory}"                                            
+                    process="@this"
+                    title="Add a new category" >
+
+                    <p:ajax event="dialogReturn" 
+                            update="categories" />
+
+                </p:commandButton>
+            </h:panelGrid>
+        </h:panelGroup>
+        <h:outputText value="" />
+
+        <h:outputText value="Description:" />                        
+        <p:inputTextarea
+            id="description"
+            value="#{financeManager.selectedInventoryProduct.description}"
+            rows="3"
+            counter="descriptionCharsRemaining"
+            counterTemplate="{0} characters remaining."
+            autoResize="false"
+            maxlength="1000" 
+            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
+            style="width: 500px;">
+
+            <p:ajax event="change"
+                    listener="#{financeManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputTextarea> 
+        <h:outputText value="" />
+
+        <h:outputText value="" />
+        <h:outputText id="descriptionCharsRemaining" />
+
+    </h:panelGrid>                    
+
+</html>
+
+
