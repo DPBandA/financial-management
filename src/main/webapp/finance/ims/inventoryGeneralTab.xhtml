@@ -44,19 +44,19 @@ Email: info@dpbennett.com.jm
 
             <h:outputText value="Product" style="font-weight: bold;" /> 
             <h:panelGroup>
-                <p:autoComplete id="marketProduct"
-                                var="marketProduct"   
+                <p:autoComplete id="inventoryProduct"
+                                var="inventoryProduct"   
                                 value="#{inventoryManager.selectedInventory.product}"
                                 title="#{inventoryManager.selectedInventory.product}"
-                                itemLabel="#{marketProduct.name}"
-                                itemValue="#{marketProduct}"
+                                itemLabel="#{inventoryProduct.name}"
+                                itemValue="#{inventoryProduct}"
                                 converter="activeInventoryProductConverter"                                            
                                 validator="businessEntityValidator"
                                 forceSelection="true"
                                 size="35"
                                 dropdown="true"
                                 scrollHeight="200"     
-                                completeMethod="#{financeManager.completeActiveMarketProduct}" >
+                                completeMethod="#{financeManager.completeActiveInventoryProduct}" >
 
                     <p:ajax event="itemSelect"    
                             update=":inventoryDialogForm:inventoryDetailToolbar1"
@@ -71,32 +71,32 @@ Email: info@dpbennett.com.jm
                 </p:autoComplete>                                
                 <p:spacer height="0" width="5"/>
                 <p:menuButton icon="pi pi-pencil" 
-                              id="marketProductMenuButton"
+                              id="inventoryProductMenuButton"
                               title="Add or edit product">
 
                     <p:menuitem value="Edit product"
                                 icon="pi pi-pencil" 
-                                disabled="${!inventoryManager.isMarketProductNameValid}"                                 
-                                actionListener="#{inventoryManager.editMarketProduct}"  
+                                disabled="${!inventoryManager.isInventoryProductNameValid}"                                 
+                                actionListener="#{inventoryManager.editInventoryProduct}"  
                                 process="@this"                             
                                 title="View or edit this product's detail">  
 
                         <p:ajax event="dialogReturn" 
                                 listener="#{inventoryManager.inventoryProductDialogReturn}"
-                                update="marketProduct,marketProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+                                update="inventoryProduct,inventoryProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
 
                     </p:menuitem>
 
                     <p:menuitem 
                         icon="pi pi-plus" 
-                        actionListener="#{inventoryManager.createNewMarketProductInDialog}"                                            
+                        actionListener="#{inventoryManager.createNewInventoryProductInDialog}"                                            
                         process="@this"
                         value="Add a new product"
-                        title="Add a new product to the market products database" >
+                        title="Add a new product to the products database" >
 
                         <p:ajax event="dialogReturn"                                 
                                 listener="#{inventoryManager.inventoryProductDialogReturn}"
-                                update="marketProduct,marketProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+                                update="inventoryProduct,inventoryProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
 
                     </p:menuitem>
 
