@@ -26,14 +26,10 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-            <h:outputLabel value="ID" style="font-weight: bold;" />          
-            <p:inputText id="idEdit"
-                          size="15"
-                          style="font-weight: bold;"
-                          maxlength="40" 
-                          disabled="true"
-                          required="true"
-                          value="#{inventoryManager.selectedInventory.id}">
+            <h:outputLabel value="SKU" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.stockKeepingUnit}">
 
                 <p:ajax event="change"                            
                         update=":inventoryDialogForm:inventoryDetailToolbar1"
@@ -103,6 +99,67 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>
             </h:panelGroup>
 
+            <h:outputText style="vertical-align: top;"
+                      value="Category" />
+            <h:panelGroup>
+                    <p:autoComplete id="category"
+                                    var="category"   
+                                    value="#{inventoryManager.selectedInventory.category}"
+                                    itemLabel="#{category.name}"
+                                    itemValue="#{category}"
+                                    converter="activeCategoryConverter"
+                                    forceSelection="true"
+                                    dropdown="true"
+                                    required="true"
+                                    requiredMessage="A valid category is required"
+                                    scrollHeight="200"   
+                                    size="35" 
+                                    completeMethod="#{inventoryManager.completeActiveCategory}" >
+
+                        <p:ajax event="itemSelect"
+                                listener="#{inventoryManager.updateInventory}"
+                                update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                                process="@this"/>
+
+                        <p:ajax event="change"
+                                listener="#{inventoryManager.updateInventory}"
+                                update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                                process="@this"/>
+
+                    </p:autoComplete>
+                    <p:spacer height="0" width="5"/>
+                    <p:menuButton id="editCategoryMenuButton"
+                                  icon="pi pi-pencil" 
+                                  title="Add or edit category" >
+
+                        <p:menuitem value="Edit category"
+                                id="editCategory"
+                                icon="pi pi-pencil" 
+                                disabled="${!inventoryManager.isCategoryNameValid}"                                
+                                actionListener="#{inventoryManager.editInventoryCategory}"  
+                                process="@this,category"                             
+                                title="View or edit this category's detail">  
+
+                           <p:ajax event="dialogReturn" 
+                                    listener="#{inventoryManager.inventoryCategoryDialogReturn}"
+                                    update="category,editCategoryMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                        </p:menuitem>
+
+                        <p:menuitem value="Add a new category" 
+                                    icon="pi pi-plus"  
+                                    actionListener="#{inventoryManager.createNewProductCategory}"                                            
+                                    process="@this" >
+
+                            <p:ajax event="dialogReturn" 
+                                    listener="#{inventoryManager.inventoryCategoryDialogReturn}"
+                                    update="category,editCategoryMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                        </p:menuitem>
+
+                    </p:menuButton>
+            </h:panelGroup>
+
             <h:outputText value="Supplier" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
@@ -116,6 +173,7 @@ Email: info@dpbennett.com.jm
                                 value="#{inventoryManager.selectedInventory.supplier}"   
                                 converter="activeSupplierConverter"
                                 validator="supplierValidator"
+                                validatorMessage="A valid supplier is required"
                                 forceSelection="true"
                                 completeMethod="#{purchasingManager.completeActiveSupplier}" >
 
