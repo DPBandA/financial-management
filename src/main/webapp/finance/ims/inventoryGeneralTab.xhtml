@@ -56,7 +56,7 @@ Email: info@dpbennett.com.jm
                                 size="35"
                                 dropdown="true"
                                 scrollHeight="200"     
-                                completeMethod="#{financeManager.completeActiveInventoryProduct}" >
+                                completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
 
                     <p:ajax event="itemSelect"    
                             update=":inventoryDialogForm:inventoryDetailToolbar1"
@@ -165,6 +165,24 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>      
 
             </h:panelGroup>
+
+            <p:outputLabel  value="Date acquired" style="font-weight: bold"/>
+            <p:calendar value="#{inventoryManager.selectedInventory.dateAcquired}"
+                        readonlyInput="false"
+                        required="true"
+                        requiredMessage="Please enter the date acquired"
+                        navigator="true" 
+                        pattern="MMM dd, yyyy" >
+
+                <p:ajax event="dateSelect"
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+                <p:ajax event="keyup"
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:calendar>
             
             <h:outputText value="&nbsp;&nbsp;" />
             <h:outputText id="descriptionCharsRemaining" /> 
