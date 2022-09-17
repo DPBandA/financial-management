@@ -241,9 +241,52 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.updateInventory}" />
 
             </p:calendar>
-            
-            <h:outputText value="&nbsp;&nbsp;" />
-            <h:outputText id="descriptionCharsRemaining" /> 
+
+            <p:outputLabel value="Unit cost (J$)" style="font-weight: bold;" /> 
+            <p:inputText value="#{inventoryManager.selectedInventory.unitCost}"
+                         converterMessage="Invalid Unit Cost"
+                         required="true"
+                         requiredMessage="A unit cost is required"
+                         styleClass="number-field">
+
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                <p:ajax event="change"                            
+                         update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:inputText>       
+
+            <p:outputLabel value="Quantity" style="font-weight: bold;" /> 
+            <p:inputText value="#{inventoryManager.selectedInventory.quantity}"
+                         converterMessage="Invalid Quantity"
+                         required="true"
+                         requiredMessage="A quantity is required"
+                         styleClass="number-field">
+
+                <f:convertNumber integerOnly="true" />
+
+                <p:ajax event="change"                            
+                         update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:inputText>
+
+            <p:outputLabel value="Cost (J$)" style="font-weight: bold;" /> 
+            <p:inputText value="#{inventoryManager.selectedInventory.cost}"
+                         converterMessage="Invalid Cost"
+                         required="true"
+                         requiredMessage="A cost is required"
+                         styleClass="number-field">
+
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                <p:ajax event="change"                            
+                         update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:inputText>
+         
 
         </h:panelGrid>
     </p:panel>
