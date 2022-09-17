@@ -252,8 +252,8 @@ Email: info@dpbennett.com.jm
                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
 
                 <p:ajax event="change"                            
-                         update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}" />
+                         update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryUnitCost}" />
 
             </p:inputText>       
 
@@ -267,13 +267,26 @@ Email: info@dpbennett.com.jm
                 <f:convertNumber integerOnly="true" />
 
                 <p:ajax event="change"                            
-                         update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}" />
+                        update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryQuantity}" />
 
             </p:inputText>
 
+            <h:outputLabel value="UOM" />          
+            <p:inputText maxlength="50"
+                         style="text-align: right !important;"
+                         value="#{inventoryManager.selectedInventory.measurementUnit}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText> 
+
             <p:outputLabel value="Cost (J$)" style="font-weight: bold;" /> 
             <p:inputText value="#{inventoryManager.selectedInventory.cost}"
+                         id="cost"
                          converterMessage="Invalid Cost"
                          required="true"
                          requiredMessage="A cost is required"
