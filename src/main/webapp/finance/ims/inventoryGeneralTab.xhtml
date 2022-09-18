@@ -48,6 +48,7 @@ Email: info@dpbennett.com.jm
                                 itemValue="#{inventoryProduct}"
                                 converter="activeInventoryProductConverter"                                            
                                 validator="businessEntityValidator"
+                                validatorMessage="A product name is required"
                                 forceSelection="true"
                                 size="35"
                                 dropdown="true"
@@ -99,8 +100,8 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>
             </h:panelGroup>
 
-            <h:outputText style="vertical-align: top;"
-                      value="Category" />
+            <h:outputText style="vertical-align: top;font-weight: bold;"
+                          value="Category" />
             <h:panelGroup>
                     <p:autoComplete id="category"
                                     var="category"   

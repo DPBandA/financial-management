@@ -1,5 +1,5 @@
 <!--
-Inventory Management (PM) 
+Inventory Management (IM) 
 Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -73,18 +73,9 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type"/>
+                <h:outputText value="Category"/>
             </f:facet>
-            <h:outputText value="#{inventory.type}" />
-        </p:column>
-
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Date edited"/>
-            </f:facet>
-            <h:outputText value="#{inventory.dateEdited}">
-                <f:convertDateTime pattern="MMM dd, yyyy"/>
-            </h:outputText>
+            <h:outputText value="#{inventory.category.name}" />                
         </p:column>
 
         <p:column>
@@ -99,17 +90,26 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Category"/>
+                <h:outputText value="Qty"/>
             </f:facet>
-            <h:outputText value="#{inventory.category.name}" />                
+            <h:outputText value="#{inventory.quantity}" />
         </p:column>
-        
+
         <p:column>
             <f:facet name="header">
                 <h:outputText value="UOM"/>
             </f:facet>
             <h:outputText value="#{inventory.measurementUnit}" />                
         </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Date Acquired"/>
+            </f:facet>
+            <h:outputText value="#{inventory.dateAcquired}">
+                <f:convertDateTime pattern="MMM dd, yyyy"/>
+            </h:outputText>
+        </p:column>  
 
         <p:column style="width:32px">
             
