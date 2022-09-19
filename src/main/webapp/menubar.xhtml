@@ -19,10 +19,7 @@ Email: info@dpbennett.com.jm
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html" 
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui" >
 
     <p:menubar id="main_menubar" rendered="true">
         
@@ -44,6 +41,19 @@ Email: info@dpbennett.com.jm
                     <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryDialogReturn}"
                         update=":appForm:mainTabView:inventoryTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem value="Inventory product"
+                            title="Add new inventory product"
+                            icon="pi pi-plus"
+                            actionListener="#{inventoryManager.createNewInventoryProduct}" 
+                            rendered="#{systemManager.user.hasModule('InventoryManagementModule')}"
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.doInventoryProductSearch}"
+                        update=":appForm:mainTabView:inventoryProductsTable"/>
 
                 </p:menuitem>
 

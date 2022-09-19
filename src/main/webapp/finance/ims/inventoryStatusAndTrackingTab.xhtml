@@ -25,7 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
-        <h:panelGrid id="statusAndTrackingTabPanel" columns="2" cellspacing="5" >            
+        <h:panelGrid id="statusAndTrackingTabPanel" columns="4" cellspacing="5" >            
            
             <h:outputText value="Entered by"/>
             <p:inputText readonly="true"
@@ -57,9 +57,9 @@ Email: info@dpbennett.com.jm
                 rows="5"
                 counter="statusCharsRemaining"
                 counterTemplate="{0} characters remaining."
-                autoResize="false"
+                autoResize="true"                
                 maxlength="250"  
-                style="width: 200%;">
+                style="width: 300%;">
 
                 <p:ajax event="change"
                         update=":inventoryDialogForm:inventoryDetailToolbar1"
