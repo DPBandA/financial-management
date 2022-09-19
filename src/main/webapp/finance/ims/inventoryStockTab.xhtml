@@ -48,19 +48,13 @@ Email: info@dpbennett.com.jm
             <p:toolbarGroup>
                 <p:commandButton title="Add new cost component"
                                  value="New"
-                                 action="#{purchasingManager.addNewCostComponent}"
-                                 update=":purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"
+                                 action="#{inventoryManager.addNewCostComponent}"
+                                 update=":inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"
                                  oncomplete="PF('costComponentVar').addRow();"
                                  icon="pi pi-plus"
                                  process="@this">
                 </p:commandButton>  
-            </p:toolbarGroup>   
-            <p:toolbarGroup align="right">
-                <h:outputText 
-                id="PRJustificationStatusNote"
-                style="font-weight: bold; color: orange;"
-                value="#{purchasingManager.selectedPRJustificationStatusNote}" />
-            </p:toolbarGroup>
+            </p:toolbarGroup> 
         </p:toolbar>
 
         <p:dataTable  var="costComponent"
@@ -69,9 +63,9 @@ Email: info@dpbennett.com.jm
                       editable="true"
                       editMode="cell"
                       widgetVar="costComponentVar"
-                      value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
+                      value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
 
-            <p:ajax event="cellEdit" listener="#{purchasingManager.onCostComponentCellEdit}"                 
+            <p:ajax event="cellEdit" listener="#{inventoryManager.onCostComponentCellEdit}"                 
                     update="costComponentTable"/>
 
             <p:column headerText="Component" style="width:200px">
@@ -111,7 +105,7 @@ Email: info@dpbennett.com.jm
                 <f:facet name="input">
                     <p:selectOneMenu value="#{costComponent.type}" style="width:100%" >
 
-                       <f:selectItems  value="#{purchasingManager.costTypeList}"
+                       <f:selectItems  value="#{inventoryManager.costTypeList}"
                                        var="type"                            
                                        itemValue="#{type}"
                                        itemLabel="#{type}"/>
@@ -148,7 +142,7 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
-            <p:column headerText="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" 
+            <p:column headerText="Rate ($/hr/qty)" 
                       rendered="#{!costComponent.isHeading}">
                 <p:cellEditor>
                 <f:facet name="output">
@@ -162,7 +156,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
 
                 <f:facet name="footer">
-                    <h:outputText value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
+                    <h:outputText value="Total ($)"  />
                 </f:facet>
             </p:column>
 
@@ -173,7 +167,7 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
-            <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
+            <p:column headerText="Cost ($)" rendered="#{!costComponent.isHeading}">
                 <p:cellEditor>
                 <f:facet name="output">
                    <h:outputText value="#{costComponent.cost}" >
@@ -186,7 +180,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
 
                 <f:facet name="footer">
-                    <h:outputText value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
+                    <h:outputText value="#{inventoryManager.selectedInventory.totalCost}" 
                                   styleClass="datatable-number-field" >
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                     </h:outputText>
@@ -224,26 +218,26 @@ Email: info@dpbennett.com.jm
                               icon="pi pi-pencil" >
                     <p:menuitem   
                         value="Edit"
-                        actionListener="#{purchasingManager.editCostComponent}"
+                        actionListener="#{inventoryManager.editCostComponent}"
                         disabled="#{!costComponent.isEditable}"
-                        update=":purchreqCostingCompDialogForm"
-                        oncomplete="PF('purchreqCostingCompDialog').show();"
+                        update=":inventoryCostingCompDialogForm"
+                        oncomplete="PF('inventoryCostingCompDialog').show();"
                         icon="pi pi-pencil"
                         process="@this" >
 
                         <f:setPropertyActionListener value="#{costComponent}"
-                                                     target="#{purchasingManager.selectedCostComponent}" />
+                                                     target="#{inventoryManager.selectedCostComponent}" />
 
                     </p:menuitem>
 
                     <p:menuitem  
                         value="Delete"
-                        onclick="PF('purchreqCostCompDeleteConfirmDialog').show();"
+                        onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
                         icon="pi pi-trash"
                         process="@this">
 
                         <f:setPropertyActionListener value="#{costComponent}"
-                                                     target="#{purchasingManager.selectedCostComponent}" />
+                                                     target="#{inventoryManager.selectedCostComponent}" />
 
                     </p:menuitem>                   
 
@@ -255,13 +249,13 @@ Email: info@dpbennett.com.jm
             <p:toolbarGroup>
                 <p:commandButton title="Add new cost component"
                                  value="New"
-                                 action="#{purchasingManager.addNewCostComponent}"
-                                 update=":purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"
+                                 action="#{inventoryManager.addNewCostComponent}"
+                                 update=":inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"
                                  oncomplete="PF('costComponentVar').addRow();"
                                  icon="pi pi-plus"
                                  process="@this">
-                </p:commandButton>
-            </p:toolbarGroup>
+                </p:commandButton>  
+            </p:toolbarGroup> 
         </p:toolbar>
     </p:panel>
     

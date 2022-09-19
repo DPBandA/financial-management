@@ -35,9 +35,11 @@ Email: info@dpbennett.com.jm
         <script type="text/javascript" src="../../js/javascripts.js"/>
     </h:head>
     <h:body>  
-        <h:form id="inventoryDialogForm" >                
-            <ui:include src="inventoryDetail.xhtml"/>
-            <ui:include src="/common/commonDialogs.xhtml"/>            
-        </h:form>
+            <ui:include src="inventoryCostCompDialog.xhtml"/>       
+            <ui:include src="inventoryCostCompDeleteConfirmDialog.xhtml"/> 
+            <h:form id="inventoryDialogForm" >   
+                <ui:include src="inventoryDetail.xhtml"/>
+                <ui:include src="/common/commonDialogs.xhtml"/>            
+            </h:form>
     </h:body>
 </html>
