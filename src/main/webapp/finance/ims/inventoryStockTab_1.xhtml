@@ -61,14 +61,12 @@ Email: info@dpbennett.com.jm
                       id="costComponentTable"
                       rowStyleClass="#{costComponent.isHeading ? 'header' : null}"
                       editable="true"
-                      editMode="row"
+                      editMode="cell"
                       widgetVar="costComponentVar"
                       value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
 
-            <p:ajax event="rowEdit" listener="#{inventoryManager.onCostComponentRowEdit}" 
-                    update="costComponentTable"/>
-            <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
-                    update="costComponentTable"/>
+            <p:ajax event="cellEdit" listener="#{inventoryManager.onCostComponentCellEdit}"                 
+                    update=":inventoryDialogForm:inventoryFormTabView:costingTabPanel"/>
 
             <p:column headerText="Component" style="width:200px">
                 <p:cellEditor>
@@ -214,14 +212,36 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
-            <p:column style="width:32px;">
-                <p:rowEditor editTitle="Edit cost component"
-                             cancelTitle="Cancel cost component edit" 
-                             saveTitle="Save cost component"/>
-            </p:column>
+            <p:column style="width:32px" >
+                <p:menuButton id="toolsButton" 
+                              title="Edit or delete cost component"
+                              icon="pi pi-pencil" >
+                    <p:menuitem   
+                        value="Edit"
+                        actionListener="#{inventoryManager.editCostComponent}"
+                        disabled="#{!costComponent.isEditable}"
+                        update=":inventoryCostingCompDialogForm"
+                        oncomplete="PF('inventoryCostingCompDialog').show();"
+                        icon="pi pi-pencil"
+                        process="@this" >
 
-            <p:column style="width:32px;" >
-                <p:commandButton type="button" icon="pi pi-trash" styleClass="ui-button-flat" />                 
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
+
+                    </p:menuitem>
+
+                    <p:menuitem  
+                        value="Delete"
+                        onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
+                        icon="pi pi-trash"
+                        process="@this">
+
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
+
+                    </p:menuitem>                   
+
+                </p:menuButton>                   
             </p:column>      
 
         </p:dataTable>
