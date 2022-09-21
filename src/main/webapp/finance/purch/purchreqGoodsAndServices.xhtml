@@ -154,32 +154,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column headerText="Type" rendered="#{!costComponent.isHeading}">
-            <p:cellEditor>
-            <f:facet name="output">
-               <h:outputText value="#{costComponent.type}" /> 
-            </f:facet>
-            <f:facet name="input">
-                <p:selectOneMenu value="#{costComponent.type}" style="width:100%" >
-
-                   <f:selectItems  value="#{purchasingManager.costTypeList}"
-                                   var="type"                            
-                                   itemValue="#{type}"
-                                   itemLabel="#{type}"/>
-                        
-                </p:selectOneMenu> 
-            </f:facet>   
-            </p:cellEditor>
-        </p:column>
-
-        <p:column rendered="#{costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value=" " />
-            </f:facet>
-            <h:outputText value=" " />
-        </p:column>
-
-        <p:column headerText="Hours/Qty" rendered="#{!costComponent.isHeading}" >
+        <p:column headerText="Quantity" rendered="#{!costComponent.isHeading}" >
             <p:cellEditor>
             <f:facet name="output">
                <h:outputText value="#{costComponent.hoursOrQuantity}" >
@@ -199,7 +174,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column headerText="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" 
+        <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">

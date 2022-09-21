@@ -225,23 +225,25 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <p:outputLabel  value="Date acquired" style="font-weight: bold"/>
-            <p:calendar value="#{inventoryManager.selectedInventory.dateAcquired}"
-                        readonlyInput="false"
-                        required="true"
-                        requiredMessage="Please enter the date acquired"
-                        navigator="true" 
-                        pattern="MMM dd, yyyy" >
+            <ui:remove>
+                <p:outputLabel  value="Date acquired" style="font-weight: bold"/>
+                <p:calendar value="#{inventoryManager.selectedInventory.dateAcquired}"
+                            readonlyInput="false"
+                            required="true"
+                            requiredMessage="Please enter the date acquired"
+                            navigator="true" 
+                            pattern="MMM dd, yyyy" >
 
-                <p:ajax event="dateSelect"
-                        update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}" />
+                    <p:ajax event="dateSelect"
+                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}" />
 
-                <p:ajax event="keyup"
-                        update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}" />
+                    <p:ajax event="keyup"
+                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}" />
 
-            </p:calendar>
+                </p:calendar>
+            </ui:remove>
 
             <ui:remove>
                 <p:outputLabel value="Unit cost (J$)" style="font-weight: bold;" /> 

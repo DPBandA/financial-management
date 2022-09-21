@@ -97,27 +97,7 @@ Email: info@dpbennett.com.jm
                     <h:outputText value=" " />
                 </f:facet>
                 <h:outputText value=" " />
-            </p:column>            
-
-            <p:column headerText="Qty" rendered="#{!costComponent.isHeading}" >
-                <p:cellEditor>
-                <f:facet name="output">
-                   <h:outputText value="#{costComponent.hoursOrQuantity}" >
-                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </h:outputText>
-                </f:facet>
-                <f:facet name="input">               
-                       <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
-                </f:facet>
-                </p:cellEditor>
-            </p:column>
-
-            <p:column rendered="#{costComponent.isHeading}">
-                <f:facet name="header">
-                    <h:outputText value=" " />
-                </f:facet>
-                <h:outputText value=" " />
-            </p:column>
+            </p:column>    
 
             <p:column headerText="Unit Cost ($)" 
                       rendered="#{!costComponent.isHeading}">
@@ -135,6 +115,26 @@ Email: info@dpbennett.com.jm
                 <f:facet name="footer">
                     <h:outputText value="Total ($)"  />
                 </f:facet>
+            </p:column>
+
+            <p:column rendered="#{costComponent.isHeading}">
+                <f:facet name="header">
+                    <h:outputText value=" " />
+                </f:facet>
+                <h:outputText value=" " />
+            </p:column>
+
+            <p:column headerText="Quantity" rendered="#{!costComponent.isHeading}" >
+                <p:cellEditor>
+                <f:facet name="output">
+                   <h:outputText value="#{costComponent.hoursOrQuantity}" >
+                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                   </h:outputText>
+                </f:facet>
+                <f:facet name="input">               
+                       <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                </f:facet>
+                </p:cellEditor>
             </p:column>
 
             <p:column rendered="#{costComponent.isHeading}">
@@ -164,7 +164,7 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
-            <p:column headerText="Unit" rendered="#{!costComponent.isHeading}">
+            <p:column headerText="UOM" rendered="#{!costComponent.isHeading}">
                 <p:cellEditor>
                 <f:facet name="output">
                    <h:outputText value="#{costComponent.unit}" /> 
@@ -188,17 +188,36 @@ Email: info@dpbennett.com.jm
                              saveTitle="Save cost component"/>
             </p:column>
 
-            <p:column style="width:32px;" >
-                <p:commandButton icon="pi pi-trash" 
-                                 oncomplete="PF('inventoryCostCompDeleteConfirmDialog').show();"
-                                 title="Delete this cost component"
-                                 styleClass="ui-button-flat" >
+            <p:column style="width:32px" >
+                <p:menuButton id="toolsButton" 
+                              title="Edit or delete cost component"
+                              icon="pi pi-pencil" >
+                    <p:menuitem   
+                        value="Edit"
+                        actionListener="#{inventoryManager.editCostComponent}"
+                        disabled="#{!costComponent.isEditable}"
+                        update=":inventoryCostingCompDialogForm"
+                        oncomplete="PF('inventoryCostingCompDialog').show();"
+                        icon="pi pi-pencil"
+                        process="@this" >
 
-                    <f:setPropertyActionListener value="#{costComponent}"
-                                                 target="#{inventoryManager.selectedCostComponent}" />
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
 
+                    </p:menuitem>
 
-                </p:commandButton>                 
+                    <p:menuitem  
+                        value="Delete"
+                        onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
+                        icon="pi pi-trash"
+                        process="@this">
+
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
+
+                    </p:menuitem>                   
+
+                </p:menuButton>                   
             </p:column>      
 
         </p:dataTable>

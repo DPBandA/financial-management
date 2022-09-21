@@ -47,27 +47,12 @@ Email: info@dpbennett.com.jm
                 </p:toolbarGroup>
             </p:toolbar>            
             <p:panel>
-                <h:panelGrid id="costingComponentPanelGrid" columns="3" style="width: 100%">
-                    <h:outputLabel value="Cost type" for="costComponentType" style="font-weight: bold;" />
-                    <p:spacer height="0" width="10"/>
-                    <p:selectOneMenu id="costComponentType" 
-                                     value="#{inventoryManager.selectedCostComponent.type}">
-
-                        <f:selectItems  value="#{inventoryManager.costTypeList}"
-                                        var="type"                            
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>
-
-                        <p:ajax listener="#{inventoryManager.updateCostType}"
-                                update="costingComponentPanelGrid"
-                                process="@this" />
-                        
-                    </p:selectOneMenu>    
+                <h:panelGrid id="costingComponentPanelGrid" 
+                             cellspacing="10"
+                             columns="2" style="width: 100%">
                     
                     <h:outputLabel value="Cost code" 
                                    rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
-                    <p:spacer height="0" width="10"
-                              rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
                     <p:inputText id="costCode"
                                  value="#{inventoryManager.selectedCostComponent.code}"
                                  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
@@ -84,7 +69,6 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel value="Component" style="font-weight: bold" />
-                    <p:spacer height="0" width="10"/>                   
                     <p:inputTextarea  value="#{inventoryManager.selectedCostComponent.name}"
                                       id="costComponentName"
                                       validator="requiredFieldValidator"
@@ -101,16 +85,14 @@ Email: info@dpbennett.com.jm
                     </p:inputTextarea>
 
                     <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                                   value="Hours/Qty" 
-                                   style="font-weight: bold;" />
-                    <p:spacer rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                              height="0" width="10"/>
+                                   value="Quantity" 
+                                   style="font-weight: bold;" />                   
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentHoursOrQuantity"
                                  value="#{inventoryManager.selectedCostComponent.hoursOrQuantity}"
                                  styleClass="number-field"
                                  validator="requiredFieldValidator"
-                                 converterMessage="Invalid Component Hours/Quantity"
+                                 converterMessage="Invalid Component Quantity"
                                  style="width: 90%">
                         <f:convertNumber />
                         <p:ajax event="keyup"
@@ -126,16 +108,14 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                                   value="Rate ($/hr/qty)" style="font-weight: bold;" />
-                    <p:spacer rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                              height="0" width="10"/>
+                                   value="Unit cost ($)" style="font-weight: bold;" />
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
                                  value="#{inventoryManager.selectedCostComponent.rate}"
                                  style="width: 90%"
                                  styleClass="number-field" 
                                  validator="requiredFieldValidator"
-                                 converterMessage="Invalid Component Rate" >
+                                 converterMessage="Invalid Unit Cost" >
                         <f:convertNumber />
                         <p:ajax event="keyup"
                                 global="false"
@@ -150,9 +130,7 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
                     
                     <h:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
-                                   value="Unit" />
-                    <p:spacer  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
-                              height="0" width="10"/>
+                                   value="UOM" />
                     <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                  id="costComponentUnit"
                                  value="#{inventoryManager.selectedCostComponent.unit}"
@@ -172,7 +150,6 @@ Email: info@dpbennett.com.jm
 
                     <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                    value="Cost ($)" style="font-weight: bold;" />
-                    <p:spacer rendered="#{!inventoryManager.selectedCostComponent.isHeading}" height="0" width="10"/>
                     <p:inputText id="costComponentCost"
                                  style="width: 90%;"
                                  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"                            
