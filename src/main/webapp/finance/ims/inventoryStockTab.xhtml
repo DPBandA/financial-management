@@ -149,12 +149,12 @@ Email: info@dpbennett.com.jm
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                </h:outputText>               
 
-                <f:facet name="footer">
+               <f:facet name="footer">
                     <h:outputText value="#{inventoryManager.selectedInventory.totalCost}" 
                                   styleClass="datatable-number-field" >
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                     </h:outputText>
-                </f:facet>
+               </f:facet>
             </p:column>
 
             <p:column rendered="#{costComponent.isHeading}">

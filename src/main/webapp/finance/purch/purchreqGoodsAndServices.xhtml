@@ -118,12 +118,16 @@ Email: info@dpbennett.com.jm
                   id="costComponentTable"
                   rowStyleClass="#{costComponent.isHeading ? 'header' : null}"
                   editable="true"
-                  editMode="cell"
+                  editMode="row"
                   widgetVar="costComponentVar"
                   value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
 
-        <p:ajax event="cellEdit" listener="#{purchasingManager.onCostComponentCellEdit}"                 
-                update="costComponentTable"/>
+        <p:ajax event="rowEdit" listener="#{purchasingManager.onCostComponentRowEdit}" 
+                    update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+        <p:ajax event="rowEditCancel" listener="#{purchasingManager.onCostComponentRowCancel}" 
+                    update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+
+       
                
         <p:column headerText="Component" style="width:200px">
             <p:cellEditor>
@@ -226,7 +230,7 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column headerText="Unit" rendered="#{!costComponent.isHeading}">
+        <p:column headerText="UOM" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
                <h:outputText value="#{costComponent.unit}" /> 
@@ -242,6 +246,12 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </f:facet>
             <h:outputText value=" " />
+        </p:column>
+
+        <p:column style="width:32px;">
+                <p:rowEditor editTitle="Edit cost component"
+                             cancelTitle="Cancel cost component edit" 
+                             saveTitle="Save cost component"/>
         </p:column>
 
         <p:column style="width:32px" >
