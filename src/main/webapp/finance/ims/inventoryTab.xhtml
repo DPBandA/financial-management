@@ -66,26 +66,16 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Product"/>
-            </f:facet>
-            <h:outputText value="#{inventory.product.name}" />
-        </p:column>
-
-        <p:column>
-            <f:facet name="header">
                 <h:outputText value="Category"/>
             </f:facet>
             <h:outputText value="#{inventory.category.name}" />                
-        </p:column>
+        </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Cost"/>
+                <h:outputText value="Product"/>
             </f:facet>
-            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
-                          styleClass="datatable-number-field" >                
-                
-            </h:outputText>
+            <h:outputText value="#{inventory.product.name}" />
         </p:column>
 
         <p:column>
@@ -104,12 +94,13 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Date Acquired"/>
+                <h:outputText value="Cost"/>
             </f:facet>
-            <h:outputText value="#{inventory.dateAcquired}">
-                <f:convertDateTime pattern="MMM dd, yyyy"/>
+            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
+                          styleClass="datatable-number-field" >                
+                
             </h:outputText>
-        </p:column>  
+        </p:column>
 
         <p:column style="width:32px">
             

@@ -107,6 +107,25 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
+                    <h:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
+                                   value="UOM" />
+                    <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
+                                 id="costComponentUnit"
+                                 value="#{inventoryManager.selectedCostComponent.unit}"
+                                 style="width: 90%" >
+                        
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                        
+                        <p:ajax event="change"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                        
+                    </p:inputText>
+
                     <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Unit cost ($)" style="font-weight: bold;" />
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -127,25 +146,6 @@ Email: info@dpbennett.com.jm
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 update="inventoryCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
-                    </p:inputText>
-                    
-                    <h:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
-                                   value="UOM" />
-                    <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
-                                 id="costComponentUnit"
-                                 value="#{inventoryManager.selectedCostComponent.unit}"
-                                 style="width: 90%" >
-                        
-                        <p:ajax event="keyup"
-                                global="false"
-                                listener="#{inventoryManager.updateSelectedCostComponent}"
-                                process="@this"/>
-                        
-                        <p:ajax event="change"
-                                global="false"
-                                listener="#{inventoryManager.updateSelectedCostComponent}"
-                                process="@this"/>
-                        
                     </p:inputText>
 
                     <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 

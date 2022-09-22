@@ -123,7 +123,7 @@ Email: info@dpbennett.com.jm
                   value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
 
         <p:ajax event="rowEdit" listener="#{purchasingManager.onCostComponentRowEdit}" 
-                    update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+                    update=":purchreqDialogForm:purchreqFormTabView:totalCost,costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
         <p:ajax event="rowEditCancel" listener="#{purchasingManager.onCostComponentRowCancel}" 
                     update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
 
@@ -178,58 +178,6 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
-        <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
-                  rendered="#{!costComponent.isHeading}">
-            <p:cellEditor>
-            <f:facet name="output">
-               <h:outputText value="#{costComponent.rate}" >
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
-            </f:facet>
-            <f:facet name="input">
-                <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
-            </f:facet>
-            </p:cellEditor>
-
-            <f:facet name="footer">
-                <h:outputText value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
-            </f:facet>
-        </p:column>
-
-        <p:column rendered="#{costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value=" " />
-            </f:facet>
-            <h:outputText value=" " />
-        </p:column>
-
-        <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
-            <p:cellEditor>
-            <f:facet name="output">
-               <h:outputText value="#{costComponent.cost}" >
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
-            </f:facet>
-            <f:facet name="input">
-                   <p:inputNumber value="#{costComponent.cost}" style="width:100%" />
-            </f:facet>   
-            </p:cellEditor>
-
-            <f:facet name="footer">
-                <h:outputText value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
-                              styleClass="datatable-number-field" >
-                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                </h:outputText>
-            </f:facet>
-        </p:column>
-
-        <p:column rendered="#{costComponent.isHeading}">
-            <f:facet name="header">
-                <h:outputText value=" " />
-            </f:facet>
-            <h:outputText value=" " />
-        </p:column>
-
         <p:column headerText="UOM" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
@@ -248,6 +196,42 @@ Email: info@dpbennett.com.jm
             <h:outputText value=" " />
         </p:column>
 
+        <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+                  rendered="#{!costComponent.isHeading}">
+            <p:cellEditor>
+            <f:facet name="output">
+               <h:outputText value="#{costComponent.rate}" >
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText>
+            </f:facet>
+            <f:facet name="input">
+                <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+            </f:facet>
+            </p:cellEditor>
+            
+        </p:column>
+
+        <p:column rendered="#{costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value=" " />
+            </f:facet>
+            <h:outputText value=" " />
+        </p:column>
+
+        <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
+           <h:outputText value="#{costComponent.cost}" >
+                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+           </h:outputText>
+            
+        </p:column>
+
+        <p:column rendered="#{costComponent.isHeading}">
+            <f:facet name="header">
+                <h:outputText value=" " />
+            </f:facet>
+            <h:outputText value=" " />
+        </p:column>
+
         <p:column style="width:32px;">
                 <p:rowEditor editTitle="Edit cost component"
                              cancelTitle="Cancel cost component edit" 
@@ -257,7 +241,7 @@ Email: info@dpbennett.com.jm
         <p:column style="width:32px" >
             <p:menuButton id="toolsButton" 
                           title="Edit or delete cost component"
-                          icon="pi pi-pencil" >
+                          icon="pi pi-ellipsis-v" >
                 <p:menuitem   
                     value="Edit"
                     actionListener="#{purchasingManager.editCostComponent}"
@@ -287,6 +271,22 @@ Email: info@dpbennett.com.jm
         </p:column>      
 
     </p:dataTable>
+    <p:toolbar style="margin-top: 1px;">
+        <p:toolbarGroup align="right">
+            <h:panelGrid columns="2" cellspacing="10">
+                <h:outputText style="font-weight: bold"
+                              value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}):"  />
+
+                <h:outputText value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
+                              id="totalCost"                       
+                              style="font-weight: bold"
+                              styleClass="datatable-number-field" >
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </h:outputText>
+            </h:panelGrid>
+        </p:toolbarGroup>
+    </p:toolbar>
+
     <p:toolbar style="margin-top: 1px;">
         <p:toolbarGroup>
             <p:commandButton title="Add new cost component"

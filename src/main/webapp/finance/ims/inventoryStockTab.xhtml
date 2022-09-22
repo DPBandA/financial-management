@@ -111,10 +111,6 @@ Email: info@dpbennett.com.jm
                         <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
                     </f:facet>
                 </p:cellEditor>
-
-                <f:facet name="footer">
-                    <h:outputText value="Total ($)"  />
-                </f:facet>
             </p:column>
 
             <p:column rendered="#{costComponent.isHeading}">
@@ -144,26 +140,6 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
-            <p:column headerText="Cost ($)" rendered="#{!costComponent.isHeading}">
-               <h:outputText value="#{costComponent.cost}">
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>               
-
-               <f:facet name="footer">
-                    <h:outputText value="#{inventoryManager.selectedInventory.totalCost}" 
-                                  styleClass="datatable-number-field" >
-                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                    </h:outputText>
-               </f:facet>
-            </p:column>
-
-            <p:column rendered="#{costComponent.isHeading}">
-                <f:facet name="header">
-                    <h:outputText value=" " />
-                </f:facet>
-                <h:outputText value=" " />
-            </p:column>
-
             <p:column headerText="UOM" rendered="#{!costComponent.isHeading}">
                 <p:cellEditor>
                 <f:facet name="output">
@@ -182,16 +158,29 @@ Email: info@dpbennett.com.jm
                 <h:outputText value=" " />
             </p:column>
 
+            <p:column headerText="Cost ($)" rendered="#{!costComponent.isHeading}">
+               <h:outputText value="#{costComponent.cost}">
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText> 
+            </p:column>
+
+            <p:column rendered="#{costComponent.isHeading}">
+                <f:facet name="header">
+                    <h:outputText value=" " />
+                </f:facet>
+                <h:outputText value=" " />
+            </p:column>
+
             <p:column style="width:32px;">
                 <p:rowEditor editTitle="Edit cost component"
-                             cancelTitle="Cancel cost component edit" 
+                             cancelTitle="Cancel cost component edit"                             
                              saveTitle="Save cost component"/>
             </p:column>
 
             <p:column style="width:32px" >
                 <p:menuButton id="toolsButton" 
                               title="Edit or delete cost component"
-                              icon="pi pi-pencil" >
+                              icon="pi pi-ellipsis-v" >
                     <p:menuitem   
                         value="Edit"
                         actionListener="#{inventoryManager.editCostComponent}"
