@@ -225,43 +225,6 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <ui:remove>
-                <p:outputLabel  value="Date acquired" style="font-weight: bold"/>
-                <p:calendar value="#{inventoryManager.selectedInventory.dateAcquired}"
-                            readonlyInput="false"
-                            required="true"
-                            requiredMessage="Please enter the date acquired"
-                            navigator="true" 
-                            pattern="MMM dd, yyyy" >
-
-                    <p:ajax event="dateSelect"
-                            update=":inventoryDialogForm:inventoryDetailToolbar1"
-                            listener="#{inventoryManager.updateInventory}" />
-
-                    <p:ajax event="keyup"
-                            update=":inventoryDialogForm:inventoryDetailToolbar1"
-                            listener="#{inventoryManager.updateInventory}" />
-
-                </p:calendar>
-            </ui:remove>
-
-            <ui:remove>
-                <p:outputLabel value="Unit cost (J$)" style="font-weight: bold;" /> 
-                <p:inputText value="#{inventoryManager.selectedInventory.unitCost}"
-                             converterMessage="Invalid Unit Cost"
-                             required="true"
-                             requiredMessage="A unit cost is required"
-                             styleClass="number-field">
-
-                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-
-                    <p:ajax event="change"                            
-                             update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
-                            listener="#{inventoryManager.updateInventoryUnitCost}" />
-
-                </p:inputText>    
-            </ui:remove>
-
             <p:outputLabel value="Quantity" style="font-weight: bold;" /> 
             <p:inputText value="#{inventoryManager.selectedInventory.quantity}"
                          converterMessage="Invalid Quantity"
@@ -270,27 +233,13 @@ Email: info@dpbennett.com.jm
                          requiredMessage="A quantity is required"
                          styleClass="number-field read-only-text-field">
 
-                <f:convertNumber integerOnly="true" />
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
 
                 <p:ajax event="change"                            
                         update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
                         listener="#{inventoryManager.updateInventoryQuantity}" />
 
             </p:inputText>
-
-            <ui:remove>
-                <h:outputLabel value="UOM" />          
-                <p:inputText maxlength="50"
-                             style="text-align: right !important;"
-                             value="#{inventoryManager.selectedInventory.measurementUnit}">
-
-                    <p:ajax event="change"                            
-                            update=":inventoryDialogForm:inventoryDetailToolbar1"
-                            listener="#{inventoryManager.updateInventory}"
-                            process="@this"/>
-
-                </p:inputText> 
-            </ui:remove>
 
             <p:outputLabel value="Cost (J$)" style="font-weight: bold;" /> 
             <p:inputText value="#{inventoryManager.selectedInventory.cost}"
