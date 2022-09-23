@@ -80,16 +80,16 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Qty"/>
+                <h:outputText value="Supplier"/>
             </f:facet>
-            <h:outputText value="#{inventory.quantity}" />
+            <h:outputText value="#{inventory.supplier.name}" />                
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="UOM"/>
+                <h:outputText value="Qty"/>
             </f:facet>
-            <h:outputText value="#{inventory.measurementUnit}" />                
+            <h:outputText value="#{inventory.quantity}" />
         </p:column>
 
         <p:column>

@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
 
         <p:toolbar style="margin-top: 1px;margin-bottom: 1px;">
             <p:toolbarGroup>
-                <p:commandButton title="Add new cost component"
+                <p:commandButton title="Add new stock item"
                                  value="New"
                                  action="#{inventoryManager.addNewCostComponent}"
                                  update=":inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"
@@ -70,7 +70,7 @@ Email: info@dpbennett.com.jm
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
                     update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
 
-            <p:column headerText="Component" style="width:200px">
+            <p:column headerText="Item" style="width:200px">
                 <p:cellEditor>
                     <f:facet name="output">
                        <h:outputText value="#{costComponent.name}" /> 
@@ -212,7 +212,7 @@ Email: info@dpbennett.com.jm
         </p:dataTable>
         <p:toolbar style="margin-top: 1px;">
             <p:toolbarGroup>
-                <p:commandButton title="Add new cost component"
+                <p:commandButton title="Add new stock item"
                                  value="New"
                                  action="#{inventoryManager.addNewCostComponent}"
                                  update=":inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"
