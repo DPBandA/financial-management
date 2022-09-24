@@ -70,28 +70,6 @@ Email: info@dpbennett.com.jm
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
                     update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
 
-            <p:column headerText="Item" style="width:200px">
-                <p:cellEditor>
-                    <f:facet name="output">
-                       <h:outputText value="#{costComponent.name}" /> 
-                    </f:facet>
-                    <f:facet name="input">
-                       <p:inputText  value="#{costComponent.name}" style="width:100%" />
-                    </f:facet>   
-                </p:cellEditor>
-            </p:column>
-
-            <p:column headerText="Cost Code" rendered="#{!costComponent.isHeading}">
-                <p:cellEditor>
-                <f:facet name="output">
-                   <h:outputText value="#{costComponent.code}" /> 
-                </f:facet>
-                <f:facet name="input">
-                   <p:inputText  value="#{costComponent.code}" style="width:100%" />
-                </f:facet>   
-                </p:cellEditor>
-            </p:column>
-
             <p:column rendered="#{costComponent.isHeading}">
                 <f:facet name="header">
                     <h:outputText value=" " />

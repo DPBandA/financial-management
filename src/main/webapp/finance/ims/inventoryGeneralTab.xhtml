@@ -36,7 +36,19 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.updateInventory}"
                         process="@this"/>
 
-            </p:inputText>      
+            </p:inputText>  
+
+            <h:outputLabel value="Code" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.code}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>
 
             <h:outputText value="Product" style="font-weight: bold;" /> 
             <h:panelGroup>
