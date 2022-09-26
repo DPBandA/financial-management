@@ -68,6 +68,24 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
+                    <h:outputText value="Date" style="font-weight: bold" />
+                    <p:calendar value="#{inventoryManager.selectedCostComponent.costDate}" 
+                                readonlyInput="true"
+                                required="true"
+                                requiredMessage="A valid date is required"
+                                navigator="true" 
+                                pattern="MMM dd, yyyy" >
+
+                        <p:ajax event="dateSelect"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}" />
+
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}" />
+
+                    </p:calendar>
+
                     <h:outputLabel value="Component" style="font-weight: bold" />
                     <p:inputTextarea  value="#{inventoryManager.selectedCostComponent.name}"
                                       id="costComponentName"
@@ -78,9 +96,9 @@ Email: info@dpbennett.com.jm
                                       style="width: 90%;" >
                         
                         <p:ajax event="change"
-                                    global="false" 
-                                    listener="#{inventoryManager.updateSelectedCostComponent}" 
-                                    process="@this"/>
+                                global="false" 
+                                listener="#{inventoryManager.updateSelectedCostComponent}" 
+                                process="@this"/>
                         
                     </p:inputTextarea>
 

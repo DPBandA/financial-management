@@ -1,0 +1,142 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <p:toolbar>
+        <p:toolbarGroup align="left" >               
+            <p:commandButton 
+                value="New"
+                icon="pi pi-plus"
+                actionListener="#{inventoryManager.createNewInventoryRequisition}"                                            
+                process="@this"
+                title="Add a new inventory requisition" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":appForm:mainTabView:inventoryTable"/>
+
+            </p:commandButton>           
+        </p:toolbarGroup>
+    </p:toolbar>
+   
+    <p:dataTable id="inventoryTable"
+                 var="inventory"
+                 style="margin-bottom: 1px;margin-top: 1px;"
+                 paginator="true"                                 
+                 rows="15"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 selection="#{inventoryManager.selectedInventories}"
+                 rowKey="#{inventory.id}"
+                 value="#{inventoryManager.foundInventories}">                        
+
+        <f:facet name="header">
+            <h:outputText value="#{inventoryManager.inventoryTableHeader}" />
+        </f:facet>
+
+        <p:ajax event="rowSelect" update=""/>
+        <p:ajax event="rowUnselect" update=""/>
+        <p:ajax event="rowSelectCheckbox" update=""/>
+        <p:ajax event="rowUnselectCheckbox" update=""/>
+        <p:ajax event="toggleSelect" update=""/>
+        
+        <p:column selectionMode="multiple" exportable="false"></p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Category"/>
+            </f:facet>
+            <h:outputText value="#{inventory.category.name}" />                
+        </p:column> 
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Product"/>
+            </f:facet>
+            <h:outputText value="#{inventory.product.name}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Supplier"/>
+            </f:facet>
+            <h:outputText value="#{inventory.supplier.name}" />                
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Qty"/>
+            </f:facet>
+            <h:outputText value="#{inventory.quantity}" />
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Cost"/>
+            </f:facet>
+            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
+                          styleClass="datatable-number-field" >                
+                
+            </h:outputText>
+        </p:column>
+
+        <p:column style="width:32px">
+            
+                <p:commandButton icon="pi pi-pencil"
+                            actionListener="#{inventoryManager.editSelectedInventory}"
+                            process="@this"
+                            title="View or edit this inventory's detail">
+
+                <f:setPropertyActionListener value="#{inventory}" 
+                                             target="#{inventoryManager.selectedInventory}" />
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":appForm:mainTabView:inventoryTable"/>
+
+                </p:commandButton>
+                                       
+        </p:column>
+    </p:dataTable>
+    
+     <p:toolbar>
+        <p:toolbarGroup align="left" >               
+            <p:commandButton 
+                value="New"
+                icon="pi pi-plus"
+                actionListener="#{inventoryManager.createNewInventory}"                                            
+                process="@this"
+                title="Add a new inventory" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":appForm:mainTabView:inventoryTable"/>
+
+            </p:commandButton>           
+        </p:toolbarGroup>
+    </p:toolbar>
+
+</html>
+
