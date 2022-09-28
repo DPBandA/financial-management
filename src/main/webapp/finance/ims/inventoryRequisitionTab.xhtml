@@ -43,17 +43,17 @@ Email: info@dpbennett.com.jm
     </p:toolbar>
    
     <p:dataTable id="inventoryRequisitionTable"
-                 var="inventory"
+                 var="inventoryRequisition"
                  style="margin-bottom: 1px;margin-top: 1px;"
                  paginator="true"                                 
                  rows="15"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 selection="#{inventoryManager.selectedInventories}"
-                 rowKey="#{inventory.id}"
-                 value="#{inventoryManager.foundInventories}">                        
+                 selection="#{inventoryManager.selectedInventoryRequisitions}"
+                 rowKey="#{inventoryRequisition.id}"
+                 value="#{inventoryManager.foundInventoryRequisitions}">                        
 
         <f:facet name="header">
-            <h:outputText value="#{inventoryManager.inventoryTableHeader}" />
+            <h:outputText value="#{inventoryManager.inventoryRequisitionTableHeader}" />
         </f:facet>
 
         <p:ajax event="rowSelect" update=""/>
@@ -66,55 +66,24 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Category"/>
+                <h:outputText value="Name"/>
             </f:facet>
-            <h:outputText value="#{inventory.category.name}" />                
+            <h:outputText value="#{inventoryRequisition.name}" />                
         </p:column> 
-
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Product"/>
-            </f:facet>
-            <h:outputText value="#{inventory.product.name}" />
-        </p:column>
-
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Supplier"/>
-            </f:facet>
-            <h:outputText value="#{inventory.supplier.name}" />                
-        </p:column>
-
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Qty"/>
-            </f:facet>
-            <h:outputText value="#{inventory.quantity}" />
-        </p:column>
-
-        <p:column>
-            <f:facet name="header">
-                <h:outputText value="Cost"/>
-            </f:facet>
-            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
-                          styleClass="datatable-number-field" >                
-                
-            </h:outputText>
-        </p:column>
 
         <p:column style="width:32px">
             
                 <p:commandButton icon="pi pi-pencil"
-                            actionListener="#{inventoryManager.editSelectedInventory}"
+                            actionListener="#{inventoryManager.editSelectedInventoryRequisition}"
                             process="@this"
-                            title="View or edit this inventory's detail">
+                            title="View or edit this inventory requisition's detail">
 
-                <f:setPropertyActionListener value="#{inventory}" 
-                                             target="#{inventoryManager.selectedInventory}" />
+                <f:setPropertyActionListener value="#{inventoryRequisition}" 
+                                             target="#{inventoryManager.selectedInventoryRequisition}" />
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{inventoryManager.inventoryDialogReturn}"
-                        update=":appForm:mainTabView:inventoryTable"/>
+                        listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
+                        update=":appForm:mainTabView:inventoryRequisitionTable"/>
 
                 </p:commandButton>
                                        
@@ -126,13 +95,13 @@ Email: info@dpbennett.com.jm
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus"
-                actionListener="#{inventoryManager.createNewInventory}"                                            
+                actionListener="#{inventoryManager.createNewInventoryRequisition}"                                            
                 process="@this"
-                title="Add a new inventory" >
+                title="Add a new inventory requisition" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{inventoryManager.inventoryDialogReturn}"
-                        update=":appForm:mainTabView:inventoryTable"/>
+                        listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
+                        update=":appForm:mainTabView:inventoryRequisitionTable"/>
 
             </p:commandButton>           
         </p:toolbarGroup>
