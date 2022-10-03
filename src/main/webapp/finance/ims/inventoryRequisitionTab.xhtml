@@ -66,10 +66,33 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <h:outputText value="Code"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.name}" />                
+            <h:outputText value="#{inventoryRequisition.code}" />                
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Date Entered"/>
+            </f:facet>
+            <h:outputText value="#{inventoryRequisition.dateEntered}">
+                <f:convertDateTime pattern="MMM dd, yyyy"/>
+            </h:outputText>
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Entered By"/>
+            </f:facet>
+            <h:outputText value="#{inventoryRequisition.enteredBy}" />                
         </p:column> 
+
+        <p:column>
+            <f:facet name="header">
+                <h:outputText value="Items"/>
+            </f:facet>
+            <h:outputText value="#{inventoryRequisition.inventoryDisbursements}" />                
+        </p:column>
 
         <p:column style="width:32px">
             
