@@ -73,6 +73,15 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
+                <h:outputText value="Requisition date"/>
+            </f:facet>
+            <h:outputText value="#{inventoryRequisition.dateOfRequisition}">
+                <f:convertDateTime pattern="MMM dd, yyyy"/>
+            </h:outputText>
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
                 <h:outputText value="Date Entered"/>
             </f:facet>
             <h:outputText value="#{inventoryRequisition.dateEntered}">

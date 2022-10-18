@@ -39,6 +39,24 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
+            <h:outputText value="Requisition date" style="font-weight: bold" />
+            <p:calendar value="#{inventoryManager.selectedInventoryRequisition.dateOfRequisition}" 
+                        readonlyInput="true"
+                        required="true"
+                        requiredMessage="A valid date is required"
+                        navigator="true" 
+                        pattern="MMM dd, yyyy" >
+
+                <p:ajax event="dateSelect"
+                        global="false"
+                        listener="#{inventoryManager.updateInventoryRequisition}" />
+
+                <p:ajax event="keyup"
+                        global="false"
+                        listener="#{inventoryManager.updateInventoryRequisition}" />
+
+            </p:calendar>
+
         </h:panelGrid>
     </p:panel>
     
