@@ -58,6 +58,148 @@ Email: info@dpbennett.com.jm
             </p:calendar>
 
         </h:panelGrid>
+
+        <p:toolbar style="margin-top: 1px;margin-bottom: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new disbursement"
+                                 value="New"
+                                 action="#{inventoryManager.addNewDisbursement}"
+                                 update=":inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                                 oncomplete="PF('disbursementVar').addRow();"
+                                 icon="pi pi-plus"
+                                 process="@this">
+                </p:commandButton>  
+            </p:toolbarGroup> 
+        </p:toolbar>
+
+        <p:dataTable  var="disbursement"
+                      id="disbursementTable"
+                      editable="true"
+                      editMode="row"
+                      widgetVar="disbursementVar"
+                      value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
+
+            <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
+                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+            <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
+                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+
+            <p:column headerText="Date" >   
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <h:outputText value="#{costComponent.costDate}">
+                            <f:convertDateTime pattern="MMM dd, yyyy"/>
+                        </h:outputText>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:calendar value="#{costComponent.costDate}" 
+                                    readonlyInput="true"
+                                    focusOnSelect="true"
+                                    navigator="true"                                 
+                                    pattern="MMM dd, yyyy" >
+                        </p:calendar>
+                    </f:facet>
+                </p:cellEditor>  
+            </p:column>
+            
+            <p:column headerText="Unit Cost ($)" >
+                <p:cellEditor>
+                    <f:facet name="output">
+                       <h:outputText value="#{costComponent.rate}" >
+                             <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                       </h:outputText>
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+                    </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="Quantity" >
+                <p:cellEditor>
+                <f:facet name="output">
+                   <h:outputText value="#{costComponent.hoursOrQuantity}" >
+                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                   </h:outputText>
+                </f:facet>
+                <f:facet name="input">               
+                       <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                </f:facet>
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="UOM" >
+                <p:cellEditor>
+                <f:facet name="output">
+                   <h:outputText value="#{costComponent.unit}" /> 
+                </f:facet>
+                <f:facet name="input">
+                   <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+                </f:facet>   
+                </p:cellEditor>
+            </p:column>
+
+            <p:column headerText="Cost ($)" >
+               <h:outputText value="#{costComponent.cost}">
+                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+               </h:outputText> 
+            </p:column>
+
+            <p:column style="width:32px;">
+                <p:rowEditor editTitle="Edit cost component"
+                             cancelTitle="Cancel cost component edit"                             
+                             saveTitle="Save cost component"/>
+            </p:column>
+
+            <p:column style="width:32px" >
+                <p:menuButton id="toolsButton" 
+                              title="Edit or delete cost component"
+                              icon="pi pi-ellipsis-v" >
+                    <p:menuitem   
+                        value="Edit"
+                        actionListener="#{inventoryManager.editCostComponent}"
+                        disabled="#{!costComponent.isEditable}"
+                        update=":inventoryCostingCompDialogForm"
+                        oncomplete="PF('inventoryCostingCompDialog').show();"
+                        icon="pi pi-pencil"
+                        process="@this" >
+
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
+
+                    </p:menuitem>
+
+                    <p:menuitem  
+                        value="Delete"
+                        onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
+                        icon="pi pi-trash"
+                        process="@this">
+
+                        <f:setPropertyActionListener value="#{costComponent}"
+                                                     target="#{inventoryManager.selectedCostComponent}" />
+
+                    </p:menuitem>                   
+
+                </p:menuButton>                   
+            </p:column>      
+
+        </p:dataTable>
+
+        <p:toolbar style="margin-top: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new disbursement"
+                                 value="New"
+                                 action="#{inventoryManager.addNewDisbursement}"
+                                 update=":inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                                 oncomplete="PF('disbursementVar').addRow();"
+                                 icon="pi pi-plus"
+                                 process="@this">
+                </p:commandButton>  
+            </p:toolbarGroup> 
+        </p:toolbar>
+
+
+
     </p:panel>
     
 
