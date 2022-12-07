@@ -80,28 +80,32 @@ Email: info@dpbennett.com.jm
                       value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
 
             <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
-                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+                    update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
-                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+                    update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
 
-            <p:column headerText="Date" >   
+            <p:column headerText="Product" >   
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{costComponent.costDate}">
-                            <f:convertDateTime pattern="MMM dd, yyyy"/>
-                        </h:outputText>
+                       <h:outputText value="#{disbursement.inventory.product.commonName}" /> 
                     </f:facet>
                     <f:facet name="input">
-                        <p:calendar value="#{costComponent.costDate}" 
-                                    readonlyInput="true"
-                                    focusOnSelect="true"
-                                    navigator="true"                                 
-                                    pattern="MMM dd, yyyy" >
-                        </p:calendar>
-                    </f:facet>
+                       <p:inputText  value="#{disbursement.inventory.product.commonName}" />
+                    </f:facet>   
                 </p:cellEditor>  
             </p:column>
-            
+
+            <p:column headerText="Description" >   
+                <p:cellEditor>
+                    <f:facet name="output">
+                       <h:outputText value="#{disbursement.description}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                       <p:inputText  value="#{disbursement.description}" />
+                    </f:facet>   
+                </p:cellEditor>  
+            </p:column>
+            <ui:remove>
             <p:column headerText="Unit Cost ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
@@ -182,7 +186,7 @@ Email: info@dpbennett.com.jm
 
                 </p:menuButton>                   
             </p:column>      
-
+            </ui:remove>
         </p:dataTable>
 
         <p:toolbar style="margin-top: 1px;">
@@ -197,8 +201,6 @@ Email: info@dpbennett.com.jm
                 </p:commandButton>  
             </p:toolbarGroup> 
         </p:toolbar>
-
-
 
     </p:panel>
     
