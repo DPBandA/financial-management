@@ -105,28 +105,11 @@ Email: info@dpbennett.com.jm
                     </p:inputTextarea>    
                     </ui:remove>
                     <p:textEditor widgetVar="emailContentVar" 
-                                  id="emailContent" allowBlocks="true"
-                                  allowImages="true"
-                                  allowLinks="true"
-                                  allowFormatting="true"
-                                  allowStyles="true"
+                                  id="emailContent" 
                                   value="#{purchasingManager.purchaseReqEmailContent}"                                   
                                   height="300" placeholder="Enter your content" 
                                   secure="false"
-                                  required="true">
-                        <f:facet name="toolbar">
-                            <span class="ql-formats">
-                                <button class="ql-bold"></button>
-                                <button class="ql-italic"></button>
-                                <button class="ql-underline"></button>
-                                <button class="ql-strike"></button>
-                            </span>
-                                <span class="ql-formats">
-                                <select class="ql-font"></select>
-                                <select class="ql-size"></select>
-                            </span>
-                        </f:facet>
-                    </p:textEditor>
+                                  required="true" />
                     
                     <h:outputText value="&nbsp;&nbsp;" />
                     <h:outputText id="emailSubjectCharsRemaining" /> 
