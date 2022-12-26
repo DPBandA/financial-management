@@ -4,24 +4,8 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
     <converter>
-        <converter-id>accPacCustomerConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.AccPacCustomerConverter</converter-class>
-    </converter>
-    <converter>
         <converter-id>activeSupplierConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.ActiveSupplierConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>accountingCodeConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.AccountingCodeConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>taxConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.TaxConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>discountConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.DiscountConverter</converter-class>
     </converter>
     <converter>
         <converter-id>classificationConverter</converter-id>
@@ -38,36 +22,12 @@
     <converter>
         <converter-id>sectorConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.SectorConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>serviceConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ServiceConverter</converter-class>
-    </converter>  
-    <converter>
-        <converter-id>activeMarketProductConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ActiveMarketProductConverter</converter-class>
-    </converter>
+    </converter>    
     <converter>
         <converter-id>activeInventoryProductConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryProductConverter</converter-class>
-    </converter>
-    
-    <validator>
-        <validator-id>accountingCodeValidator</validator-id>
-        <validator-class>jm.com.dpbennett.fm.validator.AccountingCodeValidator</validator-class>
-    </validator>  
-    <validator>
-        <validator-id>taxValidator</validator-id>
-        <validator-class>jm.com.dpbennett.fm.validator.TaxValidator</validator-class>
-    </validator>
-    <validator>
-        <validator-id>currencyValidator</validator-id>
-        <validator-class>jm.com.dpbennett.fm.validator.CurrencyValidator</validator-class>
-    </validator>
-    <validator>
-        <validator-id>discountValidator</validator-id>
-        <validator-class>jm.com.dpbennett.fm.validator.DiscountValidator</validator-class>
-    </validator>
+    </converter>   
+   
     <validator>
         <validator-id>supplierValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.SupplierValidator</validator-class>
@@ -79,11 +39,7 @@
     <validator>
         <validator-id>purchaseOrderNumberValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.PurchaseOrderNumberValidator</validator-class>
-    </validator>
-    <validator>
-        <validator-id>marketProductValidator</validator-id>
-        <validator-class>jm.com.dpbennett.fm.validator.MarketProductValidator</validator-class>
-    </validator>
+    </validator>    
     
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
