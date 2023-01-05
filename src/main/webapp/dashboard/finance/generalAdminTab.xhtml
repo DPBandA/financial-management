@@ -1,6 +1,6 @@
 <!--
-Financial Management (FM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Finance Management (FM) 
+Copyright (C) 2022  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -19,11 +19,32 @@ Email: info@dpbennett.com.jm
 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"> 
 
-    <ui:include src="financialAdminToolbar.xhtml"/>
-    <ui:include src="search.xhtml"/> 
+    <p:panel header="Dashboard">
+    <p:toolbar>
+        <p:toolbarGroup align="left" >
+
+            <p:menuButton value="New" class="new-entity">
+               
+            </p:menuButton>
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="left" >  
+            <p:menuButton value="Tools" >
+                <p:menuitem 
+                    actionListener="#{systemManager.selectSystemAdminTab('centerTabVar', 0)}" 
+                    value="System Administration" 
+                    icon="pi pi-server" /> 
+            </p:menuButton>
+        </p:toolbarGroup>
+    </p:toolbar>
+
+    <ui:include src="search.xhtml"/>
+    </p:panel>   
 
 </html>
 
