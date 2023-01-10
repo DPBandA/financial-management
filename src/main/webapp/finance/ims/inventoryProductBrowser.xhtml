@@ -1,6 +1,6 @@
 <!--
-Financial Management(FM)
-Copyright (C) 2022  D P Bennett & Associates Limited
+Inventory Management(IM)
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -87,34 +87,34 @@ Email: info@dpbennett.com.jm
         <p:ajax event="cellEdit" listener="#{inventoryManager.onInventoryProductCellEdit}" />
 
         <f:facet name="header">
-            <h:outputText value="Search Results (found: #{inventoryManager.numInventoryProducts})" />
+            <p:outputLabel value="Search Results (found: #{inventoryManager.numInventoryProducts})" />
         </f:facet>
 
         <p:column sortBy="#{inventoryProduct.name}">
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{inventoryProduct.name}" />
+            <p:outputLabel value="#{inventoryProduct.name}" />
         </p:column>
         
         <p:column sortBy="#{inventoryProduct.brand}">
             <f:facet name="header">
-                <h:outputText value="Brand"/>
+                <p:outputLabel value="Brand"/>
             </f:facet>
-            <h:outputText value="#{inventoryProduct.brand}" />
+            <p:outputLabel value="#{inventoryProduct.brand}" />
         </p:column>
 
         <p:column sortBy="#{inventoryProduct.description}">
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{inventoryProduct.description}" />
+            <p:outputLabel value="#{inventoryProduct.description}" />
         </p:column>       
 
         <p:column headerText="Active?" >                                                                         
             <p:cellEditor>                
                 <f:facet name="output">
-                    <h:outputText value="#{inventoryProduct.isActive}" />
+                    <p:outputLabel value="#{inventoryProduct.isActive}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{inventoryProduct.isActive}" style="width:90%">
@@ -125,7 +125,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>         
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton icon="pi pi-pencil"
                              actionListener="#{inventoryManager.editSelectedInventoryProduct}"
                              process="@this"

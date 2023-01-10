@@ -1,6 +1,6 @@
 <!--
 System Management (SM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,8 +22,8 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html" 
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-    
-   
+
+
     <p:dialog header="Login"
               responsive="true"
               position="center"
@@ -33,10 +33,11 @@ Email: info@dpbennett.com.jm
               width="375"
               closable="false"
               resizable="false">
+
         <h:form id="loginForm">
 
             <p:outputLabel id="loginMessage" 
-                          value="#{authentication.logonMessage}" style="font-weight: bold" />
+                           value="#{authentication.logonMessage}" style="font-weight: bold" />
             <h:panelGrid columns="2" cellspacing="10">
                 <p:outputLabel for="username" value="Username" style="font-weight: bold" />
                 <p:inputText value="#{authentication.username}"

@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,6 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
     <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
 
         <p:outputLabel for="supplierActive" value="Active" style="font-weight: bold;" />  
@@ -38,9 +39,9 @@ Email: info@dpbennett.com.jm
             <p:tooltip for="supplierActive" value="Check to activate this supplier" 
                        showEffect="fade" hideEffect="fade" />            
         </h:panelGroup>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Name" style="font-weight: bold;" />       
+        <p:outputLabel value="Name" style="font-weight: bold;" />       
         <p:inputText value="#{purchasingManager.selectedSupplier.name}"
                      style="width: 150%;"
                      id="supplierName"
@@ -54,9 +55,9 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Identification type" />        
+        <p:outputLabel value="Identification type" />        
         <p:inputText value="#{purchasingManager.selectedSupplier.identificationType}"
                      id="identificationType"
                      disabled="#{!purchasingManager.selectedSupplier.isNameAndIdEditable}" >
@@ -65,9 +66,9 @@ Email: info@dpbennett.com.jm
                     listener="#{purchasingManager.updateSupplier}"
                     process="@this"/>
         </p:inputText>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Identification" />        
+        <p:outputLabel value="Identification" />        
         <p:inputText value="#{purchasingManager.selectedSupplier.identification}"
                      id="identification"
                      disabled="#{!purchasingManager.selectedSupplier.isNameAndIdEditable}" >
@@ -76,15 +77,15 @@ Email: info@dpbennett.com.jm
                     listener="#{purchasingManager.updateSupplier}"
                     process="@this"/>
         </p:inputText>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText id="currentBillingAddress" value="Most recent billing address" 
+        <p:outputLabel id="currentBillingAddress" value="Most recent billing address" 
                       style="font-weight: bold;"/> 
         <h:panelGroup>
-            <h:outputText id="addressLine1" value="#{purchasingManager.supplierCurrentAddress.addressLine1FriendlyDisplay}"/>  
+            <p:outputLabel id="addressLine1" value="#{purchasingManager.supplierCurrentAddress.addressLine1FriendlyDisplay}"/>  
             <p:watermark for="addressLine1" value="-- none --" />
         </h:panelGroup>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
         <ui:remove>
             <p:menuButton icon="pi pi-pencil" 
                           title="Add or edit address">
@@ -113,21 +114,21 @@ Email: info@dpbennett.com.jm
             </p:menuButton>  
         </ui:remove>
 
-        <h:outputText value="" />
-        <h:outputText value="#{purchasingManager.supplierCurrentAddress.addressLine2}" />
-        <h:outputText value="" />
+        <p:outputLabel value="" />
+        <p:outputLabel value="#{purchasingManager.supplierCurrentAddress.addressLine2}" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="" />
-        <h:outputText value="#{purchasingManager.supplierCurrentAddress.city}" />
-        <h:outputText value="" />
+        <p:outputLabel value="" />
+        <p:outputLabel value="#{purchasingManager.supplierCurrentAddress.city}" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="" />
-        <h:outputText value="#{purchasingManager.supplierCurrentAddress.stateOrProvince}" />
-        <h:outputText value="" />
+        <p:outputLabel value="" />
+        <p:outputLabel value="#{purchasingManager.supplierCurrentAddress.stateOrProvince}" />
+        <p:outputLabel value="" />
 
-        <h:outputText id="currentContact" value="Most recent contact" style="font-weight: bold"/>    
-        <h:outputText value="#{purchasingManager.supplierCurrentContact.friendlyName}" />
-        <h:outputText value="" />        
+        <p:outputLabel id="currentContact" value="Most recent contact" style="font-weight: bold"/>    
+        <p:outputLabel value="#{purchasingManager.supplierCurrentContact.friendlyName}" />
+        <p:outputLabel value="" />        
     </h:panelGrid>                    
 
 </html>

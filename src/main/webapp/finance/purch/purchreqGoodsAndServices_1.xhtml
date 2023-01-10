@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,7 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <h:panelGrid columns="4" cellspacing="10">
-        <h:outputText value="Currency" />               
+        <p:outputLabel value="Currency" />               
         <p:autoComplete id="currency"  
                         var="currency"
                         forceSelection="true"      
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                     process="@this" />
 
         </p:autoComplete>
-        <h:outputText value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+        <p:outputLabel value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                             rendered="#{purchasingManager.applyTax}" />               
         <p:autoComplete id="tax"  
                         rendered="#{purchasingManager.applyTax}"
@@ -70,7 +70,7 @@ Email: info@dpbennett.com.jm
 
         </p:autoComplete>
 
-        <h:outputText value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+        <p:outputLabel value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                       rendered="#{purchasingManager.applyDiscount}" />               
         <p:autoComplete id="discount"  
                         rendered="#{purchasingManager.applyDiscount}"
@@ -107,7 +107,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>  
         </p:toolbarGroup>   
         <p:toolbarGroup align="right">
-            <h:outputText 
+            <p:outputLabel 
             id="PRJustificationStatusNote"
             style="font-weight: bold; color: orange;"
             value="#{purchasingManager.selectedPRJustificationStatusNote}" />
@@ -128,7 +128,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Component" style="width:200px">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.name}" /> 
+               <p:outputLabel value="#{costComponent.name}" /> 
             </f:facet>
             <f:facet name="input">
                <p:inputText  value="#{costComponent.name}" style="width:100%">
@@ -143,7 +143,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Cost Code" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.code}" /> 
+               <p:outputLabel value="#{costComponent.code}" /> 
             </f:facet>
             <f:facet name="input">
                <p:inputText  value="#{costComponent.code}" style="width:100%" >
@@ -157,15 +157,15 @@ Email: info@dpbennett.com.jm
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
         <p:column headerText="Type" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.type}" /> 
+               <p:outputLabel value="#{costComponent.type}" /> 
             </f:facet>
             <f:facet name="input">
                 <p:selectOneMenu value="#{costComponent.type}" style="width:100%" >
@@ -186,17 +186,17 @@ Email: info@dpbennett.com.jm
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
         <p:column headerText="Hours/Qty" rendered="#{!costComponent.isHeading}" >
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.hoursOrQuantity}" >
+               <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
+               </p:outputLabel>
             </f:facet>
             <f:facet name="input">               
                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" >
@@ -210,18 +210,18 @@ Email: info@dpbennett.com.jm
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
         <p:column headerText="Rate (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}/hr/qty)" 
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.rate}" >
+               <p:outputLabel value="#{costComponent.rate}" >
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
+               </p:outputLabel>
             </f:facet>
             <f:facet name="input">
                 <p:inputNumber value="#{costComponent.rate}" style="width:100%" >
@@ -233,23 +233,23 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>
 
             <f:facet name="footer">
-                <h:outputText value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
+                <p:outputLabel value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})"  />
             </f:facet>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
         <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.cost}" >
+               <p:outputLabel value="#{costComponent.cost}" >
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText>
+               </p:outputLabel>
             </f:facet>
             <f:facet name="input">
                    <p:inputNumber value="#{costComponent.cost}" style="width:100%" >
@@ -261,24 +261,24 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>
 
             <f:facet name="footer">
-                <h:outputText value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
                               styleClass="datatable-number-field" >
                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                </h:outputText>
+                </p:outputLabel>
             </f:facet>
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
         <p:column headerText="Unit" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
             <f:facet name="output">
-               <h:outputText value="#{costComponent.unit}" /> 
+               <p:outputLabel value="#{costComponent.unit}" /> 
             </f:facet>
             <f:facet name="input">
                <p:inputText  value="#{costComponent.unit}" style="width:100%" >
@@ -292,12 +292,12 @@ Email: info@dpbennett.com.jm
 
         <p:column rendered="#{costComponent.isHeading}">
             <f:facet name="header">
-                <h:outputText value=" " />
+                <p:outputLabel value=" " />
             </f:facet>
-            <h:outputText value=" " />
+            <p:outputLabel value=" " />
         </p:column>
 
-        <p:column style="width:32px" >
+        <p:column>
             <p:menuButton id="toolsButton" 
                           title="Edit or delete cost component"
                           icon="pi pi-pencil" >
@@ -343,7 +343,7 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
     </p:toolbar>   
 
-    <h:outputText 
+    <p:outputLabel 
         style="font-weight: bold;color: orange;"
         value="#{purchasingManager.selectedPRProcurementAmountNote}" />
 

@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -49,14 +49,14 @@ Email: info@dpbennett.com.jm
         </f:facet>
 
         <p:column headerText="Full address">                            
-            <h:outputText value="#{address}" />
+            <p:outputLabel value="#{address}" />
         </p:column>
 
         <p:column headerText="Type">                            
-            <h:outputText value="#{address.type}" />
+            <p:outputLabel value="#{address.type}" />
         </p:column>
 
-        <p:column style="width:32px" >
+        <p:column>
             <p:menuButton icon="pi pi-pencil" title="Edit or delete this address">
                 <p:menuitem value="Edit"
                             icon="pi pi-pencil" 

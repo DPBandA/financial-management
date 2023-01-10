@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM)  
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -92,7 +92,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Name">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{discount.name}" />
+                    <p:outputLabel value="#{discount.name}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{discount.name}" style="width:96%"/>
@@ -103,7 +103,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Value">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{discount.discountValue}" />
+                    <p:outputLabel value="#{discount.discountValue}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{discount.discountValue}" style="width:96%"/>
@@ -114,7 +114,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Code">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{discount.accountingCode.code}" />
+                    <p:outputLabel value="#{discount.accountingCode.code}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{discount.accountingCode.code}" style="width:96%"/>
@@ -125,7 +125,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Description">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{discount.description}" />
+                    <p:outputLabel value="#{discount.description}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{discount.description}" style="width:96%"/>
@@ -133,7 +133,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit discount"   
                              actionListener="#{financeManager.editDiscount}"
                              global="true"

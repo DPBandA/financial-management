@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -27,25 +27,25 @@ Email: info@dpbennett.com.jm
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="statusAndTrackingTabPanel" columns="4" cellspacing="5" >            
            
-            <h:outputText value="Entered by"/>
+            <p:outputLabel value="Entered by"/>
             <p:inputText readonly="true"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.enteredBy.firstName} #{inventoryManager.selectedInventory.editedBy.lastName}" />
 
-            <h:outputText value="Date entered" />
+            <p:outputLabel value="Date entered" />
             <p:inputText readonly="true"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEntered)}" />           
 
 
-            <h:outputText value="Last edited by"/>
+            <p:outputLabel value="Last edited by"/>
             <p:inputText readonly="true"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.editedBy.firstName} #{inventoryManager.selectedInventoryRequisition.editedBy.lastName}" />
 
-            <h:outputText value="Date edited" />
+            <p:outputLabel value="Date edited" />
             <p:inputText readonly="true"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEdited)}" />           

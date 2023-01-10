@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -30,6 +30,7 @@ Email: info@dpbennett.com.jm
                   draggable="true"
                   closable="false"
                   modal="true"
+                  responsive="true"
                   widgetVar="contactFormDialog"
                   header="Contact Detail" >
 
@@ -50,7 +51,7 @@ Email: info@dpbennett.com.jm
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" style="width: 85%">
 
-                    <h:outputText value="Type" style="font-weight: bold" />
+                    <p:outputLabel value="Type" style="font-weight: bold" />
                     <p:selectOneMenu value="#{purchasingManager.selectedSupplierContact.type}"
                                      id="contactType" 
                                      maxlength="50"
@@ -64,7 +65,7 @@ Email: info@dpbennett.com.jm
                         <f:selectItem itemLabel="General" itemValue="General" />
                     </p:selectOneMenu>
 
-                    <h:outputText value="Title" />
+                    <p:outputLabel value="Title" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.title}"
                                  maxlength="50"
                                  style="width: 100%" >
@@ -74,7 +75,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>               
 
-                    <h:outputText value="Firstname" style="font-weight: bold" />
+                    <p:outputLabel value="Firstname" style="font-weight: bold" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.firstName}"
                                  id="contactFirstname"
                                  maxlength="50"
@@ -86,7 +87,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Lastname" style="font-weight: bold" />
+                    <p:outputLabel value="Lastname" style="font-weight: bold" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.lastName}"
                                  id="contactLastname"
                                  maxlength="50"
@@ -98,7 +99,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Position" />
+                    <p:outputLabel value="Position" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.position}"
                                  maxlength="50"
                                  style="width: 100%" >
@@ -108,7 +109,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Phone" />
+                    <p:outputLabel value="Phone" />
                     <p:inputText 
                         value="#{purchasingManager.selectedSupplierContact.mainPhoneNumber.localNumber}"
                                  maxlength="50"
@@ -119,7 +120,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Email" />
+                    <p:outputLabel value="Email" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.email1}"
                                  maxlength="50"
                                  style="width: 100%" >                
@@ -129,7 +130,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Website" />
+                    <p:outputLabel value="Website" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.website1}"
                                  maxlength="50"
                                  style="width: 100%" >
@@ -139,7 +140,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Fax" />
+                    <p:outputLabel value="Fax" />
                     <p:inputText value="#{purchasingManager.selectedSupplierContact.mainFaxNumber.localNumber}"
                                  maxlength="50"
                                  style="width: 100%">

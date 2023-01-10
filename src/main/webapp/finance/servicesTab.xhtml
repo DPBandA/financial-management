@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -91,21 +91,31 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Name">
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{service.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{service.name}" style="width:96%"/></f:facet>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{service.name}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{service.name}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
         <p:column headerText="Description">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{service.description}" /></f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{service.description}" style="width:96%"/></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{service.description}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputTextarea value="#{service.description}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
         <p:column headerText="Active" sortBy="#{service.usable}">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{service.usable}" /></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{service.usable}" />
+                </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{service.usable}" style="width:100px;">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
@@ -115,7 +125,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>  
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit service"   
                              actionListener="#{financeManager.editService}"
                              global="true"

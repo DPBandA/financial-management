@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,26 +23,27 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
+    
     <h:panelGrid columns="4" cellspacing="10">
 
-        <h:outputText value="Entered by" />           
+        <p:outputLabel value="Entered by" />           
         <p:inputText value="#{purchasingManager.selectedSupplier.enteredBy.name}"
                      readonly="true" 
                      style="background-color: lightgray !important;" />  
 
-        <h:outputText value="Date entered" />
+        <p:outputLabel value="Date entered" />
         <p:calendar value="#{purchasingManager.selectedSupplier.dateEntered}"                                                            
                     readonly="true"
                     readonlyInput="true"
                     showOn="none"   
                     pattern="MMM dd, yyyy" />     
 
-        <h:outputText value="Edited by" />            
+        <p:outputLabel value="Edited by" />            
         <p:inputText value="#{purchasingManager.selectedSupplier.editedBy.name}"                        
                      readonly="true" 
                      style="background-color: lightgray !important;" />  
 
-        <h:outputText value="Date edited" />
+        <p:outputLabel value="Date edited" />
         <p:calendar value="#{purchasingManager.selectedSupplier.dateEdited}"  
                     readonly="true"
                     readonlyInput="true"

@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM)
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -86,34 +86,34 @@ Email: info@dpbennett.com.jm
         <p:ajax event="cellEdit" listener="#{financeManager.onMarketProductCellEdit}" />
 
         <f:facet name="header">
-            <h:outputText value="Search Results (found: #{financeManager.numMarketProducts})" />
+            <p:outputLabel value="Search Results (found: #{financeManager.numMarketProducts})" />
         </f:facet>
 
         <p:column sortBy="#{marketProduct.name}">
             <f:facet name="header">
-                <h:outputText value="Name"/>
+                <p:outputLabel value="Name"/>
             </f:facet>
-            <h:outputText value="#{marketProduct.name}" />
+            <p:outputLabel value="#{marketProduct.name}" />
         </p:column>
         
         <p:column sortBy="#{marketProduct.brand}">
             <f:facet name="header">
-                <h:outputText value="Brand"/>
+                <p:outputLabel value="Brand"/>
             </f:facet>
-            <h:outputText value="#{marketProduct.brand}" />
+            <p:outputLabel value="#{marketProduct.brand}" />
         </p:column>
 
         <p:column sortBy="#{marketProduct.description}">
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{marketProduct.description}" />
+            <p:outputLabel value="#{marketProduct.description}" />
         </p:column>       
 
         <p:column headerText="Active?" >                                                                         
             <p:cellEditor>                
                 <f:facet name="output">
-                    <h:outputText value="#{marketProduct.isActive}" />
+                    <p:outputLabel value="#{marketProduct.isActive}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{marketProduct.isActive}" style="width:90%">
@@ -124,7 +124,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>         
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton icon="pi pi-pencil"
                              actionListener="#{financeManager.editSelectedMarketProduct}"
                              process="@this"

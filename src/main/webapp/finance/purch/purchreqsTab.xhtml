@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -76,7 +76,7 @@ Email: info@dpbennett.com.jm
                  value="#{purchasingManager.foundPurchaseReqs}">                        
 
         <f:facet name="header">
-            <h:outputText value="#{purchasingManager.purchaseReqsTableHeader}" />
+            <p:outputLabel value="#{purchasingManager.purchaseReqsTableHeader}" />
         </f:facet>
 
         <p:ajax event="rowSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
@@ -89,51 +89,51 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="No."/>
+                <p:outputLabel value="No."/>
             </f:facet>
-            <h:outputText value="#{pr.number}" />
+            <p:outputLabel value="#{pr.number}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Originator"/>
+                <p:outputLabel value="Originator"/>
             </f:facet>
-            <h:outputText value="#{pr.originator}" />
+            <p:outputLabel value="#{pr.originator}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Requisition date"/>
+                <p:outputLabel value="Requisition date"/>
             </f:facet>
-            <h:outputText value="#{pr.requisitionDate}">
+            <p:outputLabel value="#{pr.requisitionDate}">
                 <f:convertDateTime pattern="MMM dd, yyyy"/>
-            </h:outputText>
+            </p:outputLabel>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Total cost"/>
+                <p:outputLabel value="Total cost"/>
             </f:facet>
-            <h:outputText value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
+            <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
                 
-            </h:outputText>
+            </p:outputLabel>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Progress"/>
+                <p:outputLabel value="Progress"/>
             </f:facet>
-            <h:outputText value="#{pr.workProgress}" />                
+            <p:outputLabel value="#{pr.workProgress}" />                
         </p:column>
         
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description"/>
+                <p:outputLabel value="Description"/>
             </f:facet>
-            <h:outputText value="#{pr.description}" />                
+            <p:outputLabel value="#{pr.description}" />                
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             
                 <p:commandButton icon="pi pi-pencil"
                             actionListener="#{purchasingManager.editSelectedPurchaseReq}"

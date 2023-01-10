@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -53,7 +53,7 @@ Email: info@dpbennett.com.jm
                  value="#{inventoryManager.foundInventories}">                        
 
         <f:facet name="header">
-            <h:outputText value="#{inventoryManager.inventoryTableHeader}" />
+            <p:outputLabel value="#{inventoryManager.inventoryTableHeader}" />
         </f:facet>
 
         <p:ajax event="rowSelect" update=""/>
@@ -66,43 +66,43 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Category"/>
+                <p:outputLabel value="Category"/>
             </f:facet>
-            <h:outputText value="#{inventory.category.name}" />                
+            <p:outputLabel value="#{inventory.category.name}" />                
         </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Product"/>
+                <p:outputLabel value="Product"/>
             </f:facet>
-            <h:outputText value="#{inventory.product.name}" />
+            <p:outputLabel value="#{inventory.product.name}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Supplier"/>
+                <p:outputLabel value="Supplier"/>
             </f:facet>
-            <h:outputText value="#{inventory.supplier.name}" />                
+            <p:outputLabel value="#{inventory.supplier.name}" />                
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Qty"/>
+                <p:outputLabel value="Qty"/>
             </f:facet>
-            <h:outputText value="#{inventory.quantity}" />
+            <p:outputLabel value="#{inventory.quantity}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Cost"/>
+                <p:outputLabel value="Cost"/>
             </f:facet>
-            <h:outputText value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
+            <p:outputLabel value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
                           styleClass="datatable-number-field" >                
                 
-            </h:outputText>
+            </p:outputLabel>
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             
                 <p:commandButton icon="pi pi-pencil"
                             actionListener="#{inventoryManager.editSelectedInventory}"

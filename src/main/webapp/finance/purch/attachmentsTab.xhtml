@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
     <ui:include src="attachmentsTableHeader.xhtml"/>
    
     <ui:remove>
-    <h:outputText 
+    <p:outputLabel 
         id="PRBidQuotesNote"
         style="font-weight: bold; color: orange;"
         value="#{purchasingManager.selectedPRBidQuotesNote}" />
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
         
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Attachment" />
+                <p:outputLabel value="Attachment" />
             </f:facet>
             <p:commandLink value="#{attachment.name}" 
                            onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)"
@@ -57,10 +57,12 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type" />
+                <p:outputLabel value="Type" />
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{attachment.documentType}" /></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{attachment.documentType}" />
+                </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu style="width: 96%;"
                                      value="#{attachment.documentType}">
@@ -77,15 +79,19 @@ Email: info@dpbennett.com.jm
         
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Description" />
+                <p:outputLabel value="Description" />
             </f:facet>
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{attachment.description}" /></f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{attachment.description}" style="width:96%"/></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{attachment.description}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputTextarea value="#{attachment.description}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>
 
-        <p:column style="width: 32px;">
+        <p:column>
             <p:commandButton   
                 title="Remove attachment"
                 onclick="PF('purchreqAttachmentDeleteConfirmDialog').show();"

@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -53,7 +53,7 @@ Email: info@dpbennett.com.jm
                  value="#{inventoryManager.foundInventoryRequisitions}">                        
 
         <f:facet name="header">
-            <h:outputText value="#{inventoryManager.inventoryRequisitionTableHeader}" />
+            <p:outputLabel value="#{inventoryManager.inventoryRequisitionTableHeader}" />
         </f:facet>
 
         <p:ajax event="rowSelect" update=""/>
@@ -66,44 +66,44 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Code"/>
+                <p:outputLabel value="Code"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.code}" />                
+            <p:outputLabel value="#{inventoryRequisition.code}" />                
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Requisition date"/>
+                <p:outputLabel value="Requisition date"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.dateOfRequisition}">
+            <p:outputLabel value="#{inventoryRequisition.dateOfRequisition}">
                 <f:convertDateTime pattern="MMM dd, yyyy"/>
-            </h:outputText>
+            </p:outputLabel>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Date Entered"/>
+                <p:outputLabel value="Date Entered"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.dateEntered}">
+            <p:outputLabel value="#{inventoryRequisition.dateEntered}">
                 <f:convertDateTime pattern="MMM dd, yyyy"/>
-            </h:outputText>
+            </p:outputLabel>
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Entered By"/>
+                <p:outputLabel value="Entered By"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.enteredBy}" />                
+            <p:outputLabel value="#{inventoryRequisition.enteredBy}" />                
         </p:column> 
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Items"/>
+                <p:outputLabel value="Items"/>
             </f:facet>
-            <h:outputText value="#{inventoryRequisition.inventoryDisbursements}" />                
+            <p:outputLabel value="#{inventoryRequisition.inventoryDisbursements}" />                
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             
                 <p:commandButton icon="pi pi-pencil"
                             actionListener="#{inventoryManager.editSelectedInventoryRequisition}"

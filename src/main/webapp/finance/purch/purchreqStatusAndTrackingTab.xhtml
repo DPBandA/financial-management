@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,13 +22,14 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core">
+
     <p:panel id="purhReqStatusAndTracking" header="Status" 
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="1" >
             <h:panelGroup>
                 <h:panelGrid columns="2">
 
-                    <h:outputLabel value="Work progress" 
+                    <p:outputLabel value="Work progress" 
                                    style="font-weight: bold;"
                                    for="workProgress"/>
                     <p:selectOneMenu id="workProgress"     
@@ -47,7 +48,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <h:outputText value="Purchasing department" style="font-weight: bold" />
+                    <p:outputLabel value="Purchasing department" style="font-weight: bold" />
                     <p:autoComplete id="purchasingDepartment"                          
                                     readonly="true"
                                     inputStyleClass="read-only-text-field"
@@ -64,7 +65,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{humanResourceManager.completeActiveDepartment}" /> 
 
-                    <h:outputText value="Procurement officer" style="font-weight: bold" />       
+                    <p:outputLabel value="Procurement officer" style="font-weight: bold" />       
                     <p:autoComplete id="officer"
                                     readonly="true"
                                     inputStyleClass="read-only-text-field"
@@ -80,23 +81,23 @@ Email: info@dpbennett.com.jm
                                     scrollHeight="200" 
                                     completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
-                    <h:outputText value="Completion date" />
+                    <p:outputLabel value="Completion date" />
                     <p:inputText readonly="true"
                                  styleClass="read-only-text-field"
                                  value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.dateOfCompletion)}" />
 
-                    <h:outputText value="Last edited by"/>
+                    <p:outputLabel value="Last edited by"/>
                     <p:inputText readonly="true"
                                  maxlength="250"
                                  style="background-color: lightgray !important;color: blue !important;"
                                  value="#{purchasingManager.selectedPurchaseRequisition.editedBy.firstName} #{purchasingManager.selectedPurchaseRequisition.editedBy.lastName}" />
 
-                    <h:outputText value="Date edited" />
+                    <p:outputLabel value="Date edited" />
                     <p:inputText readonly="true"
                                  style="background-color: lightgray;"
                                  value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.dateEdited)}" />  
 
-                    <h:outputText value="Date required"/>
+                    <p:outputLabel value="Date required"/>
                     <p:calendar pattern="MMM dd, yyyy"
                                 navigator="true"          
                                 readonlyInput="true"
@@ -112,7 +113,7 @@ Email: info@dpbennett.com.jm
 
                     </p:calendar>
 
-                    <h:outputText value="Expected date of completion"/>
+                    <p:outputLabel value="Expected date of completion"/>
                     <p:calendar pattern="MMM dd, yyyy"
                                 navigator="true"     
                                 disabled="#{!purchasingManager.isProcurementOfficer}"
@@ -146,12 +147,12 @@ Email: info@dpbennett.com.jm
             </p:toolbarGroup>
         </p:toolbar>               
         <p:dataTable id="cashPaymentTable"
-                      style="margin-top: 1px;margin-bottom: 1px;"
-                      var="cashPayment"
-                      editable="true"
-                      editMode="cell"
-                      widgetVar="cashPaymentVar"
-                      value="#{purchasingManager.cashPayments}">
+                     style="margin-top: 1px;margin-bottom: 1px;"
+                     var="cashPayment"
+                     editable="true"
+                     editMode="cell"
+                     widgetVar="cashPaymentVar"
+                     value="#{purchasingManager.cashPayments}">
 
             <p:ajax event="cellEdit" listener="#{purchasingManager.onCashPaymentCellEdit}"                 
                     update="cashPaymentTable"/>
@@ -159,7 +160,7 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Invoice #">
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{cashPayment.invoiceNumber}" /> 
+                        <p:outputLabel value="#{cashPayment.invoiceNumber}" /> 
                     </f:facet>
                     <f:facet name="input">
                         <p:inputText  value="#{cashPayment.invoiceNumber}"/>                   
@@ -169,33 +170,33 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Date">
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{cashPayment.dateOfPayment}" >
+                        <p:outputLabel value="#{cashPayment.dateOfPayment}" >
                             <f:convertDateTime pattern="MMM dd, yyyy"/>
-                        </h:outputText>
+                        </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">
                         <p:calendar 
-                                value="#{cashPayment.dateOfPayment}"   
-                                navigator="true"
-                                validator="requiredFieldValidator"
-                                disabled="false"
-                                pattern="MMM dd, yyyy" />                   
+                            value="#{cashPayment.dateOfPayment}"   
+                            navigator="true"
+                            validator="requiredFieldValidator"
+                            disabled="false"
+                            pattern="MMM dd, yyyy" />                   
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
             <p:column headerText="Type">       
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{cashPayment.type}" /> 
+                        <p:outputLabel value="#{cashPayment.type}" /> 
                     </f:facet>
                     <f:facet name="input">
                         <p:selectOneMenu value="#{cashPayment.type}" style="width:100%" >
 
                             <f:selectItems  value="#{purchasingManager.paymentTypes}"
-                                   var="type"                            
-                                   itemValue="#{type}"
-                                   itemLabel="#{type}"/>
-                        
+                                            var="type"                            
+                                            itemValue="#{type}"
+                                            itemLabel="#{type}"/>
+
                         </p:selectOneMenu> 
                     </f:facet>   
                 </p:cellEditor>
@@ -203,9 +204,9 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Amount ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{cashPayment.payment}" >
+                        <p:outputLabel value="#{cashPayment.payment}" >
                             <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                        </h:outputText>
+                        </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">               
                         <p:inputNumber value="#{cashPayment.payment}" />                                                 
@@ -215,27 +216,27 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Purpose">
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{cashPayment.paymentPurpose}" /> 
+                        <p:outputLabel value="#{cashPayment.paymentPurpose}" /> 
                     </f:facet>
                     <f:facet name="input">
                         <p:inputText  value="#{cashPayment.paymentPurpose}"/>                   
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            <p:column style="width:32px" >
+            <p:column>
                 <p:commandButton 
-                              disabled="#{!purchasingManager.isProcurementOfficer}"
-                              actionListener="#{purchasingManager.openCashPaymentDeleteConfirmDialog}"
-                              icon="pi pi-trash" 
-                              title="Delete payment" >
+                    disabled="#{!purchasingManager.isProcurementOfficer}"
+                    actionListener="#{purchasingManager.openCashPaymentDeleteConfirmDialog}"
+                    icon="pi pi-trash" 
+                    title="Delete payment" >
 
-                     <f:setPropertyActionListener value="#{cashPayment}"
-                                                  target="#{purchasingManager.selectedCashPayment}" />
+                    <f:setPropertyActionListener value="#{cashPayment}"
+                                                 target="#{purchasingManager.selectedCashPayment}" />
 
-                     <p:ajax event="dialogReturn"               
-                                update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
-                                process="@this"/>
-                    
+                    <p:ajax event="dialogReturn"               
+                            update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
+                            process="@this"/>
+
                 </p:commandButton>          
             </p:column>            
             <p:columnGroup type="footer">
@@ -245,9 +246,9 @@ Email: info@dpbennett.com.jm
                               footerText="Total payments ($)"/>                                        
                     <p:column style="text-align:right;"> 
                         <f:facet name="footer">
-                            <h:outputText value="#{purchasingManager.totalCashPayments}" >
+                            <p:outputLabel value="#{purchasingManager.totalCashPayments}" >
                                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
-                            </h:outputText>
+                            </p:outputLabel>
                         </f:facet>                        
                     </p:column>
                 </p:row>               
@@ -255,7 +256,7 @@ Email: info@dpbennett.com.jm
         </p:dataTable>
         <p:toolbar>
             <p:toolbarGroup align="left">
-               <p:commandButton value="New"
+                <p:commandButton value="New"
                                  title="Add new payment"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
@@ -282,7 +283,7 @@ Email: info@dpbennett.com.jm
 
         </p:inputTextarea>
         <br/>
-        <h:outputText id="statusNoteCharsRemaining" /> 
+        <p:outputLabel id="statusNoteCharsRemaining" /> 
     </p:panel>
 
 

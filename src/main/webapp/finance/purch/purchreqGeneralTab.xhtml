@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2" cellspacing="5" >            
-            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />          
+            <p:outputLabel value="Purchase Order No." style="font-weight: bold;" />          
             <p:inputText id="prNumberEdit"
                           size="15"
                           style="font-weight: bold;"
@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>               
 
-            <h:outputText value="Supplier" style="font-weight: bold" />
+            <p:outputLabel value="Supplier" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
                                 var="supplier"
@@ -101,12 +101,12 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <h:outputText value="Date" style="font-weight: bold" />
+            <p:outputLabel value="Date" style="font-weight: bold" />
             <p:inputText readonly="true"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
 
-            <h:outputText value="Originator" style="font-weight: bold" />       
+            <p:outputLabel value="Originator" style="font-weight: bold" />       
             <p:autoComplete id="originator"
                             readonly="true"
                             inputStyleClass="read-only-text-field"
@@ -122,7 +122,7 @@ Email: info@dpbennett.com.jm
                             scrollHeight="200" 
                             completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
-            <h:outputText value="Originating dep't" style="font-weight: bold" />
+            <p:outputLabel value="Originating dep't" style="font-weight: bold" />
             <p:autoComplete id="originatingDepartment"                          
                             readonly="true"
                             inputStyleClass="read-only-text-field"
@@ -139,7 +139,7 @@ Email: info@dpbennett.com.jm
                             validator="businessEntityValidator"
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" />     
 
-            <h:outputLabel value="Procurement method" 
+            <p:outputLabel value="Procurement method" 
                            for="procurementMethod"/>
             <p:selectOneMenu id="procurementMethod" 
                              editable="true"
@@ -157,7 +157,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputLabel value="Priority code" 
+            <p:outputLabel value="Priority code" 
                            for="priorityCode"/>
             <p:selectOneMenu id="priorityCode"
                              value="#{purchasingManager.selectedPurchaseRequisition.priorityCode}">
@@ -174,7 +174,7 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <h:outputText value="Purpose/Description" style="font-weight: bold;vertical-align: top;" />       
+            <p:outputLabel value="Purpose/Description" style="font-weight: bold;vertical-align: top;" />       
             <p:inputTextarea
                 id="description"
                 value="#{purchasingManager.selectedPurchaseRequisition.description}"
@@ -193,8 +193,8 @@ Email: info@dpbennett.com.jm
                         process="@this"/>
 
             </p:inputTextarea> 
-            <h:outputText value="&nbsp;&nbsp;" />
-            <h:outputText id="descriptionCharsRemaining" /> 
+            <p:outputLabel value="&nbsp;&nbsp;" />
+            <p:outputLabel id="descriptionCharsRemaining" /> 
 
         </h:panelGrid>
     </p:panel>
@@ -210,26 +210,26 @@ Email: info@dpbennett.com.jm
 
             <p:column>
                 <f:facet name="header">
-                    <h:outputText value="Approval/Recommendation" />
+                    <p:outputLabel value="Approval/Recommendation" />
                 </f:facet>
-                <h:outputText value="#{approver.nameWithRole}" />                    
+                <p:outputLabel value="#{approver.nameWithRole}" />                    
             </p:column>    
 
             <p:column>
                 <f:facet name="header">
-                    <h:outputText value="Title(s)" />
+                    <p:outputLabel value="Title(s)" />
                 </f:facet>
-                <h:outputText value="#{approver.allPositions}" />                    
+                <p:outputLabel value="#{approver.allPositions}" />                    
             </p:column>
 
             <p:column >
                 <f:facet name="header">
-                    <h:outputText value="Date" />
+                    <p:outputLabel value="Date" />
                 </f:facet>
-                <h:outputText value="#{purchasingManager.getPRApprovalOrRecommendationDate(approver)}" />                    
+                <p:outputLabel value="#{purchasingManager.getPRApprovalOrRecommendationDate(approver)}" />                    
             </p:column>
 
-            <p:column style="width:32px" >                                   
+            <p:column>                                   
                 <p:commandButton   
                     onclick="PF('purchreqApproverDeleteConfirmDialog').show();"
                     disabled="#{!purchasingManager.user.can('BeFinancialAdministrator')}"
@@ -245,13 +245,13 @@ Email: info@dpbennett.com.jm
 
         </p:dataTable>     
 
-        <h:outputText 
+        <p:outputLabel 
             style="font-weight: bold;"
             value="#{purchasingManager.selectedPurchaseRequisitionApprovalsNote}" />
 
         <ui:include src="purchreqApprovalsToolbar.xhtml"/>
 
-        <h:outputText 
+        <p:outputLabel 
             style="font-weight: bold;color: red;"
             value="#{purchasingManager.selectedPRProcurementAmountNote}" />
 

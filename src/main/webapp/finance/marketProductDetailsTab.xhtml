@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -40,9 +40,9 @@ Email: info@dpbennett.com.jm
             <p:tooltip for="marketProductActive" value="Check to activate this market product" 
                        showEffect="fade" hideEffect="fade" />            
         </h:panelGroup>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Code" />       
+        <p:outputLabel value="Code" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.code}" >
 
             <p:ajax event="change"
@@ -51,9 +51,9 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Name:" style="font-weight: bold;" />       
+        <p:outputLabel value="Name:" style="font-weight: bold;" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.commonName}"
                      id="marketProductName"
                      style="width: 300px;"
@@ -65,9 +65,9 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Brand:" />       
+        <p:outputLabel value="Brand:" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.brand}" 
                      id="marketProductBrand" >
 
@@ -77,9 +77,9 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Model:" />       
+        <p:outputLabel value="Model:" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.model}"
                      id="marketProductModel" >
 
@@ -89,9 +89,9 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText style="vertical-align: top;"
+        <p:outputLabel style="vertical-align: top;"
                       value="Categories:" />
         <h:panelGroup>
             <h:panelGrid columns="2">
@@ -129,9 +129,9 @@ Email: info@dpbennett.com.jm
                 </p:commandButton>
             </h:panelGrid>
         </h:panelGroup>
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="Description:" />                        
+        <p:outputLabel value="Description:" />                        
         <p:inputTextarea
             id="description"
             value="#{financeManager.selectedMarketProduct.description}"
@@ -148,10 +148,10 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputTextarea> 
-        <h:outputText value="" />
+        <p:outputLabel value="" />
 
-        <h:outputText value="" />
-        <h:outputText id="descriptionCharsRemaining" />
+        <p:outputLabel value="" />
+        <p:outputLabel id="descriptionCharsRemaining" />
 
     </h:panelGrid>                    
 

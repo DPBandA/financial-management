@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2021  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -91,21 +91,31 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Name">
             <p:cellEditor>
-                <f:facet name="output"> <h:outputText value="#{sector.name}" /></f:facet>
-                <f:facet name="input"><p:inputText value="#{sector.name}" style="width:96%"/></f:facet>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{sector.name}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText value="#{sector.name}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
         <p:column headerText="Description">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{sector.description}" /></f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{sector.description}" style="width:96%"/></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{sector.description}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputTextarea value="#{sector.description}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
         <p:column headerText="Active" sortBy="#{sector.usable}">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{sector.usable}" /></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{sector.usable}" />
+                </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{sector.usable}" style="width:96%">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
@@ -115,7 +125,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>  
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit sector"   
                              actionListener="#{financeManager.editSector}"
                              global="true"

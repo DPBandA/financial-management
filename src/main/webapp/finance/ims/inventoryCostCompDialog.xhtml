@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,13 +23,16 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+    
     <h:form id="inventoryCostingCompDialogForm">
         <p:dialog width="500"
                   height="auto"
                   draggable="true"
                   modal="true"
+                  responsive="true"
                   widgetVar="inventoryCostingCompDialog"
                   header="Stock" >   
+            
             <p:toolbar style="margin-bottom: 1px;">
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
@@ -45,13 +48,14 @@ Email: info@dpbennett.com.jm
                                      oncomplete="PF('inventoryCostingCompDialog').hide();"
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
-            </p:toolbar>            
+            </p:toolbar>   
+            
             <p:panel>
                 <h:panelGrid id="costingComponentPanelGrid" 
                              cellspacing="10"
                              columns="2" style="width: 100%">
                     
-                    <h:outputLabel value="Cost code" 
+                    <p:outputLabel value="Cost code" 
                                    rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
                     <p:inputText id="costCode"
                                  value="#{inventoryManager.selectedCostComponent.code}"
@@ -68,7 +72,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Date" style="font-weight: bold" />
+                    <p:outputLabel value="Date" style="font-weight: bold" />
                     <p:calendar value="#{inventoryManager.selectedCostComponent.costDate}" 
                                 readonlyInput="true"
                                 required="true"
@@ -86,7 +90,7 @@ Email: info@dpbennett.com.jm
 
                     </p:calendar>
 
-                    <h:outputLabel value="Component" style="font-weight: bold" />
+                    <p:outputLabel value="Component" style="font-weight: bold" />
                     <p:inputTextarea  value="#{inventoryManager.selectedCostComponent.name}"
                                       id="costComponentName"
                                       validator="requiredFieldValidator"
@@ -102,7 +106,7 @@ Email: info@dpbennett.com.jm
                         
                     </p:inputTextarea>
 
-                    <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Quantity" 
                                    style="font-weight: bold;" />                   
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -125,7 +129,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
+                    <p:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
                                    value="UOM" />
                     <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                  id="costComponentUnit"
@@ -144,7 +148,7 @@ Email: info@dpbennett.com.jm
                         
                     </p:inputText>
 
-                    <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Unit cost ($)" style="font-weight: bold;" />
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
@@ -166,7 +170,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                    value="Cost ($)" style="font-weight: bold;" />
                     <p:inputText id="costComponentCost"
                                  style="width: 90%;"
@@ -182,7 +186,7 @@ Email: info@dpbennett.com.jm
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 process="@this"/>
                     </p:inputText>
-                    <h:outputText value=" "
+                    <p:outputLabel value=" "
                                   rendered="#{inventoryManager.selectedCostComponent.isHeading}" />
                 </h:panelGrid>
             </p:panel>            

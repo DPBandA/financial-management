@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -91,7 +91,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Name">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{tax.name}" />
+                    <p:outputLabel value="#{tax.name}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{tax.name}" style="width:96%"/>
@@ -102,7 +102,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Value">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{tax.taxValue}" />
+                    <p:outputLabel value="#{tax.taxValue}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{tax.taxValue}" style="width:96%"/>
@@ -113,7 +113,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Code">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{tax.accountingCode.code}" />
+                    <p:outputLabel value="#{tax.accountingCode.code}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{tax.accountingCode.code}" style="width:96%"/>
@@ -124,7 +124,7 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Description">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <h:outputText value="#{tax.description}" />
+                    <p:outputLabel value="#{tax.description}" />
                 </f:facet>
                 <f:facet name="input">
                     <p:inputText value="#{tax.description}" style="width:96%"/>
@@ -132,7 +132,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                           
         </p:column>   
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit tax"   
                              actionListener="#{financeManager.editTax}"
                              global="true"

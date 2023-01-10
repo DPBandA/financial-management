@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,14 +25,13 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="cache-control" content="max-age=0" />
-        <meta http-equiv="cache-control" content="no-cache" />
-        <meta http-equiv="expires" content="0" />
-        <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
-        <meta http-equiv="pragma" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Purchase Requisition Email</title>
-        <link rel="stylesheet" href="../../css/main.css" />
-        <script type="text/javascript" src="../../js/javascripts.js" />  
+        <link rel="shortcut icon" type="image/x-icon" href="#{financeManager.appShortcutIconURL}" />
+        <script type="text/javascript" src="js/javascripts.js" /> 
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+        <link rel="stylesheet" type="text/css" href="css/responsive.css" />   
     </h:head>
     <h:body >  
         
@@ -62,7 +61,7 @@ Email: info@dpbennett.com.jm
                 <h:panelGrid columns="2">   
 
                     <p:outputLabel for="fromEmployee" value="From" style="font-weight: bold;" />
-                    <h:outputText id="fromEmployee" 
+                    <p:outputLabel id="fromEmployee" 
                                   value="#{purchasingManager.user.employee.firstName} #{purchasingManager.user.employee.lastName}" />
 
                     <p:outputLabel for="toEmployees" value="To" style="font-weight: bold;" />       
@@ -81,13 +80,13 @@ Email: info@dpbennett.com.jm
                                     completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
 
-                    <h:outputLabel value="Subject" for="emailSubject" style="font-weight: bold;" />
+                    <p:outputLabel value="Subject" for="emailSubject" style="font-weight: bold;" />
                     <p:inputText value="#{purchasingManager.purchaseReqEmailSubject}"
                                  id="emailSubject" 
                                  style="width: 100%;" 
                                  validator="requiredFieldValidator" />
 
-                    <h:outputLabel value="" for="emailContent" style="font-weight: bold;" />
+                    <p:outputLabel value="" for="emailContent" style="font-weight: bold;" />
                     <ui:remove>
                     <p:inputTextarea
                         id="emailContent"
@@ -111,8 +110,8 @@ Email: info@dpbennett.com.jm
                                   secure="false"
                                   required="true" />
                     
-                    <h:outputText value="&nbsp;&nbsp;" />
-                    <h:outputText id="emailSubjectCharsRemaining" /> 
+                    <p:outputLabel value="&nbsp;&nbsp;" />
+                    <p:outputLabel id="emailSubjectCharsRemaining" /> 
 
                 </h:panelGrid>
             </p:panel>

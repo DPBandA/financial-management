@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,11 +23,13 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
+
     <h:form id="purchreqCostingCompDialogForm">
         <p:dialog width="500"
                   height="auto"
                   draggable="true"
                   modal="true"
+                  responsive="true"
                   widgetVar="purchreqCostingCompDialog"
                   header="Goods or Service Costing Component" >   
             <p:toolbar style="margin-bottom: 1px;">
@@ -50,10 +52,10 @@ Email: info@dpbennett.com.jm
                 <h:panelGrid id="costingComponentPanelGrid" 
                              cellspacing="10"
                              columns="2" style="width: 100%">
-                        
-                    <h:outputLabel value="Cost code" 
+
+                    <p:outputLabel value="Cost code" 
                                    rendered="#{!purchasingManager.selectedCostComponent.isHeading}" />
-                   <p:inputText id="costCode"
+                    <p:inputText id="costCode"
                                  value="#{purchasingManager.selectedCostComponent.code}"
                                  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
                                  styleClass="number-field"
@@ -68,7 +70,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel value="Component" style="font-weight: bold" />
+                    <p:outputLabel value="Component" style="font-weight: bold" />
                     <p:inputTextarea  value="#{purchasingManager.selectedCostComponent.name}"
                                       id="costComponentName"
                                       validator="requiredFieldValidator"
@@ -76,15 +78,15 @@ Email: info@dpbennett.com.jm
                                       rows="2"
                                       autoResize="false"
                                       style="width: 90%;" >
-                        
+
                         <p:ajax event="change"
-                                    global="false" 
-                                    listener="#{purchasingManager.updateSelectedCostComponent}" 
-                                    process="@this"/>
-                        
+                                global="false" 
+                                listener="#{purchasingManager.updateSelectedCostComponent}" 
+                                process="@this"/>
+
                     </p:inputTextarea>
 
-                    <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                    <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Quantity" 
                                    style="font-weight: bold;" />
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -107,26 +109,26 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
-                                   value="UOM" />
+                    <p:outputLabel  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
+                                    value="UOM" />
                     <p:inputText  rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
-                                 id="costComponentUnit"
-                                 value="#{purchasingManager.selectedCostComponent.unit}"
-                                 style="width: 90%" >
-                        
+                                  id="costComponentUnit"
+                                  value="#{purchasingManager.selectedCostComponent.unit}"
+                                  style="width: 90%" >
+
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 process="@this"/>
-                        
+
                         <p:ajax event="change"
                                 global="false"
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 process="@this"/>
-                        
+
                     </p:inputText>
 
-                    <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                    <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Unit cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
@@ -148,7 +150,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputLabel rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
+                    <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
                                    value="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
                     <p:inputText id="costComponentCost"
                                  style="width: 90%;"
@@ -164,26 +166,26 @@ Email: info@dpbennett.com.jm
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 process="@this"/>
                     </p:inputText>
-                    <h:outputText value=" "
+                    <p:outputLabel value=" "
                                   rendered="#{purchasingManager.selectedCostComponent.isHeading}" />
                 </h:panelGrid>
             </p:panel>            
             <p:toolbar style="margin-top: 1px;">
                 <p:toolbarGroup>
                     <p:toolbarGroup>
-                    <p:commandButton value="Ok"
-                                     actionListener="#{purchasingManager.okCostingComponent}"
-                                     update=":purchreqDialogForm:purchreqFormTabView:PRJustificationStatusNote,:purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:costComponentTable,:purchreqDialogForm:purchreq_growl"
-                                    icon="pi pi-check"
-                                     process="@form"/>
-                    <p:spacer width="5" />
-                    <p:commandButton value="Cancel" 
-                                     immediate="true"
-                                     actionListener="#{purchasingManager.cancelCostComponentEdit}"
-                                     update=""
-                                     oncomplete="PF('purchreqCostingCompDialog').hide();"
-                                     icon="pi pi-times"/>
-                </p:toolbarGroup>
+                        <p:commandButton value="Ok"
+                                         actionListener="#{purchasingManager.okCostingComponent}"
+                                         update=":purchreqDialogForm:purchreqFormTabView:PRJustificationStatusNote,:purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:costComponentTable,:purchreqDialogForm:purchreq_growl"
+                                         icon="pi pi-check"
+                                         process="@form"/>
+                        <p:spacer width="5" />
+                        <p:commandButton value="Cancel" 
+                                         immediate="true"
+                                         actionListener="#{purchasingManager.cancelCostComponentEdit}"
+                                         update=""
+                                         oncomplete="PF('purchreqCostingCompDialog').hide();"
+                                         icon="pi pi-times"/>
+                    </p:toolbarGroup>
                 </p:toolbarGroup>
             </p:toolbar> 
             <p/>

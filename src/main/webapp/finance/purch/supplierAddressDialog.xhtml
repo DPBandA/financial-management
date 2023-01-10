@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -23,12 +23,14 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">   
+    
     <h:form id="addressForm">
         <p:dialog width="450"
                   height="fit-content"
                   draggable="true"
                   closable="false"
                   modal="true"
+                  responsive="true"
                   widgetVar="addressFormDialog"
                   header="Address Detail" >
             <p:toolbar>
@@ -47,7 +49,7 @@ Email: info@dpbennett.com.jm
             </p:toolbar>
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2" style="width: 85%">       
-                    <h:outputText value="Type" style="font-weight: bold" />
+                    <p:outputLabel value="Type" style="font-weight: bold" />
                     <p:selectOneMenu value="#{purchasingManager.selectedSupplierAddress.type}"
                                      id="addressType"
                                      validator="addressLineValidator"
@@ -62,7 +64,7 @@ Email: info@dpbennett.com.jm
                         <f:selectItem itemLabel="General" itemValue="General" />
                     </p:selectOneMenu>
 
-                    <h:outputText value="Address (line 1)" style="font-weight: bold" />
+                    <p:outputLabel value="Address (line 1)" style="font-weight: bold" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.addressLine1}"
                                  id="addressLine1"
                                  maxlength="50"
@@ -74,7 +76,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Address (line 2)" />
+                    <p:outputLabel value="Address (line 2)" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.addressLine2}"
                                  id="addressLine2"     
                                  maxlength="50"
@@ -85,7 +87,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>                
 
-                    <h:outputText value="Nearest City/Town" style="font-weight: bold"/>
+                    <p:outputLabel value="Nearest City/Town" style="font-weight: bold"/>
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.city}"
                                  id="addressCity"
                                  maxlength="50"
@@ -97,7 +99,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <h:outputText value="Parish/State/Province" style="font-weight: bold" />
+                    <p:outputLabel value="Parish/State/Province" style="font-weight: bold" />
                     <h:panelGroup>
                         <p:selectOneMenu
                             value="#{purchasingManager.selectedSupplierAddress.stateOrProvince}"   
@@ -115,7 +117,7 @@ Email: info@dpbennett.com.jm
                         <p:watermark value="enter or select" for="parishStateProvince"/>
                     </h:panelGroup>
 
-                    <h:outputText value="Country" />
+                    <p:outputLabel value="Country" />
                     <p:autoComplete value="#{purchasingManager.selectedSupplierAddress.country}"     
                                     id="country"
                                     forceSelection="true"  

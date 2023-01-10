@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-            <h:outputLabel value="SKU" />          
+            <p:outputLabel value="SKU" />          
             <p:inputText  size="15"
                           maxlength="40"
                           value="#{inventoryManager.selectedInventory.stockKeepingUnit}">
@@ -38,7 +38,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>  
 
-            <h:outputLabel value="Code" />          
+            <p:outputLabel value="Code" />          
             <p:inputText  size="15"
                           maxlength="40"
                           value="#{inventoryManager.selectedInventory.code}">
@@ -50,7 +50,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <h:outputText value="Product" style="font-weight: bold;" /> 
+            <p:outputLabel value="Product" style="font-weight: bold;" /> 
             <h:panelGroup>
                 <p:autoComplete id="inventoryProduct"
                                 var="inventoryProduct"   
@@ -112,7 +112,7 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>
             </h:panelGroup>
 
-            <h:outputText style="vertical-align: top;font-weight: bold;"
+            <p:outputLabel style="vertical-align: top;font-weight: bold;"
                           value="Category" />
             <h:panelGroup>
                     <p:autoComplete id="category"
@@ -173,7 +173,7 @@ Email: info@dpbennett.com.jm
                     </p:menuButton>
             </h:panelGroup>
 
-            <h:outputText value="Supplier" style="font-weight: bold" />
+            <p:outputLabel value="Supplier" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
                                 var="supplier"

@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -72,9 +72,9 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Date" >   
                 <p:cellEditor>
                     <f:facet name="output">
-                        <h:outputText value="#{costComponent.costDate}">
+                        <p:outputLabel value="#{costComponent.costDate}">
                             <f:convertDateTime pattern="MMM dd, yyyy"/>
-                        </h:outputText>
+                        </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">
                         <p:calendar value="#{costComponent.costDate}" 
@@ -90,9 +90,9 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Unit Cost ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
-                       <h:outputText value="#{costComponent.rate}" >
+                       <p:outputLabel value="#{costComponent.rate}" >
                              <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                       </h:outputText>
+                       </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">
                         <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
@@ -103,9 +103,9 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Quantity" >
                 <p:cellEditor>
                 <f:facet name="output">
-                   <h:outputText value="#{costComponent.hoursOrQuantity}" >
+                   <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
                          <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </h:outputText>
+                   </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">               
                        <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
@@ -116,7 +116,7 @@ Email: info@dpbennett.com.jm
             <p:column headerText="UOM" >
                 <p:cellEditor>
                 <f:facet name="output">
-                   <h:outputText value="#{costComponent.unit}" /> 
+                   <p:outputLabel value="#{costComponent.unit}" /> 
                 </f:facet>
                 <f:facet name="input">
                    <p:inputText  value="#{costComponent.unit}" style="width:100%" />
@@ -125,18 +125,18 @@ Email: info@dpbennett.com.jm
             </p:column>
 
             <p:column headerText="Cost ($)" >
-               <h:outputText value="#{costComponent.cost}">
+               <p:outputLabel value="#{costComponent.cost}">
                      <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </h:outputText> 
+               </p:outputLabel> 
             </p:column>
 
-            <p:column style="width:32px;">
+            <p:column>
                 <p:rowEditor editTitle="Edit cost component"
                              cancelTitle="Cancel cost component edit"                             
                              saveTitle="Save cost component"/>
             </p:column>
 
-            <p:column style="width:32px" >
+            <p:column>
                 <p:menuButton id="toolsButton" 
                               title="Edit or delete cost component"
                               icon="pi pi-ellipsis-v" >

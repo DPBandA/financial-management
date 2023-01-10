@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -22,22 +22,23 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
- xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
     <p:panel id="orderDetail" 
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="2">
-            
-            <h:outputLabel value="Purchase Order No." style="font-weight: bold;" />
+
+            <p:outputLabel value="Purchase Order No." style="font-weight: bold;" />
             <p:inputText id="poNumberEdit"  
-                     style="font-weight: bold;"
-                     disabled="true"
-                     size="15"
-                     maxlength="40"      
-                     validator="purchaseOrderNumberValidator"
-                     title="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}"
-                     value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" />
-                   
-            <h:outputText value="Purchase Order Date" />
+                         style="font-weight: bold;"
+                         disabled="true"
+                         size="15"
+                         maxlength="40"      
+                         validator="purchaseOrderNumberValidator"
+                         title="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}"
+                         value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" />
+
+            <p:outputLabel value="Purchase Order Date" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderDate}" 
                         readonlyInput="false"
                         disabled="#{!purchasingManager.isProcurementOfficer}" 
@@ -53,8 +54,8 @@ Email: info@dpbennett.com.jm
                         listener="#{purchasingManager.updatePurchaseReq}" />
 
             </p:calendar>
-            
-            <h:outputText value="Quotation number" />
+
+            <p:outputLabel value="Quotation number" />
             <p:inputText value="#{purchasingManager.selectedPurchaseRequisition.quotationNumber}" > 
 
                 <p:ajax event="change"                            
@@ -64,7 +65,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <h:outputText value="Import licence no." />
+            <p:outputLabel value="Import licence no." />
             <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
                          value="#{purchasingManager.selectedPurchaseRequisition.importLicenceNum}" > 
 
@@ -75,7 +76,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <h:outputText value="Import license date" />
+            <p:outputLabel value="Import license date" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.importLicenceDate}" 
                         disabled="#{!purchasingManager.isProcurementOfficer}" 
                         readonlyInput="false"
@@ -91,8 +92,8 @@ Email: info@dpbennett.com.jm
                         listener="#{purchasingManager.updatePurchaseReq}" />
 
             </p:calendar>
-            
-            <h:outputText value="Delivery date required" />
+
+            <p:outputLabel value="Delivery date required" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.deliveryDateRequired}"
                         readonlyInput="false"
                         navigator="true" 
@@ -107,8 +108,8 @@ Email: info@dpbennett.com.jm
                         listener="#{purchasingManager.updatePurchaseReq}" />
 
             </p:calendar>
-            
-            <h:outputText value="Terms" />       
+
+            <p:outputLabel value="Terms" />       
             <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
                          maxlength="20"
                          value="#{purchasingManager.selectedPurchaseRequisition.terms}" > 
@@ -119,8 +120,8 @@ Email: info@dpbennett.com.jm
                         process="@this"/>
 
             </p:inputText>
-            
-            <h:outputText value="Please supply" />       
+
+            <p:outputLabel value="Please supply" />       
             <p:inputTextarea
                 id="pleaseSupply"
                 value="#{purchasingManager.selectedPurchaseRequisition.pleaseSupplyNote}"
@@ -138,8 +139,8 @@ Email: info@dpbennett.com.jm
                         process="@this"/>
 
             </p:inputTextarea> 
-            <h:outputText value="&nbsp;&nbsp;" />
-            <h:outputText id="pleaseSupplyCharsRemaining" /> 
+            <p:outputLabel value="&nbsp;&nbsp;" />
+            <p:outputLabel id="pleaseSupplyCharsRemaining" /> 
 
         </h:panelGrid>
     </p:panel>

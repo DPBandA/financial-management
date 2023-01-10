@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -52,33 +52,33 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Contact full name"/>
+                <p:outputLabel value="Contact full name"/>
             </f:facet>
-            <h:outputText value="#{contact.firstName} #{contact.lastName}" />
+            <p:outputLabel value="#{contact.firstName} #{contact.lastName}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Phone"/>
+                <p:outputLabel value="Phone"/>
             </f:facet>
-            <h:outputText value="#{contact.mainPhoneNumber.localNumber}" />
+            <p:outputLabel value="#{contact.mainPhoneNumber.localNumber}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Email"/>
+                <p:outputLabel value="Email"/>
             </f:facet>
-            <h:outputText value="#{contact.internet.email1}" />
+            <p:outputLabel value="#{contact.internet.email1}" />
         </p:column>
 
         <p:column>
             <f:facet name="header">
-                <h:outputText value="Type"/>
+                <p:outputLabel value="Type"/>
             </f:facet>
-            <h:outputText value="#{contact.type}" />
+            <p:outputLabel value="#{contact.type}" />
         </p:column>
 
-        <p:column style="width:32px" >
+        <p:column>
             <p:menuButton icon="pi pi-pencil" 
                           title="Edit or delete this contact">
                 <p:menuitem value="Edit"

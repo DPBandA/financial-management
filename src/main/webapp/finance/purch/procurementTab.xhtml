@@ -1,6 +1,6 @@
 <!--
-Financial Management (FM) 
-Copyright (C) 2022  D P Bennett & Associates Limited
+Purchase Management (PM) 
+Copyright (C) 2023  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <ui:remove>
         <h:panelGrid id="procurementTabPanel" columns="2" cellspacing="10">            
-            <h:outputLabel value="Current purchase order no." style="font-weight: bold;" />
+            <p:outputLabel value="Current purchase order no." style="font-weight: bold;" />
             <p:inputText value="[value]" />      
         </h:panelGrid>
     </ui:remove>
@@ -80,7 +80,9 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Method">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{procurementMethod.name}" /></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{procurementMethod.name}" />
+                </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu editable="true"
                                      value="#{procurementMethod.name}">
@@ -98,12 +100,12 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Quotations Required" >
             <p:cellEditor>
                 <f:facet name="output">
-                   <h:outputText value="#{procurementMethod.quotationsRequired}" >
-                       <f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
-                   </h:outputText>
+                    <p:outputLabel value="#{procurementMethod.quotationsRequired}" >
+                        <f:convertNumber minFractionDigits="0" maxFractionDigits="0"/>
+                    </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">
-                       <p:inputNumber value="#{procurementMethod.quotationsRequired}" />                         
+                    <p:inputNumber value="#{procurementMethod.quotationsRequired}" />                         
                 </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -111,12 +113,12 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Lower Signing Limit" >
             <p:cellEditor>
                 <f:facet name="output">
-                   <h:outputText value="#{procurementMethod.lowerSigningLimit}" >
-                       <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </h:outputText>
+                    <p:outputLabel value="#{procurementMethod.lowerSigningLimit}" >
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">
-                       <p:inputNumber value="#{procurementMethod.lowerSigningLimit}" />                         
+                    <p:inputNumber value="#{procurementMethod.lowerSigningLimit}" />                         
                 </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -124,26 +126,32 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Upper Signing Limit" >
             <p:cellEditor>
                 <f:facet name="output">
-                   <h:outputText value="#{procurementMethod.upperSigningLimit}" >
-                       <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </h:outputText>
+                    <p:outputLabel value="#{procurementMethod.upperSigningLimit}" >
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">
-                       <p:inputNumber value="#{procurementMethod.upperSigningLimit}" />                         
+                    <p:inputNumber value="#{procurementMethod.upperSigningLimit}" />                         
                 </f:facet>   
             </p:cellEditor>
         </p:column>
 
         <p:column headerText="Description">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{procurementMethod.description}" /></f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{procurementMethod.description}" style="width:96%"/></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{procurementMethod.description}" />
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputTextarea value="#{procurementMethod.description}" style="width:96%"/>
+                </f:facet>
             </p:cellEditor>                                         
         </p:column>
 
         <p:column headerText="Active">
             <p:cellEditor>
-                <f:facet name="output"><h:outputText value="#{procurementMethod.usable}" /></f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{procurementMethod.usable}" />
+                </f:facet>
                 <f:facet name="input">
                     <p:selectOneMenu value="#{procurementMethod.usable}" style="width:96%">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
@@ -153,7 +161,7 @@ Email: info@dpbennett.com.jm
             </p:cellEditor>                                         
         </p:column>
 
-        <p:column style="width:32px">
+        <p:column>
             <p:commandButton title="View or edit procurement method"   
                              actionListener="#{purchasingManager.editProcurementMethod}"
                              global="true"
