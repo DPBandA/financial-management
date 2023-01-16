@@ -34,11 +34,11 @@ Email: info@dpbennett.com.jm
         <link rel="stylesheet" type="text/css" href="../css/main.css" />
         <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
-    
+
     <h:body > 
-        
+
         <ui:include src="../common/commonDialogs.xhtml"/>  
-        
+
         <h:form id="classificationDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -56,70 +56,70 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:scrollPanel style="height: 400px;">
+                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                    <h:panelGrid columns="2">     
+                        <p:outputLabel for="classificationActive" value="Active:" 
+                                       style="font-weight: bold;" />               
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="classificationActive"
+                                                 value="#{financeManager.selectedClassification.active}" /> 
 
-            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2">     
-                    <p:outputLabel for="classificationActive" value="Active:" 
-                                   style="font-weight: bold;" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="classificationActive"
-                                             value="#{financeManager.selectedClassification.active}" /> 
+                        <p:outputLabel value="Category" style="font-weight: bold;" />
+                        <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
+                                         id="classificationCategory" >
 
-                    <p:outputLabel value="Category" style="font-weight: bold;" />
-                    <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
-                                     id="classificationCategory" >
+                            <f:validator validatorId="requiredFieldValidator" />
 
-                        <f:validator validatorId="requiredFieldValidator" />
+                            <f:selectItems value="#{financeManager.classificationCategories}"/>
 
-                        <f:selectItems value="#{financeManager.classificationCategories}"/>
+                        </p:selectOneMenu>
 
-                    </p:selectOneMenu>
+                        <p:outputLabel value="Name" style="font-weight: bold;" />
+                        <p:inputText value="#{financeManager.selectedClassification.name}"    
+                                     id="classificationName"
+                                     style="width:300px" >
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{financeManager.selectedClassification.name}"    
-                                 id="classificationName"
-                                 style="width:300px" >
+                            <f:validator validatorId="requiredFieldValidator" />
 
-                        <f:validator validatorId="requiredFieldValidator" />
+                        </p:inputText> 
 
-                    </p:inputText> 
+                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                        <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
+                                          id="classificationDescription"
+                                          maxlength="1000"
+                                          autoResize="false"
+                                          rows="4"
+                                          style="width:300px" >
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
-                                      id="classificationDescription"
-                                      maxlength="1000"
-                                      autoResize="false"
-                                      rows="4"
-                                      style="width:300px" >
+                            <f:validator validatorId="requiredFieldValidator" />
 
-                        <f:validator validatorId="requiredFieldValidator" />
+                        </p:inputTextarea>  
 
-                    </p:inputTextarea>  
+                        <p:outputLabel value="Default tax (%/$)" style="font-weight: bold" />
+                        <p:autoComplete id="tax"  
+                                        var="tax"
+                                        forceSelection="true"      
+                                        dropdown="true"
+                                        scrollHeight="200" 
+                                        maxlength="40"
+                                        value="#{financeManager.selectedClassification.defaultTax}"
+                                        title="#{financeManager.selectedClassification.defaultTax}"
+                                        styleClass="right-inputfield" 
+                                        itemValue="#{tax}"
+                                        itemLabel="#{tax.name}"
+                                        converter="taxConverter"
+                                        validator="businessEntityValidator"
+                                        completeMethod="#{financeManager.completeTax}" />
 
-                    <p:outputLabel value="Default tax (%/$)" style="font-weight: bold" />
-                    <p:autoComplete id="tax"  
-                                    var="tax"
-                                    forceSelection="true"      
-                                    dropdown="true"
-                                    scrollHeight="200" 
-                                    maxlength="40"
-                                    value="#{financeManager.selectedClassification.defaultTax}"
-                                    title="#{financeManager.selectedClassification.defaultTax}"
-                                    styleClass="right-inputfield" 
-                                    itemValue="#{tax}"
-                                    itemLabel="#{tax.name}"
-                                    converter="taxConverter"
-                                    validator="businessEntityValidator"
-                                    completeMethod="#{financeManager.completeTax}" />
+                        <p:outputLabel for="earningsJob" value="Earnings" style="font-weight: bold" />               
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="earningsJob"
+                                                 value="#{financeManager.selectedClassification.isEarning}" /> 
 
-                    <p:outputLabel for="earningsJob" value="Earnings" style="font-weight: bold" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="earningsJob"
-                                             value="#{financeManager.selectedClassification.isEarning}" /> 
-
-                </h:panelGrid>
-            </p:panel>
-
+                    </h:panelGrid>
+                </p:panel>
+            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

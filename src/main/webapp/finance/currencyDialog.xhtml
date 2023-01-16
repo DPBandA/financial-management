@@ -29,16 +29,16 @@ Email: info@dpbennett.com.jm
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Currency</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{financeManager.appShortcutIconURL}" />
-        <script type="text/javascript" src="js/javascripts.js" /> 
+        <script type="text/javascript" src="../js/javascripts.js" /> 
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css" />  
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />  
     </h:head>
-    
+
     <h:body >  
-        
+
         <ui:include src="../common/commonDialogs.xhtml"/>  
-        
+
         <h:form id="currencyDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -56,7 +56,6 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">   
 
@@ -89,7 +88,6 @@ Email: info@dpbennett.com.jm
 
                 </h:panelGrid>
             </p:panel>
-
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
