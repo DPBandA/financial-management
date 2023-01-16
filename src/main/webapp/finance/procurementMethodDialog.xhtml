@@ -44,13 +44,13 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
+                                     actionListener="#{financeManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
                                      update="growl,procurementMethodDialogForm"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
+                                     actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
@@ -63,7 +63,7 @@ Email: info@dpbennett.com.jm
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="active"
-                                                 value="#{purchasingManager.selectedProcurementMethod.active}" />
+                                                 value="#{financeManager.selectedProcurementMethod.active}" />
 
                         <p:tooltip for="active" value="Check to activate this procurement method" 
                                    showEffect="fade" hideEffect="fade" />            
@@ -72,9 +72,9 @@ Email: info@dpbennett.com.jm
                    
                     <p:outputLabel for="name" value="Name" style="font-weight: bold;" />
                     <p:selectOneMenu id="name"
-                                     value="#{purchasingManager.selectedProcurementMethod.name}">
+                                     value="#{financeManager.selectedProcurementMethod.name}">
 
-                        <f:selectItems  value="#{purchasingManager.procurementMethods}"
+                        <f:selectItems  value="#{financeManager.procurementMethods}"
                                         var="procurementMethod"                            
                                         itemValue="#{procurementMethod}"
                                         itemLabel="#{procurementMethod}"/>
@@ -85,7 +85,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel for="quotationsRequired" value="Quotations required" 
                                    style="font-weight: bold;" />                   
-                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.quotationsRequired}"
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.quotationsRequired}"
                                  id="quotationsRequired"
                                  converterMessage="Please enter a valid number of quotations"
                                  validatorMessage="A valid number of quotations is required"
@@ -100,7 +100,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel for="lowerSigningLimit" value="Lower signing limit ($)" 
                                    style="font-weight: bold;" />                   
-                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.lowerSigningLimit}"
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.lowerSigningLimit}"
                                  id="lowerSigningLimit"
                                  converterMessage="Please enter a valid lower signing limit"
                                  validatorMessage="A valid lower signing limit is required"
@@ -115,7 +115,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel for="upperSigningLimit" value="Upper signing limit ($)" 
                                     style="font-weight: bold;" />                   
-                    <p:inputText value="#{purchasingManager.selectedProcurementMethod.upperSigningLimit}"
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.upperSigningLimit}"
                                  id="upperSigningLimit"
                                  converterMessage="Please enter a valid upper signing limit"
                                  validatorMessage="A valid upper signing limit is required"
@@ -131,7 +131,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel for="positions" value="Required signatory position(s): " />       
                     <p:autoComplete id="positions"
                                     var="position"   
-                                    value="#{purchasingManager.selectedProcurementMethod.requiredSignatoryPositions}"
+                                    value="#{financeManager.selectedProcurementMethod.requiredSignatoryPositions}"
                                     itemLabel="#{position.title}"
                                     itemValue="#{position}"                                    
                                     converter="activeEmployeePositionConverter"
@@ -142,7 +142,7 @@ Email: info@dpbennett.com.jm
                                     completeMethod="#{humanResourceManager.completeActiveEmployeePosition}" />
                     
                     <p:outputLabel for="description" value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{purchasingManager.selectedProcurementMethod.description}"
+                    <p:inputTextarea  value="#{financeManager.selectedProcurementMethod.description}"
                                       id="description"   
                                       maxlength="1000"
                                       rows="4"
@@ -160,13 +160,13 @@ Email: info@dpbennett.com.jm
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
-                                     actionListener="#{purchasingManager.saveSelectedProcurementMethod}"
+                                     actionListener="#{financeManager.saveSelectedProcurementMethod}"
                                      icon="pi pi-check"
                                      update="growl,procurementMethodDialogForm"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel"
-                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
+                                     actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>

@@ -35,26 +35,26 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new procurement method"                                  
                              value="New"
-                             actionListener="#{purchasingManager.createNewProcurementMethod}"
+                             actionListener="#{financeManager.createNewProcurementMethod}"
                              update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{purchasingManager.doProcurementMethodSearch}"
+                        listener="#{financeManager.doProcurementMethodSearch}"
                         update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />        
             <p:inputText id="procurementMethodSearchText" 
-                         value="#{purchasingManager.procurementMethodSearchText}"
+                         value="#{financeManager.procurementMethodSearchText}"
                          style="width:300px" 
                          placeholder="Enter search text">
                 <p:ajax event="keyup"
                         global="false"
                         update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
-                        listener="#{purchasingManager.doProcurementMethodSearch}"
+                        listener="#{financeManager.doProcurementMethodSearch}"
                         process="@this"/>
             </p:inputText>
         </p:toolbarGroup>
@@ -70,9 +70,9 @@ Email: info@dpbennett.com.jm
                  style="margin-top: 1px;"
                  widgetVar="procurementMethodsTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{purchasingManager.foundProcurementMethods}">
+                 value="#{financeManager.foundProcurementMethods}">
 
-        <p:ajax event="cellEdit" listener="#{purchasingManager.onProcurementMethodCellEdit}" />
+        <p:ajax event="cellEdit" listener="#{financeManager.onProcurementMethodCellEdit}" />
 
         <f:facet name="header">
             Procurement Methods
@@ -87,7 +87,7 @@ Email: info@dpbennett.com.jm
                     <p:selectOneMenu editable="true"
                                      value="#{procurementMethod.name}">
 
-                        <f:selectItems  value="#{purchasingManager.procurementMethods}"
+                        <f:selectItems  value="#{financeManager.procurementMethods}"
                                         var="method"                            
                                         itemValue="#{method}"
                                         itemLabel="#{method}"/>
@@ -163,7 +163,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit procurement method"   
-                             actionListener="#{purchasingManager.editProcurementMethod}"
+                             actionListener="#{financeManager.editProcurementMethod}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">
@@ -172,7 +172,7 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
 
                 <f:setPropertyActionListener value="#{procurementMethod}"                                                                    
-                                             target="#{purchasingManager.selectedProcurementMethod}" />
+                                             target="#{financeManager.selectedProcurementMethod}" />
             </p:commandButton>           
         </p:column>       
 
