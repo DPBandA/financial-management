@@ -29,16 +29,16 @@ Email: info@dpbennett.com.jm
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Service</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{financeManager.appShortcutIconURL}" />
-        <script type="text/javascript" src="js/javascripts.js" /> 
+        <script type="text/javascript" src="../js/javascripts.js" /> 
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
-    
+
     <h:body >  
-        
+
         <ui:include src="../common/commonDialogs.xhtml"/>  
-        
+
         <h:form id="serviceDialogForm">        
             <p:growl id="growl" life="5000" />
 
@@ -56,57 +56,57 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
+                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                    <h:panelGrid columns="2">     
+                        <p:outputLabel value="Active" for="serviceActive" 
+                                       style="font-weight: bold;" />               
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="serviceActive"
+                                                 value="#{financeManager.selectedService.active}" />    
 
-            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2">     
-                    <p:outputLabel value="Active" for="serviceActive" 
-                                   style="font-weight: bold;" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="serviceActive"
-                                             value="#{financeManager.selectedService.active}" />    
+                        <p:outputLabel value="Internal" for="serviceInternal" 
+                                       style="font-weight: bold;" />               
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="serviceInternal"
+                                                 value="#{financeManager.selectedService.internal}" />  
 
-                    <p:outputLabel value="Internal" for="serviceInternal" 
-                                   style="font-weight: bold;" />               
-                    <p:selectBooleanCheckbox style="vertical-align: middle"
-                                             id="serviceInternal"
-                                             value="#{financeManager.selectedService.internal}" />  
-                    
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{financeManager.selectedService.name}"    
-                                 id="serviceName"
-                                 style="width:300px" >
-                        <f:validator validatorId="requiredFieldValidator" />
-                    </p:inputText>                     
+                        <p:outputLabel value="Name" style="font-weight: bold;" />
+                        <p:inputText value="#{financeManager.selectedService.name}"    
+                                     id="serviceName"
+                                     style="width:300px" >
+                            <f:validator validatorId="requiredFieldValidator" />
+                        </p:inputText>                     
 
-                    <p:outputLabel value="Accounting code" style="font-weight: bold;" />
-                    <p:autoComplete id="accountingCode"  
-                                    var="accountingCode"
-                                    forceSelection="true"      
-                                    dropdown="true"
-                                    scrollHeight="200" 
-                                    size="35"
-                                    maxlength="40"
-                                    value="#{financeManager.selectedService.accountingCode}"
-                                    title="#{financeManager.selectedService.accountingCode}"
-                                    itemValue="#{accountingCode}"
-                                    itemLabel="#{accountingCode.code} (#{accountingCode.name})"
-                                    converter="accountingCodeConverter"
-                                    validator="businessEntityValidator"
-                                    completeMethod="#{financeManager.completeAccountingCode}" />
+                        <p:outputLabel value="Accounting code" style="font-weight: bold;" />
+                        <p:autoComplete id="accountingCode"  
+                                        var="accountingCode"
+                                        forceSelection="true"      
+                                        dropdown="true"
+                                        scrollHeight="200" 
+                                        size="35"
+                                        maxlength="40"
+                                        value="#{financeManager.selectedService.accountingCode}"
+                                        title="#{financeManager.selectedService.accountingCode}"
+                                        itemValue="#{accountingCode}"
+                                        itemLabel="#{accountingCode.code} (#{accountingCode.name})"
+                                        converter="accountingCodeConverter"
+                                        validator="businessEntityValidator"
+                                        completeMethod="#{financeManager.completeAccountingCode}" />
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                    <p:inputTextarea  value="#{financeManager.selectedService.description}"
-                                      id="serviceDescription"
-                                      maxlength="1000"
-                                      rows="4"
-                                      autoResize="false"
-                                      style="width:300px" >
-                        <f:validator validatorId="requiredFieldValidator" />
-                    </p:inputTextarea>  
+                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                        <p:inputTextarea  value="#{financeManager.selectedService.description}"
+                                          id="serviceDescription"
+                                          maxlength="1000"
+                                          rows="4"
+                                          autoResize="false"
+                                          style="width:300px" >
+                            <f:validator validatorId="requiredFieldValidator" />
+                        </p:inputTextarea>  
 
-                </h:panelGrid>
-            </p:panel>
-
+                    </h:panelGrid>
+                </p:panel>
+            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

@@ -28,10 +28,10 @@ Email: info@dpbennett.com.jm
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Product</title>
         <link rel="shortcut icon" type="image/x-icon" href="#{financeManager.appShortcutIconURL}" />
-        <script type="text/javascript" src="js/javascripts.js" /> 
+        <script type="text/javascript" src="../js/javascripts.js" /> 
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
-        <link rel="stylesheet" type="text/css" href="css/main.css" />
-        <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+        <link rel="stylesheet" type="text/css" href="../css/main.css" />
+        <link rel="stylesheet" type="text/css" href="../css/responsive.css" />
     </h:head>
     <h:body>  
 
@@ -53,17 +53,18 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" />
                 </p:toolbarGroup>
             </p:toolbar>
+            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
+                <p:tabView id="marketProductFormTabView"
+                           dynamic="true"
+                           style="margin-top: 1px;margin-bottom: 1px;"
+                           widgetVar="marketProductFormTabVar" >
 
-            <p:tabView id="marketProductFormTabView"
-                       dynamic="true"
-                       style="margin-top: 1px;margin-bottom: 1px;"
-                       widgetVar="marketProductFormTabVar" >
+                    <p:tab id="marketProductDetailsTab" title="General">
+                        <ui:include src="marketProductDetailsTab.xhtml"/>
+                    </p:tab>
 
-                <p:tab id="marketProductDetailsTab" title="General">
-                    <ui:include src="marketProductDetailsTab.xhtml"/>
-                </p:tab>
-
-            </p:tabView>
+                </p:tabView>
+            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
