@@ -30,7 +30,7 @@ Email: info@dpbennett.com.jm
                             title="Create new system configuration"
                             icon="pi pi-plus"
                             actionListener="#{systemManager.createNewFinancialSystemOption}" 
-                            rendered="#{systemManager.user.hasModule('FinancialManagementModule')}"
+                            rendered="#{systemManager.user.hasModule('financeManager')}"
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
@@ -44,7 +44,7 @@ Email: info@dpbennett.com.jm
                             title="Add new inventory item"
                             icon="pi pi-plus"
                             actionListener="#{inventoryManager.createNewInventory}" 
-                            rendered="#{systemManager.user.hasModule('InventoryManagementModule')}"
+                            rendered="#{systemManager.user.hasModule('inventoryManager')}"
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
