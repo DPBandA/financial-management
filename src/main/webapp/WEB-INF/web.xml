@@ -11,7 +11,7 @@
     
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>#{systemManager.user.PFThemeName}</param-value>
+        <param-value>#{financeManager.user.PFThemeName}</param-value>
     </context-param>
       
     <servlet>

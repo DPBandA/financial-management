@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="finance/loginDialog.xhtml"/>         
         <ui:include src="common/userProfileDialog.xhtml"/> 
 
-        <h:form id="appForm" rendered="#{financeManager.userLoggedIn}">   
+        <h:form id="appForm" rendered="#{authentication.userLoggedIn}">   
 
             <p:growl id="growl3" life="5000" showDetail="true" />
             <p:panel>

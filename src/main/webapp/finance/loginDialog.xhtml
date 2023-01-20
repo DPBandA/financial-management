@@ -28,7 +28,7 @@ Email: info@dpbennett.com.jm
               responsive="true"
               position="center"
               modal="true"
-              visible="#{!authentication.userLoggedIn}"              
+              visible="#{!financeManager.userLoggedIn}"              
               widgetVar="loginDialog"
               width="375"
               closable="false"
@@ -37,17 +37,17 @@ Email: info@dpbennett.com.jm
         <h:form id="loginForm">
 
             <p:outputLabel id="loginMessage" 
-                           value="#{authentication.logonMessage}" style="font-weight: bold" />
+                           value="#{financeManager.logonMessage}" style="font-weight: bold" />
             <h:panelGrid columns="2" cellspacing="10">
                 <p:outputLabel for="username" value="Username" style="font-weight: bold" />
-                <p:inputText value="#{authentication.username}"
+                <p:inputText value="#{financeManager.username}"
                              id="username" 
                              required="true"
                              validatorMessage="Please enter a valid username" />
 
                 <p:outputLabel for="password" value="Password" style="font-weight: bold" />
                 <p:password id="password"
-                            value="#{authentication.password}"
+                            value="#{financeManager.password}"
                             maxlength="255" 
                             redisplay="true"
                             toggleMask="true"
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                                      global="true"
                                      oncomplete="window.location.reload();"
                                      process="@form"
-                                     actionListener="#{authentication.login('financeManager')}" />
+                                     actionListener="#{financeManager.login}" />
                 </f:facet>
             </h:panelGrid>
         </h:form>
