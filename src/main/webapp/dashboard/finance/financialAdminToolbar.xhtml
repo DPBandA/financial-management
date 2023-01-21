@@ -59,7 +59,7 @@ Email: info@dpbennett.com.jm
                             title="Create new purchase requisition"
                             icon="pi pi-plus"
                             actionListener="#{purchasingManager.createNewPurchaseReq}" 
-                            rendered="#{systemManager.user.hasModule('PurchaseManagementModule')}"
+                            rendered="#{financeManager.user.hasModule('purchasingManager')}"
                             process="@this" >
 
                     <p:ajax event="dialogReturn" 
