@@ -21,10 +21,7 @@ Email: info@dpbennett.com.jm
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    
-    <p:growl id="inventory_growl" life="5000" showDetail="true" />
 
-    <ui:include src="inventoryDetailTopToolbar.xhtml"/>
 
     <p:tabView id="inventoryFormTabView"
                style="margin-top: 1px;margin-bottom: 1px;"               
@@ -37,14 +34,11 @@ Email: info@dpbennett.com.jm
         <p:tab title="Stock Count" >
             <ui:include src="inventoryStockTab.xhtml"/>
         </p:tab>
-        
+
         <p:tab title="Status &amp; Tracking" >
             <ui:include src="inventoryStatusAndTrackingTab.xhtml" />
         </p:tab>      
 
-    </p:tabView>
-
-    <ui:include src="inventoryDetailBottomToolbar.xhtml"/>
-
-    <p/>       
+    </p:tabView>   
+    
 </html>
