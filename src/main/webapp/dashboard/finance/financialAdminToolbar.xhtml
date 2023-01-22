@@ -54,6 +54,21 @@ Email: info@dpbennett.com.jm
                 </p:menuitem>
 
                 <p:separator />
+                
+                <p:menuitem value="Inventory Product"
+                            title="Add new inventory product"
+                            icon="pi pi-plus"
+                            actionListener="#{inventoryManager.createNewInventoryProduct}" 
+                            rendered="#{financeManager.user.hasModule('inventoryManager')}"
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDialogReturn}"
+                            update=":appForm:mainTabView:inventoryProductsTable"/>
+
+                </p:menuitem>
+
+                <p:separator />
 
                 <p:menuitem value="Purchase requisition"
                             title="Create new purchase requisition"
