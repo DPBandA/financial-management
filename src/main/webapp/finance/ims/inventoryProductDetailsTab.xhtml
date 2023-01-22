@@ -103,7 +103,8 @@ Email: info@dpbennett.com.jm
                                 converter="activeCategoryConverter"
                                 forceSelection="true"
                                 dropdown="true"
-                                scrollHeight="200"                         
+                                scrollHeight="200"       
+                                style="width: 350px;"
                                 multiple="true"
                                 completeMethod="#{inventoryManager.completeActiveCategory}" >
 
@@ -141,7 +142,7 @@ Email: info@dpbennett.com.jm
             autoResize="false"
             maxlength="1000" 
             styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-            style="width: 500px;">
+            style="width: 350px;">
 
             <p:ajax event="change"
                     listener="#{inventoryManager.updateInventoryProduct}"
