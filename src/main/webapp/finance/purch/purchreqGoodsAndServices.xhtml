@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
 
         </p:autoComplete>
         <p:outputLabel value="Tax (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
-                            rendered="#{purchasingManager.applyTax}" />               
+                       rendered="#{purchasingManager.applyTax}" />               
         <p:autoComplete id="tax"  
                         rendered="#{purchasingManager.applyTax}"
                         var="tax"
@@ -71,7 +71,7 @@ Email: info@dpbennett.com.jm
         </p:autoComplete>
 
         <p:outputLabel value="Discount (%/#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
-                      rendered="#{purchasingManager.applyDiscount}" />               
+                       rendered="#{purchasingManager.applyDiscount}" />               
         <p:autoComplete id="discount"  
                         rendered="#{purchasingManager.applyDiscount}"
                         var="discount"
@@ -108,9 +108,9 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>   
         <p:toolbarGroup align="right">
             <p:outputLabel 
-            id="PRJustificationStatusNote"
-            style="font-weight: bold; color: orange;"
-            value="#{purchasingManager.selectedPRJustificationStatusNote}" />
+                id="PRJustificationStatusNote"
+                style="font-weight: bold; color: orange;"
+                value="#{purchasingManager.selectedPRJustificationStatusNote}" />
         </p:toolbarGroup>
     </p:toolbar>
 
@@ -123,31 +123,37 @@ Email: info@dpbennett.com.jm
                   value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
 
         <p:ajax event="rowEdit" listener="#{purchasingManager.onCostComponentRowEdit}" 
-                    update=":purchreqDialogForm:purchreqFormTabView:totalCost,costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+                update=":purchreqDialogForm:purchreqFormTabView:totalCost,costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
         <p:ajax event="rowEditCancel" listener="#{purchasingManager.onCostComponentRowCancel}" 
-                    update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+                update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
 
-       
-               
-        <p:column headerText="Component" style="width:200px">
+
+
+        <p:column style="width: 100px;">
+            <f:facet name="header">
+                <p:outputLabel value="Component"/>
+            </f:facet>
             <p:cellEditor>
                 <f:facet name="output">
-                   <p:outputLabel value="#{costComponent.name}" /> 
+                    <p:outputLabel value="#{costComponent.name}" /> 
                 </f:facet>
                 <f:facet name="input">
-                   <p:inputText  value="#{costComponent.name}" style="width:100%" />
+                    <p:inputText  value="#{costComponent.name}" style="width:100%" />
                 </f:facet>   
             </p:cellEditor>
         </p:column>
 
-        <p:column headerText="Cost Code" rendered="#{!costComponent.isHeading}">
-            <p:cellEditor>
-            <f:facet name="output">
-               <p:outputLabel value="#{costComponent.code}" /> 
+        <p:column rendered="#{!costComponent.isHeading}">
+            <f:facet name="header">
+                <p:outputLabel value="Cost Code"/>
             </f:facet>
-            <f:facet name="input">
-               <p:inputText  value="#{costComponent.code}" style="width:100%" />
-            </f:facet>   
+            <p:cellEditor>
+                <f:facet name="output">
+                    <p:outputLabel value="#{costComponent.code}" /> 
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText  value="#{costComponent.code}" style="width:100%" />
+                </f:facet>   
             </p:cellEditor>
         </p:column>
 
@@ -160,14 +166,14 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Quantity" rendered="#{!costComponent.isHeading}" >
             <p:cellEditor>
-            <f:facet name="output">
-               <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </p:outputLabel>
-            </f:facet>
-            <f:facet name="input">               
-                   <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
-            </f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel>
+                </f:facet>
+                <f:facet name="input">               
+                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                </f:facet>
             </p:cellEditor>
         </p:column>
 
@@ -180,12 +186,12 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="UOM" rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
-            <f:facet name="output">
-               <p:outputLabel value="#{costComponent.unit}" /> 
-            </f:facet>
-            <f:facet name="input">
-               <p:inputText  value="#{costComponent.unit}" style="width:100%" />
-            </f:facet>   
+                <f:facet name="output">
+                    <p:outputLabel value="#{costComponent.unit}" /> 
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+                </f:facet>   
             </p:cellEditor>
         </p:column>
 
@@ -199,16 +205,16 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
-            <f:facet name="output">
-               <p:outputLabel value="#{costComponent.rate}" >
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </p:outputLabel>
-            </f:facet>
-            <f:facet name="input">
-                <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
-            </f:facet>
+                <f:facet name="output">
+                    <p:outputLabel value="#{costComponent.rate}" >
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel>
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+                </f:facet>
             </p:cellEditor>
-            
+
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
@@ -219,10 +225,10 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
-           <p:outputLabel value="#{costComponent.cost}" >
-                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-           </p:outputLabel>
-            
+            <p:outputLabel value="#{costComponent.cost}" >
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+            </p:outputLabel>
+
         </p:column>
 
         <p:column rendered="#{costComponent.isHeading}">
@@ -233,9 +239,9 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column>
-                <p:rowEditor editTitle="Edit cost component"
-                             cancelTitle="Cancel cost component edit" 
-                             saveTitle="Save cost component"/>
+            <p:rowEditor editTitle="Edit cost component"
+                         cancelTitle="Cancel cost component edit" 
+                         saveTitle="Save cost component"/>
         </p:column>
 
         <p:column>
@@ -275,12 +281,12 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">
             <h:panelGrid columns="2" cellspacing="10">
                 <p:outputLabel style="font-weight: bold"
-                              value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}):"  />
+                               value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}):"  />
 
                 <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
-                              id="totalCost"                       
-                              style="font-weight: bold"
-                              styleClass="datatable-number-field" >
+                               id="totalCost"                       
+                               style="font-weight: bold"
+                               styleClass="datatable-number-field" >
                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                 </p:outputLabel>
             </h:panelGrid>

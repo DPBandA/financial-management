@@ -33,140 +33,140 @@ Email: info@dpbennett.com.jm
                   responsive="true"
                   widgetVar="contactFormDialog"
                   header="Contact Detail" >
+            <p:scrollPanel style="height: #{purchasingManager.scrollPanelHeight};">
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:commandButton value="Ok"
+                                         actionListener="#{purchasingManager.okContact}"
+                                         icon="pi pi-check"                                
+                                         update=":supplierForm:supplier_growl,:supplierForm:supplierFormTabView:contactsTable,:supplierForm:supplierFormTabView:generalDetailsPanelGrid"
+                                         process="@form"/>
+                        <p:spacer width="10"/>
+                        <p:commandButton value="Cancel"                                 
+                                         icon="pi pi-times"
+                                         oncomplete="PF('contactFormDialog').hide();"
+                                         process="@this" />
+                    </p:toolbarGroup>
+                </p:toolbar>    
+                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                    <h:panelGrid columns="2" style="width: 85%">
 
-            <p:toolbar>
-                <p:toolbarGroup align="left">
-                    <p:commandButton value="Ok"
-                                     actionListener="#{purchasingManager.okContact}"
-                                     icon="pi pi-check"                                
-                                     update=":supplierForm:supplier_growl,:supplierForm:supplierFormTabView:contactsTable,:supplierForm:supplierFormTabView:generalDetailsPanelGrid"
-                                     process="@form"/>
-                    <p:spacer width="10"/>
-                    <p:commandButton value="Cancel"                                 
-                                     icon="pi pi-times"
-                                     oncomplete="PF('contactFormDialog').hide();"
-                                     process="@this" />
-                </p:toolbarGroup>
-            </p:toolbar>                
-            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="2" style="width: 85%">
+                        <p:outputLabel value="Type" style="font-weight: bold" />
+                        <p:selectOneMenu value="#{purchasingManager.selectedSupplierContact.type}"
+                                         id="contactType" 
+                                         maxlength="50"
+                                         validator="contactValidator">
+                            <p:ajax
+                                event="change"
+                                global="true"
+                                listener="#{purchasingManager.updateSupplierContact}"
+                                process="@this" />
+                            <f:selectItem itemLabel="Main" itemValue="Main" />
+                            <f:selectItem itemLabel="General" itemValue="General" />
+                        </p:selectOneMenu>
 
-                    <p:outputLabel value="Type" style="font-weight: bold" />
-                    <p:selectOneMenu value="#{purchasingManager.selectedSupplierContact.type}"
-                                     id="contactType" 
+                        <p:outputLabel value="Title" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.title}"
                                      maxlength="50"
-                                     validator="contactValidator">
-                        <p:ajax
-                            event="change"
-                            global="true"
-                            listener="#{purchasingManager.updateSupplierContact}"
-                            process="@this" />
-                        <f:selectItem itemLabel="Main" itemValue="Main" />
-                        <f:selectItem itemLabel="General" itemValue="General" />
-                    </p:selectOneMenu>
+                                     style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>               
 
-                    <p:outputLabel value="Title" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.title}"
-                                 maxlength="50"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>               
+                        <p:outputLabel value="Firstname" style="font-weight: bold" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.firstName}"
+                                     id="contactFirstname"
+                                     maxlength="50"
+                                     validator="contactValidator"
+                                     style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Firstname" style="font-weight: bold" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.firstName}"
-                                 id="contactFirstname"
-                                 maxlength="50"
-                                 validator="contactValidator"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Lastname" style="font-weight: bold" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.lastName}"
+                                     id="contactLastname"
+                                     maxlength="50"
+                                     validator="contactValidator"
+                                     style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Lastname" style="font-weight: bold" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.lastName}"
-                                 id="contactLastname"
-                                 maxlength="50"
-                                 validator="contactValidator"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Position" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.position}"
+                                     maxlength="50"
+                                     style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Position" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.position}"
-                                 maxlength="50"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Phone" />
+                        <p:inputText 
+                            value="#{purchasingManager.selectedSupplierContact.mainPhoneNumber.localNumber}"
+                            maxlength="50"
+                            style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Phone" />
-                    <p:inputText 
-                        value="#{purchasingManager.selectedSupplierContact.mainPhoneNumber.localNumber}"
-                                 maxlength="50"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Email" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.email1}"
+                                     maxlength="50"
+                                     style="width: 100%" >                
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Email" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.email1}"
-                                 maxlength="50"
-                                 style="width: 100%" >                
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Website" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.website1}"
+                                     maxlength="50"
+                                     style="width: 100%" >
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Website" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.internet.website1}"
-                                 maxlength="50"
-                                 style="width: 100%" >
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
+                        <p:outputLabel value="Fax" />
+                        <p:inputText value="#{purchasingManager.selectedSupplierContact.mainFaxNumber.localNumber}"
+                                     maxlength="50"
+                                     style="width: 100%">
+                            <p:ajax event="change"
+                                    global="true"                                    
+                                    listener="#{purchasingManager.updateSupplierContact}"
+                                    process="@this"/>
+                        </p:inputText>
 
-                    <p:outputLabel value="Fax" />
-                    <p:inputText value="#{purchasingManager.selectedSupplierContact.mainFaxNumber.localNumber}"
-                                 maxlength="50"
-                                 style="width: 100%">
-                        <p:ajax event="change"
-                                global="true"                                    
-                                listener="#{purchasingManager.updateSupplierContact}"
-                                process="@this"/>
-                    </p:inputText>
-
-                </h:panelGrid>
-            </p:panel>
-            <p:toolbar>
-                <p:toolbarGroup align="left">
-                    <p:commandButton value="Ok"
-                                     actionListener="#{purchasingManager.okContact}"
-                                     icon="pi pi-check"                                
-                                     update=":supplierForm:supplier_growl,:supplierForm:supplierFormTabView:contactsTable,:supplierForm:supplierFormTabView:generalDetailsPanelGrid"
-                                     process="@form"/>
-                    <p:spacer width="10"/>
-                    <p:commandButton value="Cancel"                                 
-                                     icon="pi pi-times"
-                                     oncomplete="PF('contactFormDialog').hide();"
-                                     process="@this" />
-                </p:toolbarGroup>
-            </p:toolbar>         
-
+                    </h:panelGrid>
+                </p:panel>
+                <p:toolbar>
+                    <p:toolbarGroup align="left">
+                        <p:commandButton value="Ok"
+                                         actionListener="#{purchasingManager.okContact}"
+                                         icon="pi pi-check"                                
+                                         update=":supplierForm:supplier_growl,:supplierForm:supplierFormTabView:contactsTable,:supplierForm:supplierFormTabView:generalDetailsPanelGrid"
+                                         process="@form"/>
+                        <p:spacer width="10"/>
+                        <p:commandButton value="Cancel"                                 
+                                         icon="pi pi-times"
+                                         oncomplete="PF('contactFormDialog').hide();"
+                                         process="@this" />
+                    </p:toolbarGroup>
+                </p:toolbar>        
+            </p:scrollPanel>
         </p:dialog>
     </h:form>    
 </html>
