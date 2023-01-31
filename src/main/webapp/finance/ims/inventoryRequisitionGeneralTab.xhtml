@@ -49,10 +49,12 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dateSelect"
                         global="false"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
                         listener="#{inventoryManager.updateInventoryRequisition}" />
 
                 <p:ajax event="keyup"
                         global="false"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
                         listener="#{inventoryManager.updateInventoryRequisition}" />
 
             </p:calendar>
