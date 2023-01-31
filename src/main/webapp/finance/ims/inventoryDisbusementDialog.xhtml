@@ -1,0 +1,214 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2023  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+    <h:form id="inventoryCostingCompDialogForm">
+        <p:dialog width="500"
+                  height="auto"
+                  draggable="true"
+                  modal="true"
+                  responsive="true"
+                  widgetVar="inventoryCostingCompDialog"
+                  header="Stock" >   
+            
+            <p:toolbar style="margin-bottom: 1px;">
+                <p:toolbarGroup>
+                    <p:commandButton value="Ok"
+                                     actionListener="#{inventoryManager.okCostingComponent}"
+                                     update=":inventoryDialogForm:inventoryDetailToolbar1,:inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventory_growl"
+                                     icon="pi pi-check"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel" 
+                                     immediate="true"
+                                     actionListener="#{inventoryManager.cancelCostComponentEdit}"
+                                     update=""                              
+                                     oncomplete="PF('inventoryCostingCompDialog').hide();"
+                                     icon="pi pi-times"/>
+                </p:toolbarGroup>
+            </p:toolbar>   
+            
+            <p:panel>
+                <h:panelGrid id="costingComponentPanelGrid" 
+                             cellspacing="10"
+                             columns="2" style="width: 100%">
+                    
+                    <p:outputLabel value="Cost code" 
+                                   rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
+                    <p:inputText id="costCode"
+                                 value="#{inventoryManager.selectedCostComponent.code}"
+                                 rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
+                                 styleClass="number-field"
+                                 style="width: 90%">
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                        <p:ajax event="change"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Date" style="font-weight: bold" />
+                    <p:calendar value="#{inventoryManager.selectedCostComponent.costDate}" 
+                                readonlyInput="true"
+                                required="true"
+                                requiredMessage="A valid date is required"
+                                navigator="true" 
+                                pattern="MMM dd, yyyy" >
+
+                        <p:ajax event="dateSelect"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}" />
+
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}" />
+
+                    </p:calendar>
+
+                    <p:outputLabel value="Component" style="font-weight: bold" />
+                    <p:inputTextarea  value="#{inventoryManager.selectedCostComponent.name}"
+                                      id="costComponentName"
+                                      validator="requiredFieldValidator"
+                                      maxlength="250"
+                                      rows="2"
+                                      autoResize="false"
+                                      style="width: 90%;" >
+                        
+                        <p:ajax event="change"
+                                global="false" 
+                                listener="#{inventoryManager.updateSelectedCostComponent}" 
+                                process="@this"/>
+                        
+                    </p:inputTextarea>
+
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                                   value="Quantity" 
+                                   style="font-weight: bold;" />                   
+                    <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                                 id="costComponentHoursOrQuantity"
+                                 value="#{inventoryManager.selectedCostComponent.hoursOrQuantity}"
+                                 styleClass="number-field"
+                                 validator="requiredFieldValidator"
+                                 converterMessage="Invalid Component Quantity"
+                                 style="width: 90%">
+                        <f:convertNumber />
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                update="inventoryCostingCompDialogForm:costComponentCost"
+                                process="@this"/>
+                        <p:ajax event="change"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                update="inventoryCostingCompDialogForm:costComponentCost"
+                                process="@this"/>
+                    </p:inputText>
+
+                    <p:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
+                                   value="UOM" />
+                    <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
+                                 id="costComponentUnit"
+                                 value="#{inventoryManager.selectedCostComponent.unit}"
+                                 style="width: 90%" >
+                        
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                        
+                        <p:ajax event="change"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                        
+                    </p:inputText>
+
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                                   value="Unit cost ($)" style="font-weight: bold;" />
+                    <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
+                                 id="costComponentRate"
+                                 value="#{inventoryManager.selectedCostComponent.rate}"
+                                 style="width: 90%"
+                                 styleClass="number-field" 
+                                 validator="requiredFieldValidator"
+                                 converterMessage="Invalid Unit Cost" >
+                        <f:convertNumber />
+                        <p:ajax event="keyup"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                update="inventoryCostingCompDialogForm:costComponentCost"
+                                process="@this"/>
+                        <p:ajax event="change"
+                                global="false"
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                update="inventoryCostingCompDialogForm:costComponentCost"
+                                process="@this"/>
+                    </p:inputText>
+
+                    <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
+                                   value="Cost ($)" style="font-weight: bold;" />
+                    <p:inputText id="costComponentCost"
+                                 style="width: 90%;"
+                                 rendered="#{!inventoryManager.selectedCostComponent.isHeading}"                            
+                                 value="#{inventoryManager.selectedCostComponent.cost}"
+                                 readonly="#{inventoryManager.selectedCostComponent.isCostReadOnly}"
+                                 validator="requiredFieldValidator"
+                                 converterMessage="Invalid Component Cost"
+                                 styleClass="number-field #{inventoryManager.selectedCostComponent.isCostReadOnly ? 'read-only-text-field' : null}">
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        <p:ajax event="change"
+                                global="false"                            
+                                listener="#{inventoryManager.updateSelectedCostComponent}"
+                                process="@this"/>
+                    </p:inputText>
+                    <p:outputLabel value=" "
+                                  rendered="#{inventoryManager.selectedCostComponent.isHeading}" />
+                </h:panelGrid>
+            </p:panel>            
+            <p:toolbar style="margin-top: 1px;">
+                <p:toolbarGroup>
+                    <p:toolbarGroup>
+                    <p:commandButton value="Ok"
+                                     actionListener="#{inventoryManager.okCostingComponent}"
+                                     update=":inventoryDialogForm:inventoryDetailToolbar1,:inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventory_growl"
+                                    icon="pi pi-check"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel" 
+                                     immediate="true"
+                                     actionListener="#{inventoryManager.cancelCostComponentEdit}"
+                                     update=""
+                                     oncomplete="PF('inventoryCostingCompDialog').hide();"
+                                     icon="pi pi-times"/>
+                </p:toolbarGroup>
+                </p:toolbarGroup>
+            </p:toolbar> 
+            <p/>
+        </p:dialog>
+    </h:form>    
+</html>

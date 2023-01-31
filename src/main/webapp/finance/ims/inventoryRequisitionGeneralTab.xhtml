@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">            
-           
+
             <p:outputLabel value="Code" />          
             <p:inputText  size="15"
                           maxlength="40"
@@ -89,10 +89,10 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Product" >   
                 <p:cellEditor>
                     <f:facet name="output">
-                       <p:outputLabel value="#{disbursement.inventory.product.commonName}" /> 
+                        <p:outputLabel value="#{disbursement.inventory.product.commonName}" /> 
                     </f:facet>
                     <f:facet name="input">
-                       <p:inputText  value="#{disbursement.inventory.product.commonName}" />
+                        <p:inputText  value="#{disbursement.inventory.product.commonName}" />
                     </f:facet>   
                 </p:cellEditor>  
             </p:column>
@@ -100,71 +100,72 @@ Email: info@dpbennett.com.jm
             <p:column headerText="Description" >   
                 <p:cellEditor>
                     <f:facet name="output">
-                       <p:outputLabel value="#{disbursement.description}" /> 
+                        <p:outputLabel value="#{disbursement.description}" /> 
                     </f:facet>
                     <f:facet name="input">
-                       <p:inputText  value="#{disbursement.description}" />
+                        <p:inputText  value="#{disbursement.description}" />
                     </f:facet>   
                 </p:cellEditor>  
             </p:column>
-            <ui:remove>
-            <p:column headerText="Unit Cost ($)" >
+
+            <p:column headerText="Q'ty Ordered" >
                 <p:cellEditor>
                     <f:facet name="output">
-                       <p:outputLabel value="#{costComponent.rate}" >
-                             <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                       </p:outputLabel>
+                        <p:outputLabel value="#{disbursement.quantityOrdered}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+                        <p:inputNumber value="#{disbursement.quantityOrdered}" />
                     </f:facet>
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="Quantity" >
+            <p:column headerText="Q'ty Supplied" >
                 <p:cellEditor>
-                <f:facet name="output">
-                   <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
-                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </p:outputLabel>
-                </f:facet>
-                <f:facet name="input">               
-                       <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
-                </f:facet>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{disbursement.quantityReceived}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:outputLabel>
+                    </f:facet>
+                    <f:facet name="input">               
+                        <p:inputNumber value="#{disbursement.quantityReceived}" />                   
+                    </f:facet>
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="UOM" >
+            <p:column headerText="Unit Price" >
                 <p:cellEditor>
-                <f:facet name="output">
-                   <p:outputLabel value="#{costComponent.unit}" /> 
-                </f:facet>
-                <f:facet name="input">
-                   <p:inputText  value="#{costComponent.unit}" style="width:100%" />
-                </f:facet>   
+                    <f:facet name="output">
+                        <p:outputLabel value="#{disbursement.unitCost}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:outputLabel>
+                    </f:facet>
+                    <f:facet name="input">               
+                        <p:inputNumber value="#{disbursement.unitCost}" />                   
+                    </f:facet>
                 </p:cellEditor>
             </p:column>
 
             <p:column headerText="Cost ($)" >
-               <p:outputLabel value="#{costComponent.cost}">
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </p:outputLabel> 
+                <p:outputLabel value="#{disbursement.cost}">
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </p:outputLabel> 
             </p:column>
 
             <p:column>
-                <p:rowEditor editTitle="Edit cost component"
-                             cancelTitle="Cancel cost component edit"                             
-                             saveTitle="Save cost component"/>
+                <p:rowEditor editTitle="Edit disbursement"
+                             cancelTitle="Cancel disbursement edit"                             
+                             saveTitle="Save disbursement"/>
             </p:column>
 
             <p:column>
                 <p:menuButton id="toolsButton" 
-                              title="Edit or delete cost component"
+                              title="Edit or delete disbursement"
                               icon="pi pi-ellipsis-v" >
                     <p:menuitem   
                         value="Edit"
-                        actionListener="#{inventoryManager.editCostComponent}"
-                        disabled="#{!costComponent.isEditable}"
+                        actionListener="#{inventoryManager.editDisbursement}"
                         update=":inventoryCostingCompDialogForm"
                         oncomplete="PF('inventoryCostingCompDialog').show();"
                         icon="pi pi-pencil"
@@ -188,7 +189,7 @@ Email: info@dpbennett.com.jm
 
                 </p:menuButton>                   
             </p:column>      
-            </ui:remove>
+
         </p:dataTable>
 
         <p:toolbar style="margin-top: 1px;">
@@ -205,7 +206,7 @@ Email: info@dpbennett.com.jm
         </p:toolbar>
 
     </p:panel>
-    
+
 
 </html>
 
