@@ -83,7 +83,7 @@ Email: info@dpbennett.com.jm
 
             <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
                     update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
-            <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
+            <p:ajax event="rowEditCancel" listener="#{inventoryManager.onDisbursementRowCancel}" 
                     update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
 
             <p:column headerText="Product" >   
@@ -166,24 +166,24 @@ Email: info@dpbennett.com.jm
                     <p:menuitem   
                         value="Edit"
                         actionListener="#{inventoryManager.editDisbursement}"
-                        update=":inventoryCostingCompDialogForm"
-                        oncomplete="PF('inventoryCostingCompDialog').show();"
+                        update=":inventoryDisbursementDialogForm"
+                        oncomplete="PF('inventoryDisbursementDialog').show();"
                         icon="pi pi-pencil"
                         process="@this" >
 
-                        <f:setPropertyActionListener value="#{costComponent}"
-                                                     target="#{inventoryManager.selectedCostComponent}" />
+                        <f:setPropertyActionListener value="#{disbursement}"
+                                                     target="#{inventoryManager.selectedInventoryDisbursement}" />
 
                     </p:menuitem>
 
                     <p:menuitem  
                         value="Delete"
-                        onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
+                        onclick="PF('inventoryDisbusementDeleteConfirmDialog').show();"
                         icon="pi pi-trash"
                         process="@this">
 
-                        <f:setPropertyActionListener value="#{costComponent}"
-                                                     target="#{inventoryManager.selectedCostComponent}" />
+                        <f:setPropertyActionListener value="#{disbursement}"
+                                                     target="#{inventoryManager.selectedInventoryDisbursement}" />
 
                     </p:menuitem>                   
 

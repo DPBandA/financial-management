@@ -24,20 +24,20 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     
-    <h:form id="inventoryCostingCompDialogForm">
+    <h:form id="inventoryDisbursementDialogForm">
         <p:dialog width="500"
                   height="auto"
                   draggable="true"
                   modal="true"
                   responsive="true"
-                  widgetVar="inventoryCostingCompDialog"
-                  header="Stock" >   
+                  widgetVar="inventoryDisbursementDialog"
+                  header="Disbursement" >   
             
             <p:toolbar style="margin-bottom: 1px;">
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
-                                     actionListener="#{inventoryManager.okCostingComponent}"
-                                     update=":inventoryDialogForm:inventoryDetailToolbar1,:inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventory_growl"
+                                     actionListener="#{inventoryManager.okDisbursement}"
+                                     update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
                                      icon="pi pi-check"
                                      process="@form"/>
                     <p:spacer width="5" />
