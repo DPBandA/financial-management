@@ -24,21 +24,21 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">   
     
-    <h:form id="inventoryCostCompDeleteConfirmDialogForm">
+    <h:form id="inventoryDisbursementDeleteConfirmDialogForm">
         <p:confirmDialog severity="alert"
-                         message="Are you sure you wish to delete this cost component?"
-                         header="Delete Cost Component"
+                         message="Are you sure you wish to delete this disbursement?"
+                         header="Delete Disbursement"
                          responsive="true"
-                         widgetVar="inventoryCostCompDeleteConfirmDialog"
+                         widgetVar="inventoryDisbursementDeleteConfirmDialog"
                          width="400">
             <p:commandButton value="Yes"      
-                             actionListener="#{inventoryManager.deleteCostComponent}"
-                             update=":inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventoryDetailToolbar1"
-                             oncomplete="PF('inventoryCostCompDeleteConfirmDialog').hide();"
+                             actionListener="#{inventoryManager.deleteDisbursement}"
+                             update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                             oncomplete="PF('inventoryDisbursementDeleteConfirmDialog').hide();"
                              icon="pi pi-check"
                              process="@this"/>
             <p:commandButton value="No"
-                             onclick="PF('inventoryCostCompDeleteConfirmDialog').hide();"
+                             onclick="PF('inventoryDisbursementDeleteConfirmDialog').hide();"
                              icon="pi pi-times"/>       
         </p:confirmDialog>
     </h:form>
