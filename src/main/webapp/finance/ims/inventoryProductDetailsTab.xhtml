@@ -92,43 +92,43 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="" />
 
         <p:outputLabel style="vertical-align: top;"
-                      value="Categories" />
+                       value="Categories" />
         <h:panelGroup>
-            <h:panelGrid columns="2">
-                <p:autoComplete id="categories"
-                                var="category"   
-                                value="#{inventoryManager.selectedInventoryProduct.categories}"
-                                itemLabel="#{category.name}"
-                                itemValue="#{category}"
-                                converter="activeCategoryConverter"
-                                forceSelection="true"
-                                dropdown="true"
-                                scrollHeight="200"       
-                                style="width: 350px;"
-                                multiple="true"
-                                completeMethod="#{inventoryManager.completeActiveCategory}" >
 
-                    <p:ajax event="itemSelect"
-                            listener="#{inventoryManager.updateInventoryProduct}"
-                            process="@this"/>
+            <p:autoComplete id="categories"
+                            var="category"   
+                            value="#{inventoryManager.selectedInventoryProduct.categories}"
+                            itemLabel="#{category.name}"
+                            itemValue="#{category}"
+                            converter="activeCategoryConverter"
+                            forceSelection="true"
+                            dropdown="true"
+                            scrollHeight="200"       
 
-                    <p:ajax event="itemUnselect"
-                            listener="#{inventoryManager.updateInventoryProduct}"
-                            process="@this"/>
+                            multiple="true"
+                            completeMethod="#{inventoryManager.completeActiveCategory}" >
 
-                </p:autoComplete>
+                <p:ajax event="itemSelect"
+                        listener="#{inventoryManager.updateInventoryProduct}"
+                        process="@this"/>
 
-                <p:commandButton 
-                    icon="pi pi-plus" 
-                    actionListener="#{financeManager.createNewMarketProductCategory}"                                            
-                    process="@this"
-                    title="Add a new category" >
+                <p:ajax event="itemUnselect"
+                        listener="#{inventoryManager.updateInventoryProduct}"
+                        process="@this"/>
 
-                    <p:ajax event="dialogReturn" 
-                            update="categories" />
+            </p:autoComplete>
+            <p:spacer height="0" width="5"/>
+            <p:commandButton 
+                icon="pi pi-plus" 
+                actionListener="#{financeManager.createNewMarketProductCategory}"                                            
+                process="@this"
+                title="Add a new category" >
 
-                </p:commandButton>
-            </h:panelGrid>
+                <p:ajax event="dialogReturn" 
+                        update="categories" />
+
+            </p:commandButton>
+
         </h:panelGroup>
         <p:outputLabel value="" />
 
