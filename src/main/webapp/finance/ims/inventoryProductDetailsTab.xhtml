@@ -55,7 +55,21 @@ Email: info@dpbennett.com.jm
 
         <p:outputLabel value="Name" style="font-weight: bold;" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.commonName}"
-                     id="inventoryProductName"
+                     id="marketProductName"
+                     style="width: 300px;"
+                     validator="marketProductValidator">
+
+            <p:ajax event="change"
+                    global="true"  
+                    listener="#{inventoryManager.updateInventoryProduct}"
+                    process="@this"/>
+
+        </p:inputText>     
+        <p:outputLabel value="" />
+        
+        <p:outputLabel value="Type" style="font-weight: bold;" />       
+        <p:inputText value="#{inventoryManager.selectedInventoryProduct.type}"
+                     id="marketProductType"
                      style="width: 300px;"
                      validator="marketProductValidator">
 
@@ -69,7 +83,7 @@ Email: info@dpbennett.com.jm
 
         <p:outputLabel value="Brand" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.brand}" 
-                     id="inventoryProductBrand" >
+                     id="marketProductBrand" >
 
             <p:ajax event="change"
                     global="true"  
@@ -81,7 +95,7 @@ Email: info@dpbennett.com.jm
 
         <p:outputLabel value="Model" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.model}"
-                     id="inventoryProductModel" >
+                     id="marketProductModel" >
 
             <p:ajax event="change"
                     global="true"  
