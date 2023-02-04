@@ -77,34 +77,45 @@ Email: info@dpbennett.com.jm
     <p:dataTable id="inventoryProductsTable"
                  var="inventoryProduct"
                  style="margin-bottom: 1px;margin-top: 1px;"
+                 selectionMode="single"
+                 rowKey="#{inventoryProduct.id}"
                  editable="true" 
-                 editMode="cell"
-                 paginator="true"                                 
+                 editMode="row"
+                 paginator="true"       
+                 reflow="true"
                  rows="15"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{inventoryManager.foundInventoryProducts}">                        
 
-        <p:ajax event="cellEdit" listener="#{inventoryManager.onInventoryProductCellEdit}" />
+        <p:ajax event="rowEdit" listener="#{inventoryManager.onInventoryProductRowEdit}" 
+                update="inventoryProductsTable"/>
+        <p:ajax event="rowEditCancel" listener="#{inventoryManager.onInventoryProductRowCancel}" 
+                update="inventoryProductsTable"/>
+        <p:ajax event="rowSelect" listener="#{inventoryManager.onRowSelect}" />
 
         <f:facet name="header">
             <p:outputLabel value="Search Results (found: #{inventoryManager.numInventoryProducts})" />
         </f:facet>
 
-        <p:column sortBy="#{inventoryProduct.name}">
-            <f:facet name="header">
-                <p:outputLabel value="Name"/>
-            </f:facet>
-            <p:outputLabel value="#{inventoryProduct.name}" />
+        <p:column headerText="Name" >
+            <p:cellEditor>
+                <f:facet name="output">
+                    <p:outputLabel value="#{inventoryProduct.commonName}" /> 
+                </f:facet>
+                <f:facet name="input">
+                    <p:inputText  value="#{inventoryProduct.commonName}" />
+                </f:facet>   
+            </p:cellEditor>
         </p:column>
-        
-        <p:column sortBy="#{inventoryProduct.brand}">
+
+        <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Brand"/>
             </f:facet>
             <p:outputLabel value="#{inventoryProduct.brand}" />
         </p:column>
 
-        <p:column sortBy="#{inventoryProduct.description}">
+        <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Description"/>
             </f:facet>
@@ -126,6 +137,12 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column>
+            <p:rowEditor editTitle="Edit inventory product"
+                         cancelTitle="Cancel inventory product edit"                             
+                         saveTitle="Save inventory product" />
+        </p:column>
+
+        <p:column>
             <p:commandButton icon="pi pi-pencil"
                              actionListener="#{inventoryManager.editSelectedInventoryProduct}"
                              process="@this"
@@ -141,7 +158,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>
         </p:column>
     </p:dataTable>
-    
+
     <p:toolbar>
         <p:toolbarGroup align="left" >  
 
@@ -157,9 +174,9 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:inventoryProductsTable"/>
 
             </p:commandButton>
-            
+
         </p:toolbarGroup>
-      
+
     </p:toolbar>
 
 </html>

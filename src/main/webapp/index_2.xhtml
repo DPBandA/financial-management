@@ -43,6 +43,8 @@ Email: info@dpbennett.com.jm
 
         <h:form id="appForm" rendered="#{financeManager.userLoggedIn}">   
 
+            <p:focus id="focusId" for="doSearch"/>
+
             <p:growl id="growl3" life="5000" showDetail="true" />
             <p:panel>
                 <div class="grid">
@@ -193,9 +195,8 @@ Email: info@dpbennett.com.jm
 
                                             </p:tab>
 
-                                        </p:tabView> 
+                                        </p:tabView>                                      
 
-                                      
                                     </div>                              
                                 </div>
                             </div>

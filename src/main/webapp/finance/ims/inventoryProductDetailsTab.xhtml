@@ -66,19 +66,23 @@ Email: info@dpbennett.com.jm
 
         </p:inputText>     
         <p:outputLabel value="" />
-        
-        <p:outputLabel value="Type" style="font-weight: bold;" />       
-        <p:inputText value="#{inventoryManager.selectedInventoryProduct.type}"
-                     id="marketProductType"
-                     style="width: 300px;"
-                     validator="marketProductValidator">
+
+        <p:outputLabel value="Type" style="font-weight: bold;" />   
+        <p:selectOneMenu id="productType"     
+                         style="width: 200px;"
+                         value="#{inventoryManager.selectedInventoryProduct.type}">
+
+            <f:selectItems  value="#{inventoryManager.productTypes}"
+                            var="type"                            
+                            itemValue="#{type}"
+                            itemLabel="#{type}"/>
 
             <p:ajax event="change"
                     global="true"  
                     listener="#{inventoryManager.updateInventoryProduct}"
                     process="@this"/>
 
-        </p:inputText>     
+        </p:selectOneMenu>
         <p:outputLabel value="" />
 
         <p:outputLabel value="Brand" />       

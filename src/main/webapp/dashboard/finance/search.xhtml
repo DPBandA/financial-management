@@ -81,16 +81,28 @@ Email: info@dpbennett.com.jm
 
     </h:panelGrid>   
 
-    <p:inputText value="#{financeManager.searchText}"     
-                 id="searchText" />                    
+    <p:inputText value="#{financeManager.searchText}"  
+                 id="searchText" >
+
+        <p:ajax event="keyup"
+                global="false"
+                listener="#{financeManager.updateSearch}"
+                process="@this"/>
+
+        <p:ajax event="mousemove"
+                global="false"
+                listener="#{financeManager.updateSearch}"
+                process="@this"/>
+
+    </p:inputText>                    
 
     <p:spacer width="5" />
-    <p:commandButton id="doSearch"
+    <p:commandButton id="defaultCommand"
                      class="search-button"   
-                     actionListener="#{financeManager.doSearch}"
+                     actionListener="#{financeManager.doDefaultCommand}"
                      update=":appForm:mainTabView"
                      icon="pi pi-search"
-                     process="@form"/>
+                     process="@form" />
 
     <p:watermark value="Enter search text" for="searchText" />
 

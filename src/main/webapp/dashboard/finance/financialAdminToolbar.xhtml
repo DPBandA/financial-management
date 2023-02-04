@@ -37,9 +37,9 @@ Email: info@dpbennett.com.jm
                             update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
                 </p:menuitem>
-                
+
                 <p:separator rendered="#{financeManager.user.hasModule('financeManager')}" />
-                
+
                 <p:menuitem value="Inventory Product"
                             title="Add new inventory product"
                             icon="pi pi-plus"
@@ -92,7 +92,7 @@ Email: info@dpbennett.com.jm
                             update=":appForm:mainTabView:purchasereqsTable"/>
 
                 </p:menuitem>
-                
+
                 <p:separator />
 
                 <p:menuitem value="Supplier"
@@ -127,7 +127,14 @@ Email: info@dpbennett.com.jm
                             actionListener="#{purchasingManager.openPurchaseReqsTab}" 
                             process="@this" />
 
-                <p:menuitem value="Inventory"
+                <p:menuitem value="Inventory Products"
+                            title="Open Inventory Requisitions browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryProductBrowser}" 
+                            rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
+                            process="@this" /> 
+
+                <p:menuitem value="Inventory Items"
                             title="Open Inventory browswer" 
                             icon="pi pi-fw pi-list"
                             actionListener="#{inventoryManager.openInventoryTab}" 
@@ -138,13 +145,6 @@ Email: info@dpbennett.com.jm
                             title="Open Inventory Requisitions browswer" 
                             icon="pi pi-fw pi-list"
                             actionListener="#{inventoryManager.openInventoryRequisitionTab}" 
-                            rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
-                            process="@this" /> 
-
-                <p:menuitem value="Inventory Products"
-                            title="Open Inventory Requisitions browswer" 
-                            icon="pi pi-fw pi-list"
-                            actionListener="#{inventoryManager.openInventoryProductBrowser}" 
                             rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
                             process="@this" /> 
 
