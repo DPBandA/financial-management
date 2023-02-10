@@ -38,10 +38,23 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.inventoryDialogReturn}"
                         update=":appForm:mainTabView:inventoryTable"/>
 
-            </p:commandButton>           
+            </p:commandButton>     
+            <p:spacer width="20" />
+            <p:inputText id="inventorySearchText" 
+                         placeholder="Enter search text"
+                         style="width:200px" 
+                         value="#{inventoryManager.inventorySearchText}" >
+
+                <p:ajax event="keyup"                            
+                        global="false"
+                        update=":appForm:mainTabView:inventoryTable"
+                        listener="#{inventoryManager.doInventorySearch}"
+                        process="@this"/>
+
+            </p:inputText>
         </p:toolbarGroup>
     </p:toolbar>
-   
+
     <p:dataTable id="inventoryTable"
                  var="inventory"
                  style="margin-bottom: 1px;margin-top: 1px;"
@@ -61,7 +74,7 @@ Email: info@dpbennett.com.jm
         <p:ajax event="rowSelectCheckbox" update=""/>
         <p:ajax event="rowUnselectCheckbox" update=""/>
         <p:ajax event="toggleSelect" update=""/>
-        
+
         <p:column selectionMode="multiple" exportable="false"></p:column>
 
         <p:column>
@@ -97,17 +110,17 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Cost"/>
             </f:facet>
             <p:outputLabel value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
-                          styleClass="datatable-number-field" >                
-                
+                           styleClass="datatable-number-field" >                
+
             </p:outputLabel>
         </p:column>
 
         <p:column>
-            
-                <p:commandButton icon="pi pi-pencil"
-                            actionListener="#{inventoryManager.editSelectedInventory}"
-                            process="@this"
-                            title="View or edit this inventory's detail">
+
+            <p:commandButton icon="pi pi-pencil"
+                             actionListener="#{inventoryManager.editSelectedInventory}"
+                             process="@this"
+                             title="View or edit this inventory's detail">
 
                 <f:setPropertyActionListener value="#{inventory}" 
                                              target="#{inventoryManager.selectedInventory}" />
@@ -116,12 +129,12 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.inventoryDialogReturn}"
                         update=":appForm:mainTabView:inventoryTable"/>
 
-                </p:commandButton>
-                                       
+            </p:commandButton>
+
         </p:column>
     </p:dataTable>
-    
-     <p:toolbar>
+
+    <p:toolbar>
         <p:toolbarGroup align="left" >               
             <p:commandButton 
                 value="New"

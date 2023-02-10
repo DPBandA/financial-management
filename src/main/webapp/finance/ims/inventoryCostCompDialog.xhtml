@@ -33,6 +33,7 @@ Email: info@dpbennett.com.jm
                   widgetVar="inventoryCostingCompDialog"
                   header="Stock" >   
             
+           <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
             <p:toolbar style="margin-bottom: 1px;">
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
@@ -189,7 +190,8 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value=" "
                                   rendered="#{inventoryManager.selectedCostComponent.isHeading}" />
                 </h:panelGrid>
-            </p:panel>            
+            </p:panel>    
+            
             <p:toolbar style="margin-top: 1px;">
                 <p:toolbarGroup>
                     <p:toolbarGroup>
@@ -208,7 +210,7 @@ Email: info@dpbennett.com.jm
                 </p:toolbarGroup>
                 </p:toolbarGroup>
             </p:toolbar> 
-            <p/>
+            </p:scrollPanel>
         </p:dialog>
     </h:form>    
 </html>
