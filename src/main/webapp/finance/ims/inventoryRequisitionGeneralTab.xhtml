@@ -86,13 +86,42 @@ Email: info@dpbennett.com.jm
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onDisbursementRowCancel}" 
                     update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
 
-            <p:column headerText="Product" >   
+            <f:facet name="header">
+                <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
+            </f:facet>
+
+            <p:column headerText="Inventory Item" >   
                 <p:cellEditor>
                     <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.inventory.product.commonName}" /> 
+                        <p:outputLabel value="#{disbursement.inventory}" /> 
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText  value="#{disbursement.inventory.product.commonName}" />
+                        <p:autoComplete id="inventoryItem"
+                                        var="inventoryItem"   
+                                        value="#{disbursement.inventory}"
+                                        title="#{disbursement.inventory}"
+                                        itemLabel="#{inventoryItem.name}"
+                                        itemValue="#{inventoryItem}"
+                                        converter="inventoryConverter"                                            
+                                        validator="businessEntityValidator"
+                                        validatorMessage="An inventory item is required"
+                                        forceSelection="true"
+                                        size="35"
+                                        dropdown="true"
+                                        scrollHeight="200"     
+                                        completeMethod="#{inventoryManager.completeInventoryItem}" >
+
+                            <p:ajax event="itemSelect"    
+                                    update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                                    listener="#{inventoryManager.updateInventoryRequisition}"
+                                    process="@this" />
+
+                            <p:ajax event="change"    
+                                    update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                                    listener="#{inventoryManager.updateInventoryRequisition}"
+                                    process="@this" />
+
+                        </p:autoComplete>
                     </f:facet>   
                 </p:cellEditor>  
             </p:column>
@@ -165,6 +194,7 @@ Email: info@dpbennett.com.jm
                               icon="pi pi-ellipsis-v" >
                     <p:menuitem   
                         value="Edit"
+                        rendered="false"
                         actionListener="#{inventoryManager.editDisbursement}"
                         update=":inventoryDisbursementDialogForm"
                         oncomplete="PF('inventoryDisbursementDialog').show();"

@@ -38,7 +38,20 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
                         update=":appForm:mainTabView:inventoryRequisitionTable"/>
 
-            </p:commandButton>           
+            </p:commandButton>   
+            <p:spacer width="20" />
+            <p:inputText id="inventoryRequisitionSearchText" 
+                         placeholder="Enter search text"
+                         style="width:200px" 
+                         value="#{inventoryManager.inventoryRequisitionSearchText}" >
+
+                <p:ajax event="keyup"                            
+                        global="false"
+                        update=":appForm:mainTabView:inventoryRequisitionTable"
+                        listener="#{inventoryManager.doInventoryRequisitionSearch}"
+                        process="@this"/>
+
+            </p:inputText>
         </p:toolbarGroup>
     </p:toolbar>
    
@@ -96,12 +109,14 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="#{inventoryRequisition.enteredBy}" />                
         </p:column> 
 
+        <ui:remove>
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Items"/>
             </f:facet>
             <p:outputLabel value="#{inventoryRequisition.inventoryDisbursements}" />                
         </p:column>
+        </ui:remove>
 
         <p:column>
             
