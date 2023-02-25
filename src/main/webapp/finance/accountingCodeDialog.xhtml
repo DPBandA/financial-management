@@ -55,85 +55,85 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">      
-                        <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
-                        <h:panelGroup>
-                            <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                     id="active"
-                                                     value="#{financeManager.selectedAccountingCode.active}" />
 
-                            <p:tooltip for="active" value="Check to activate this code" 
-                                       showEffect="fade" hideEffect="fade" />            
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">      
+                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <h:panelGroup>
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="active"
+                                                 value="#{financeManager.selectedAccountingCode.active}" />
 
-                        </h:panelGroup>
+                        <p:tooltip for="active" value="Check to activate this code" 
+                                   showEffect="fade" hideEffect="fade" />            
 
-                        <p:outputLabel value="Name" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedAccountingCode.name}"    
-                                     id="accountingCodeName"
+                    </h:panelGroup>
+
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedAccountingCode.name}"    
+                                 id="accountingCodeName"
+                                 style="width:300px" >
+
+                        <f:validator validatorId="accountingCodeValidator" />
+
+                    </p:inputText> 
+
+                    <ui:remove>
+                        <p:outputLabel value="Account" style="font-weight: bold;" />
+                        <p:inputText value="#{financeManager.selectedAccountingCode.account}"    
+                                     id="accountingCodeAccount"
                                      style="width:300px" >
 
                             <f:validator validatorId="accountingCodeValidator" />
 
                         </p:inputText> 
+                    </ui:remove>
 
-                        <ui:remove>
-                            <p:outputLabel value="Account" style="font-weight: bold;" />
-                            <p:inputText value="#{financeManager.selectedAccountingCode.account}"    
-                                         id="accountingCodeAccount"
-                                         style="width:300px" >
+                    <p:outputLabel value="Code" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedAccountingCode.code}"    
+                                 id="accountingCode"
+                                 style="width:300px" >
 
-                                <f:validator validatorId="accountingCodeValidator" />
+                        <f:validator validatorId="accountingCodeValidator" />
 
-                            </p:inputText> 
-                        </ui:remove>
+                    </p:inputText> 
 
-                        <p:outputLabel value="Code" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedAccountingCode.code}"    
-                                     id="accountingCode"
-                                     style="width:300px" >
+                    <p:outputLabel value="Abbreviation" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedAccountingCode.abbreviation}"    
+                                 id="accountingCodeAbbrev"
+                                 style="width:300px" >
 
-                            <f:validator validatorId="accountingCodeValidator" />
+                        <f:validator validatorId="accountingCodeValidator" />
 
-                        </p:inputText> 
+                    </p:inputText>
 
-                        <p:outputLabel value="Abbreviation" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedAccountingCode.abbreviation}"    
-                                     id="accountingCodeAbbrev"
-                                     style="width:300px" >
+                    <p:outputLabel value="Type" style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="accountingCodeType"     
+                                     style="width: 300px;"
+                                     value="#{financeManager.selectedAccountingCode.type}">
 
-                            <f:validator validatorId="accountingCodeValidator" />
+                        <f:selectItems  value="#{financeManager.accountingCodeTypes}"
+                                        var="type"                            
+                                        itemValue="#{type}"
+                                        itemLabel="#{type}"/>
 
-                        </p:inputText>
+                    </p:selectOneMenu>
 
-                        <p:outputLabel value="Type" style="font-weight: bold;" />                    
-                        <p:selectOneMenu id="accountingCodeType"     
-                                         style="width: 300px;"
-                                         value="#{financeManager.selectedAccountingCode.type}">
+                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedAccountingCode.description}"
+                                      id="accountingCodeDescription"
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      style="width:300px" >
 
-                            <f:selectItems  value="#{financeManager.accountingCodeTypes}"
-                                            var="type"                            
-                                            itemValue="#{type}"
-                                            itemLabel="#{type}"/>
+                        <f:validator validatorId="accountingCodeValidator" />
 
-                        </p:selectOneMenu>
+                    </p:inputTextarea>                           
 
-                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                        <p:inputTextarea  value="#{financeManager.selectedAccountingCode.description}"
-                                          id="accountingCodeDescription"
-                                          maxlength="1000"
-                                          rows="4"
-                                          autoResize="false"
-                                          style="width:300px" >
+                </h:panelGrid>
+            </p:panel>
 
-                            <f:validator validatorId="accountingCodeValidator" />
-
-                        </p:inputTextarea>                           
-
-                    </h:panelGrid>
-                </p:panel>
-            </p:scrollPanel>
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

@@ -52,18 +52,18 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" />
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
-                <p:tabView id="marketProductFormTabView"
-                           dynamic="true"
-                           style="margin-top: 1px;margin-bottom: 1px;"
-                           widgetVar="marketProductFormTabVar" >
 
-                    <p:tab id="marketProductDetailsTab" title="General">
-                        <ui:include src="marketProductDetailsTab.xhtml"/>
-                    </p:tab>
+            <p:tabView id="marketProductFormTabView"
+                       dynamic="true"
+                       style="margin-top: 1px;margin-bottom: 1px;"
+                       widgetVar="marketProductFormTabVar" >
 
-                </p:tabView>
-            </p:scrollPanel>
+                <p:tab id="marketProductDetailsTab" title="General">
+                    <ui:include src="marketProductDetailsTab.xhtml"/>
+                </p:tab>
+
+            </p:tabView>
+
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"

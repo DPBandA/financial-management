@@ -55,85 +55,85 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">     
-                        <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
-                        <h:panelGroup>
-                            <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                     id="active"
-                                                     value="#{financeManager.selectedDiscount.active}" />
 
-                            <p:tooltip for="active" value="Check to activate this discount" 
-                                       showEffect="fade" hideEffect="fade" />            
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">     
+                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <h:panelGroup>
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="active"
+                                                 value="#{financeManager.selectedDiscount.active}" />
 
-                        </h:panelGroup>
+                        <p:tooltip for="active" value="Check to activate this discount" 
+                                   showEffect="fade" hideEffect="fade" />            
+
+                    </h:panelGroup>
 
 
-                        <p:outputLabel value="Name" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedDiscount.name}"    
-                                     id="discountName"
-                                     style="width:300px" >
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedDiscount.name}"    
+                                 id="discountName"
+                                 style="width:300px" >
 
-                            <f:validator validatorId="discountValidator" />
+                        <f:validator validatorId="discountValidator" />
 
-                        </p:inputText> 
+                    </p:inputText> 
 
-                        <p:outputLabel value="Accounting code" style="font-weight: bold;" />
-                        <p:autoComplete id="accountingCode"  
-                                        var="accountingCode"
-                                        forceSelection="true"      
-                                        dropdown="true"
-                                        scrollHeight="200" 
-                                        size="35"
-                                        maxlength="40"
-                                        value="#{financeManager.selectedDiscount.accountingCode}"
-                                        title="#{financeManager.selectedDiscount.accountingCode}"
-                                        itemValue="#{accountingCode}"
-                                        itemLabel="#{accountingCode.code} (#{accountingCode.name})"
-                                        converter="accountingCodeConverter"
-                                        validator="businessEntityValidator"
-                                        completeMethod="#{financeManager.completeAccountingCode}" />            
+                    <p:outputLabel value="Accounting code" style="font-weight: bold;" />
+                    <p:autoComplete id="accountingCode"  
+                                    var="accountingCode"
+                                    forceSelection="true"      
+                                    dropdown="true"
+                                    scrollHeight="200" 
+                                    size="35"
+                                    maxlength="40"
+                                    value="#{financeManager.selectedDiscount.accountingCode}"
+                                    title="#{financeManager.selectedDiscount.accountingCode}"
+                                    itemValue="#{accountingCode}"
+                                    itemLabel="#{accountingCode.code} (#{accountingCode.name})"
+                                    converter="accountingCodeConverter"
+                                    validator="businessEntityValidator"
+                                    completeMethod="#{financeManager.completeAccountingCode}" />            
 
-                        <p:outputLabel value="Value" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedDiscount.discountValue}"
-                                     converterMessage="Please enter a valid discount value."
-                                     styleClass="number-field"
-                                     maxlength="15" >
+                    <p:outputLabel value="Value" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedDiscount.discountValue}"
+                                 converterMessage="Please enter a valid discount value."
+                                 styleClass="number-field"
+                                 maxlength="15" >
 
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 
-                            <p:ajax event="change"                                                       
-                                    process="@this"/>
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
 
-                        </p:inputText>
+                    </p:inputText>
 
-                        <p:outputLabel value="Value type" style="font-weight: bold;" />                    
-                        <p:selectOneMenu id="discountValueType"    
-                                         value="#{financeManager.selectedDiscount.discountValueType}">
+                    <p:outputLabel value="Value type" style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="discountValueType"    
+                                     value="#{financeManager.selectedDiscount.discountValueType}">
 
-                            <f:selectItems  value="#{financeManager.valueTypes}"
-                                            var="type"                            
-                                            itemValue="#{type}"
-                                            itemLabel="#{type}"/>
+                        <f:selectItems  value="#{financeManager.valueTypes}"
+                                        var="type"                            
+                                        itemValue="#{type}"
+                                        itemLabel="#{type}"/>
 
-                        </p:selectOneMenu>
+                    </p:selectOneMenu>
 
-                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                        <p:inputTextarea  value="#{financeManager.selectedDiscount.description}"
-                                          id="discountDescription"
-                                          maxlength="1000"
-                                          rows="4"
-                                          autoResize="false"
-                                          style="width:300px" >
+                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedDiscount.description}"
+                                      id="discountDescription"
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      style="width:300px" >
 
-                            <f:validator validatorId="discountValidator" />
+                        <f:validator validatorId="discountValidator" />
 
-                        </p:inputTextarea>                           
+                    </p:inputTextarea>                           
 
-                    </h:panelGrid>
-                </p:panel>
-            </p:scrollPanel>
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

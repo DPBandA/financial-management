@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    
+
     <h:form id="inventoryCostingCompDialogForm">
         <p:dialog width="500"
                   height="auto"
@@ -32,8 +32,7 @@ Email: info@dpbennett.com.jm
                   responsive="true"
                   widgetVar="inventoryCostingCompDialog"
                   header="Stock" >   
-            
-           <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
+
             <p:toolbar style="margin-bottom: 1px;">
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
@@ -50,12 +49,12 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
             </p:toolbar>   
-            
+
             <p:panel>
                 <h:panelGrid id="costingComponentPanelGrid" 
                              cellspacing="10"
                              columns="2" style="width: 100%">
-                    
+
                     <p:outputLabel value="Cost code" 
                                    rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
                     <p:inputText id="costCode"
@@ -99,12 +98,12 @@ Email: info@dpbennett.com.jm
                                       rows="2"
                                       autoResize="false"
                                       style="width: 90%;" >
-                        
+
                         <p:ajax event="change"
                                 global="false" 
                                 listener="#{inventoryManager.updateSelectedCostComponent}" 
                                 process="@this"/>
-                        
+
                     </p:inputTextarea>
 
                     <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -131,22 +130,22 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <p:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
-                                   value="UOM" />
+                                    value="UOM" />
                     <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
-                                 id="costComponentUnit"
-                                 value="#{inventoryManager.selectedCostComponent.unit}"
-                                 style="width: 90%" >
-                        
+                                  id="costComponentUnit"
+                                  value="#{inventoryManager.selectedCostComponent.unit}"
+                                  style="width: 90%" >
+
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 process="@this"/>
-                        
+
                         <p:ajax event="change"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 process="@this"/>
-                        
+
                     </p:inputText>
 
                     <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
@@ -188,29 +187,29 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
                     <p:outputLabel value=" "
-                                  rendered="#{inventoryManager.selectedCostComponent.isHeading}" />
+                                   rendered="#{inventoryManager.selectedCostComponent.isHeading}" />
                 </h:panelGrid>
             </p:panel>    
-            
+
             <p:toolbar style="margin-top: 1px;">
                 <p:toolbarGroup>
                     <p:toolbarGroup>
-                    <p:commandButton value="Ok"
-                                     actionListener="#{inventoryManager.okCostingComponent}"
-                                     update=":inventoryDialogForm:inventoryDetailToolbar1,:inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventory_growl"
-                                    icon="pi pi-check"
-                                     process="@form"/>
-                    <p:spacer width="5" />
-                    <p:commandButton value="Cancel" 
-                                     immediate="true"
-                                     actionListener="#{inventoryManager.cancelCostComponentEdit}"
-                                     update=""
-                                     oncomplete="PF('inventoryCostingCompDialog').hide();"
-                                     icon="pi pi-times"/>
-                </p:toolbarGroup>
+                        <p:commandButton value="Ok"
+                                         actionListener="#{inventoryManager.okCostingComponent}"
+                                         update=":inventoryDialogForm:inventoryDetailToolbar1,:inventoryDialogForm:inventoryFormTabView:costComponentTable,:inventoryDialogForm:inventory_growl"
+                                         icon="pi pi-check"
+                                         process="@form"/>
+                        <p:spacer width="5" />
+                        <p:commandButton value="Cancel" 
+                                         immediate="true"
+                                         actionListener="#{inventoryManager.cancelCostComponentEdit}"
+                                         update=""
+                                         oncomplete="PF('inventoryCostingCompDialog').hide();"
+                                         icon="pi pi-times"/>
+                    </p:toolbarGroup>
                 </p:toolbarGroup>
             </p:toolbar> 
-            </p:scrollPanel>
+
         </p:dialog>
     </h:form>    
 </html>

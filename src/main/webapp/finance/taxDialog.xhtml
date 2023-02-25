@@ -55,95 +55,95 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">   
-                        <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
-                        <h:panelGroup>
-                            <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                     id="active"
-                                                     value="#{financeManager.selectedTax.active}" />
 
-                            <p:tooltip for="active" value="Check to activate this tax" 
-                                       showEffect="fade" hideEffect="fade" />            
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">   
+                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <h:panelGroup>
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="active"
+                                                 value="#{financeManager.selectedTax.active}" />
 
-                        </h:panelGroup>
+                        <p:tooltip for="active" value="Check to activate this tax" 
+                                   showEffect="fade" hideEffect="fade" />            
 
-                        <p:outputLabel value="Name" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedTax.name}"    
-                                     id="taxName"
-                                     style="width:300px" >
+                    </h:panelGroup>
 
-                            <f:validator validatorId="taxValidator" />
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedTax.name}"    
+                                 id="taxName"
+                                 style="width:300px" >
 
-                        </p:inputText> 
+                        <f:validator validatorId="taxValidator" />
 
-                        <p:outputLabel value="Accounting code" style="font-weight: bold;" />
-                        <p:autoComplete id="accountingCode"  
-                                        var="accountingCode"
-                                        forceSelection="true"      
-                                        dropdown="true"
-                                        scrollHeight="200" 
-                                        size="35"
-                                        maxlength="40"
-                                        value="#{financeManager.selectedTax.accountingCode}"
-                                        title="#{financeManager.selectedTax.accountingCode}"
-                                        itemValue="#{accountingCode}"
-                                        itemLabel="#{accountingCode.code} (#{accountingCode.name})"
-                                        converter="accountingCodeConverter"
-                                        validator="businessEntityValidator"
-                                        completeMethod="#{financeManager.completeAccountingCode}" />            
+                    </p:inputText> 
 
-                        <p:outputLabel value="Value" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedTax.taxValue}"
-                                     converterMessage="Please enter a valid tax value."
-                                     styleClass="number-field"
-                                     maxlength="15" >
+                    <p:outputLabel value="Accounting code" style="font-weight: bold;" />
+                    <p:autoComplete id="accountingCode"  
+                                    var="accountingCode"
+                                    forceSelection="true"      
+                                    dropdown="true"
+                                    scrollHeight="200" 
+                                    size="35"
+                                    maxlength="40"
+                                    value="#{financeManager.selectedTax.accountingCode}"
+                                    title="#{financeManager.selectedTax.accountingCode}"
+                                    itemValue="#{accountingCode}"
+                                    itemLabel="#{accountingCode.code} (#{accountingCode.name})"
+                                    converter="accountingCodeConverter"
+                                    validator="businessEntityValidator"
+                                    completeMethod="#{financeManager.completeAccountingCode}" />            
 
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                    <p:outputLabel value="Value" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedTax.taxValue}"
+                                 converterMessage="Please enter a valid tax value."
+                                 styleClass="number-field"
+                                 maxlength="15" >
 
-                            <p:ajax event="change"                                                       
-                                    process="@this"/>
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 
-                        </p:inputText>
+                        <p:ajax event="change"                                                       
+                                process="@this"/>
 
-                        <p:outputLabel value="Value type" style="font-weight: bold;" />                    
-                        <p:selectOneMenu id="taxValueType"    
-                                         value="#{financeManager.selectedTax.taxValueType}">
+                    </p:inputText>
 
-                            <f:selectItems  value="#{financeManager.valueTypes}"
-                                            var="type"                            
-                                            itemValue="#{type}"
-                                            itemLabel="#{type}"/>
+                    <p:outputLabel value="Value type" style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="taxValueType"    
+                                     value="#{financeManager.selectedTax.taxValueType}">
 
-                        </p:selectOneMenu>
+                        <f:selectItems  value="#{financeManager.valueTypes}"
+                                        var="type"                            
+                                        itemValue="#{type}"
+                                        itemLabel="#{type}"/>
 
-                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                        <p:inputTextarea  value="#{financeManager.selectedTax.description}"
-                                          id="taxDescription"
-                                          maxlength="1000"
-                                          rows="4"
-                                          autoResize="false"
-                                          style="width:300px" >
+                    </p:selectOneMenu>
 
-                            <f:validator validatorId="taxValidator" />
+                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedTax.description}"
+                                      id="taxDescription"
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      style="width:300px" >
 
-                        </p:inputTextarea>   
+                        <f:validator validatorId="taxValidator" />
 
-                        <p:outputLabel for="taxExempt" value="Exempt" style="font-weight: bold;" />  
-                        <h:panelGroup>
-                            <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                     id="taxExempt"
-                                                     value="#{financeManager.selectedTax.exempt}" />
+                    </p:inputTextarea>   
 
-                            <p:tooltip for="taxExempt" value="Check to activate tax exempt" 
-                                       showEffect="fade" hideEffect="fade" />   
+                    <p:outputLabel for="taxExempt" value="Exempt" style="font-weight: bold;" />  
+                    <h:panelGroup>
+                        <p:selectBooleanCheckbox style="vertical-align: middle"
+                                                 id="taxExempt"
+                                                 value="#{financeManager.selectedTax.exempt}" />
 
-                        </h:panelGroup>
+                        <p:tooltip for="taxExempt" value="Check to activate tax exempt" 
+                                   showEffect="fade" hideEffect="fade" />   
 
-                    </h:panelGrid>
-                </p:panel>
-            </p:scrollPanel>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">   
-    
+
     <h:form id="addressForm">
         <p:dialog width="450"
                   height="fit-content"
@@ -33,7 +33,7 @@ Email: info@dpbennett.com.jm
                   responsive="true"
                   widgetVar="addressFormDialog"
                   header="Address Detail" >
-            <p:scrollPanel style="height: #{purchasingManager.scrollPanelHeight};">
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
@@ -127,9 +127,9 @@ Email: info@dpbennett.com.jm
                                     scrollHeight="200" 
                                     completeMethod="#{systemManager.completeCountry}" >
 
-                                    <p:ajax event="itemSelect"                              
-                            listener="#{purchasingManager.updateSupplierAddress}"
-                            process="@this" />      
+                        <p:ajax event="itemSelect"                              
+                                listener="#{purchasingManager.updateSupplierAddress}"
+                                process="@this" />      
 
                         <p:ajax event="change"                              
                                 listener="#{purchasingManager.updateSupplierAddress}"
@@ -153,7 +153,7 @@ Email: info@dpbennett.com.jm
                                      process="@this" />         
                 </p:toolbarGroup>
             </p:toolbar>
-            </p:scrollPanel>
+
         </p:dialog>
     </h:form>    
 </html>

@@ -55,40 +55,40 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: #{financeManager.scrollPanelHeight};">
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">     
-                        <p:outputLabel value="Active" for="jobCategoryActive" 
-                                       style="font-weight: bold;" />               
-                        <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                 id="jobCategoryActive"
-                                                 value="#{financeManager.selectedJobCategory.active}" />    
 
-                        <p:outputLabel value="Name" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedJobCategory.name}"    
-                                     id="jobCategoryName"
-                                     style="width:300px" >
-                            <f:validator validatorId="requiredFieldValidator" />
-                        </p:inputText> 
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">     
+                    <p:outputLabel value="Active" for="jobCategoryActive" 
+                                   style="font-weight: bold;" />               
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             id="jobCategoryActive"
+                                             value="#{financeManager.selectedJobCategory.active}" />    
 
-                        <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
-                        <p:inputTextarea  value="#{financeManager.selectedJobCategory.description}"
-                                          id="jobCategoryDescription"
-                                          maxlength="1000"
-                                          rows="4"
-                                          autoResize="false"
-                                          style="width:300px" >
-                            <f:validator validatorId="requiredFieldValidator" />
-                        </p:inputTextarea>  
+                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedJobCategory.name}"    
+                                 id="jobCategoryName"
+                                 style="width:300px" >
+                        <f:validator validatorId="requiredFieldValidator" />
+                    </p:inputText> 
 
-                        <p:outputLabel value="For job earnings" for="earningsJob" />               
-                        <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                 id="earningsJob"
-                                                 value="#{financeManager.selectedJobCategory.isEarning}" /> 
+                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedJobCategory.description}"
+                                      id="jobCategoryDescription"
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      style="width:300px" >
+                        <f:validator validatorId="requiredFieldValidator" />
+                    </p:inputTextarea>  
 
-                    </h:panelGrid>
-                </p:panel>
-            </p:scrollPanel>
+                    <p:outputLabel value="For job earnings" for="earningsJob" />               
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             id="earningsJob"
+                                             value="#{financeManager.selectedJobCategory.isEarning}" /> 
+
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"

@@ -56,27 +56,27 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" />
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:scrollPanel style="height: 600px;">
-                <p:tabView id="supplierFormTabView"
-                           dynamic="true"
-                           style="margin-top: 1px;margin-bottom: 1px;"
-                           widgetVar="supplierFormTabVar" >
-                    <p:tab id="supplierDetailsTab" title="General details">
-                        <ui:include src="supplierDetailsTab.xhtml"/>
-                    </p:tab>
 
-                    <p:tab title="Addresses">
-                        <ui:include src="supplierAddressesTab.xhtml" />
-                    </p:tab>
+            <p:tabView id="supplierFormTabView"
+                       dynamic="true"
+                       style="margin-top: 1px;margin-bottom: 1px;"
+                       widgetVar="supplierFormTabVar" >
+                <p:tab id="supplierDetailsTab" title="General details">
+                    <ui:include src="supplierDetailsTab.xhtml"/>
+                </p:tab>
 
-                    <p:tab title="Contacts">
-                        <ui:include src="supplierContactsTab.xhtml" />
-                    </p:tab>
-                    <p:tab title="Tracking">
-                        <ui:include src="supplierTrackingTab.xhtml" />
-                    </p:tab>
-                </p:tabView>
-            </p:scrollPanel>    
+                <p:tab title="Addresses">
+                    <ui:include src="supplierAddressesTab.xhtml" />
+                </p:tab>
+
+                <p:tab title="Contacts">
+                    <ui:include src="supplierContactsTab.xhtml" />
+                </p:tab>
+                <p:tab title="Tracking">
+                    <ui:include src="supplierTrackingTab.xhtml" />
+                </p:tab>
+            </p:tabView>
+
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
