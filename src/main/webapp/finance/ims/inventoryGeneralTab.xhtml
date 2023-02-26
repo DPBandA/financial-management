@@ -25,7 +25,22 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
-        <h:panelGrid id="generalTabPanel" columns="2">            
+        <h:panelGrid id="generalTabPanel" columns="2">   
+            <p:outputLabel value="Name" />          
+            <p:inputText  size="15"
+                          id="inventoryName"
+                          maxlength="40"
+                          readonly="true"
+                          styleClass="read-only-text-field"
+                          value="#{inventoryManager.selectedInventory.name}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>              
+            
             <p:outputLabel value="SKU" />          
             <p:inputText  size="15"
                           maxlength="40"
@@ -68,7 +83,7 @@ Email: info@dpbennett.com.jm
                                 completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
 
                     <p:ajax event="itemSelect"    
-                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            update="inventoryName,:inventoryDialogForm:inventoryDetailToolbar1"
                             listener="#{inventoryManager.updateInventory}"
                             process="@this" />
 

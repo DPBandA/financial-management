@@ -90,7 +90,7 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
             </f:facet>
 
-            <p:column headerText="Inventory Item" >   
+            <p:column headerText="Inventory Item" style="width: 150px;">   
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{disbursement.inventory}" /> 
@@ -109,30 +109,23 @@ Email: info@dpbennett.com.jm
                                         size="35"
                                         dropdown="true"
                                         scrollHeight="200"     
-                                        completeMethod="#{inventoryManager.completeInventoryItem}" >
+                                        completeMethod="#{inventoryManager.completeInventoryItem}" />
 
-                            <p:ajax event="itemSelect"    
-                                    update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
-                                    listener="#{inventoryManager.updateInventoryRequisition}"
-                                    process="@this" />
-
-                            <p:ajax event="change"    
-                                    update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
-                                    listener="#{inventoryManager.updateInventoryRequisition}"
-                                    process="@this" />
-
-                        </p:autoComplete>
                     </f:facet>   
                 </p:cellEditor>  
             </p:column>
 
-            <p:column headerText="Description" >   
+            <p:column headerText="Description" style="width: 150px;" >   
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{disbursement.description}" /> 
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText  value="#{disbursement.description}" />
+                        <p:inputTextarea  value="#{disbursement.description}"
+                                          id="costComponentName"
+                                          maxlength="250"
+                                          rows="2"
+                                          autoResize="false" />
                     </f:facet>   
                 </p:cellEditor>  
             </p:column>
