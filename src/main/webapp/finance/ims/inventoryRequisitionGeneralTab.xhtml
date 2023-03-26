@@ -187,7 +187,7 @@ Email: info@dpbennett.com.jm
                               icon="pi pi-ellipsis-v" >
                     <p:menuitem   
                         value="Edit"
-                        rendered="false"
+                        rendered="true"
                         actionListener="#{inventoryManager.editDisbursement}"
                         update=":inventoryDisbursementDialogForm"
                         oncomplete="PF('inventoryDisbursementDialog').show();"
@@ -200,7 +200,7 @@ Email: info@dpbennett.com.jm
                     </p:menuitem>
 
                     <p:menuitem  
-                        value="Delete"
+                        value="Delete"                        
                         onclick="PF('inventoryDisbusementDeleteConfirmDialog').show();"
                         icon="pi pi-trash"
                         process="@this">

@@ -13,6 +13,11 @@
         <param-name>primefaces.THEME</param-name>
         <param-value>#{financeManager.user.PFThemeName}</param-value>
     </context-param>
+    
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
       
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
