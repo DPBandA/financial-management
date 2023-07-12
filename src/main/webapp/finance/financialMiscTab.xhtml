@@ -29,39 +29,39 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new option"                                  
                              value="New"
-                             actionListener="#{systemManager.createNewFinancialSystemOption}"                                                     
+                             actionListener="#{systemManager.createNewSystemOption('Finance')}"                                                       
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doFinancialSystemOptionSearch}"
+                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
             <p:inputText value="#{systemManager.systemOptionSearchText}"                                             
                          style="width:300px" placeholder="Enter any part of option description">
+                
                 <p:ajax event="keyup"
                         global="false"
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"
-                        listener="#{systemManager.doFinancialSystemOptionSearch}"
+                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
                         process="@this"/>
+                
             </p:inputText>
         </p:toolbarGroup>
     </p:toolbar>    
     <p:dataTable id="financialSystemOptionsTable"                                       
                  var="systemOption"     
-                 editable="true" 
+                 editable="false" 
                  editMode="cell"
                  paginator="true"
                  rows="15"
                  widgetVar="systemOptionsTableVar"
                  style="margin-top: 1px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 value="#{systemManager.foundFinancialSystemOptions}">
-
-        <p:ajax event="cellEdit" listener="#{systemManager.onFinancialSystemOptionCellEdit}" />
+                 value="#{systemManager.foundSystemOptionsByCategory}">
 
         <f:facet name="header">
             Financial Options
@@ -96,7 +96,7 @@ Email: info@dpbennett.com.jm
                                              target="#{systemManager.selectedSystemOption}" />
 
                 <p:ajax event="dialogReturn"
-                        listener="#{systemManager.doFinancialSystemOptionSearch}"
+                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>           
