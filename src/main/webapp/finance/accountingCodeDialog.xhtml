@@ -54,11 +54,18 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">      
-                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <p:outputLabel for="active" value="Active *" style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="active"
@@ -69,9 +76,13 @@ Email: info@dpbennett.com.jm
 
                     </h:panelGroup>
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   for="accountingCodeName"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedAccountingCode.name}"    
                                  id="accountingCodeName"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  style="width:300px" >
 
                         <f:validator validatorId="accountingCodeValidator" />
@@ -146,6 +157,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />

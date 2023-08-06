@@ -40,13 +40,13 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <p:spacer width="20" />
-            <p:inputText value="#{systemManager.systemOptionSearchText}"                                             
-                         style="width:300px" placeholder="Enter any part of option description">
+            <p:inputText value="#{financeManager.settingSearchText}"                                             
+                         style="width:300px" placeholder="Enter search text">
                 
                 <p:ajax event="keyup"
                         global="false"
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"
-                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
+                        listener="#{financeManager.doSettingSearch}"
                         process="@this"/>
                 
             </p:inputText>
