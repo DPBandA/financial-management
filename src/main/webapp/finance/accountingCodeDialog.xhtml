@@ -102,33 +102,45 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText> 
 
-                    <p:outputLabel value="Abbreviation" style="font-weight: bold;" />
+                    <p:outputLabel value="Abbreviation" 
+                                   for="accountingCodeAbbrev"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedAccountingCode.abbreviation}"    
                                  id="accountingCodeAbbrev"
+                                 required="true"
+                                 requiredMessage="Abbreviation Required"
                                  style="width:300px" >
 
                         <f:validator validatorId="accountingCodeValidator" />
 
                     </p:inputText>
 
-                    <p:outputLabel value="Type" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="accountingCodeType"     
+                    <p:outputLabel value="Type" 
+                                   for="accountingCodeType"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="accountingCodeType"    
+                                     required="true"
+                                     requiredMessage="Type Required"
                                      style="width: 300px;"
                                      value="#{financeManager.selectedAccountingCode.type}">
 
                         <f:selectItems  value="#{financeManager.accountingCodeTypes}"
-                                        var="type"                            
+                                        var="type"                                          
                                         itemValue="#{type}"
                                         itemLabel="#{type}"/>
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="accountingCodeDescription"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedAccountingCode.description}"
                                       id="accountingCodeDescription"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       style="width:300px" >
 
                         <f:validator validatorId="accountingCodeValidator" />
