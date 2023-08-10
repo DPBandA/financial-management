@@ -54,11 +54,18 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <p:outputLabel for="active" value="Active *" style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="active"
@@ -70,17 +77,23 @@ Email: info@dpbennett.com.jm
                     </h:panelGroup>
 
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   for="discountName"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedDiscount.name}"    
                                  id="discountName"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  style="width:300px" >
 
                         <f:validator validatorId="discountValidator" />
 
                     </p:inputText> 
 
-                    <p:outputLabel value="Accounting code" style="font-weight: bold;" />
-                    <p:autoComplete id="accountingCode"  
+                    <p:outputLabel value="Accounting code" 
+                                   for="discountAccountingCode"
+                                   style="font-weight: bold;" />
+                    <p:autoComplete id="discountAccountingCode"  
                                     var="accountingCode"
                                     forceSelection="true"      
                                     dropdown="true"
@@ -93,12 +106,19 @@ Email: info@dpbennett.com.jm
                                     itemLabel="#{accountingCode.code} (#{accountingCode.name})"
                                     converter="accountingCodeConverter"
                                     validator="businessEntityValidator"
+                                    required="true"
+                                    requiredMessage="Accounting Code Required"
                                     completeMethod="#{financeManager.completeAccountingCode}" />            
 
-                    <p:outputLabel value="Value" style="font-weight: bold;" />
+                    <p:outputLabel value="Value" 
+                                   for="discountValue"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedDiscount.discountValue}"
+                                 id="discountValue"
                                  converterMessage="Please enter a valid discount value."
                                  styleClass="number-field"
+                                 required="true"
+                                 requiredMessage="Value Required"
                                  maxlength="15" >
 
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
@@ -108,8 +128,12 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Value type" style="font-weight: bold;" />                    
-                    <p:selectOneMenu id="discountValueType"    
+                    <p:outputLabel value="Value type" 
+                                   for="discountValueType"
+                                   style="font-weight: bold;" />                    
+                    <p:selectOneMenu id="discountValueType"  
+                                     required="true"
+                                     requiredMessage="Value Type Required"
                                      value="#{financeManager.selectedDiscount.discountValueType}">
 
                         <f:selectItems  value="#{financeManager.valueTypes}"
@@ -119,12 +143,16 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="discountDescription"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedDiscount.description}"
                                       id="discountDescription"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       style="width:300px" >
 
                         <f:validator validatorId="discountValidator" />
@@ -146,6 +174,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />

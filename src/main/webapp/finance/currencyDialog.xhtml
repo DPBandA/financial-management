@@ -54,41 +54,60 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
-            
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">   
 
-                        <p:outputLabel value="Name" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedCurrency.name}"    
-                                     id="currencyName"
-                                     style="width:300px" >
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">   
 
-                            <f:validator validatorId="currencyValidator" />
+                    <p:outputLabel value="Name" 
+                                   for="currencyName"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedCurrency.name}"    
+                                 id="currencyName"
+                                 required="true"
+                                 requiredMessage="Name Required"
+                                 style="width:300px" >
 
-                        </p:inputText> 
+                        <f:validator validatorId="currencyValidator" />
 
-                        <p:outputLabel value="Code" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedCurrency.code}"    
-                                     id="currencyCode"
-                                     style="width:300px" >
+                    </p:inputText> 
 
-                            <f:validator validatorId="currencyValidator" />
+                    <p:outputLabel value="Code" 
+                                   for="currencyCode"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedCurrency.code}"    
+                                 id="currencyCode"
+                                 required="true"
+                                 requiredMessage="Code Required"
+                                 style="width:300px" >
 
-                        </p:inputText>
+                        <f:validator validatorId="currencyValidator" />
 
-                        <p:outputLabel value="Symbol" style="font-weight: bold;" />
-                        <p:inputText value="#{financeManager.selectedCurrency.symbol}"    
-                                     id="currencySymbol"
-                                     style="width:300px" >
+                    </p:inputText>
 
-                            <f:validator validatorId="currencyValidator" />
+                    <p:outputLabel value="Symbol" 
+                                   for="currencySymbol"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedCurrency.symbol}"    
+                                 id="currencySymbol"
+                                 required="true"
+                                 requiredMessage="Symbol Required"
+                                 style="width:300px" >
 
-                        </p:inputText>
+                        <f:validator validatorId="currencyValidator" />
 
-                    </h:panelGrid>
-                </p:panel>
-            
+                    </p:inputText>
+
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
@@ -101,6 +120,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />

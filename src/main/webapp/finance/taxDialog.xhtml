@@ -54,11 +54,18 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">   
-                    <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
+                    <p:outputLabel for="active" value="Active *" style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="active"
@@ -69,16 +76,22 @@ Email: info@dpbennett.com.jm
 
                     </h:panelGroup>
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   for="taxName"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedTax.name}"    
                                  id="taxName"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  style="width:300px" >
 
                         <f:validator validatorId="taxValidator" />
 
                     </p:inputText> 
 
-                    <p:outputLabel value="Accounting code" style="font-weight: bold;" />
+                    <p:outputLabel value="Accounting code" 
+                                   for="accountingCode"
+                                   style="font-weight: bold;" />
                     <p:autoComplete id="accountingCode"  
                                     var="accountingCode"
                                     forceSelection="true"      
@@ -92,12 +105,19 @@ Email: info@dpbennett.com.jm
                                     itemLabel="#{accountingCode.code} (#{accountingCode.name})"
                                     converter="accountingCodeConverter"
                                     validator="businessEntityValidator"
+                                    required="true"
+                                    requiredMessage="Accounting Code Required"
                                     completeMethod="#{financeManager.completeAccountingCode}" />            
 
-                    <p:outputLabel value="Value" style="font-weight: bold;" />
+                    <p:outputLabel value="Value" 
+                                   for="taxValue"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedTax.taxValue}"
+                                 id="taxValue"
                                  converterMessage="Please enter a valid tax value."
                                  styleClass="number-field"
+                                 required="true"
+                                 requiredMessage="Value Required"
                                  maxlength="15" >
 
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
@@ -107,8 +127,12 @@ Email: info@dpbennett.com.jm
 
                     </p:inputText>
 
-                    <p:outputLabel value="Value type" style="font-weight: bold;" />                    
+                    <p:outputLabel value="Value type" 
+                                   for="taxValueType"
+                                   style="font-weight: bold;" />                    
                     <p:selectOneMenu id="taxValueType"    
+                                     required="true"
+                                     requiredMessage="Value Type Required"
                                      value="#{financeManager.selectedTax.taxValueType}">
 
                         <f:selectItems  value="#{financeManager.valueTypes}"
@@ -118,19 +142,25 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="taxDescription"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedTax.description}"
                                       id="taxDescription"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       style="width:300px" >
 
                         <f:validator validatorId="taxValidator" />
 
                     </p:inputTextarea>   
 
-                    <p:outputLabel for="taxExempt" value="Exempt" style="font-weight: bold;" />  
+                    <p:outputLabel for="taxExempt" 
+                                   value="Exempt *" 
+                                   style="font-weight: bold;" />  
                     <h:panelGroup>
                         <p:selectBooleanCheckbox style="vertical-align: middle"
                                                  id="taxExempt"
@@ -156,6 +186,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />
