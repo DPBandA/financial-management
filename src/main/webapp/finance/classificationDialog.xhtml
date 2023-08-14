@@ -54,18 +54,43 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel for="classificationActive" value="Active:" 
+                    <p:outputLabel for="classificationActive" 
+                                   value="Active *" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="classificationActive"
                                              value="#{financeManager.selectedClassification.active}" /> 
 
-                    <p:outputLabel value="Category" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   for="classificationName"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedClassification.name}"    
+                                 id="classificationName"
+                                 required="true"
+                                 requiredMessage="Name Required"
+                                 style="width:300px" >
+
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                    </p:inputText> 
+
+                    <p:outputLabel value="Category" 
+                                   for="classificationCategory"
+                                   style="font-weight: bold;" />
                     <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
+                                     required="true"
+                                     requiredMessage="Category Required"
                                      id="classificationCategory" >
 
                         <f:validator validatorId="requiredFieldValidator" />
@@ -74,29 +99,26 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
-                    <p:inputText value="#{financeManager.selectedClassification.name}"    
-                                 id="classificationName"
-                                 style="width:300px" >
-
-                        <f:validator validatorId="requiredFieldValidator" />
-
-                    </p:inputText> 
-
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="classificationDescription"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
                                       id="classificationDescription"
                                       maxlength="1000"
                                       autoResize="false"
                                       rows="4"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       style="width:300px" >
 
                         <f:validator validatorId="requiredFieldValidator" />
 
                     </p:inputTextarea>  
 
-                    <p:outputLabel value="Default tax (%/$)" style="font-weight: bold" />
-                    <p:autoComplete id="tax"  
+                    <p:outputLabel value="Default tax (%/$)" 
+                                   for="classificationDefaultFax"
+                                   style="font-weight: bold" />
+                    <p:autoComplete id="classificationDefaultFax"  
                                     var="tax"
                                     forceSelection="true"      
                                     dropdown="true"
@@ -109,9 +131,13 @@ Email: info@dpbennett.com.jm
                                     itemLabel="#{tax.name}"
                                     converter="taxConverter"
                                     validator="businessEntityValidator"
+                                    required="true"
+                                    requiredMessage="Default Tax Required"
                                     completeMethod="#{financeManager.completeTax}" />
 
-                    <p:outputLabel for="earningsJob" value="Earnings" style="font-weight: bold" />               
+                    <p:outputLabel for="earningsJob" 
+                                   value="Earnings *" 
+                                   style="font-weight: bold" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="earningsJob"
                                              value="#{financeManager.selectedClassification.isEarning}" /> 
@@ -131,6 +157,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelClassificationEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />

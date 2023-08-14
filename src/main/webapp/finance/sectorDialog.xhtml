@@ -54,31 +54,51 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">     
-                    <p:outputLabel value="Active" for="sectorActive" 
+                    <p:outputLabel value="Active *" 
+                                   for="sectorActive" 
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
                                              id="sectorActive"
                                              value="#{financeManager.selectedSector.active}" />    
 
-                    <p:outputLabel value="Name" style="font-weight: bold;" />
+                    <p:outputLabel value="Name" 
+                                   for="sectorName"
+                                   style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedSector.name}"    
                                  id="sectorName"
+                                 required="true"
+                                 requiredMessage="Name Required"
                                  style="width:300px" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputText> 
 
-                    <p:outputLabel value="Description" style="width: 50%;font-weight: bold;" />
+                    <p:outputLabel value="Description" 
+                                   for="sectorDescription"
+                                   style="width: 50%;font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedSector.description}"
                                       id="sectorDescription"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
+                                      required="true"
+                                      requiredMessage="Description Required"
                                       style="width:300px" >
+
                         <f:validator validatorId="requiredFieldValidator" />
+
                     </p:inputTextarea>  
 
                 </h:panelGrid>
@@ -96,6 +116,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{financeManager.cancelSectorEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
             <p:spacer height="10" />
