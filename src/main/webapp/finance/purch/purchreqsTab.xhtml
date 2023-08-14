@@ -84,8 +84,10 @@ Email: info@dpbennett.com.jm
         <p:ajax event="rowSelectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
         <p:ajax event="rowUnselectCheckbox" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
         <p:ajax event="toggleSelect" update=":appForm:mainTabView:approve1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend1,:appForm:mainTabView:recommend2"/>
-        
-        <p:column selectionMode="multiple" exportable="false"></p:column>
+
+        <p:column selectionMode="multiple" 
+                  style="text-align:center"
+                  exportable="false" />      
 
         <p:column>
             <f:facet name="header">
@@ -115,7 +117,7 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Total cost"/>
             </f:facet>
             <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
-                
+
             </p:outputLabel>
         </p:column>
 
@@ -125,7 +127,7 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{pr.workProgress}" />                
         </p:column>
-        
+
         <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Description"/>
@@ -134,11 +136,11 @@ Email: info@dpbennett.com.jm
         </p:column>
 
         <p:column>
-            
-                <p:commandButton icon="pi pi-pencil"
-                            actionListener="#{purchasingManager.editSelectedPurchaseReq}"
-                            process="@this"
-                            title="View or edit this PR's detail">
+
+            <p:commandButton icon="pi pi-pencil"
+                             actionListener="#{purchasingManager.editSelectedPurchaseReq}"
+                             process="@this"
+                             title="View or edit this PR's detail">
 
                 <f:setPropertyActionListener value="#{pr}" 
                                              target="#{purchasingManager.selectedPurchaseRequisition}" />
@@ -147,8 +149,8 @@ Email: info@dpbennett.com.jm
                         listener="#{purchasingManager.purchaseReqDialogReturn}"
                         update=":appForm:mainTabView:purchasereqsTable"/>
 
-                </p:commandButton>
-                                       
+            </p:commandButton>
+
         </p:column>
     </p:dataTable>
 
