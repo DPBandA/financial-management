@@ -53,105 +53,131 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
-           
-                <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                    <h:panelGrid columns="2">     
 
-                        <p:outputLabel for="active" value="Active" style="font-weight: bold;" />  
-                        <p:selectBooleanCheckbox style="vertical-align: middle"
-                                                 title="Check to activate this procurement method"
-                                                 id="active"
-                                                 value="#{financeManager.selectedProcurementMethod.active}" />
-                               
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">     
 
-                        <p:outputLabel for="name" value="Name" style="font-weight: bold;" />
-                        <p:selectOneMenu id="name"
-                                         value="#{financeManager.selectedProcurementMethod.name}">
+                    <p:outputLabel for="active" value="Active *" style="font-weight: bold;" />  
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             title="Check to activate this procurement method"
+                                             id="active"
+                                             value="#{financeManager.selectedProcurementMethod.active}" />
 
-                            <f:selectItems  value="#{financeManager.procurementMethods}"
-                                            var="procurementMethod"                            
-                                            itemValue="#{procurementMethod}"
-                                            itemLabel="#{procurementMethod}"/>
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                    <p:outputLabel for="name" 
+                                   value="Name *" 
+                                   style="font-weight: bold;" />
+                    <p:selectOneMenu id="name"
+                                     value="#{financeManager.selectedProcurementMethod.name}">
 
-                        </p:selectOneMenu>
+                        <f:selectItems  value="#{financeManager.procurementMethods}"
+                                        var="procurementMethod"                            
+                                        itemValue="#{procurementMethod.value}"
+                                        itemLabel="#{procurementMethod.label}"/>
 
-                        <p:outputLabel for="quotationsRequired" value="Quotations required" 
-                                       style="font-weight: bold;" />                   
-                        <p:inputText value="#{financeManager.selectedProcurementMethod.quotationsRequired}"
-                                     id="quotationsRequired"
-                                     converterMessage="Please enter a valid number of quotations"
-                                     validatorMessage="A valid number of quotations is required"
-                                     styleClass="number-field"
-                                     maxlength="15" >
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                            <f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
+                    </p:selectOneMenu>
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                    <p:outputLabel for="quotationsRequired" 
+                                   value="Quotations required" 
+                                   style="font-weight: bold;" />                   
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.quotationsRequired}"
+                                 id="quotationsRequired"
+                                 required="true"
+                                 requiredMessage="Quotations Number Required"
+                                 converterMessage="Please enter a valid number of quotations"
+                                 validatorMessage="A valid number of quotations is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
 
-                        </p:inputText>
+                        <f:convertNumber minFractionDigits="0" maxFractionDigits="0" />
 
-                        <p:outputLabel for="lowerSigningLimit" value="Lower signing limit ($)" 
-                                       style="font-weight: bold;" />                   
-                        <p:inputText value="#{financeManager.selectedProcurementMethod.lowerSigningLimit}"
-                                     id="lowerSigningLimit"
-                                     converterMessage="Please enter a valid lower signing limit"
-                                     validatorMessage="A valid lower signing limit is required"
-                                     styleClass="number-field"
-                                     maxlength="15" >
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                    </p:inputText>
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                    <p:outputLabel for="lowerSigningLimit" 
+                                   value="Lower signing limit ($)" 
+                                   style="font-weight: bold;" />                   
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.lowerSigningLimit}"
+                                 id="lowerSigningLimit"
+                                 required="true"
+                                 requiredMessage="Lower Signing Limit Required"
+                                 converterMessage="Please enter a valid lower signing limit"
+                                 validatorMessage="A valid lower signing limit is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
 
-                        </p:inputText>
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 
-                        <p:outputLabel for="upperSigningLimit" value="Upper signing limit ($)" 
-                                       style="font-weight: bold;" />                   
-                        <p:inputText value="#{financeManager.selectedProcurementMethod.upperSigningLimit}"
-                                     id="upperSigningLimit"
-                                     converterMessage="Please enter a valid upper signing limit"
-                                     validatorMessage="A valid upper signing limit is required"
-                                     styleClass="number-field"
-                                     maxlength="15" >
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
+                    </p:inputText>
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                    <p:outputLabel for="upperSigningLimit" 
+                                   value="Upper signing limit ($)" 
+                                   style="font-weight: bold;" />                   
+                    <p:inputText value="#{financeManager.selectedProcurementMethod.upperSigningLimit}"
+                                 id="upperSigningLimit"
+                                 required="true"
+                                 requiredMessage="Upper Signing Limit Required"
+                                 converterMessage="Please enter a valid upper signing limit"
+                                 validatorMessage="A valid upper signing limit is required"
+                                 styleClass="number-field"
+                                 maxlength="15" >
 
-                        </p:inputText>
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2" />
 
-                        <p:outputLabel for="positions" value="Required signatory position(s): " />       
-                        <p:autoComplete id="positions"
-                                        var="position"   
-                                        value="#{financeManager.selectedProcurementMethod.requiredSignatoryPositions}"
-                                        itemLabel="#{position.title}"
-                                        itemValue="#{position}"                                    
-                                        converter="activeEmployeePositionConverter"
-                                        forceSelection="true" 
-                                        dropdown="true"
-                                        scrollHeight="200"                         
-                                        multiple="true"
-                                        completeMethod="#{humanResourceManager.completeActiveEmployeePosition}" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
-                        <p:outputLabel for="description" value="Description" style="font-weight: bold;" />
-                        <p:inputTextarea  value="#{financeManager.selectedProcurementMethod.description}"
-                                          id="description"   
-                                          maxlength="1000"
-                                          rows="4"
-                                          autoResize="false"
-                                          validatorMessage="A description is required"
-                                          style="width:440px" >
+                    </p:inputText>
 
-                            <f:validator validatorId="requiredFieldValidator" />
+                    <p:outputLabel for="positions" 
+                                   style="font-weight: bold;"
+                                   value="Required signatory position(s): " />       
+                    <p:autoComplete id="positions"
+                                    var="position"   
+                                    value="#{financeManager.selectedProcurementMethod.requiredSignatoryPositions}"
+                                    itemLabel="#{position.title}"
+                                    itemValue="#{position}"                                    
+                                    converter="activeEmployeePositionConverter"
+                                    forceSelection="true" 
+                                    dropdown="true"
+                                    scrollHeight="200"                         
+                                    multiple="true"
+                                    required="true"
+                                    requiredMessage="Signatory Position(s) Required"
+                                    completeMethod="#{humanResourceManager.completeActiveEmployeePosition}" />
 
-                        </p:inputTextarea>  
+                    <p:outputLabel for="description" 
+                                   value="Description" 
+                                   style="font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedProcurementMethod.description}"
+                                      id="description"   
+                                      maxlength="1000"
+                                      rows="4"
+                                      autoResize="false"
+                                      validatorMessage="A description is required"
+                                      required="true"
+                                      requiredMessage="Description Required"
+                                      style="width:440px" >
 
-                    </h:panelGrid>
-                </p:panel>
-           
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                    </p:inputTextarea>  
+
+                </h:panelGrid>
+            </p:panel>
+
             <p:toolbar>
                 <p:toolbarGroup align="left">
                     <p:commandButton value="Ok"
@@ -165,8 +191,15 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
-            <p:spacer height="10" />
+
         </h:form> 
     </h:body>
 </html>

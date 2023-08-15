@@ -26,15 +26,18 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2" cellspacing="5" >            
-            <p:outputLabel value="Purchase Order No." style="font-weight: bold;" />          
+            <p:outputLabel value="Purchase Order No." 
+                           for="prNumberEdit"
+                           style="font-weight: bold;" />          
             <p:inputText id="prNumberEdit"
-                          size="15"
-                          style="font-weight: bold;"
-                          maxlength="40" 
-                          disabled="#{!purchasingManager.isProcurementOfficer}"
-                          required="true"
-                          title="#{purchasingManager.selectedPurchaseRequisition.number}"
-                          value="#{purchasingManager.selectedPurchaseRequisition.number}">
+                         size="15"
+                         style="font-weight: bold;"
+                         maxlength="40" 
+                         disabled="#{!purchasingManager.isProcurementOfficer}"
+                         required="true"
+                         requiredMessage="Purchase Order No. Required"
+                         title="#{purchasingManager.selectedPurchaseRequisition.number}"
+                         value="#{purchasingManager.selectedPurchaseRequisition.number}">
 
                 <p:ajax event="change"                            
                         update=":purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:orderDetail"
@@ -140,15 +143,18 @@ Email: info@dpbennett.com.jm
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" />     
 
             <p:outputLabel value="Procurement method" 
+                           style="font-weight: bold"
                            for="procurementMethod"/>
             <p:selectOneMenu id="procurementMethod" 
                              editable="true"
+                             required="true"
+                             requiredMessage="Procurement Method Required"
                              value="#{purchasingManager.selectedPurchaseRequisition.procurementMethod}">
 
                 <f:selectItems  value="#{purchasingManager.procurementMethods}"
                                 var="procurementMethod"                            
-                                itemValue="#{procurementMethod}"
-                                itemLabel="#{procurementMethod}"/>
+                                itemValue="#{procurementMethod.value}"
+                                itemLabel="#{procurementMethod.label}"/>
 
                 <p:ajax listener="#{purchasingManager.updatePurchaseReq}"
                         update=":purchreqDialogForm:purchreqDetailToolbar1"
@@ -202,7 +208,7 @@ Email: info@dpbennett.com.jm
     <p:panel id="approvalsPanel" style="border: 0;" >
 
         <ui:include src="purchreqApprovalsToolbar.xhtml"/>
-         
+
         <p:dataTable  var="approver"
                       style="margin-top: 1px;margin-bottom: 1px;"
                       id="approverTable"
