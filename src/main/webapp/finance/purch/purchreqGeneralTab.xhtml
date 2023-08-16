@@ -46,7 +46,9 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>               
 
-            <p:outputLabel value="Supplier" style="font-weight: bold" />
+            <p:outputLabel value="Supplier" 
+                           for="supplier"
+                           style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
                                 var="supplier"
@@ -60,6 +62,8 @@ Email: info@dpbennett.com.jm
                                 converter="activeSupplierConverter"
                                 validator="supplierValidator"
                                 forceSelection="true"
+                                required="true"
+                                requiredMessage="Supplier Required"
                                 completeMethod="#{purchasingManager.completeActiveSupplier}" >
 
                     <p:ajax event="itemSelect"
@@ -104,12 +108,19 @@ Email: info@dpbennett.com.jm
 
             </h:panelGroup>
 
-            <p:outputLabel value="Date" style="font-weight: bold" />
+            <p:outputLabel value="Date" 
+                           for="dateOriginated"
+                           style="font-weight: bold" />
             <p:inputText readonly="true"
+                         id="dateOriginated"
                          styleClass="read-only-text-field"
+                         required="true"
+                         requiredMessage="Date Required"
                          value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
 
-            <p:outputLabel value="Originator" style="font-weight: bold" />       
+            <p:outputLabel value="Originator" 
+                           for="originator"
+                           style="font-weight: bold" />       
             <p:autoComplete id="originator"
                             readonly="true"
                             inputStyleClass="read-only-text-field"
@@ -123,9 +134,13 @@ Email: info@dpbennett.com.jm
                             forceSelection="true"
                             dropdown="false"
                             scrollHeight="200" 
+                            required="true"
+                            requiredMessage="Originator Required"
                             completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
-            <p:outputLabel value="Originating dep't" style="font-weight: bold" />
+            <p:outputLabel value="Originating dep't" 
+                           for="originatingDepartment"
+                           style="font-weight: bold" />
             <p:autoComplete id="originatingDepartment"                          
                             readonly="true"
                             inputStyleClass="read-only-text-field"
@@ -140,6 +155,8 @@ Email: info@dpbennett.com.jm
                             itemLabel="#{department.name}"
                             converter="activeDepartmentConverter"
                             validator="businessEntityValidator"
+                            required="true"
+                            requiredMessage="Originating Department Required"
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" />     
 
             <p:outputLabel value="Procurement method" 
@@ -164,14 +181,15 @@ Email: info@dpbennett.com.jm
             </p:selectOneMenu>
 
             <p:outputLabel value="Priority code" 
+                           style="font-weight: bold"
                            for="priorityCode"/>
             <p:selectOneMenu id="priorityCode"
                              value="#{purchasingManager.selectedPurchaseRequisition.priorityCode}">
 
                 <f:selectItems  value="#{purchasingManager.priorityCodes}"
                                 var="code"                            
-                                itemValue="#{code}"
-                                itemLabel="#{code}"/>
+                                itemValue="#{code.value}"
+                                itemLabel="#{code.label}"/>
 
                 <p:ajax listener="#{purchasingManager.updatePurchaseReq}"
                         update=":purchreqDialogForm:purchreqDetailToolbar1"
@@ -180,7 +198,9 @@ Email: info@dpbennett.com.jm
 
             </p:selectOneMenu>
 
-            <p:outputLabel value="Purpose/Description" style="font-weight: bold;vertical-align: top;" />       
+            <p:outputLabel value="Purpose/Description" 
+                           for="description"
+                           style="font-weight: bold;vertical-align: top;" />       
             <p:inputTextarea
                 id="description"
                 value="#{purchasingManager.selectedPurchaseRequisition.description}"
@@ -189,6 +209,8 @@ Email: info@dpbennett.com.jm
                 counterTemplate="{0} characters remaining."
                 autoResize="false"
                 maxlength="1000"  
+                required="true"
+                requiredMessage="Purpose/Description Required"
                 style="width: 100%;">
 
                 <f:validator validatorId="requiredFieldValidator" />

@@ -28,13 +28,17 @@ Email: info@dpbennett.com.jm
              style="margin-bottom: 1px;" > 
         <h:panelGrid columns="2">
 
-            <p:outputLabel value="Purchase Order No." style="font-weight: bold;" />
+            <p:outputLabel value="Purchase Order No." 
+                           for="poNumberEdit"
+                           style="font-weight: bold;" />
             <p:inputText id="poNumberEdit"  
                          style="font-weight: bold;"
                          disabled="true"
                          size="15"
                          maxlength="40"      
                          validator="purchaseOrderNumberValidator"
+                         required="true"
+                         requiredMessage="Purchase Order Number Required"
                          title="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}"
                          value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" />
 

@@ -25,7 +25,9 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <h:panelGrid columns="4" cellspacing="10">
-        <p:outputLabel value="Currency" />               
+        <p:outputLabel value="Currency"
+                       for="currency"
+                       style="font-weight: bold;" />               
         <p:autoComplete id="currency"  
                         var="currency"
                         forceSelection="true"      
@@ -38,6 +40,8 @@ Email: info@dpbennett.com.jm
                         itemLabel="#{currency.name}"
                         converter="currencyConverter"
                         validator="businessEntityValidator"
+                        required="true"
+                        requiredMessage="Currency Required"
                         completeMethod="#{purchasingManager.completeCurrency}" >
 
             <p:ajax event="itemSelect"
