@@ -27,9 +27,11 @@ Email: info@dpbennett.com.jm
     <h:panelGrid columns="4" cellspacing="10">
         <p:outputLabel value="Currency"
                        for="currency"
+                       rendered="#{financeManager.useMulticurrency}"
                        style="font-weight: bold;" />               
         <p:autoComplete id="currency"  
                         var="currency"
+                        rendered="#{financeManager.useMulticurrency}"
                         forceSelection="true"      
                         dropdown="true"
                         scrollHeight="200" 
