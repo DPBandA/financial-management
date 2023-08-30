@@ -26,18 +26,6 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left">
             <p:menuButton value="New" >  
 
-                <p:menuitem value="Configuration"
-                            title="Create new system configuration"
-                            icon="pi pi-plus"
-                            actionListener="#{systemManager.createNewFinancialSystemOption}" 
-                            rendered="#{financeManager.user.hasModule('financeManager')}"
-                            process="@this" >
-
-                    <p:ajax event="dialogReturn" 
-                            update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
-
-                </p:menuitem>
-
                 <p:separator rendered="#{financeManager.user.hasModule('financeManager')}" />
 
                 <p:menuitem value="Inventory Product"
@@ -112,13 +100,6 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">
 
             <p:menuButton value="Tools" >  
-
-                <p:menuitem value="Financial Administration"
-                            title="Open Financial Administration tab" 
-                            icon="pi pi-fw pi-dollar"
-                            actionListener="#{financeManager.openFinancialAdministration}" 
-                            rendered="#{financeManager.user.hasModule('financeManager')}"
-                            process="@this" />  
 
                 <p:menuitem value="Purchase Requisitions"
                             title="Open purchase requisition browswer" 

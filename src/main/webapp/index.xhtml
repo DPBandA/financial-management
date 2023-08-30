@@ -61,9 +61,11 @@ Email: info@dpbennett.com.jm
                                         <h:panelGrid columns="1" cellspacing="0" >   
 
                                             <p:outputLabel value="Finance Manager"
+                                                           style="font-size: 1.000em !important;font-weight: bold;"
                                                            class="header-text" />
 
                                             <p:outputLabel value="Financial Administration &amp; Management"
+                                                           style="font-size: 0.900em !important;"
                                                            class="subheader-text" />  
 
                                         </h:panelGrid>
@@ -129,13 +131,13 @@ Email: info@dpbennett.com.jm
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <ui:include src="menubar.xhtml" /> 
-                            
+
                             <div class="col-12">
                                 <div class="grid">
                                     <div class="col-12 md:col-4">
-                                        
+
                                         <p:defaultCommand target="defaultCommand" />
 
                                         <ui:include src="dashboard/finance/adminTab.xhtml" />
@@ -198,7 +200,7 @@ Email: info@dpbennett.com.jm
 
                                         </p:tabView> 
 
-                                      
+
                                     </div>                              
                                 </div>
                             </div>
@@ -206,15 +208,27 @@ Email: info@dpbennett.com.jm
                     </div>
                     <div class="col-12">
 
-                        <p:outputLabel value=" &copy; D P Bennett &amp; Associates"   
-                                       onclick="window.open('https://main.dpbennett.com.jm/');"
-                                       class="header-text" />
+                        <p:toolbar id="topToolbar">
+                            <p:toolbarGroup align="left">
+
+                                <p:outputLabel value=" &copy; D P Bennett &amp; Associates Ltd."   
+                                               onclick="window.open('https://dpbennett.com.jm');"
+                                               class="header-text" />
+
+                            </p:toolbarGroup>
+
+                            <p:toolbarGroup align="right">
+                                <p:outputLabel value="#{financeManager.applicationFooter}" 
+                                               class="header-text" />
+                            </p:toolbarGroup>
+                        </p:toolbar>
 
                     </div>
                 </div>
             </p:panel>
             <p:poll interval="60" 
                     global="false"
+                    onerror="PF('connectionErrorDialog').show();"
                     listener="#{financeManager.handleKeepAlive}" />
 
         </h:form>
