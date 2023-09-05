@@ -32,57 +32,15 @@ Email: info@dpbennett.com.jm
         <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
         <link rel="stylesheet" type="text/css" href="../../css/main.css" />
     </h:head>
-
+    
     <h:body>         
-
-        <ui:include src="../../common/commonDialogs.xhtml"/>
         <ui:include src="purchreqCostCompDialog.xhtml"/>       
         <ui:include src="purchreqCostCompDeleteConfirmDialog.xhtml"/>    
         <ui:include src="purchreqApproverDeleteConfirmDialog.xhtml"/>
         <ui:include src="purchreqAttachmentDeleteConfirmDialog.xhtml"/>
-
         <h:form id="purchreqDialogForm" >                
-
-            <p:growl id="purchreq_growl" life="5000" showDetail="false" />
-
-            <ui:include src="purchreqDetailTopToolbar.xhtml"/>
-
-            <p:tabView id="purchreqFormTabView"
-                       style="margin-top: 1px;margin-bottom: 1px;"               
-                       widgetVar="purchreqFormTabVar" >
-
-                <p:tab title="General" >
-                    <ui:include src="purchreqGeneralTab.xhtml"/>
-                </p:tab>  
-
-                <p:tab title="Goods &amp; Services" >
-                    <ui:include src="purchreqGoodsAndServices.xhtml"/>
-                </p:tab>        
-
-                <p:tab title="Order Detail">
-                    <ui:include src="purchreqOrderDetailTab.xhtml" />
-                </p:tab>
-
-                <p:tab title="Attachments" >
-                    <ui:include src="attachmentsTab.xhtml" />
-                </p:tab>
-
-                <p:tab title="Shipping" >
-                    <ui:include src="purchreqShipping.xhtml" />
-                </p:tab>
-
-                <p:tab title="Budget" >
-                    <ui:include src="purchreqBudget.xhtml" />
-                </p:tab>
-
-                <p:tab title="Status &amp; Tracking" >
-                    <ui:include src="purchreqStatusAndTrackingTab.xhtml" />
-                </p:tab>  
-
-            </p:tabView>
-
-            <ui:include src="purchreqDetailBottomToolbar.xhtml"/>
-
+            <ui:include src="purchreqDetail.xhtml"/>
+            <ui:include src="/common/commonDialogs.xhtml"/>            
         </h:form>
     </h:body>
 </html>
