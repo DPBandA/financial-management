@@ -26,12 +26,13 @@ Email: info@dpbennett.com.jm
 
     <h:form id="purchreqCostingCompDialogForm">
         <p:dialog width="500"
-                  height="auto"
+                  height="300"
                   draggable="true"
                   modal="true"
                   responsive="true"
                   widgetVar="purchreqCostingCompDialog"
-                  header="Goods or Service Costing Component" >   
+                  header="Goods or Service Cost Component" >   
+
             <p:toolbar style="margin-bottom: 1px;">
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
@@ -46,6 +47,13 @@ Email: info@dpbennett.com.jm
                                      update=""                              
                                      oncomplete="PF('purchreqCostingCompDialog').hide();"
                                      icon="pi pi-times"/>
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>            
             <p:panel>
@@ -70,10 +78,14 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <p:outputLabel value="Component" style="font-weight: bold" />
+                    <p:outputLabel value="Component" 
+                                   for="costComponentName"
+                                   style="font-weight: bold" />
                     <p:inputTextarea  value="#{purchasingManager.selectedCostComponent.name}"
                                       id="costComponentName"
                                       validator="requiredFieldValidator"
+                                      required="true"
+                                      requiredMessage="Component Required"
                                       maxlength="250"
                                       rows="2"
                                       autoResize="false"
@@ -88,11 +100,14 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                    value="Quantity" 
+                                   for="costComponentHoursOrQuantity"
                                    style="font-weight: bold;" />
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentHoursOrQuantity"
                                  value="#{purchasingManager.selectedCostComponent.hoursOrQuantity}"
                                  styleClass="number-field"
+                                 required="true"
+                                 requiredMessage="Quantity Required"
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Hours/Quantity"
                                  style="width: 90%">
@@ -129,20 +144,26 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
-                                   value="Unit cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
+                                   for="costComponentRate"
+                                   value="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
                                  value="#{purchasingManager.selectedCostComponent.rate}"
                                  style="width: 90%"
                                  styleClass="number-field" 
+                                 required="true"
+                                 requiredMessage="Unit cost Required"
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Rate" >
+
                         <f:convertNumber />
+
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 update="purchreqCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
+
                         <p:ajax event="change"
                                 global="false"
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
@@ -151,44 +172,56 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <p:outputLabel rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
+                                   for="costComponentCost"
                                    value="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
                     <p:inputText id="costComponentCost"
                                  style="width: 90%;"
                                  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"                            
                                  value="#{purchasingManager.selectedCostComponent.cost}"
                                  readonly="#{purchasingManager.selectedCostComponent.isCostReadOnly}"
+                                 required="true"
+                                 requiredMessage="Cost Required"
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Cost"
                                  styleClass="number-field #{purchasingManager.selectedCostComponent.isCostReadOnly ? 'read-only-text-field' : null}">
+                        
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        
                         <p:ajax event="change"
                                 global="false"                            
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 process="@this"/>
+                        
                     </p:inputText>
                     <p:outputLabel value=" "
-                                  rendered="#{purchasingManager.selectedCostComponent.isHeading}" />
+                                   rendered="#{purchasingManager.selectedCostComponent.isHeading}" />
                 </h:panelGrid>
             </p:panel>            
             <p:toolbar style="margin-top: 1px;">
+
                 <p:toolbarGroup>
-                    <p:toolbarGroup>
-                        <p:commandButton value="Ok"
-                                         actionListener="#{purchasingManager.okCostingComponent}"
-                                         update=":purchreqDialogForm:purchreqFormTabView:PRJustificationStatusNote,:purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:costComponentTable,:purchreqDialogForm:purchreq_growl"
-                                         icon="pi pi-check"
-                                         process="@form"/>
-                        <p:spacer width="5" />
-                        <p:commandButton value="Cancel" 
-                                         immediate="true"
-                                         actionListener="#{purchasingManager.cancelCostComponentEdit}"
-                                         update=""
-                                         oncomplete="PF('purchreqCostingCompDialog').hide();"
-                                         icon="pi pi-times"/>
-                    </p:toolbarGroup>
+                    <p:commandButton value="Ok"
+                                     actionListener="#{purchasingManager.okCostingComponent}"
+                                     update=":purchreqDialogForm:purchreqFormTabView:PRJustificationStatusNote,:purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:costComponentTable,:purchreqDialogForm:purchreq_growl"
+                                     icon="pi pi-check"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel" 
+                                     immediate="true"
+                                     actionListener="#{purchasingManager.cancelCostComponentEdit}"
+                                     update=""
+                                     oncomplete="PF('purchreqCostingCompDialog').hide();"
+                                     icon="pi pi-times"/>
                 </p:toolbarGroup>
-            </p:toolbar> 
-            <p/>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Fields with bold labels are required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
+            </p:toolbar>             
         </p:dialog>
     </h:form>    
 </html>
