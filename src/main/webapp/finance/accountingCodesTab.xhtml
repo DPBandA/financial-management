@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel for="activeAccountingCodesOnly" value="Active accounting codes only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeAccountingCodesOnly"
                                          value="#{financeManager.isActiveAccountingCodesOnly}" >
                     <p:ajax  update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
@@ -77,6 +77,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
+                 reflow="true"
                  widgetVar="accountingCodeTableVar"
                  style="margin-top: 1px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

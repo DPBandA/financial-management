@@ -56,7 +56,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel for="activeServicesOnly" value="Active services only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeServicesOnly"
                                          value="#{financeManager.isActiveServicesOnly}" >
                     <p:ajax  update=":appForm:mainTabView:financialAdminTabView:servicesTable"
@@ -78,6 +78,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
+                 reflow="true"
                  style="margin-top: 1px;"
                  widgetVar="servicesTableVar"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

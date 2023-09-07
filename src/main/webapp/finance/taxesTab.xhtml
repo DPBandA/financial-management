@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel for="activeTaxesOnly" value="Active taxes only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeTaxesOnly"
                                          value="#{financeManager.isActiveTaxesOnly}" >
                     <p:ajax  update=":appForm:mainTabView:financialAdminTabView:taxesTable"
@@ -77,6 +77,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
+                 reflow="true"
                  widgetVar="taxTableVar"
                  style="margin-top: 1px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"

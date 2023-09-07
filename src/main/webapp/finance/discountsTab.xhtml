@@ -55,7 +55,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel for="activeDiscountsOnly" value="Active discounts only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
-                <p:selectBooleanCheckbox style="vertical-align: middle"
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeDiscountsOnly"
                                          value="#{financeManager.isActiveDiscountsOnly}" >
                     <p:ajax  update=":appForm:mainTabView:financialAdminTabView:discountsTable"
@@ -78,6 +78,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"
                  rows="15"
+                 reflow="true"
                  widgetVar="discountTableVar"
                  style="margin-top: 1px;"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
