@@ -33,24 +33,12 @@ Email: info@dpbennett.com.jm
             value="System" 
             icon="pi pi-database" />     
 
-        <p:menuitem value="Human Resource"
-                    title="Human resource management"
-                    rendered="#{systemManager.user.hasModule('humanResourceManager')}"
-                    icon="pi pi-users"
-                    actionListener="#{humanResourceManager.openHumanResourceBrowser}" /> 
+        <p:menuitem value="Finance"
+                    icon="pi pi-fw pi-dollar"
+                    title="Financial administration" 
+                    rendered="#{systemManager.user.hasModule('financeManager')}"
+                    actionListener="#{financeManager.openFinancialAdministration}" /> 
         
-        <p:submenu label="Settings" 
-                   rendered="#{systemManager.user.hasModule('financeManager')}"
-                   icon="pi pi-cog" >
-
-            <p:menuitem value="Finance"
-                        icon="pi pi-fw pi-dollar"
-                        title="Financial administration" 
-                        rendered="#{systemManager.user.hasModule('financeManager')}"
-                        actionListener="#{financeManager.openFinancialAdministration}" />
-
-        </p:submenu>
-
     </p:menubar>
 
 </html>
