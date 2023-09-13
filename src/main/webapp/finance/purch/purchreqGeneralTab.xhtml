@@ -25,14 +25,14 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
-        <h:panelGrid id="generalTabPanel" columns="2" cellspacing="5" >            
+        <h:panelGrid id="generalTabPanel" 
+                     columns="2" 
+                     cellspacing="5" >            
             <p:outputLabel value="Purchase Order No." 
                            for="prNumberEdit"
                            style="font-weight: bold;" />          
             <p:inputText id="prNumberEdit"
-                         size="15"
                          style="font-weight: bold;"
-                         maxlength="40" 
                          disabled="#{!purchasingManager.isProcurementOfficer}"
                          required="true"
                          requiredMessage="Purchase Order No. Required"
@@ -53,9 +53,7 @@ Email: info@dpbennett.com.jm
                 <p:autoComplete id="supplier"
                                 var="supplier"
                                 itemLabel="#{supplier.truncatedName}"
-                                itemValue="#{supplier}"
-                                size="35" 
-                                maxlength="40"                             
+                                itemValue="#{supplier}"                 
                                 dropdown="false"
                                 scrollHeight="200" 
                                 value="#{purchasingManager.selectedPurchaseRequisition.supplier}"   
@@ -182,11 +180,11 @@ Email: info@dpbennett.com.jm
                 rows="3"
                 counter="descriptionCharsRemaining"
                 counterTemplate="{0} characters remaining."
-                autoResize="false"
+                autoResize="true"   
+                style="width: 100%;"
                 maxlength="1000"  
                 required="true"
-                requiredMessage="Purpose/Description Required"
-                style="width: 100%;">
+                requiredMessage="Purpose/Description Required" >
 
                 <f:validator validatorId="requiredFieldValidator" />
 

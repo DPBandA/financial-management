@@ -32,8 +32,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Work progress" 
                                    style="font-weight: bold;"
                                    for="workProgress"/>
-                    <p:selectOneMenu id="workProgress"     
-                                     style="width: 200px;"
+                    <p:selectOneMenu id="workProgress"    
                                      value="#{purchasingManager.selectedPurchaseRequisition.workProgress}">
 
                         <f:selectItems  value="#{systemManager.workProgressList}"
@@ -56,8 +55,6 @@ Email: info@dpbennett.com.jm
                                     forceSelection="false"      
                                     dropdown="false"
                                     scrollHeight="200" 
-                                    size="35"
-                                    maxlength="40"
                                     value="#{purchasingManager.selectedPurchaseRequisition.purchasingDepartment}"
                                     itemValue="#{purchasingDepartment}"
                                     itemLabel="#{purchasingDepartment.name}"

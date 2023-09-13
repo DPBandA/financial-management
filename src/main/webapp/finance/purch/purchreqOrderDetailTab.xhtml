@@ -33,9 +33,7 @@ Email: info@dpbennett.com.jm
                            style="font-weight: bold;" />
             <p:inputText id="poNumberEdit"  
                          style="font-weight: bold;"
-                         disabled="true"
-                         size="15"
-                         maxlength="40"      
+                         disabled="true"  
                          validator="purchaseOrderNumberValidator"
                          required="true"
                          requiredMessage="Purchase Order Number Required"
@@ -134,8 +132,7 @@ Email: info@dpbennett.com.jm
                 counter="pleaseSupplyCharsRemaining"
                 counterTemplate="{0} characters remaining."
                 autoResize="false"
-                maxlength="80"  
-                style="width: 150%;">
+                maxlength="80" >
 
                 <p:ajax event="change"
                         update=":purchreqDialogForm:purchreqDetailToolbar1"

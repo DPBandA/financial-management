@@ -26,8 +26,8 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="costingTabPanel" columns="2" cellspacing="5" >    
-        
-            <p:outputLabel value="Budget (J$)" /> 
+
+            <p:outputLabel value="Budget ($)" /> 
             <p:inputText value="#{inventoryManager.selectedInventory.budget}"
                          id="budget"
                          converterMessage="Invalid Budget"
@@ -40,7 +40,7 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.updateInventory}" />
 
             </p:inputText>
-                         
+
 
         </h:panelGrid>
 
@@ -61,6 +61,7 @@ Email: info@dpbennett.com.jm
                       id="costComponentTable"
                       editable="true"
                       editMode="row"
+                      reflow="true"
                       widgetVar="costComponentVar"
                       value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
 
@@ -86,13 +87,13 @@ Email: info@dpbennett.com.jm
                     </f:facet>
                 </p:cellEditor>  
             </p:column>
-            
+
             <p:column headerText="Unit Cost ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
-                       <p:outputLabel value="#{costComponent.rate}" >
-                             <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                       </p:outputLabel>
+                        <p:outputLabel value="#{costComponent.rate}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:outputLabel>
                     </f:facet>
                     <f:facet name="input">
                         <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
@@ -102,32 +103,32 @@ Email: info@dpbennett.com.jm
 
             <p:column headerText="Quantity" >
                 <p:cellEditor>
-                <f:facet name="output">
-                   <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
-                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                   </p:outputLabel>
-                </f:facet>
-                <f:facet name="input">               
-                       <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
-                </f:facet>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:outputLabel>
+                    </f:facet>
+                    <f:facet name="input">               
+                        <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                    </f:facet>
                 </p:cellEditor>
             </p:column>
 
             <p:column headerText="UOM" >
                 <p:cellEditor>
-                <f:facet name="output">
-                   <p:outputLabel value="#{costComponent.unit}" /> 
-                </f:facet>
-                <f:facet name="input">
-                   <p:inputText  value="#{costComponent.unit}" style="width:100%" />
-                </f:facet>   
+                    <f:facet name="output">
+                        <p:outputLabel value="#{costComponent.unit}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+                    </f:facet>   
                 </p:cellEditor>
             </p:column>
 
             <p:column headerText="Cost ($)" >
-               <p:outputLabel value="#{costComponent.cost}">
-                     <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-               </p:outputLabel> 
+                <p:outputLabel value="#{costComponent.cost}">
+                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                </p:outputLabel> 
             </p:column>
 
             <p:column>
@@ -181,8 +182,46 @@ Email: info@dpbennett.com.jm
                 </p:commandButton>  
             </p:toolbarGroup> 
         </p:toolbar>
+
+        <h:panelGrid id="summaryTabPanel" columns="2" cellspacing="5" >  
+
+            <p:outputLabel value="Total quantity" style="font-weight: bold;" /> 
+            <p:inputText value="#{inventoryManager.selectedInventory.quantity}"
+                         converterMessage="Invalid Quantity"
+                         required="true"
+                         readonly="true"
+                         requiredMessage="A quantity is required"
+                         styleClass="number-field read-only-text-field">
+
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                <p:ajax event="change"                            
+                        update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryQuantity}" />
+
+            </p:inputText>
+
+            <p:outputLabel value="Total cost ($)" 
+                           style="font-weight: bold;" /> 
+            <p:inputText value="#{inventoryManager.selectedInventory.cost}"
+                         id="cost"
+                         converterMessage="Invalid Cost"
+                         required="true"
+                         readonly="true"
+                         requiredMessage="A cost is required"
+                         styleClass="number-field read-only-text-field">
+
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:inputText>
+
+        </h:panelGrid>
     </p:panel>
-    
+
 
 </html>
 

@@ -77,7 +77,6 @@ Email: info@dpbennett.com.jm
                                 validator="businessEntityValidator"
                                 validatorMessage="A product name is required"
                                 forceSelection="true"
-                                size="35"
                                 dropdown="true"
                                 scrollHeight="200"     
                                 completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
@@ -141,7 +140,6 @@ Email: info@dpbennett.com.jm
                                     required="true"
                                     requiredMessage="A valid category is required"
                                     scrollHeight="200"   
-                                    size="35" 
                                     completeMethod="#{inventoryManager.completeActiveCategory}" >
 
                         <p:ajax event="itemSelect"
@@ -193,9 +191,7 @@ Email: info@dpbennett.com.jm
                 <p:autoComplete id="supplier"
                                 var="supplier"
                                 itemLabel="#{supplier.truncatedName}"
-                                itemValue="#{supplier}"
-                                size="35" 
-                                maxlength="40"                             
+                                itemValue="#{supplier}"                 
                                 dropdown="true"
                                 scrollHeight="200" 
                                 value="#{inventoryManager.selectedInventory.supplier}"   
@@ -251,40 +247,6 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>      
 
             </h:panelGroup>
-
-            <p:outputLabel value="Quantity" style="font-weight: bold;" /> 
-            <p:inputText value="#{inventoryManager.selectedInventory.quantity}"
-                         converterMessage="Invalid Quantity"
-                         required="true"
-                         readonly="true"
-                         requiredMessage="A quantity is required"
-                         styleClass="number-field read-only-text-field">
-
-                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-
-                <p:ajax event="change"                            
-                        update="cost,:inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventoryQuantity}" />
-
-            </p:inputText>
-
-            <p:outputLabel value="Cost (J$)" style="font-weight: bold;" /> 
-            <p:inputText value="#{inventoryManager.selectedInventory.cost}"
-                         id="cost"
-                         converterMessage="Invalid Cost"
-                         required="true"
-                         readonly="true"
-                         requiredMessage="A cost is required"
-                         styleClass="number-field read-only-text-field">
-
-                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-
-                <p:ajax event="change"                            
-                        update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}" />
-
-            </p:inputText>
-         
 
         </h:panelGrid>
     </p:panel>
