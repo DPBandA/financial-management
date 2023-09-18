@@ -54,12 +54,13 @@ Email: info@dpbennett.com.jm
             </p:inputText>
         </p:toolbarGroup>
     </p:toolbar>
-   
+
     <p:dataTable id="inventoryRequisitionTable"
                  var="inventoryRequisition"
                  style="margin-bottom: 1px;margin-top: 1px;"
                  paginator="true"                                 
                  rows="15"
+                 reflow="true"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  selection="#{inventoryManager.selectedInventoryRequisitions}"
                  rowKey="#{inventoryRequisition.id}"
@@ -74,8 +75,10 @@ Email: info@dpbennett.com.jm
         <p:ajax event="rowSelectCheckbox" update=""/>
         <p:ajax event="rowUnselectCheckbox" update=""/>
         <p:ajax event="toggleSelect" update=""/>
-        
-        <p:column selectionMode="multiple" exportable="false"></p:column>
+
+        <p:column selectionMode="multiple" 
+                  style="text-align:center"
+                  exportable="false" />
 
         <p:column>
             <f:facet name="header">
@@ -110,20 +113,20 @@ Email: info@dpbennett.com.jm
         </p:column> 
 
         <ui:remove>
-        <p:column>
-            <f:facet name="header">
-                <p:outputLabel value="Items"/>
-            </f:facet>
-            <p:outputLabel value="#{inventoryRequisition.inventoryDisbursements}" />                
-        </p:column>
+            <p:column>
+                <f:facet name="header">
+                    <p:outputLabel value="Items"/>
+                </f:facet>
+                <p:outputLabel value="#{inventoryRequisition.inventoryDisbursements}" />                
+            </p:column>
         </ui:remove>
 
         <p:column>
-            
-                <p:commandButton icon="pi pi-pencil"
-                            actionListener="#{inventoryManager.editSelectedInventoryRequisition}"
-                            process="@this"
-                            title="View or edit this inventory requisition's detail">
+
+            <p:commandButton icon="pi pi-pencil"
+                             actionListener="#{inventoryManager.editSelectedInventoryRequisition}"
+                             process="@this"
+                             title="View or edit this inventory requisition's detail">
 
                 <f:setPropertyActionListener value="#{inventoryRequisition}" 
                                              target="#{inventoryManager.selectedInventoryRequisition}" />
@@ -132,12 +135,12 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
                         update=":appForm:mainTabView:inventoryRequisitionTable"/>
 
-                </p:commandButton>
-                                       
+            </p:commandButton>
+
         </p:column>
     </p:dataTable>
-    
-     <p:toolbar>
+
+    <p:toolbar>
         <p:toolbarGroup align="left" >               
             <p:commandButton 
                 value="New"

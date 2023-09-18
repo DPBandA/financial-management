@@ -78,6 +78,7 @@ Email: info@dpbennett.com.jm
                       id="disbursementTable"
                       editable="true"
                       editMode="row"
+                      reflow="true"
                       widgetVar="disbursementVar"
                       value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
 
@@ -90,7 +91,7 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
             </f:facet>
 
-            <p:column headerText="Inventory Item" style="width: 150px;">   
+            <p:column headerText="Inventory Item" >   
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{disbursement.inventory}" /> 
@@ -115,7 +116,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>  
             </p:column>
 
-            <p:column headerText="Description" style="width: 150px;" >   
+            <p:column headerText="Description" >   
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{disbursement.description}" /> 

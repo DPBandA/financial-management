@@ -181,7 +181,7 @@
             <to-view-id>/finance/ims/inventoryProductDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    
+       
     <managed-bean>
         <managed-bean-name>financeManager</managed-bean-name>
         <managed-bean-class>jm.com.dpbennett.fm.manager.FinanceManager</managed-bean-class>
