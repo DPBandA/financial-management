@@ -49,8 +49,8 @@ Email: info@dpbennett.com.jm
                 <p:commandButton title="Add new stock item"
                                  value="New"
                                  action="#{inventoryManager.addNewCostComponent}"
-                                 update=":inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"
-                                 oncomplete="PF('costComponentVar').addRow();"
+                                 update=":inventoryCostingCompDialogForm"
+                                 oncomplete="PF('inventoryCostingCompDialog').show();"
                                  icon="pi pi-plus"
                                  process="@this">
                 </p:commandButton>  
