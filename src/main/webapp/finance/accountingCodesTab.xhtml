@@ -29,6 +29,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new accounting code"                                  
                              value="New"
+                             style="margin-bottom: 5px;"
                              actionListener="#{financeManager.createNewAccountingCode}"                                                     
                              global="true"
                              process="@this"
@@ -42,7 +43,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>
             <p:spacer width="20" />
             <p:inputText value="#{financeManager.accountingCodeSearchText}"                                             
-                         style="width:300px" placeholder="Enter any part of code description">
+                         placeholder="Enter search text">
                 <p:ajax event="keyup"
                         global="false"
                         update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
