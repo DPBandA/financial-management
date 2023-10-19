@@ -43,7 +43,6 @@ Email: info@dpbennett.com.jm
             <p:spacer width="20" />
             <p:inputText id="marketProductSearchText" 
                          placeholder="Enter search text"
-                         style="width:200px" 
                          value="#{financeManager.marketProductSearchText}" >
 
                 <p:ajax event="keyup"                            
@@ -80,6 +79,7 @@ Email: info@dpbennett.com.jm
                  editMode="cell"
                  paginator="true"                                 
                  rows="15"
+                 reflow="true"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                  value="#{financeManager.foundMarketProducts}">                        
 

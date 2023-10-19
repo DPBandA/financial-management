@@ -83,8 +83,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{financeManager.selectedDiscount.name}"    
                                  id="discountName"
                                  required="true"
-                                 requiredMessage="Name Required"
-                                 style="width:300px" >
+                                 requiredMessage="Name Required">
 
                         <f:validator validatorId="discountValidator" />
 
@@ -145,15 +144,14 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Description" 
                                    for="discountDescription"
-                                   style="width: 50%;font-weight: bold;" />
+                                   style="font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedDiscount.description}"
                                       id="discountDescription"
                                       maxlength="1000"
                                       rows="4"
                                       autoResize="false"
                                       required="true"
-                                      requiredMessage="Description Required"
-                                      style="width:300px" >
+                                      requiredMessage="Description Required" >
 
                         <f:validator validatorId="discountValidator" />
 

@@ -94,7 +94,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobSubcategory.subCategory}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{jobSubcategory.subCategory}" style="width:96%"/>
+                    <p:inputText value="#{jobSubcategory.subCategory}" />
                 </f:facet>
             </p:cellEditor>                                           
         </p:column>   
@@ -105,7 +105,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobSubcategory.description}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputTextarea value="#{jobSubcategory.description}" style="width:96%"/>
+                    <p:inputTextarea value="#{jobSubcategory.description}"/>
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>   
@@ -116,7 +116,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobSubcategory.isBillable}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{jobSubcategory.isBillable}" style="width:96%">
+                    <p:selectOneMenu value="#{jobSubcategory.isBillable}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>
@@ -130,7 +130,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobSubcategory.usable}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{jobSubcategory.usable}" style="width:96%">
+                    <p:selectOneMenu value="#{jobSubcategory.usable}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>

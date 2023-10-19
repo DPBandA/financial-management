@@ -93,7 +93,7 @@ Email: info@dpbennett.com.jm
                 <f:facet name="output"> 
                     <p:outputLabel value="#{jobCategory.category}" />
                 </f:facet>
-                <f:facet name="input"><p:inputText value="#{jobCategory.category}" style="width:96%"/></f:facet>
+                <f:facet name="input"><p:inputText value="#{jobCategory.category}"/></f:facet>
             </p:cellEditor>                                           
         </p:column>   
 
@@ -102,7 +102,7 @@ Email: info@dpbennett.com.jm
                 <f:facet name="output">
                     <p:outputLabel value="#{jobCategory.description}" />
                 </f:facet>
-                <f:facet name="input"><p:inputTextarea value="#{jobCategory.description}" style="width:96%"/></f:facet>
+                <f:facet name="input"><p:inputTextarea value="#{jobCategory.description}" /></f:facet>
             </p:cellEditor>                                         
         </p:column>   
 
@@ -112,7 +112,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobCategory.isBillable}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{jobCategory.isBillable}" style="width:96%">
+                    <p:selectOneMenu value="#{jobCategory.isBillable}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>
@@ -126,7 +126,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{jobCategory.usable}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{jobCategory.usable}" style="width:96%">
+                    <p:selectOneMenu value="#{jobCategory.usable}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>

@@ -53,15 +53,14 @@ Email: info@dpbennett.com.jm
             <p:panel>
                 <h:panelGrid id="costingComponentPanelGrid" 
                              cellspacing="10"
-                             columns="2" style="width: 100%">
+                             columns="2">
 
                     <p:outputLabel value="Cost code" 
                                    rendered="#{!inventoryManager.selectedCostComponent.isHeading}" />
                     <p:inputText id="costCode"
                                  value="#{inventoryManager.selectedCostComponent.code}"
                                  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
-                                 styleClass="number-field"
-                                 style="width: 90%">
+                                 styleClass="number-field">
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
@@ -96,8 +95,7 @@ Email: info@dpbennett.com.jm
                                       validator="requiredFieldValidator"
                                       maxlength="250"
                                       rows="2"
-                                      autoResize="false"
-                                      style="width: 90%;" >
+                                      autoResize="false" >
 
                         <p:ajax event="change"
                                 global="false" 
@@ -114,8 +112,7 @@ Email: info@dpbennett.com.jm
                                  value="#{inventoryManager.selectedCostComponent.hoursOrQuantity}"
                                  styleClass="number-field"
                                  validator="requiredFieldValidator"
-                                 converterMessage="Invalid Component Quantity"
-                                 style="width: 90%">
+                                 converterMessage="Invalid Component Quantity">
                         <f:convertNumber />
                         <p:ajax event="keyup"
                                 global="false"
@@ -133,8 +130,7 @@ Email: info@dpbennett.com.jm
                                     value="UOM" />
                     <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                   id="costComponentUnit"
-                                  value="#{inventoryManager.selectedCostComponent.unit}"
-                                  style="width: 90%" >
+                                  value="#{inventoryManager.selectedCostComponent.unit}" >
 
                         <p:ajax event="keyup"
                                 global="false"
@@ -153,7 +149,6 @@ Email: info@dpbennett.com.jm
                     <p:inputText rendered="#{!inventoryManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
                                  value="#{inventoryManager.selectedCostComponent.rate}"
-                                 style="width: 90%"
                                  styleClass="number-field" 
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Unit Cost" >
@@ -173,7 +168,6 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                    value="Cost ($)" style="font-weight: bold;" />
                     <p:inputText id="costComponentCost"
-                                 style="width: 90%;"
                                  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"                            
                                  value="#{inventoryManager.selectedCostComponent.cost}"
                                  readonly="#{inventoryManager.selectedCostComponent.isCostReadOnly}"

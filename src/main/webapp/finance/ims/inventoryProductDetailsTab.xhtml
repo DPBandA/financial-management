@@ -56,7 +56,6 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="Name" style="font-weight: bold;" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.commonName}"
                      id="marketProductName"
-                     style="width: 300px;"
                      validator="marketProductValidator">
 
             <p:ajax event="change"
@@ -68,14 +67,13 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="" />
 
         <p:outputLabel value="Type" style="font-weight: bold;" />   
-        <p:selectOneMenu id="productType"     
-                         style="width: 200px;"
+        <p:selectOneMenu id="productType" 
                          value="#{inventoryManager.selectedInventoryProduct.type}">
 
             <f:selectItems  value="#{inventoryManager.productTypes}"
-                            var="type"                            
-                            itemValue="#{type}"
-                            itemLabel="#{type}"/>
+                            var="ptype"                            
+                            itemValue="#{ptype.value}"
+                            itemLabel="#{ptype.label}"/>
 
             <p:ajax event="change"
                     global="true"  
@@ -159,8 +157,7 @@ Email: info@dpbennett.com.jm
             counterTemplate="{0} characters remaining."
             autoResize="false"
             maxlength="1000" 
-            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-            style="width: 350px;">
+            styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" >
 
             <p:ajax event="change"
                     listener="#{inventoryManager.updateInventoryProduct}"

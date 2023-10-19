@@ -82,8 +82,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{financeManager.selectedAccountingCode.name}"    
                                  id="accountingCodeName"
                                  required="true"
-                                 requiredMessage="Name Required"
-                                 style="width:300px" >
+                                 requiredMessage="Name Required" >
 
                         <f:validator validatorId="accountingCodeValidator" />
 
@@ -95,8 +94,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{financeManager.selectedAccountingCode.code}"    
                                  id="accountingCode"
                                  required="true"
-                                 requiredMessage="Code Required"
-                                 style="width:300px" >
+                                 requiredMessage="Code Required">
 
                         <f:validator validatorId="accountingCodeValidator" />
 
@@ -108,8 +106,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{financeManager.selectedAccountingCode.abbreviation}"    
                                  id="accountingCodeAbbrev"
                                  required="true"
-                                 requiredMessage="Abbreviation Required"
-                                 style="width:300px" >
+                                 requiredMessage="Abbreviation Required" >
 
                         <f:validator validatorId="accountingCodeValidator" />
 
@@ -121,7 +118,6 @@ Email: info@dpbennett.com.jm
                     <p:selectOneMenu id="accountingCodeType"    
                                      required="true"
                                      requiredMessage="Type Required"
-                                     style="width: 300px;"
                                      value="#{financeManager.selectedAccountingCode.type}">
 
                         <f:selectItems  value="#{financeManager.accountingCodeTypes}"
@@ -133,7 +129,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Description" 
                                    for="accountingCodeDescription"
-                                   style="width: 50%;font-weight: bold;" />
+                                   style="font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedAccountingCode.description}"
                                       id="accountingCodeDescription"
                                       maxlength="1000"
@@ -141,7 +137,7 @@ Email: info@dpbennett.com.jm
                                       autoResize="false"
                                       required="true"
                                       requiredMessage="Description Required"
-                                      style="width:300px" >
+                                      style="width:100%;" >
 
                         <f:validator validatorId="accountingCodeValidator" />
 

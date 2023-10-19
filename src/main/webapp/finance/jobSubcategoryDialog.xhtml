@@ -78,8 +78,7 @@ Email: info@dpbennett.com.jm
                     <p:inputText value="#{financeManager.selectedJobSubcategory.name}"    
                                  id="jobSubcategoryName"
                                  required="true"
-                                 requiredMessage="Name Required"
-                                 style="width:300px" >
+                                 requiredMessage="Name Required">
 
                         <f:validator validatorId="requiredFieldValidator" />
 
@@ -87,7 +86,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel value="Description" 
                                    for="jobSubcategoryDescription"
-                                   style="width: 50%;font-weight: bold;" />
+                                   style="font-weight: bold;" />
                     <p:inputTextarea  value="#{financeManager.selectedJobSubcategory.description}"
                                       id="jobSubcategoryDescription"
                                       maxlength="1000"
@@ -95,7 +94,7 @@ Email: info@dpbennett.com.jm
                                       autoResize="false"
                                       required="true"
                                       requiredMessage="Description Required"
-                                      style="width:300px" >
+                                      style="width:100%;" >
                         <f:validator validatorId="requiredFieldValidator" />
                     </p:inputTextarea>  
 
