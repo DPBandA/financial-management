@@ -136,7 +136,7 @@ Email: info@dpbennett.com.jm
 
 
 
-        <p:column style="width: 100px;">
+        <p:column>
             <f:facet name="header">
                 <p:outputLabel value="Component"/>
             </f:facet>
@@ -145,7 +145,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{costComponent.name}" /> 
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText  value="#{costComponent.name}" style="width:100%" />
+                    <p:inputText  value="#{costComponent.name}"/>
                 </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -159,7 +159,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{costComponent.code}" /> 
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText  value="#{costComponent.code}" style="width:100%" />
+                    <p:inputText  value="#{costComponent.code}" />
                 </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -179,7 +179,7 @@ Email: info@dpbennett.com.jm
                     </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">               
-                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" style="width:100%" />                   
+                    <p:inputNumber value="#{costComponent.hoursOrQuantity}" />                   
                 </f:facet>
             </p:cellEditor>
         </p:column>
@@ -197,7 +197,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{costComponent.unit}" /> 
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText  value="#{costComponent.unit}" style="width:100%" />
+                    <p:inputText  value="#{costComponent.unit}" />
                 </f:facet>   
             </p:cellEditor>
         </p:column>
@@ -218,7 +218,7 @@ Email: info@dpbennett.com.jm
                     </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputNumber value="#{costComponent.rate}" style="width:100%" />
+                    <p:inputNumber value="#{costComponent.rate}" />
                 </f:facet>
             </p:cellEditor>
 

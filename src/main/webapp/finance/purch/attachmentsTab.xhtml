@@ -65,8 +65,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{attachment.documentType}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu style="width: 96%;"
-                                     value="#{attachment.documentType}">
+                    <p:selectOneMenu value="#{attachment.documentType}">
 
                         <f:selectItems  value="#{purchasingManager.documentTypes}"
                                         var="documentType"                            
@@ -87,7 +86,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{attachment.description}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputTextarea value="#{attachment.description}" style="width:96%"/>
+                    <p:inputTextarea value="#{attachment.description}"/>
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>

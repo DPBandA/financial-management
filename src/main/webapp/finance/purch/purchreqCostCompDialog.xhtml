@@ -59,15 +59,14 @@ Email: info@dpbennett.com.jm
             <p:panel>
                 <h:panelGrid id="costingComponentPanelGrid" 
                              cellspacing="10"
-                             columns="2" style="width: 100%">
+                             columns="2">
 
                     <p:outputLabel value="Cost code" 
                                    rendered="#{!purchasingManager.selectedCostComponent.isHeading}" />
                     <p:inputText id="costCode"
                                  value="#{purchasingManager.selectedCostComponent.code}"
                                  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
-                                 styleClass="number-field"
-                                 style="width: 90%">
+                                 styleClass="number-field">
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
@@ -88,8 +87,7 @@ Email: info@dpbennett.com.jm
                                       requiredMessage="Component Required"
                                       maxlength="250"
                                       rows="2"
-                                      autoResize="false"
-                                      style="width: 90%;" >
+                                      autoResize="false" >
 
                         <p:ajax event="change"
                                 global="false" 
@@ -109,8 +107,7 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Quantity Required"
                                  validator="requiredFieldValidator"
-                                 converterMessage="Invalid Component Hours/Quantity"
-                                 style="width: 100%">
+                                 converterMessage="Invalid Component Hours/Quantity" >
                         <f:convertNumber />
                         <p:ajax event="keyup"
                                 global="false"
@@ -128,8 +125,7 @@ Email: info@dpbennett.com.jm
                                     value="UOM" />
                     <p:inputText  rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
                                   id="costComponentUnit"
-                                  value="#{purchasingManager.selectedCostComponent.unit}"
-                                  style="width: 90%" >
+                                  value="#{purchasingManager.selectedCostComponent.unit}" >
 
                         <p:ajax event="keyup"
                                 global="false"
@@ -149,7 +145,6 @@ Email: info@dpbennett.com.jm
                     <p:inputText rendered="#{!purchasingManager.selectedCostComponent.renderFixedCostingComponentFormFields}" 
                                  id="costComponentRate"
                                  value="#{purchasingManager.selectedCostComponent.rate}"
-                                 style="width: 90%"
                                  styleClass="number-field" 
                                  required="true"
                                  requiredMessage="Unit cost Required"
@@ -175,7 +170,6 @@ Email: info@dpbennett.com.jm
                                    for="costComponentCost"
                                    value="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" style="font-weight: bold;" />
                     <p:inputText id="costComponentCost"
-                                 style="width: 90%;"
                                  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"                            
                                  value="#{purchasingManager.selectedCostComponent.cost}"
                                  readonly="#{purchasingManager.selectedCostComponent.isCostReadOnly}"

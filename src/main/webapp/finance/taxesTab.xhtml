@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
     </p:toolbar>    
     <p:dataTable id="taxesTable"                                       
                  var="tax"     
-                 editable="true" 
+                 editable="false" 
                  editMode="cell"
                  paginator="true"
                  rows="15"
@@ -95,7 +95,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{tax.name}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{tax.name}" style="width:96%"/>
+                    <p:inputText value="#{tax.name}"/>
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>           
@@ -106,7 +106,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{tax.taxValue}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{tax.taxValue}" style="width:96%"/>
+                    <p:inputText value="#{tax.taxValue}"/>
                 </f:facet>
             </p:cellEditor>                                         
         </p:column> 
@@ -117,7 +117,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{tax.accountingCode.code}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{tax.accountingCode.code}" style="width:96%"/>
+                    <p:inputText value="#{tax.accountingCode.code}"/>
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>
@@ -128,7 +128,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{tax.description}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{tax.description}" style="width:96%"/>
+                    <p:inputText value="#{tax.description}" />
                 </f:facet>
             </p:cellEditor>                                           
         </p:column>   

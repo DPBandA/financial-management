@@ -73,7 +73,7 @@ Email: info@dpbennett.com.jm
 
     <p:dataTable id="servicesTable"                                       
                  var="service"     
-                 editable="true" 
+                 editable="false" 
                  editMode="cell"
                  paginator="true"
                  rows="15"
@@ -95,7 +95,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{service.name}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputText value="#{service.name}" style="width:96%"/>
+                    <p:inputText value="#{service.name}"/>
                 </f:facet>
             </p:cellEditor>                                           
         </p:column>   
@@ -106,7 +106,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{service.description}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:inputTextarea value="#{service.description}" style="width:96%"/>
+                    <p:inputTextarea value="#{service.description}" />
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>   
@@ -117,7 +117,7 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="#{service.usable}" />
                 </f:facet>
                 <f:facet name="input">
-                    <p:selectOneMenu value="#{service.usable}" style="width:100px;">
+                    <p:selectOneMenu value="#{service.usable}">
                         <f:selectItem itemLabel="Yes" itemValue="Yes"/>
                         <f:selectItem itemLabel="No" itemValue="No"/>
                     </p:selectOneMenu>

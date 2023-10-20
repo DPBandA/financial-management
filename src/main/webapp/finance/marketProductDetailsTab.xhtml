@@ -56,7 +56,6 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="Name:" style="font-weight: bold;" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.commonName}"
                      id="marketProductName"
-                     style="width: 300px;"
                      validator="marketProductValidator">
 
             <p:ajax event="change"
@@ -141,7 +140,7 @@ Email: info@dpbennett.com.jm
             autoResize="false"
             maxlength="1000" 
             styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-            style="width: 500px;">
+            style="width: 100%;">
 
             <p:ajax event="change"
                     listener="#{financeManager.updateMarketProduct}"
