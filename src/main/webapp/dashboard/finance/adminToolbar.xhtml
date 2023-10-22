@@ -129,7 +129,16 @@ Email: info@dpbennett.com.jm
                             rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
                             process="@this" /> 
 
-                <p:separator />               
+                <p:separator />     
+
+                <p:menuitem value="Market Products"  
+                            title="Market products browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{financeManager.openMarketProductBrowser}"
+                            rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
+                            process="@this"/>
+
+                <p:separator />     
 
                 <p:menuitem value="Suppliers"
                             title="Open suppliers tab"

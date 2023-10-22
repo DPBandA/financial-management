@@ -95,7 +95,14 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{marketProduct.name}" />
         </p:column>
-        
+
+        <p:column sortBy="#{marketProduct.type}">
+            <f:facet name="header">
+                <p:outputLabel value="Type"/>
+            </f:facet>
+            <p:outputLabel value="#{marketProduct.name}" />
+        </p:column>
+
         <p:column sortBy="#{marketProduct.brand}">
             <f:facet name="header">
                 <p:outputLabel value="Brand"/>
@@ -140,7 +147,7 @@ Email: info@dpbennett.com.jm
             </p:commandButton>
         </p:column>
     </p:dataTable>
-    
+
     <p:toolbar>
         <p:toolbarGroup align="left" >  
 
@@ -156,9 +163,9 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:marketProductsTable"/>
 
             </p:commandButton>
-            
+
         </p:toolbarGroup>
-      
+
     </p:toolbar>
 
 </html>
