@@ -25,7 +25,9 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
     <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
 
-        <p:outputLabel for="marketProductActive" value="Active: " style="font-weight: bold;" />  
+        <p:outputLabel for="marketProductActive" 
+                       value="Active *" 
+                       style="font-weight: bold;" />  
         <h:panelGroup>
             <p:selectBooleanCheckbox style="vertical-align: middle"
                                      id="marketProductActive"
@@ -53,9 +55,11 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Name" style="font-weight: bold;" />       
+        <p:outputLabel value="Name *" style="font-weight: bold;" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.name}"
                      id="marketProductName"
+                     required="true"
+                     requiredMessage="Name Required"
                      validator="marketProductValidator">
 
             <p:ajax event="change"
@@ -91,7 +95,7 @@ Email: info@dpbennett.com.jm
         <p:outputLabel value="" />
 
         <p:outputLabel style="vertical-align: top;"
-                      value="Categories:" />
+                       value="Categories:" />
         <h:panelGroup>
             <h:panelGrid columns="2">
                 <p:autoComplete id="categories"
@@ -130,7 +134,7 @@ Email: info@dpbennett.com.jm
         </h:panelGroup>
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Description:" />                        
+        <p:outputLabel value="Description" />                        
         <p:inputTextarea
             id="description"
             value="#{financeManager.selectedMarketProduct.description}"
@@ -140,7 +144,7 @@ Email: info@dpbennett.com.jm
             autoResize="false"
             maxlength="1000" 
             styleClass="#{not component.valid ? 'invalid-inputtextarea-field' : ''}" 
-            style="width: 100%;">
+            style="width: 70%;">
 
             <p:ajax event="change"
                     listener="#{financeManager.updateMarketProduct}"
