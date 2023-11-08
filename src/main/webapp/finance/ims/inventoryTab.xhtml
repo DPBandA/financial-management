@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
                          value="#{inventoryManager.inventorySearchText}" >
 
                 <p:ajax event="keyup"                            
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:inventoryTable"
                         listener="#{inventoryManager.doInventorySearch}"
                         process="@this"/>

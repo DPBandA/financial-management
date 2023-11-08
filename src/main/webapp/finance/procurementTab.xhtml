@@ -51,7 +51,7 @@ Email: info@dpbennett.com.jm
                          value="#{financeManager.procurementMethodSearchText}"
                          placeholder="Enter search text">
                 <p:ajax event="keyup"
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                         listener="#{financeManager.doProcurementMethodSearch}"
                         process="@this"/>

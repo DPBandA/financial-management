@@ -44,7 +44,7 @@ Email: info@dpbennett.com.jm
                          value="#{financeManager.sectorSearchText}"
                          placeholder="Enter search text">
                 <p:ajax event="keyup"
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
                         listener="#{financeManager.doSectorSearch}"
                         process="@this"/>

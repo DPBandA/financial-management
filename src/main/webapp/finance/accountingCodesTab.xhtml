@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
             <p:inputText value="#{financeManager.accountingCodeSearchText}"                                             
                          placeholder="Enter search text">
                 <p:ajax event="keyup"
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
                         listener="#{financeManager.doAccountingCodeSearch}"
                         process="@this"/>

@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
                          value="#{financeManager.classificationSearchText}"
                          placeholder="Enter search text">
                 <p:ajax event="keyup"
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable"
                         listener="#{financeManager.doClassificationSearch}"
                         process="@this"/>

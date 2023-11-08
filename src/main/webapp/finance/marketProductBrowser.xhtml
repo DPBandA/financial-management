@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                          value="#{financeManager.marketProductSearchText}" >
 
                 <p:ajax event="keyup"                            
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:marketProductsTable"
                         listener="#{financeManager.doMarketProductSearch}"
                         process="@this"/>

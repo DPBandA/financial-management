@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                          value="#{purchasingManager.supplierSearchText}" >
 
                 <p:ajax event="keyup"                            
-                        global="false"
+                        global="true"
                         update=":appForm:mainTabView:suppliersTable"
                         listener="#{purchasingManager.doSupplierSearch}"
                         process="@this"/>
