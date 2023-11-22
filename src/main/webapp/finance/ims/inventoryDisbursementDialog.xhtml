@@ -50,31 +50,66 @@ Email: info@dpbennett.com.jm
                 </p:toolbarGroup>
             </p:toolbar>   
 
-            <p:panel>
-                <h:panelGrid id="disbursementPanelGrid" 
-                             cellspacing="10"
-                             columns="2">
+            <p:tabView id="inventoryDisbursementDialogFormTabView"
+                       style="margin-top: 1px;margin-bottom: 1px;"               
+                       widgetVar="inventoryDisbursementDialogTabVar" >
 
-                    <p:outputLabel value="Date ordered" style="font-weight: bold" />
-                    <p:calendar value="#{inventoryManager.selectedInventoryDisbursement.dateOrdered}" 
-                                readonlyInput="true"
-                                required="true"
-                                requiredMessage="A valid date is required"
-                                navigator="true" 
-                                pattern="MMM dd, yyyy" >
+                <p:tab title="General" >
+                    <h:panelGrid cellspacing="10"
+                                 columns="2">
 
-                        <p:ajax event="dateSelect"
-                                global="false"
-                                listener="#{inventoryManager.updateSelectedDisbursement}" />
+                        <p:outputLabel value="Inventory item" style="font-weight: bold" />
+                        <p:autoComplete id="inventoryItem"
+                                        var="inventoryItem"   
+                                        value="#{inventoryManager.selectedInventoryDisbursement.inventory}"
+                                        itemLabel="#{inventoryItem.name}"
+                                        itemValue="#{inventoryItem}"
+                                        converter="inventoryConverter"  
+                                        required="true"
+                                        requiredMessage="Inventory Item Required"
+                                        validator="businessEntityValidator"
+                                        validatorMessage="An inventory item is required"
+                                        forceSelection="true"
+                                        size="35"
+                                        dropdown="true"
+                                        scrollHeight="200"     
+                                        completeMethod="#{inventoryManager.completeInventoryItem}" >
 
-                        <p:ajax event="keyup"
-                                global="false"
-                                listener="#{inventoryManager.updateSelectedDisbursement}" />
+                            <p:ajax event="itemSelect" 
+                                    listener="#{inventoryManager.updateInventory}" />
 
-                    </p:calendar>
+                            <p:ajax event="change"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
 
-                </h:panelGrid>
-            </p:panel>    
+                        </p:autoComplete>
+
+                    </h:panelGrid>
+                </p:tab>
+
+                <p:tab title="Status &amp; Tracking" >
+                    <h:panelGrid cellspacing="10"
+                                 columns="2">
+
+                        <p:outputLabel value="Date ordered" style="font-weight: bold" />
+                        <p:calendar value="#{inventoryManager.selectedInventoryDisbursement.dateOrdered}" 
+                                    readonlyInput="true"
+                                    required="true"
+                                    requiredMessage="A valid date is required"
+                                    navigator="true" 
+                                    pattern="MMM dd, yyyy" >
+
+                            <p:ajax event="dateSelect"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+
+                            <p:ajax event="keyup"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+
+                        </p:calendar>
+
+                    </h:panelGrid>
+                </p:tab>      
+
+            </p:tabView>           
 
             <p:toolbar style="margin-top: 1px;">
                 <p:toolbarGroup>
