@@ -52,6 +52,26 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
         </p:toolbarGroup>
+
+        <p:toolbarGroup align="right">
+            <p:outputLabel for="activeInventoryOnly" value="Active inventories only" />  
+            <p:spacer height="0" width="10"/>
+            <h:panelGroup>
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
+                                         id="activeInventoryOnly"
+                                         value="#{inventoryManager.activeInventoryOnly}" >
+                    <p:ajax  update=":appForm:mainTabView:inventoryTable"
+                             listener="#{inventoryManager.doInventorySearch}"
+                             event="change"                                      
+                             process="@this"/>
+                </p:selectBooleanCheckbox>         
+
+                <p:tooltip for="activeInventoryOnly" value="Check to show active inventories" 
+                           showEffect="fade" hideEffect="fade" />
+                <p:spacer width="15" />                
+
+            </h:panelGroup>
+        </p:toolbarGroup>
     </p:toolbar>
 
     <p:dataTable id="inventoryTable"

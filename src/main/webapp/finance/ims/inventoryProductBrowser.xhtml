@@ -55,18 +55,18 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >
-            <p:outputLabel value="Active products only" for="isActiveInventoryProductsOnly" />  
+            <p:outputLabel value="Active products only" for="activeInventoryProductsOnly" />  
             <p:spacer width="10" /> 
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
-                                         id="isActiveInventoryProductsOnly"
-                                         value="#{inventoryManager.isActiveInventoryProductsOnly}" >
+                                         id="activeInventoryProductsOnly"
+                                         value="#{inventoryManager.activeInventoryProductsOnly}" >
                     <p:ajax  update=":appForm:mainTabView:inventoryProductsTable"
                              listener="#{inventoryManager.doInventoryProductSearch}"
                              event="change"                                      
                              process="@this"/>
                 </p:selectBooleanCheckbox>            
-                <p:tooltip for="isActiveInventoryProductsOnly" value="Check to search for active products only" 
+                <p:tooltip for="activeInventoryProductsOnly" value="Check to search for active products only" 
                            showEffect="fade" hideEffect="fade" />
                 <p:spacer width="15" />                
             </h:panelGroup>
