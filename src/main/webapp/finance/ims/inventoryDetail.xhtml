@@ -39,7 +39,7 @@ Email: info@dpbennett.com.jm
             <ui:include src="inventoryStatusAndTrackingTab.xhtml" />
         </p:tab> 
         
-         <p:tab title="Marketing" >
+        <p:tab title="Marketing" rendered="#{inventoryManager.showInventoryMarketingTab}">
             <ui:include src="inventoryMarketingTab.xhtml"/>
         </p:tab>
 
