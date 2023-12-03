@@ -34,8 +34,7 @@ Email: info@dpbennett.com.jm
                              process="@this"
                              icon="pi pi-plus" >
 
-                <p:ajax event="dialogReturn" 
-                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
+                <p:ajax event="dialogReturn"                         
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>
@@ -96,8 +95,7 @@ Email: info@dpbennett.com.jm
                 <f:setPropertyActionListener value="#{systemOption}"                                                                    
                                              target="#{systemManager.selectedSystemOption}" />
 
-                <p:ajax event="dialogReturn"
-                        listener="#{systemManager.doSystemOptionSearch('Finance')}"
+                <p:ajax event="dialogReturn"                        
                         update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>           
