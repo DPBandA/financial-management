@@ -69,8 +69,8 @@ Email: info@dpbennett.com.jm
 
                         <f:selectItems  value="#{purchasingManager.documentTypes}"
                                         var="documentType"                            
-                                        itemValue="#{documentType}"
-                                        itemLabel="#{documentType}"/>
+                                        itemValue="#{documentType.value}"
+                                        itemLabel="#{documentType.label}"/>
 
                     </p:selectOneMenu>
                 </f:facet>

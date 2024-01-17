@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM)  
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -39,7 +39,7 @@ Email: info@dpbennett.com.jm
         <ui:include src="../common/commonDialogs.xhtml"/>  
 
         <h:form id="accountingCodeDialogForm">        
-            <p:growl id="growl" life="5000" />
+            <p:growl id="growl" life="5000" showDetail="true"/>
 
             <p:toolbar>
                 <p:toolbarGroup align="left">
@@ -77,10 +77,10 @@ Email: info@dpbennett.com.jm
                     </h:panelGroup>
 
                     <p:outputLabel value="Name" 
-                                   for="accountingCodeName"
+                                   for="accountingCode"
                                    style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedAccountingCode.name}"    
-                                 id="accountingCodeName"
+                                 id="accountingCode"
                                  required="true"
                                  requiredMessage="Name Required" >
 
@@ -89,14 +89,14 @@ Email: info@dpbennett.com.jm
                     </p:inputText>                    
 
                     <p:outputLabel value="Code" 
-                                   for="accountingCode"
+                                   for="code"
                                    style="font-weight: bold;" />
                     <p:inputText value="#{financeManager.selectedAccountingCode.code}"    
-                                 id="accountingCode"
+                                 id="code"
                                  required="true"
                                  requiredMessage="Code Required">
 
-                        <f:validator validatorId="accountingCodeValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
                     </p:inputText> 
 
@@ -108,7 +108,7 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Abbreviation Required" >
 
-                        <f:validator validatorId="accountingCodeValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
                     </p:inputText>
 
@@ -122,8 +122,8 @@ Email: info@dpbennett.com.jm
 
                         <f:selectItems  value="#{financeManager.accountingCodeTypes}"
                                         var="type"                                          
-                                        itemValue="#{type}"
-                                        itemLabel="#{type}"/>
+                                        itemValue="#{type.value}"
+                                        itemLabel="#{type.label}"/>
 
                     </p:selectOneMenu>
 
@@ -139,7 +139,7 @@ Email: info@dpbennett.com.jm
                                       requiredMessage="Description Required"
                                       style="width:100%;" >
 
-                        <f:validator validatorId="accountingCodeValidator" />
+                        <f:validator validatorId="requiredFieldValidator" />
 
                     </p:inputTextarea>                           
 
