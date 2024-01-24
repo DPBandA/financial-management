@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024 D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,22 +25,75 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
-        <h:panelGrid id="generalTabPanel" columns="2">            
+        <h:panelGrid id="generalTabPanel" columns="2">    
 
-            <p:outputLabel value="Code" />          
-            <p:inputText  size="15"
-                          maxlength="40"
-                          value="#{inventoryManager.selectedInventoryRequisition.code}">
+            <p:outputLabel value="Department" for="department" style="font-weight: bold" />
+            <p:autoComplete id="department" 
+                            var="department"
+                            forceSelection="true"      
+                            dropdown="true"
+                            scrollHeight="200" 
+                            value="#{inventoryManager.selectedInventoryRequisition.department}"
+                            itemValue="#{department}"
+                            itemLabel="#{department.name}"
+                            converter="activeDepartmentConverter"
+                            required="true"
+                            requiredMessage="Department Required"
+                            validator="businessEntityValidator"
+                            cache="true"
+                            completeMethod="#{inventoryManager.completeActiveDepartment}" >            
 
-                <p:ajax event="change"                            
+                <p:ajax event="itemSelect"
                         update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
                         listener="#{inventoryManager.updateInventoryRequisition}"
-                        process="@this"/>
+                        process="@this" />
 
-            </p:inputText>
 
-            <p:outputLabel value="Requisition date" style="font-weight: bold" />
+            </p:autoComplete>   
+
+            <p:outputLabel value="Contact person" 
+                           for="contactPerson"
+                           style="font-weight: bold" />       
+            <p:autoComplete id="contactPerson"
+                            value="#{inventoryManager.selectedInventoryRequisition.contactPerson}"
+                            itemLabel="#{contactPerson.name}"
+                            itemValue="#{contactPerson}"
+                            converter="activeEmployeeConverter"
+                            required="true"
+                            requiredMessage="Contact Person Required"
+                            validator="businessEntityValidator"
+                            forceSelection="true"
+                            dropdown="true"
+                            scrollHeight="200" 
+                            cache="true"
+                            completeMethod="#{inventoryManager.completeActiveEmployee}" >
+
+                <p:ajax event="itemSelect"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this" />
+                
+            </p:autoComplete>
+
+            <ui:remove>
+                <p:outputLabel value="Code" />          
+                <p:inputText  size="15"
+                              maxlength="40"
+                              value="#{inventoryManager.selectedInventoryRequisition.code}">
+
+                    <p:ajax event="change"                            
+                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                            listener="#{inventoryManager.updateInventoryRequisition}"
+                            process="@this"/>
+
+                </p:inputText>
+            </ui:remove>
+
+            <p:outputLabel value="Requisition date" 
+                           for="requisitionDate"
+                           style="font-weight: bold" />
             <p:calendar value="#{inventoryManager.selectedInventoryRequisition.dateOfRequisition}" 
+                        id="requisitionDate"
                         readonlyInput="true"
                         required="true"
                         requiredMessage="A valid date is required"

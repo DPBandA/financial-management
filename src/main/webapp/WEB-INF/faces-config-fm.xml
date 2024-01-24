@@ -27,7 +27,7 @@
         <converter-id>activeInventoryProductConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryProductConverter</converter-class>
     </converter>   
-   
+       
     <validator>
         <validator-id>supplierValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.SupplierValidator</validator-class>
