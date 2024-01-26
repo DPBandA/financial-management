@@ -1,6 +1,6 @@
 <!--
 Inventory Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -44,8 +44,7 @@ Email: info@dpbennett.com.jm
 
             <p:outputLabel style="color: red;" value="#{inventoryManager.selectedInventoryRequisition.editStatus}" />
 
-
-        </p:toolbarGroup>
+            </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >  
 
@@ -66,6 +65,36 @@ Email: info@dpbennett.com.jm
             </p:menuButton>
 
             <p:spacer width="20" rendered="false" />
+            
+            <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.prepared}" 
+                                     id="prepared"                                         
+                                     disabled="#{!inventoryManager.canPrepareInventoryRequisition}"
+                                     style="vertical-align: bottom;"
+                                     itemLabel="Prepared" >
+
+                <p:ajax global="false" 
+                        listener="#{inventoryManager.prepareInventoryRequisition}"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab"
+                        process="@this"/>
+
+            </p:selectBooleanCheckbox>               
+
+            <p:spacer width="10"/>
+
+            <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.approved}" 
+                                     id="approved"                                         
+                                     disabled="#{!inventoryManager.canApproveInventoryRequisition}"
+                                     style="vertical-align: bottom;"
+                                     itemLabel="Approved" >
+
+                <p:ajax global="false" 
+                        listener="#{inventoryManager.approveInventoryRequisition}"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab"
+                        process="@this"/>
+
+            </p:selectBooleanCheckbox>
+            
+            <p:spacer width="20"/>
 
             <p:menuButton value="Forms" >
                 <p:menuitem value="Stores requisition"
@@ -80,7 +109,7 @@ Email: info@dpbennett.com.jm
                 </p:menuitem>               
             </p:menuButton>
         </p:toolbarGroup>
-        
+
 
     </p:toolbar>
 

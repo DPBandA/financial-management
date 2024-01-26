@@ -39,7 +39,25 @@ Email: info@dpbennett.com.jm
         <ui:include src="inventoryDisbursementDeleteConfirmDialog.xhtml"/>
 
         <h:form id="inventoryRequisitionDialogForm" >   
-            <ui:include src="inventoryRequisitionDetail.xhtml"/>                    
+            <p:growl id="inventory_requisition_growl" life="5000" showDetail="true" />
+
+            <ui:include src="inventoryRequisitionDetailTopToolbar.xhtml"/>
+
+            <p:tabView id="inventoryRequisitionFormTabView"
+                       style="margin-top: 1px;margin-bottom: 1px;"               
+                       widgetVar="inventoryRequisitionFormTabVar" >
+
+                <p:tab title="General" >
+                    <ui:include src="inventoryRequisitionGeneralTab.xhtml"/>
+                </p:tab>
+
+                <p:tab id="statusAndTrackingTab" title="Status &amp; Tracking" >
+                    <ui:include src="inventoryRequisitionStatusAndTrackingTab.xhtml" />
+                </p:tab>      
+
+            </p:tabView>
+
+            <ui:include src="inventoryRequisitionDetailBottomToolbar.xhtml"/>             
         </h:form>
     </h:body>
 

@@ -6,9 +6,16 @@
 	<property name="ireport.y" value="0"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local MySQL"/>
 	<property name="com.jaspersoft.studio.report.description" value="Stores requisition form"/>
-	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[am10cy5kZXBhcnRtZW50ICwxNSwxNSw3ZjQzMjk3MC1kYmNmLTRhNmEtOWZmNy0xZjZhNmE5MmJm
+M2M7am10cy5lbXBsb3llZSAsMTUsNjI2LDlhZWI5M2FmLTEwNmMtNDA5My05Mjc0LWNkYTU4ODU0
+ODY3MDtqbXRzLmludmVudG9yeXJlcXVpc2l0aW9uICwyODgsMzUxLDY5NmRmODhhLTUxODAtNDNh
+Ni1iZDRhLTVhZTdmZWFhNTUwMTs=]]>
+	</property>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="166"/>
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="829"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="589"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="400"/>
 	<subDataset name="Disbursements" uuid="a7e613e8-cf98-4942-94d6-f734eb7f6361">
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="217"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="777"/>
@@ -30,10 +37,10 @@ FROM jmts.inventoryrequisition_inventorydisbursement
 	INNER JOIN jmts.inventoryrequisition ON 
 	 jmts.inventoryrequisition_inventorydisbursement.`InventoryRequisition_ID` = jmts.inventoryrequisition.`ID` 
 	INNER JOIN jmts.inventorydisbursement ON 
-	 jmts.inventoryrequisition_inventorydisbursement.`inventoryDisbursements_ID` = jmts.inventorydisbursement.`ID` 
-	 WHERE
+	 jmts.inventoryrequisition_inventorydisbursement.`inventoryDisbursements_ID` = jmts.inventorydisbursement.`ID` 	 
+WHERE
 	 jmts.inventoryrequisition.`ID` = $P{inventoryDisbursement_reqId}
-	 ORDER BY
+ORDER BY
 	 jmts.inventorydisbursement.`ID`]]>
 		</queryString>
 		<field name="DESCRIPTION" class="java.lang.String">
@@ -80,10 +87,9 @@ FROM jmts.inventoryrequisition_inventorydisbursement
 			<variableExpression><![CDATA[$F{inventoryDisbursements_ID}]]></variableExpression>
 		</variable>
 	</subDataset>
-	<parameter name="reqId" class="java.lang.Long">
+	<parameter name="reqId" class="java.lang.Long" isForPrompting="false">
 		<defaultValueExpression><![CDATA[1958101L]]></defaultValueExpression>
 	</parameter>
-	<parameter name="contactPersonName" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="totalCost" class="java.lang.Double" isForPrompting="false">
 		<defaultValueExpression><![CDATA[0.0]]></defaultValueExpression>
 	</parameter>
@@ -94,14 +100,20 @@ FROM jmts.inventoryrequisition_inventorydisbursement
 		<defaultValueExpression><![CDATA["http://localhost:8080/img/BSJ%20Logo%20-%20H41.png"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `CODE`,
-	`DATEOFREQUISITION`,
-	`REQUISITIONAPPROVEDBY_ID`,
-	`INVENTORYRECEIVEDBY_ID`,
-	`REQUISITIONBY_ID`,
-	`DATEREQUISITIONAPPROVED`,
-	`DATEINVENTORYRECEIVED`
-FROM jmts.inventoryrequisition]]>
+		<![CDATA[SELECT jmts.inventoryrequisition.`CODE`,
+	jmts.inventoryrequisition.`DATEOFREQUISITION`,
+	jmts.inventoryrequisition.`REQUISITIONAPPROVEDBY_ID`,
+	jmts.inventoryrequisition.`INVENTORYRECEIVEDBY_ID`,
+	jmts.inventoryrequisition.`REQUISITIONBY_ID`,
+	jmts.inventoryrequisition.`DATEREQUISITIONAPPROVED`,
+	jmts.inventoryrequisition.`DATEINVENTORYRECEIVED`,
+	jmts.department.`NAME` AS dept_name,
+	jmts.employee.`NAME` AS empl_name
+FROM jmts.inventoryrequisition
+	INNER JOIN jmts.department ON 
+	 jmts.department.`ID` = jmts.inventoryrequisition.`DEPARTMENT_ID` 
+	INNER JOIN jmts.employee ON 
+	 jmts.employee.`ID` = jmts.inventoryrequisition.`CONTACTPERSON_ID`]]>
 	</queryString>
 	<field name="CODE" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="CODE"/>
@@ -138,11 +150,21 @@ FROM jmts.inventoryrequisition]]>
 		<property name="com.jaspersoft.studio.field.label" value="DATEINVENTORYRECEIVED"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="inventoryrequisition"/>
 	</field>
+	<field name="dept_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="dept_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="department"/>
+	</field>
+	<field name="empl_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NAME"/>
+		<property name="com.jaspersoft.studio.field.label" value="empl_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="169" splitType="Stretch">
+		<band height="102" splitType="Stretch">
 			<staticText>
 				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToTallestObject" x="156" y="27" width="241" height="20" uuid="64dd6ea5-7ebc-4df5-ba6e-ab1e4f2cfe58"/>
 				<textElement textAlignment="Center">
@@ -155,7 +177,7 @@ FROM jmts.inventoryrequisition]]>
 				<imageExpression><![CDATA[$P{logoURL}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="3" y="89" width="162" height="16" uuid="de83a076-a7bf-43ab-b6b9-74be073f51b7"/>
+				<reportElement x="3" y="54" width="162" height="16" uuid="de83a076-a7bf-43ab-b6b9-74be073f51b7"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -169,7 +191,7 @@ FROM jmts.inventoryrequisition]]>
 				<text><![CDATA[BRANCH/DEPT./UNIT:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="105" width="162" height="16" uuid="361e4415-b7a6-4471-a168-68b4ab706266"/>
+				<reportElement x="3" y="70" width="162" height="16" uuid="361e4415-b7a6-4471-a168-68b4ab706266"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -183,7 +205,7 @@ FROM jmts.inventoryrequisition]]>
 				<text><![CDATA[CONTACT PERSON:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="121" width="162" height="16" uuid="6b7f9f19-cab1-4430-9fb3-6e8b98f4b853"/>
+				<reportElement x="3" y="86" width="162" height="16" uuid="6b7f9f19-cab1-4430-9fb3-6e8b98f4b853"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
 					<topPen lineWidth="1.0"/>
@@ -196,27 +218,68 @@ FROM jmts.inventoryrequisition]]>
 				</textElement>
 				<text><![CDATA[REQUISITION DATE:]]></text>
 			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="165" y="54" width="406" height="16" uuid="6226bf59-6958-4fd4-87c3-760dd78c5249"/>
+				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dept_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM dd, yyyy" isBlankWhenNull="true">
+				<reportElement x="165" y="86" width="406" height="16" uuid="e784cad4-c6e5-40e7-902d-25e4261dba82"/>
+				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DATEOFREQUISITION}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="165" y="70" width="406" height="16" uuid="704e2ef1-2f90-4752-93ff-dcee4af956e0"/>
+				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="12" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{empl_name}]]></textFieldExpression>
+			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="336" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		<band height="108" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1]]></printWhenExpression>
 			<componentElement>
-				<reportElement key="table" x="5" y="220" width="551" height="83" uuid="b360ab7f-40da-4bf0-b72c-b91c4cc4d6ef"/>
-				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Disbursements" uuid="f6e3adcd-0a0c-47ee-acc5-6e64088515fb">
-						<datasetParameter name="inventoryDisbursement_reqId">
-							<datasetParameterExpression><![CDATA[$P{reqId}]]></datasetParameterExpression>
-						</datasetParameter>
+				<reportElement key="table" x="3" y="6" width="569" height="83" uuid="40bca89d-ac88-4c43-80f8-1300abce53fc">
+					<printWhenExpression><![CDATA[$V{REPORT_COUNT} == 1]]></printWhenExpression>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="Blank">
+					<datasetRun subDataset="Disbursements" uuid="865cb0a1-f365-4311-8fcf-cd0ebd6301a2">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="90" uuid="c6b20075-daa7-4229-9d94-c6e744ed8a9a">
+					<jr:column width="90" uuid="c06bc5a4-fb40-4d90-be72-89630014bb3e">
 						<jr:columnHeader height="50" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="50" uuid="8a486946-68c8-4d15-8dd7-f71379118977"/>
+								<reportElement x="0" y="0" width="90" height="50" uuid="954911af-c66e-4698-ba64-726e3dc3f3d1"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -232,7 +295,7 @@ FROM jmts.inventoryrequisition]]>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="90" height="22" uuid="7074138a-f59d-4c56-b400-4d45bb9a823d"/>
+								<reportElement x="0" y="0" width="90" height="22" uuid="4960476e-0292-41de-9f50-3f0b571fcf61"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -245,10 +308,10 @@ FROM jmts.inventoryrequisition]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="222" uuid="ab31d21c-24c3-48fc-9917-3ebd9f5e63a5">
+					<jr:column width="222" uuid="ac469c1f-98c1-4724-8812-307d0995240f">
 						<jr:columnHeader height="50" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="222" height="50" uuid="a84bf0f9-2d74-4650-8a56-0a118404120a"/>
+								<reportElement x="0" y="0" width="222" height="50" uuid="489ef75d-73c4-40c9-8a77-3d76dc2a10f5"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -264,7 +327,7 @@ FROM jmts.inventoryrequisition]]>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="222" height="22" uuid="eedad424-a598-47a1-be76-26a0bc65798a"/>
+								<reportElement x="0" y="0" width="222" height="22" uuid="346e18dc-df2c-4957-9620-53dcbf6d5dfb"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -279,10 +342,10 @@ FROM jmts.inventoryrequisition]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="73" uuid="885c630b-8aa7-4c65-bad5-35577fff8045">
+					<jr:column width="73" uuid="32b36818-3d00-4f8e-b891-4513413335aa">
 						<jr:columnHeader height="50" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="73" height="50" isPrintWhenDetailOverflows="true" uuid="7ce7bbe1-f34f-41ed-a0a8-17f61d5c43db"/>
+								<reportElement x="0" y="0" width="73" height="50" isPrintWhenDetailOverflows="true" uuid="a68afbef-3738-4e39-abd6-c1cc7cfa53f2"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -298,7 +361,7 @@ FROM jmts.inventoryrequisition]]>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
 							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="73" height="22" uuid="f82d4699-9f07-4827-bc55-de94fcebd425"/>
+								<reportElement x="0" y="0" width="73" height="22" uuid="15465ccb-bf84-48e8-8be5-93cb45169936"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -313,10 +376,10 @@ FROM jmts.inventoryrequisition]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="81" uuid="4c8a0e96-8905-4bbf-94cf-fa55d583f4a6">
+					<jr:column width="81" uuid="00beb4fc-5073-4b57-9a9f-769bcd2a02f2">
 						<jr:columnHeader height="50" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="81" height="50" uuid="3def248f-2d8c-4103-a158-0741365f7da3"/>
+								<reportElement x="0" y="0" width="81" height="50" uuid="2109a78a-dc26-4d89-bbba-131a238b893e"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -332,7 +395,7 @@ FROM jmts.inventoryrequisition]]>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
 							<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="81" height="22" uuid="740e80a4-8d71-4eee-88b0-64d3df9c4410"/>
+								<reportElement x="0" y="0" width="81" height="22" uuid="0b93a8a0-72c5-4e4f-b79d-9a0781a942de"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -347,10 +410,10 @@ FROM jmts.inventoryrequisition]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="103" uuid="06b397cc-7e48-467c-8d97-3b046af1098d">
+					<jr:column width="103" uuid="c7791fb7-6427-42dd-ad0b-450aa23563cf">
 						<jr:columnHeader height="50" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="103" height="50" uuid="f3c567a1-9751-4d88-bd9e-1731b8adde5a"/>
+								<reportElement x="0" y="0" width="103" height="50" uuid="f074d9d2-2bf5-418e-859a-e2579c0101cc"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
@@ -366,7 +429,7 @@ FROM jmts.inventoryrequisition]]>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
 							<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
-								<reportElement x="0" y="0" width="103" height="22" uuid="c200715b-66b0-4e99-99eb-ef753cb8a77b"/>
+								<reportElement x="0" y="0" width="103" height="22" uuid="e95b5ea0-fd4c-41fa-8387-124c6b131aae"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
 									<topPen lineWidth="1.0"/>
