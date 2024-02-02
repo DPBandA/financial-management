@@ -120,9 +120,6 @@ ORDER BY
 	<parameter name="preparedBy" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="approvedBy" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="approvalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="logoURL" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["http://localhost:8080/img/BSJ%20Logo%20-%20H41.png"]]></defaultValueExpression>
-	</parameter>
 	<parameter name="issuedBy" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="dateIssued" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="receivedBy" class="java.lang.String" isForPrompting="false"/>
@@ -208,10 +205,6 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 				</textElement>
 				<text><![CDATA[STORES REQUISITION]]></text>
 			</staticText>
-			<image>
-				<reportElement stretchType="ContainerHeight" x="0" y="0" width="100" height="27" uuid="0a63ad48-fbf5-46bf-9894-ab916ed1160e"/>
-				<imageExpression><![CDATA[$P{logoURL}]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="3" y="54" width="162" height="16" uuid="de83a076-a7bf-43ab-b6b9-74be073f51b7"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">

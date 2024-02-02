@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -25,7 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <h:form id="inventoryDisbursementDialogForm">
-        <p:dialog width="auto"
+        <p:dialog width="600"
                   height="300"
                   draggable="true"
                   modal="true"
@@ -48,6 +48,14 @@ Email: info@dpbennett.com.jm
                                      oncomplete="PF('inventoryDisbursementDialog').hide();"
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>   
 
             <p:tabView id="inventoryDisbursementDialogFormTabView"
@@ -58,7 +66,9 @@ Email: info@dpbennett.com.jm
                     <h:panelGrid cellspacing="10"
                                  columns="2">
 
-                        <p:outputLabel value="Inventory item" style="font-weight: bold" />
+                        <p:outputLabel value="Inventory item" 
+                                       for="inventoryItem"
+                                       style="font-weight: bold" />
                         <p:autoComplete id="inventoryItem"
                                         var="inventoryItem"   
                                         value="#{inventoryManager.selectedInventoryDisbursement.inventory}"
@@ -70,48 +80,83 @@ Email: info@dpbennett.com.jm
                                         validator="businessEntityValidator"
                                         validatorMessage="An inventory item is required"
                                         forceSelection="true"
-                                        size="35"
                                         dropdown="true"
                                         scrollHeight="200"     
                                         completeMethod="#{inventoryManager.completeInventoryItem}" >
 
                             <p:ajax event="itemSelect" 
-                                    listener="#{inventoryManager.updateInventory}" />
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
 
                             <p:ajax event="change"
                                     listener="#{inventoryManager.updateSelectedDisbursement}" />
 
                         </p:autoComplete>
 
+                        <p:outputLabel value="Description" 
+                                       for="description"
+                                       style="font-weight: bold" />
+                        <p:inputTextarea  value="#{inventoryManager.selectedInventoryDisbursement.description}"
+                                          id="description"
+                                          required="true"
+                                          requiredMessage="Please enter a valid description"
+                                          maxlength="1000"
+                                          style="width: 100%;"
+                                          rows="3" />
+
+                        <p:outputLabel value="Quantity ordered" 
+                                       for="quantityOrdered"
+                                       style="font-weight: bold" />   
+                        <p:inputNumber id="quantityOrdered"
+                                       decimalPlaces="0"
+                                       required="true"
+                                       requiredMessage="Please enter a valid ordered quantity"
+                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityOrdered}" />
+
+                        <p:outputLabel value="Quantity supplied" 
+                                       for="quantitySupplied"
+                                       style="font-weight: bold" />   
+                        <p:inputNumber id="quantitySupplied"
+                                       decimalPlaces="0"
+                                       required="true"
+                                       requiredMessage="Please enter a valid supplied quantity"
+                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityReceived}" >
+
+                            <p:ajax event="change"
+                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+
+                        </p:inputNumber>
+
+                        <p:outputLabel value="Unit price" 
+                                       for="unitPrice"
+                                       style="font-weight: bold" />   
+                        <p:inputNumber id="unitPrice"
+                                       required="true"
+                                       requiredMessage="Please enter a valid unit price"
+                                       value="#{inventoryManager.selectedInventoryDisbursement.unitCost}" >
+
+                            <p:ajax event="change"
+                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+
+                        </p:inputNumber>
+
+                        <p:outputLabel value="Cost" 
+                                       for="cost"
+                                       style="font-weight: bold" />   
+                        <p:inputNumber id="cost"
+                                       required="true"
+                                       requiredMessage="Please enter a valid cost"
+                                       value="#{inventoryManager.selectedInventoryDisbursement.cost}" />
+
+
                     </h:panelGrid>
                 </p:tab>
-
-                <p:tab title="Status &amp; Tracking" >
-                    <h:panelGrid cellspacing="10"
-                                 columns="2">
-
-                        <p:outputLabel value="Date ordered" style="font-weight: bold" />
-                        <p:calendar value="#{inventoryManager.selectedInventoryDisbursement.dateOrdered}" 
-                                    readonlyInput="true"
-                                    required="true"
-                                    requiredMessage="A valid date is required"
-                                    navigator="true" 
-                                    pattern="MMM dd, yyyy" >
-
-                            <p:ajax event="dateSelect"
-                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
-
-                            <p:ajax event="keyup"
-                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
-
-                        </p:calendar>
-
-                    </h:panelGrid>
-                </p:tab>      
 
             </p:tabView>           
 
             <p:toolbar style="margin-top: 1px;">
+
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{inventoryManager.okDisbursement}"
@@ -122,10 +167,17 @@ Email: info@dpbennett.com.jm
                     <p:commandButton value="Cancel" 
                                      immediate="true"
                                      actionListener="#{inventoryManager.cancelDisbursementEdit}"
-                                     update=""                              
                                      oncomplete="PF('inventoryDisbursementDialog').hide();"
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar> 
 
         </p:dialog>

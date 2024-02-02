@@ -44,57 +44,9 @@ Email: info@dpbennett.com.jm
 
             <p:outputLabel style="color: red;" value="#{inventoryManager.selectedInventoryRequisition.editStatus}" />
 
-            </p:toolbarGroup>
+        </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >  
-
-            <p:menuButton value="Tools" rendered="false" >  
-
-                <p:menuitem value="Request approval..."
-                            title="Send a request for approval for this inventory requisition"
-                            actionListener="#{inventoryManager.openRequestApprovalEmailDialog}" 
-                            icon="pi pi-envelope"
-                            process="@this" />
-
-                <p:menuitem value="Send message..."
-                            title="Send a message"
-                            actionListener="#{inventoryManager.openSendEmailDialog}" 
-                            icon="pi pi-envelope"
-                            process="@this" />
-
-            </p:menuButton>
-
-            <p:spacer width="20" rendered="false" />
-            
-            <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.prepared}" 
-                                     id="prepared"                                         
-                                     disabled="#{!inventoryManager.canPrepareInventoryRequisition}"
-                                     style="vertical-align: bottom;"
-                                     itemLabel="Prepared" >
-
-                <p:ajax global="false" 
-                        listener="#{inventoryManager.prepareInventoryRequisition}"
-                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab"
-                        process="@this"/>
-
-            </p:selectBooleanCheckbox>               
-
-            <p:spacer width="10"/>
-
-            <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.approved}" 
-                                     id="approved"                                         
-                                     disabled="#{!inventoryManager.canApproveInventoryRequisition}"
-                                     style="vertical-align: bottom;"
-                                     itemLabel="Approved" >
-
-                <p:ajax global="false" 
-                        listener="#{inventoryManager.approveInventoryRequisition}"
-                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab"
-                        process="@this"/>
-
-            </p:selectBooleanCheckbox>
-            
-            <p:spacer width="20"/>
 
             <p:menuButton value="Forms" >
                 <p:menuitem value="Stores requisition"
@@ -108,6 +60,12 @@ Email: info@dpbennett.com.jm
 
                 </p:menuitem>               
             </p:menuButton>
+
+            <p:spacer width="40" />
+
+            <h:outputText value="* Field required." 
+                          style="font-weight: bold;" /> 
+
         </p:toolbarGroup>
 
 
