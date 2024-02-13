@@ -70,6 +70,17 @@ Email: info@dpbennett.com.jm
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
                     update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
 
+            <p:column headerText="Code" >
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{costComponent.code}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText  value="#{costComponent.code}"/>
+                    </f:facet>   
+                </p:cellEditor>
+            </p:column>
+            
             <p:column headerText="Date" >   
                 <p:cellEditor>
                     <f:facet name="output">
