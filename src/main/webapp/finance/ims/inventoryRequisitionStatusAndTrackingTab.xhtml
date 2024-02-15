@@ -50,30 +50,31 @@ Email: info@dpbennett.com.jm
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEdited)}" />        
             
-            <p:outputLabel value="Approved by"/>
+            <p:outputLabel value="Approved by" rendered="false"/>
             <p:inputText readonly="true"
+                         rendered="false"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.firstName} #{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.lastName}" />
 
-            <p:outputLabel value="Date approved" />
+            <p:outputLabel value="Date approved" rendered="false"/>
             <p:inputText readonly="true"
+                         rendered="false"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateRequisitionApproved)}" />           
 
-            <p:outputLabel value="Received by"/>
+            <p:outputLabel value="Received by" rendered="false"/>
             <p:inputText readonly="true"
+                         rendered="false"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.firstName} #{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.lastName}" />
 
-            <p:outputLabel value="Date received" />
+            <p:outputLabel value="Date received" rendered="false" />
             <p:inputText readonly="true"
+                         rendered="false"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryReceived)}" />           
-
-
-
 
         </h:panelGrid>
         <ui:remove>
