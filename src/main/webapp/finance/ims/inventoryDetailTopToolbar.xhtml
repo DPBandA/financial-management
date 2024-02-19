@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -47,51 +47,12 @@ Email: info@dpbennett.com.jm
 
         </p:toolbarGroup>
 
-        <ui:remove>
         <p:toolbarGroup align="right" >  
 
-            <p:menuButton value="Tools" >  
+            <h:outputText value="* Field required." 
+                          style="font-weight: bold;" /> 
 
-                <p:menuitem value="Request approval..."
-                            title="Send a request for approval for this inventory"
-                            actionListener="#{inventoryManager.openRequestApprovalEmailDialog}" 
-                            icon="pi pi-envelope"
-                            process="@this" />
-
-                <p:menuitem value="Send message..."
-                            title="Send a message"
-                            actionListener="#{inventoryManager.openSendEmailDialog}" 
-                            icon="pi pi-envelope"
-                            process="@this" />
-
-            </p:menuButton>
-
-            <p:spacer width="20" />
-
-            <p:menuButton value="Forms" >
-                <p:menuitem value="Inventory item"
-                            icon="pi pi-file-pdf"
-                            ajax="false" 
-                            immediate="true"
-                            disabled="#{!inventoryManager.canExportInventoryForm}" 
-                            onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)" >
-
-                    <p:fileDownload value="#{inventoryManager.inventoryFile}" />
-
-                </p:menuitem>
-                <p:menuitem value="Inventory"
-                            icon="pi pi-file-pdf"
-                            ajax="false" 
-                            immediate="true"
-                            disabled="#{!inventoryManager.canExportInventoryForm}"    
-                            onclick="PrimeFaces.monitorDownload(showStatusDialog, hideStatusDialog)" >
-
-                    <p:fileDownload value="#{inventoryManager.inventoryFile}" />
-
-                </p:menuitem>
-            </p:menuButton>
         </p:toolbarGroup>
-        </ui:remove>
 
     </p:toolbar>
 

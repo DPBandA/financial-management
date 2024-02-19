@@ -27,9 +27,10 @@ Email: info@dpbennett.com.jm
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="costingTabPanel" columns="2" cellspacing="5" >    
 
-            <p:outputLabel value="Budget ($)" /> 
+            <p:outputLabel value="Budget ($)" rendered="false"/> 
             <p:inputText value="#{inventoryManager.selectedInventory.budget}"
                          id="budget"
+                         rendered="false"
                          converterMessage="Invalid Budget"
                          styleClass="number-field">
 
@@ -66,9 +67,9 @@ Email: info@dpbennett.com.jm
                       value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
 
             <p:ajax event="rowEdit" listener="#{inventoryManager.onCostComponentRowEdit}" 
-                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+                    update=":inventoryDialogForm:inventoryFormTabView:cost,:inventoryDialogForm:inventoryFormTabView:quantity,costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
             <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
-                    update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+                    update=":inventoryDialogForm:inventoryFormTabView:cost,:inventoryDialogForm:inventoryFormTabView:quantity,costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
 
             <p:column headerText="Code" >
                 <p:cellEditor>
@@ -198,6 +199,7 @@ Email: info@dpbennett.com.jm
 
             <p:outputLabel value="Total quantity" style="font-weight: bold;" /> 
             <p:inputText value="#{inventoryManager.selectedInventory.quantity}"
+                         id="quantity"
                          converterMessage="Invalid Quantity"
                          required="true"
                          readonly="true"
