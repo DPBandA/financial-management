@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM)  
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -24,21 +24,100 @@ Email: info@dpbennett.com.jm
       xmlns:h="http://java.sun.com/jsf/html" 
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <p:menubar id="main_menubar" style="width: 100%;">
+    <p:menubar id="main_menubar" style="width: 100%;" autoDisplay="false">
+
+        <p:submenu label="Finance" 
+                   icon="pi pi-fw pi-dollar" >
+
+            <p:submenu label="New" 
+                       icon="pi pi-plus" >
+
+                <p:menuitem value="Proforma Invoice"
+                            title="Create new proforma invoice"
+                            icon="pi pi-plus"
+                            actionListener="#{jobFinanceManager.openNewProformaInvoiceDialog}" 
+                            process="@this" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{jobFinanceManager.proformaDialogReturn}"
+                            update=""/>
+
+                </p:menuitem> 
+
+            </p:submenu>
+
+            <p:divider />
+
+            <p:menuitem value="Proforma Invoices"
+                        title="Browse proforma invoices"
+                        icon="pi pi-dollar"
+                        disabled="false" 
+                        actionListener="#{jobFinanceManager.openProformaInvoicesTab}"
+                        process="@this" />
+
+            <p:divider />
+
+            <p:submenu label="Procurement" 
+                       rendered="#{purchasingManager.user.hasModule('purchasingManager')}"
+                       icon="pi pi-dollar" >
+
+                <p:menuitem value="Purchase Requisitions"
+                            title="Open purchase requisition browswer" 
+                            icon="pi pi-dollar"                                
+                            actionListener="#{purchasingManager.openPurchaseReqsTab}" 
+                            process="@this" />
+
+                <p:menuitem value="Suppliers"
+                            title="Open suppliers tab"
+                            icon="pi pi-id-card"
+                            actionListener="#{purchasingManager.openSuppliersTab}" 
+                            process="@this" />
+
+            </p:submenu>
+
+            <p:divider />
+
+            <p:submenu label="Inventory" 
+                       rendered="#{inventoryManager.user.hasModule('inventoryManager')}"
+                       icon="pi pi-list" >
+
+                <p:menuitem value="Inventory Products"
+                            title="Open Inventory Requisitions browswer" 
+                            icon="pi pi-list"
+                            actionListener="#{inventoryManager.openInventoryProductBrowser}" 
+                            process="@this" /> 
+
+                <p:menuitem value="Inventory Items"
+                            title="Open Inventory browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryTab}" 
+                            process="@this" /> 
+
+                <p:menuitem value="Inventory Requisitions"
+                            title="Open Inventory Requisitions browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryRequisitionTab}" 
+                            process="@this" /> 
+
+            </p:submenu>
+
+            <p:divider />
+
+            <p:menuitem value="Administration"
+                        icon="pi pi-fw pi-briefcase"
+                        title="Financial administration" 
+                        rendered="#{jobManager.user.can('BeFinancialAdministrator')}"
+                        actionListener="#{financeManager.openFinancialAdministration}" />
+
+        </p:submenu>
 
         <p:menuitem 
             actionListener="#{systemManager.mainTabView.openTab('System Administration')}" 
             title="System administration" 
             rendered="#{systemManager.user.hasModule('systemManager')}"
-            value="System" 
-            icon="pi pi-database" />     
+            value="System Administration" 
+            icon="pi pi-server" />  
 
-        <p:menuitem value="Finance"
-                    icon="pi pi-fw pi-dollar"
-                    title="Financial administration" 
-                    rendered="#{systemManager.user.hasModule('financeManager')}"
-                    actionListener="#{financeManager.openFinancialAdministration}" /> 
-        
     </p:menubar>
 
 </html>

@@ -1,0 +1,236 @@
+<!--
+Financial Management (FM) 
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html" 
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core"> 
+
+    <h:head>
+        <ui:include src="head.xhtml" />
+        <title>Finance Manager</title> 
+        <script type="text/javascript" src="js/javascripts.js" /> 
+        <h:outputStylesheet library="webjars" name="primeflex/3.2.1/primeflex.min.css" />       
+        <link rel="stylesheet" type="text/css" href="css/main.css" />       
+    </h:head>
+    <h:body>
+        <ui:include src="common/commonDialogs.xhtml" />          
+        <ui:include src="finance/loginDialog.xhtml"/>         
+        <ui:include src="common/userProfileDialog.xhtml"/> 
+
+        <h:form id="appForm" rendered="#{financeManager.userLoggedIn}">   
+
+            <p:growl id="growl3" life="5000" showDetail="true" />
+            <p:panel>
+                <div class="grid">
+
+                    <div class="col-12 md:col-12 col-nogutter">
+                        <div class="grid">
+                            <div class="col-12 col-nogutter">
+                                <div class="grid">
+                                    <div class="col-12 md:col-3">
+                                        <h:panelGroup style="float: left;margin-right: 10px;" >
+                                            <p:graphicImage value="#{financeManager.logoURL}"
+                                                            class="logo"
+                                                            height="#{financeManager.logoURLImageHeight}" 
+                                                            width="#{financeManager.logoURLImageWidth}"/>
+                                        </h:panelGroup>
+                                        <h:panelGrid columns="1" cellspacing="0" >   
+
+                                            <p:outputLabel value="Finance Manager"
+                                                           style="font-size: 1.000em !important;font-weight: bold;"
+                                                           class="header-text" />
+
+                                            <p:outputLabel value="Financial Administration &amp; Management"
+                                                           style="font-size: 0.900em !important;"
+                                                           class="subheader-text" />  
+
+                                        </h:panelGrid>
+                                    </div>    
+                                    <div class="col-12 md:col-6">
+
+                                    </div>  
+                                    <div class="col-12 md:col-3">
+                                        <h:panelGroup style="float: right;" >
+
+                                            <p:badge value="#{systemManager.sizeOfActiveNotifications}" 
+                                                     id="notificationBadge"
+                                                     visible="#{systemManager.hasActiveNotifications}" 
+                                                     severity="danger">
+
+                                                <p:commandButton id="notifications" 
+                                                                 class="notification-button"
+                                                                 icon="pi pi-bell" />
+                                                <p:overlayPanel for="notifications"   
+                                                                widgetVar="NotificationPanelVar"
+                                                                style="border: 0;">
+                                                    <p:orderList value="#{systemManager.notifications}" 
+                                                                 var="notification" 
+                                                                 itemValue="#{notification}"
+                                                                 converter="#{notificationConverter}" 
+                                                                 controlsLocation="none" responsive="true" >
+
+                                                        <p:ajax event="select" 
+                                                                update=":appForm:notificationBadge"
+                                                                oncomplete="PF('NotificationPanelVar').hide()"
+                                                                listener="#{financeManager.onNotificationSelect}" />
+
+                                                        <p:column>
+                                                            <p:outputLabel value="#{notification.name}" 
+                                                                           style="#{notification.style}"/>
+                                                        </p:column>                                           
+
+                                                    </p:orderList>
+                                                </p:overlayPanel>
+
+                                            </p:badge>
+                                            <p:spacer width="30"/>
+                                            <p:menuButton iconPos="left"
+                                                          icon="pi pi-user"
+                                                          title="#{financeManager.user.employee.firstName} #{financeManager.user.employee.lastName} (#{financeManager.user.username})"
+                                                          id="userMenu"
+                                                          class="usermenu-button" >
+
+                                                <p:menuitem actionListener="#{systemManager.viewUserProfile}"                                            
+                                                            update=":userProfileDialogForm"
+                                                            oncomplete="PF('userProfileDialog').show();"
+                                                            icon="pi pi-cog"
+                                                            value="Profile"
+                                                            process="@this"/>  
+                                                <p:menuitem actionListener="#{financeManager.logout}"                                             
+                                                            icon="pi pi-sign-out"
+                                                            value="Logout"
+                                                            oncomplete="location.reload();"
+                                                            process="@this"/>    
+
+                                            </p:menuButton>   
+                                        </h:panelGroup>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ui:include src="menubar.xhtml" /> 
+
+                            <div class="col-12">
+                                <div class="grid">
+                                    <div class="col-12 md:col-4">
+
+                                        <p:defaultCommand target="defaultCommand" />
+
+                                        <ui:include src="dashboard/finance/adminTab.xhtml" />
+
+                                    </div>    
+                                    <div class="col-12 md:col-8">
+                                        <p:tabView id="mainTabView"  
+                                                   rendered="#{financeManager.mainTabView.render}"
+                                                   value="#{financeManager.mainTabView.tabs}" 
+                                                   var="t" 
+                                                   widgetVar="mainTabViewVar">
+
+                                            <p:ajax event="tabClose" 
+                                                    immediate="true"
+                                                    process="@this"
+                                                    update=""
+                                                    listener="#{financeManager.onMainViewTabClose}" />  
+
+                                            <p:ajax event="tabChange" 
+                                                    immediate="true"
+                                                    process="@this"                                
+                                                    listener="#{financeManager.onMainViewTabChange}" />  
+
+
+                                            <p:tab title="#{t.name}" closable="true"  >
+
+                                                <h:panelGroup rendered="#{t.id == 'System Administration'}" >
+                                                    <ui:include src="admin/generalAdminTab.xhtml" /> 
+                                                </h:panelGroup>  
+
+                                                <h:panelGroup  rendered="#{t.id == 'Financial Administration'}">
+                                                    <ui:include src="finance/financialAdminTab.xhtml" /> 
+                                                </h:panelGroup>                                      
+
+                                                <h:panelGroup rendered="#{t.id == 'Purchase Requisitions'}" >
+                                                    <ui:include src="finance/purch/purchreqsTab.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{t.id == 'Inventory'}" >
+                                                    <ui:include src="finance/ims/inventoryTab.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{t.id == 'Inventory Requisitions'}" >
+                                                    <ui:include src="finance/ims/inventoryRequisitionTab.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{t.id == 'Suppliers'}" >
+                                                    <ui:include src="finance/purch/suppliersTab.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{t.id == 'Inventory Products'}" >
+                                                    <ui:include src="finance/ims/inventoryProductBrowser.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                                <h:panelGroup rendered="#{t.id == 'Market Products'}" >
+                                                    <ui:include src="finance/marketProductBrowser.xhtml" />                                                                
+                                                </h:panelGroup>
+
+                                            </p:tab>
+
+                                        </p:tabView> 
+
+
+                                    </div>                              
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+
+                        <p:toolbar id="topToolbar">
+                            <p:toolbarGroup align="left">
+
+                                <p:link 
+                                    value="© #{systemManager.currentYear}, D P Bennett &amp; Associates Ltd."
+                                    href="https://dpbennett.com.jm" 
+                                    target="_blank" />
+
+                            </p:toolbarGroup>
+
+                            <p:toolbarGroup align="right">
+                                <p:outputLabel value="#{financeManager.applicationFooter}" 
+                                               class="header-text" />
+                            </p:toolbarGroup>
+                        </p:toolbar>
+
+                    </div>
+                </div>
+            </p:panel>
+            <p:poll interval="60" 
+                    global="false"
+                    onerror="PF('connectionErrorDialog').show();"
+                    listener="#{financeManager.handleKeepAlive}" />
+
+        </h:form>
+
+    </h:body>
+</html>
+

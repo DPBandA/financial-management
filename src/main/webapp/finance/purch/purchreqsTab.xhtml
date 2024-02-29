@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -39,6 +39,18 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:purchasereqsTable"/>
 
             </p:commandButton>
+            <p:spacer width="20" />
+            <h:panelGroup>
+                <p:inputText id="purchaseReqSearchText" 
+                             placeholder="Enter search text"
+                             value="#{purchasingManager.purchaseReqSearchText}" />
+                <p:commandButton id="purchaseReqSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financeManager.doPurchaseReqSearch}"
+                                 update=":appForm:mainTabView:purchasereqsTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
             <p:spacer width="100" />
             <p:commandButton 
                 value="Approve"

@@ -27,9 +27,12 @@ Email: info@dpbennett.com.jm
     <p:tabView id="financialAdminTabView"  
                widgetVar="financialAdminTabVar"
                scrollable="false"
-               dynamic="true">
+               dynamic="false">
 
-        <p:ajax event="tabChange" />  
+        <p:ajax event="tabChange" 
+                process="@form"    
+                update=":appForm"
+                listener="#{systemManager.onMainViewTabChange}" />  
 
         <ui:remove>
             <p:tab title="Charts of Accounts">

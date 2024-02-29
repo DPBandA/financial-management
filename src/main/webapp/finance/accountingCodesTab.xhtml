@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM)  
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -42,14 +42,16 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <p:spacer width="20" />
-            <p:inputText value="#{financeManager.accountingCodeSearchText}"                                             
-                         placeholder="Enter search text">
-                <p:ajax event="keyup"
-                        global="true"
-                        update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
-                        listener="#{financeManager.doAccountingCodeSearch}"
-                        process="@this"/>
-            </p:inputText>
+            <h:panelGroup>
+                <p:inputText value="#{financeManager.accountingCodeSearchText}"                                             
+                             placeholder="Enter search text" />            
+                <p:commandButton id="accountingCodeSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financeManager.doAccountingCodeSearch}"
+                                 update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">

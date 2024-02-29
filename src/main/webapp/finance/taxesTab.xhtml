@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -41,16 +41,18 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <p:spacer width="20" />
-            <p:inputText value="#{financeManager.taxSearchText}"                                             
-                         placeholder="Enter search text">
-                <p:ajax event="keyup"
-                        global="true"
-                        update=":appForm:mainTabView:financialAdminTabView:taxesTable"
-                        listener="#{financeManager.doTaxSearch}"
-                        process="@this"/>
-            </p:inputText>
+            <h:panelGroup>
+                <p:inputText value="#{financeManager.taxSearchText}"                                             
+                             placeholder="Enter search text" />
+                <p:commandButton id="taxSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financeManager.doTaxSearch}"
+                                 update=":appForm:mainTabView:financialAdminTabView:taxesTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
-        
+
         <p:toolbarGroup align="right">
             <p:outputLabel for="activeTaxesOnly" value="Active taxes only" />  
             <p:spacer height="0" width="10"/>
@@ -63,11 +65,11 @@ Email: info@dpbennett.com.jm
                              event="change"                                      
                              process="@this"/>
                 </p:selectBooleanCheckbox>         
-                
+
                 <p:tooltip for="activeTaxesOnly" value="Check to show active taxes only" 
                            showEffect="fade" hideEffect="fade" />
                 <p:spacer width="15" />                
-                
+
             </h:panelGroup>
         </p:toolbarGroup>
     </p:toolbar>    
@@ -99,7 +101,7 @@ Email: info@dpbennett.com.jm
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>           
-        
+
         <p:column headerText="Value">
             <p:cellEditor>
                 <f:facet name="output"> 
@@ -110,7 +112,7 @@ Email: info@dpbennett.com.jm
                 </f:facet>
             </p:cellEditor>                                         
         </p:column> 
-        
+
         <p:column headerText="Code">
             <p:cellEditor>
                 <f:facet name="output"> 

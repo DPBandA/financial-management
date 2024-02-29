@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -38,16 +38,18 @@ Email: info@dpbennett.com.jm
                         update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
 
             </p:commandButton>  
-            <p:spacer width="20" />        
-            <p:inputText id="jobCategorySearchText" 
-                         value="#{financeManager.jobCategorySearchText}"
-                         placeholder="Enter search text">
-                <p:ajax event="keyup"
-                        global="true"
-                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
-                        listener="#{financeManager.doJobCategorySearch}"
-                        process="@this"/>
-            </p:inputText>
+            <p:spacer width="20" />  
+            <h:panelGroup>
+                <p:inputText id="jobCategorySearchText" 
+                             value="#{financeManager.jobCategorySearchText}"
+                             placeholder="Enter search text" />
+                <p:commandButton id="jobCategorySearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financeManager.doJobCategorySearch}"
+                                 update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
