@@ -24,58 +24,9 @@ Email: info@dpbennett.com.jm
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
-
-    <p:toolbar>
-        <p:toolbarGroup align="left" >               
-            <p:commandButton 
-                value="New"
-                icon="pi pi-plus"
-                actionListener="#{purchasingManager.createNewPurchaseReq}"                                            
-                process="@this"
-                title="Add a new purchase requisition" >
-
-                <p:ajax event="dialogReturn" 
-                        listener="#{purchasingManager.purchaseReqDialogReturn}"
-                        update=":appForm:mainTabView:purchasereqsTable"/>
-
-            </p:commandButton>
-            <p:spacer width="20" />
-            <h:panelGroup>
-                <p:inputText id="purchaseReqSearchText" 
-                             placeholder="Enter search text"
-                             value="#{purchasingManager.purchaseReqSearchText}" />
-                <p:commandButton id="purchaseReqSearchButton"
-                                 class="search-button"   
-                                 actionListener="#{financeManager.doPurchaseReqSearch}"
-                                 update=":appForm:mainTabView:purchasereqsTable"
-                                 icon="pi pi-search"
-                                 process="@form" />
-            </h:panelGroup>
-            <p:spacer width="100" />
-            <p:commandButton 
-                value="Approve"
-                id="approve1"
-                icon="pi pi-check-circle"
-                actionListener="#{purchasingManager.approvePurchaseReqs}"                                            
-                process="@this"
-                update="@this,recommend1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
-                disabled="#{!purchasingManager.hasSelectedPRs()}"
-                title="Approve the selected purchase requisitions" >
-            </p:commandButton>  
-            <p:spacer width="10" />
-            <p:commandButton 
-                value="Recommend"
-                id="recommend1"
-                icon="pi pi-check-square"
-                actionListener="#{purchasingManager.recommendPurchaseReqs}"                                            
-                process="@this"
-                update="@this,approve1,:appForm:mainTabView:recommend2,:appForm:mainTabView:approve2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
-                disabled="#{!purchasingManager.hasSelectedPRs()}"
-                title="Recommend the selected purchase requisitions" >
-            </p:commandButton>
-        </p:toolbarGroup>
-
-    </p:toolbar>
+    
+    <ui:include src="purchReqsSearchToolbar.xhtml"/>
+    <ui:include src="purchReqsTabToolbar.xhtml"/>
 
     <p:dataTable id="purchasereqsTable"
                  var="pr"
