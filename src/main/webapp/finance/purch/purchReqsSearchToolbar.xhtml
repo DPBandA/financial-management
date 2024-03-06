@@ -1,5 +1,5 @@
 <!--
-Job Management & Tracking System (JMTS) 
+Purchase Management (PM)
 Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -24,24 +24,73 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
 
-    <p:toolbar>
-        
-        <p:toolbarGroup align="left" >               
+    <p:toolbar style="margin-bottom: 1px;" >
+        <p:toolbarGroup align="left" >             
 
-            <p:inputText id="purchaseReqSearchText" 
-                         placeholder="Enter search text"
-                         value="#{purchasingManager.purchaseReqSearchText}" />
-            <p:commandButton id="purchaseReqSearchButton"
-                             class="search-button"   
-                             actionListener="#{financeManager.doPurchaseReqSearch}"
-                             update=":appForm:mainTabView:purchasereqsTable"
-                             icon="pi pi-search"
-                             process="@form" />
+            <p:panelGrid columns="3" layout="grid">
+                <h:panelGroup>
+                    <p:inputText value="#{purchasingManager.purchaseReqSearchText}"  
+                                 placeholder="Enter search text"
+                                 id="purchaseReqSearchText" />
+                    <p:commandButton id="purchaseReqSearchButton"
+                                     class="search-button"   
+                                     actionListener="#{financeManager.doPurchaseReqSearch}"
+                                     update=":appForm:mainTabView:purchasereqsTable"
+                                     icon="pi pi-search"
+                                     process="@form" />
+                </h:panelGroup>
+                
+                <p:selectOneMenu value="#{financeManager.searchType}"
+                                 title="Select the search type">
+
+                    <f:selectItems value="#{financeManager.purchReqSearchTypes}" />
+
+                </p:selectOneMenu>
+
+                <p:selectOneMenu value="#{financeManager.dateSearchPeriod.dateField}" 
+                                 id="prDateField"
+                                 title="Select the date field on which to search" >
+                   <f:selectItems value="#{financeManager.purchReqDateSearchFields}" />
+
+                </p:selectOneMenu>
+
+                <p:selectOneMenu value= "#{financeManager.dateSearchPeriod.name}"
+                                 id="prDatePeriod"
+                                 title="Select the date period">
+
+                    <p:ajax listener="#{financeManager.dateSearchPeriod.initDatePeriod}"
+                            global="false"
+                            update="prStartSearchDate,prEndSearchDate"
+                            process="@this" />
+
+                    <f:selectItems value="#{financeManager.datePeriods}"/>
+
+                </p:selectOneMenu>
+
+                <p:calendar value="#{financeManager.dateSearchPeriod.startDate}"  
+                            id="prStartSearchDate"
+                            title="Select or enter the start of the date period"
+                            size="17"
+                            navigator="true"
+                            autocomplete="off"
+                            validator="requiredFieldValidator"
+                            disabled="#{financeManager.dateSearchPeriod.startDateDisabled}"
+                            pattern="MMM dd, yyyy" />
+
+                <p:calendar value="#{financeManager.dateSearchPeriod.endDate}"
+                            id="prEndSearchDate"
+                            title="Select or enter the end of the date period"
+                            size="17"
+                            navigator="true"
+                            validator="requiredFieldValidator"
+                            disabled="#{financeManager.dateSearchPeriod.endDateDisabled}"
+                            pattern="MMM dd, yyyy" />
+
+
+            </p:panelGrid>
 
         </p:toolbarGroup>
 
-    </p:toolbar>
+    </p:toolbar>   
 
 </html>
-
-
