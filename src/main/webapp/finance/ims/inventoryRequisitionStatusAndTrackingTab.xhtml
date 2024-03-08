@@ -25,6 +25,26 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
+        <h:panelGrid columns="2" cellspacing="5" >
+            <p:outputLabel value="Work progress" 
+                           style="font-weight: bold;"
+                           for="workProgress"/>
+            <p:selectOneMenu id="workProgress"    
+                             value="#{inventoryManager.selectedInventoryRequisition.workProgress}">
+
+                <f:selectItems  value="#{systemManager.workProgressList}"
+                                var="progress"                            
+                                itemValue="#{progress.value}"
+                                itemLabel="#{progress.label}"/>
+
+                <p:ajax event="itemSelect"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this" />
+
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <hr/>
         <h:panelGrid id="statusAndTrackingTabPanel" columns="4" cellspacing="5" >            
 
             <p:outputLabel value="Entered by"/>
@@ -49,7 +69,7 @@ Email: info@dpbennett.com.jm
             <p:inputText readonly="true"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEdited)}" />        
-            
+
             <p:outputLabel value="Approved by" rendered="false"/>
             <p:inputText readonly="true"
                          rendered="false"
@@ -77,6 +97,7 @@ Email: info@dpbennett.com.jm
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryReceived)}" />           
 
         </h:panelGrid>
+
         <ui:remove>
             <h:panelGrid id="statusGrid" columns="2" cellspacing="5" >
                 <p:outputLabel value="Description" style="font-weight: bold;" />
@@ -90,7 +111,6 @@ Email: info@dpbennett.com.jm
             </h:panelGrid>
         </ui:remove>
     </p:panel>
-
 
 </html>
 

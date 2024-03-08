@@ -41,17 +41,17 @@ Email: info@dpbennett.com.jm
 
             </p:commandButton>
             <p:spacer width="20" />
-            <p:inputText id="inventoryProductSearchText" 
-                         placeholder="Enter search text"
-                         value="#{inventoryManager.inventoryProductSearchText}" >
-
-                <p:ajax event="keyup"                            
-                        global="true"
-                        update=":appForm:mainTabView:inventoryProductsTable"
-                        listener="#{inventoryManager.doInventoryProductSearch}"
-                        process="@this"/>
-
-            </p:inputText>
+            <h:panelGroup>
+                <p:inputText id="inventoryProductSearchText" 
+                             placeholder="Enter search text"
+                             value="#{inventoryManager.inventoryProductSearchText}" />
+                <p:commandButton id="inventoryProductSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{inventoryManager.doInventoryProductSearch}"
+                                 update=":appForm:mainTabView:inventoryProductsTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >
