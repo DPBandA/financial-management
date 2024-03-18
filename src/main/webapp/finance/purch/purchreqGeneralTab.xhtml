@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -116,7 +116,7 @@ Email: info@dpbennett.com.jm
                          requiredMessage="Date Required"
                          value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
 
-            <p:outputLabel value="Originator" 
+            <p:outputLabel value="Originator *" 
                            for="originator"
                            style="font-weight: bold" />   
             <p:inputText readonly="true"
@@ -124,7 +124,7 @@ Email: info@dpbennett.com.jm
                          styleClass="read-only-text-field"
                          value="#{purchasingManager.selectedPurchaseRequisition.originator}" /> 
 
-            <p:outputLabel value="Originating dep't" 
+            <p:outputLabel value="Originating dep't *" 
                            for="originatingDepartment"
                            style="font-weight: bold" />
             <p:inputText readonly="true"

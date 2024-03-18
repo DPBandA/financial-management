@@ -29,7 +29,7 @@ Email: info@dpbennett.com.jm
             <h:panelGroup>
                 <h:panelGrid columns="2">
 
-                    <p:outputLabel value="Work progress" 
+                    <p:outputLabel value="Work progress *" 
                                    style="font-weight: bold;"
                                    for="workProgress"/>
                     <p:selectOneMenu id="workProgress"    
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
 
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Purchasing department" style="font-weight: bold" />
+                    <p:outputLabel value="Purchasing department *" style="font-weight: bold" />
                     <p:autoComplete id="purchasingDepartment"                          
                                     readonly="true"
                                     inputStyleClass="read-only-text-field"
@@ -62,7 +62,7 @@ Email: info@dpbennett.com.jm
                                     validator="businessEntityValidator"
                                     completeMethod="#{humanResourceManager.completeActiveDepartment}" /> 
 
-                    <p:outputLabel value="Procurement officer" style="font-weight: bold" />       
+                    <p:outputLabel value="Procurement officer *" style="font-weight: bold" />       
                     <p:autoComplete id="officer"
                                     readonly="true"
                                     inputStyleClass="read-only-text-field"

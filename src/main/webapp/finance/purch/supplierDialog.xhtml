@@ -54,6 +54,16 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{purchasingManager.cancelSupplierEdit}"
                                      icon="pi pi-times" />
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <p:spacer width="40" />
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
 
             <p:tabView id="supplierFormTabView"
@@ -87,6 +97,15 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      actionListener="#{purchasingManager.cancelSupplierEdit}"
                                      icon="pi pi-times" />
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <p:spacer width="40" />
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
         </h:form>     

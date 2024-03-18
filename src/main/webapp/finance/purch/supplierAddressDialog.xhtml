@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -47,10 +47,19 @@ Email: info@dpbennett.com.jm
                                      oncomplete="PF('addressFormDialog').hide();"
                                      process="@this" />         
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <p:spacer width="40" />
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
             </p:toolbar>
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
                 <h:panelGrid columns="2">       
-                    <p:outputLabel value="Type" style="font-weight: bold" />
+                    <p:outputLabel value="Type *" style="font-weight: bold" />
                     <p:selectOneMenu value="#{purchasingManager.selectedSupplierAddress.type}"
                                      id="addressType"
                                      validator="addressLineValidator"
@@ -65,7 +74,7 @@ Email: info@dpbennett.com.jm
                         <f:selectItem itemLabel="General" itemValue="General" />
                     </p:selectOneMenu>
 
-                    <p:outputLabel value="Address (line 1)" style="font-weight: bold" />
+                    <p:outputLabel value="Address (line 1) *" style="font-weight: bold" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.addressLine1}"
                                  id="addressLine1"
                                  maxlength="50"
@@ -86,7 +95,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>                
 
-                    <p:outputLabel value="Nearest City/Town" style="font-weight: bold"/>
+                    <p:outputLabel value="Nearest City/Town *" style="font-weight: bold"/>
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.city}"
                                  id="addressCity"
                                  maxlength="50"
@@ -97,7 +106,7 @@ Email: info@dpbennett.com.jm
                                 process="@this"/>
                     </p:inputText>
 
-                    <p:outputLabel value="Parish/State/Province" style="font-weight: bold" />
+                    <p:outputLabel value="Parish/State/Province *" style="font-weight: bold" />
                     <h:panelGroup>
                         <p:selectOneMenu
                             value="#{purchasingManager.selectedSupplierAddress.stateOrProvince}"   
@@ -148,6 +157,15 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times"
                                      oncomplete="PF('addressFormDialog').hide();"
                                      process="@this" />         
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <p:spacer width="40" />
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
 

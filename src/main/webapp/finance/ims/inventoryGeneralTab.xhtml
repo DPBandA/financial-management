@@ -43,8 +43,10 @@ Email: info@dpbennett.com.jm
                            showEffect="fade" hideEffect="fade" />            
             </h:panelGroup>
 
-            <p:outputLabel value="Name" style="font-weight: bold;" />          
-            <p:inputText  size="15"
+            <p:outputLabel value="Name *" 
+                           style="font-weight: bold;" 
+                           rendered="false" />          
+            <p:inputText  rendered="false"
                           id="inventoryName"
                           maxlength="40"
                           readonly="true"
@@ -56,31 +58,7 @@ Email: info@dpbennett.com.jm
                         listener="#{inventoryManager.updateInventory}"
                         process="@this"/>
 
-            </p:inputText>              
-
-            <p:outputLabel value="SKU" />          
-            <p:inputText  size="15"
-                          maxlength="40"
-                          value="#{inventoryManager.selectedInventory.stockKeepingUnit}">
-
-                <p:ajax event="change"                            
-                        update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}"
-                        process="@this"/>
-
-            </p:inputText>  
-
-            <p:outputLabel value="Code" />          
-            <p:inputText  size="15"
-                          maxlength="40"
-                          value="#{inventoryManager.selectedInventory.code}">
-
-                <p:ajax event="change"                            
-                        update=":inventoryDialogForm:inventoryDetailToolbar1"
-                        listener="#{inventoryManager.updateInventory}"
-                        process="@this"/>
-
-            </p:inputText>
+            </p:inputText>      
 
             <p:outputLabel value="Product *" style="font-weight: bold;" /> 
             <h:panelGroup>
@@ -264,6 +242,30 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>      
 
             </h:panelGroup>
+
+            <p:outputLabel value="SKU" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.stockKeepingUnit}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>  
+
+            <p:outputLabel value="Code" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.code}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>
 
         </h:panelGrid>
     </p:panel>

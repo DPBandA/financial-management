@@ -122,9 +122,13 @@ Email: info@dpbennett.com.jm
                     </p:inputText>
 
                     <p:outputLabel  rendered="#{!purchasingManager.selectedCostComponent.isHeading}"
-                                    value="UOM" />
+                                    style="font-weight: bold;"
+                                    value="UOM *" />
                     <p:inputText  rendered="#{!purchasingManager.selectedCostComponent.isHeading}" 
                                   id="costComponentUnit"
+                                  validator="requiredFieldValidator"
+                                  required="true"
+                                  requiredMessage="Unit of Measure (UOM) Required"
                                   value="#{purchasingManager.selectedCostComponent.unit}" >
 
                         <p:ajax event="keyup"
@@ -178,14 +182,14 @@ Email: info@dpbennett.com.jm
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Cost"
                                  styleClass="number-field #{purchasingManager.selectedCostComponent.isCostReadOnly ? 'read-only-text-field' : null}">
-                        
+
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                        
+
                         <p:ajax event="change"
                                 global="false"                            
                                 listener="#{purchasingManager.updateSelectedCostComponent}"
                                 process="@this"/>
-                        
+
                     </p:inputText>
                     <p:outputLabel value=" "
                                    rendered="#{purchasingManager.selectedCostComponent.isHeading}" />
