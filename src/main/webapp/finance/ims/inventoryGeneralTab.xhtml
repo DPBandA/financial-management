@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">   
-            <p:outputLabel for="inventoryActive" value="Active" style="font-weight: bold;" />  
+            <p:outputLabel for="inventoryActive" value="Active *" style="font-weight: bold;" />  
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="inventoryActive"
@@ -43,7 +43,7 @@ Email: info@dpbennett.com.jm
                            showEffect="fade" hideEffect="fade" />            
             </h:panelGroup>
 
-            <p:outputLabel value="Name" />          
+            <p:outputLabel value="Name" style="font-weight: bold;" />          
             <p:inputText  size="15"
                           id="inventoryName"
                           maxlength="40"
@@ -82,7 +82,7 @@ Email: info@dpbennett.com.jm
 
             </p:inputText>
 
-            <p:outputLabel value="Product" style="font-weight: bold;" /> 
+            <p:outputLabel value="Product *" style="font-weight: bold;" /> 
             <h:panelGroup>
                 <p:autoComplete id="inventoryProduct"
                                 var="inventoryProduct"   
@@ -144,7 +144,7 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
 
             <p:outputLabel style="vertical-align: top;font-weight: bold;"
-                           value="Category" />
+                           value="Category *" />
             <h:panelGroup>
                 <p:autoComplete id="category"
                                 var="category"   
@@ -203,7 +203,7 @@ Email: info@dpbennett.com.jm
                 </p:menuButton>
             </h:panelGroup>
 
-            <p:outputLabel value="Supplier" style="font-weight: bold" />
+            <p:outputLabel value="Supplier *" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
                                 var="supplier"

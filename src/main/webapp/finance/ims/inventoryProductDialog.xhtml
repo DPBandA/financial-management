@@ -51,6 +51,14 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{inventoryManager.cancelInventoryProductEdit}"
                                      icon="pi pi-times" />
                 </p:toolbarGroup>
+
+                <p:toolbarGroup align="right" >  
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
 
             <p:tabView id="inventoryProductFormTabView"
@@ -74,6 +82,13 @@ Email: info@dpbennett.com.jm
                                      immediate="true" 
                                      actionListener="#{inventoryManager.cancelInventoryProductEdit}"
                                      icon="pi pi-times" />
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right" >  
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
             </p:toolbar>
         </h:form>     

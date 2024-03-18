@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -29,6 +29,7 @@ Email: info@dpbennett.com.jm
         <h:panelGroup>
             <p:selectBooleanCheckbox style="vertical-align: middle"
                                      id="inventoryProductActive"
+                                     required="true"
                                      value="#{inventoryManager.selectedInventoryProduct.active}" >
 
                 <p:ajax listener="#{inventoryManager.updateInventoryProduct}"
@@ -53,7 +54,9 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Name" style="font-weight: bold;" />       
+        <p:outputLabel value="Name *" 
+                       for="marketProductName"
+                       style="font-weight: bold;" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.name}"
                      id="marketProductName"
                      validator="marketProductValidator">
@@ -66,7 +69,7 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Type" style="font-weight: bold;" />   
+        <p:outputLabel value="Type *" style="font-weight: bold;" />   
         <p:selectOneMenu id="productType" 
                          value="#{inventoryManager.selectedInventoryProduct.type}">
 
