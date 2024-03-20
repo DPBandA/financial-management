@@ -69,8 +69,11 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Type *" style="font-weight: bold;" />   
-        <p:selectOneMenu id="productType" 
+        <p:outputLabel value="Type *" 
+                       rendered="false"
+                       style="font-weight: bold;" />   
+        <p:selectOneMenu id="productType"
+                         rendered="false"
                          value="#{inventoryManager.selectedInventoryProduct.type}">
 
             <f:selectItems  value="#{inventoryManager.productTypes}"
@@ -84,7 +87,7 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:selectOneMenu>
-        <p:outputLabel value="" />
+        <p:outputLabel value="" rendered="false" />
 
         <p:outputLabel value="Brand" />       
         <p:inputText value="#{inventoryManager.selectedInventoryProduct.brand}" 
