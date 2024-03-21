@@ -77,12 +77,12 @@ Email: info@dpbennett.com.jm
                                 completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
 
                     <p:ajax event="itemSelect"    
-                            update="inventoryName,:inventoryDialogForm:inventoryDetailToolbar1"
+                            update="category,:inventoryDialogForm:inventoryDetailToolbar1"
                             listener="#{inventoryManager.updateInventory}"
                             process="@this" />
 
                     <p:ajax event="change"    
-                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            update="category,:inventoryDialogForm:inventoryDetailToolbar1"
                             listener="#{inventoryManager.updateInventory}"
                             process="@this" />
 
