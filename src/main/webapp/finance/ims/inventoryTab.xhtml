@@ -81,23 +81,11 @@ Email: info@dpbennett.com.jm
                  rows="15"
                  reflow="true"
                  paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                 selection="#{inventoryManager.selectedInventories}"
-                 rowKey="#{inventory.id}"
                  value="#{inventoryManager.foundInventories}">                        
 
         <f:facet name="header">
             <p:outputLabel value="#{inventoryManager.inventoryTableHeader}" />
         </f:facet>
-
-        <p:ajax event="rowSelect" update=""/>
-        <p:ajax event="rowUnselect" update=""/>
-        <p:ajax event="rowSelectCheckbox" update=""/>
-        <p:ajax event="rowUnselectCheckbox" update=""/>
-        <p:ajax event="toggleSelect" update=""/>
-
-        <p:column selectionMode="multiple" 
-                  style="text-align:center"
-                  exportable="false" />
 
         <p:column>
             <f:facet name="header">

@@ -23,33 +23,29 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-    
+
     <h:panelGrid columns="4" cellspacing="10">
 
-        <p:outputLabel value="Entered by" />           
+        <p:outputLabel value="Entered by *" style="font-weight: bold" />           
         <p:inputText value="#{purchasingManager.selectedSupplier.enteredBy.name}"
                      readonly="true" 
-                     style="background-color: lightgray !important;" />  
+                     style="background-color: lightyellow !important;color: blue !important;" />  
 
-        <p:outputLabel value="Date entered" />
-        <p:calendar value="#{purchasingManager.selectedSupplier.dateEntered}"                                                            
-                    readonly="true"
-                    readonlyInput="true"
-                    showOn="none"   
-                    pattern="MMM dd, yyyy" />     
-
-        <p:outputLabel value="Edited by" />            
+        <p:outputLabel value="Date entered *" style="font-weight: bold" />
+        <p:inputText readonly="true"
+                     styleClass="read-only-text-field"
+                     value="#{systemManager.getDateStr(purchasingManager.selectedSupplier.dateEntered)}" />
+       
+        <p:outputLabel value="Edited by *" style="font-weight: bold" />            
         <p:inputText value="#{purchasingManager.selectedSupplier.editedBy.name}"                        
                      readonly="true" 
-                     style="background-color: lightgray !important;" />  
+                     style="background-color: lightyellow !important;color: blue !important;" />  
 
-        <p:outputLabel value="Date edited" />
-        <p:calendar value="#{purchasingManager.selectedSupplier.dateEdited}"  
-                    readonly="true"
-                    readonlyInput="true"
-                    showOn="none"   
-                    pattern="MMM dd, yyyy" />     
-
+        <p:outputLabel value="Date edited *" style="font-weight: bold" />
+        <p:inputText readonly="true"
+                     styleClass="read-only-text-field"
+                     value="#{systemManager.getDateStr(purchasingManager.selectedSupplier.dateEdited)}" />
+      
     </h:panelGrid>
 </html>
 
