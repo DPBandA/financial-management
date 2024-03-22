@@ -1,0 +1,84 @@
+<!--
+Financial Management(FM) 
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <p:dashboard model="#{financeManager.tasksModel}" responsive="true">
+
+        <p:panel id="pmTasks" header="Procurement" closable="true" >
+            <p:panelGrid columns="2" layout="grid">
+                <p:commandButton title="View or edit tax" 
+                                 value="Create a purchase requisition"
+                                 process="@this" />            
+                <p:commandButton title="View or edit tax" 
+                                 value="Create a purchase requisition"
+                                 process="@this" />
+            </p:panelGrid>
+
+            <p:dataTable id="taxesTable"                                       
+                         var="tax"  
+                         paginator="true"
+                         rows="15"
+                         widgetVar="taxTableVar"
+                         emptyMessage="No task found"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                         style="margin-top: 1px;"
+                         value="#{financeManager.foundTaxes}">
+
+                <f:facet name="header">
+                    Pending tasks
+                </f:facet>
+
+                <p:column>
+                    <p:commandLink title="View or edit tax"   
+                                   actionListener="#{financeManager.editTax}"
+                                   global="true"
+                                   value="Open purchase requisition #{tax.description} for approval"
+                                   process="@this">
+
+                        <f:setPropertyActionListener value="#{tax}"                                                                    
+                                                     target="#{financeManager.selectedTax}" />
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{financeManager.doTaxSearch}"
+                                update=":appForm:mainTabView:financialAdminTabView:taxesTable"/>
+
+                    </p:commandLink>           
+                </p:column>
+            </p:dataTable> 
+
+        </p:panel>
+
+        <p:panel id="inventoryTasks" header="Inventory" closable="true"  >                
+
+
+        </p:panel>
+
+    </p:dashboard>
+
+
+</html>
+

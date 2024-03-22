@@ -153,6 +153,10 @@ Email: info@dpbennett.com.jm
 
                                 <p:defaultCommand id="defaultCmd"
                                                   target="#{systemManager.defaultCommandTarget}" />
+                                
+                                <h:panelGroup  rendered="#{t.id == 'Tasks'}">
+                                    <ui:include src="finance/tasksTab.xhtml" /> 
+                                </h:panelGroup>
 
                                 <h:panelGroup rendered="#{t.id == 'System Administration'}" >
                                     <ui:include src="admin/generalAdminTab.xhtml" /> 
