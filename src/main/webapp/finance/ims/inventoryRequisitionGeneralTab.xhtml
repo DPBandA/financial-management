@@ -27,6 +27,17 @@ Email: info@dpbennett.com.jm
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="generalTabPanel" columns="2">    
 
+            <p:outputLabel value="Code" />          
+            <p:inputText value="#{inventoryManager.selectedInventoryRequisition.code}"
+                         maxlength="250">
+
+                <p:ajax event="change"                            
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this"/>
+
+            </p:inputText>            
+
             <p:outputLabel value="Receiving branch/dept./unit" 
                            for="department" 
                            style="font-weight: bold" />
@@ -77,20 +88,6 @@ Email: info@dpbennett.com.jm
 
             </p:autoComplete>
 
-            <ui:remove>
-                <p:outputLabel value="Code" />          
-                <p:inputText  size="15"
-                              maxlength="40"
-                              value="#{inventoryManager.selectedInventoryRequisition.code}">
-
-                    <p:ajax event="change"                            
-                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
-                            listener="#{inventoryManager.updateInventoryRequisition}"
-                            process="@this"/>
-
-                </p:inputText>
-            </ui:remove>
-
             <p:outputLabel value="Requisition date" 
                            for="requisitionDate"
                            style="font-weight: bold" />
@@ -129,146 +126,187 @@ Email: info@dpbennett.com.jm
             </p:toolbarGroup> 
         </p:toolbar>
 
-        <p:dataTable  var="disbursement"
-                      id="disbursementTable"
-                      editable="true"
-                      editMode="row"
-                      reflow="true"
-                      widgetVar="disbursementVar"
-                      value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
+        <p:panel id="disbursementTablePanel">
 
-            <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
-                    update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
-            <p:ajax event="rowEditCancel" listener="#{inventoryManager.onDisbursementRowCancel}" 
-                    update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
+            <p:dataTable  var="disbursement"
+                          id="disbursementTable"
+                          editable="true"
+                          editMode="row"
+                          reflow="true"
+                          widgetVar="disbursementVar"
+                          value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
 
-            <f:facet name="header">
-                <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
-            </f:facet>
+                <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
+                        update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
+                <p:ajax event="rowEditCancel" listener="#{inventoryManager.onDisbursementRowCancel}" 
+                        update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
 
-            <p:column headerText="Inventory Item" >   
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.inventory}" /> 
-                    </f:facet>
-                    <f:facet name="input">
-                        <p:autoComplete id="inventoryItem"
-                                        var="inventoryItem"   
-                                        value="#{disbursement.inventory}"
-                                        title="#{disbursement.inventory}"
-                                        itemLabel="#{inventoryItem.name}"
-                                        itemValue="#{inventoryItem}"
-                                        converter="inventoryConverter"                                            
-                                        validator="businessEntityValidator"
-                                        validatorMessage="An inventory item is required"
-                                        forceSelection="true"
-                                        size="35"
-                                        dropdown="true"
-                                        scrollHeight="200"     
-                                        completeMethod="#{inventoryManager.completeInventoryItem}" />
+                <f:facet name="header">
+                    <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
+                </f:facet>
 
-                    </f:facet>   
-                </p:cellEditor>  
-            </p:column>
+                <p:column headerText="Inventory Item" >   
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.inventory}" /> 
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:autoComplete id="inventoryItem"
+                                            var="inventoryItem"   
+                                            value="#{disbursement.inventory}"
+                                            title="#{disbursement.inventory}"
+                                            itemLabel="#{inventoryItem.name}"
+                                            itemValue="#{inventoryItem}"
+                                            converter="inventoryConverter"                                            
+                                            validator="businessEntityValidator"
+                                            validatorMessage="An inventory item is required"
+                                            forceSelection="true"
+                                            size="35"
+                                            dropdown="true"
+                                            scrollHeight="200"     
+                                            completeMethod="#{inventoryManager.completeInventoryItem}" />
 
-            <p:column headerText="Description" >   
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.description}" /> 
-                    </f:facet>
-                    <f:facet name="input">
-                        <p:inputTextarea  value="#{disbursement.description}"
-                                          maxlength="250"
-                                          rows="2"
-                                          autoResize="false" />
-                    </f:facet>   
-                </p:cellEditor>  
-            </p:column>
+                        </f:facet>   
+                    </p:cellEditor>  
+                </p:column>
 
-            <p:column headerText="Q'ty Ordered" >
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.quantityOrdered}" >
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                        </p:outputLabel>
-                    </f:facet>
-                    <f:facet name="input">
-                        <p:inputNumber value="#{disbursement.quantityOrdered}" />
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
+                <p:column headerText="Description" >   
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.description}" /> 
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputTextarea  value="#{disbursement.description}"
+                                              maxlength="250"
+                                              rows="2"
+                                              autoResize="false" />
+                        </f:facet>   
+                    </p:cellEditor>  
+                </p:column>
 
-            <p:column headerText="Q'ty Supplied" >
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.quantityReceived}" >
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                        </p:outputLabel>
-                    </f:facet>
-                    <f:facet name="input">               
-                        <p:inputNumber value="#{disbursement.quantityReceived}" />                   
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
+                <p:column headerText="Unit Price" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.unitCost}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">               
+                            <p:inputNumber value="#{disbursement.unitCost}" />                   
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-            <p:column headerText="Unit Price" >
-                <p:cellEditor>
-                    <f:facet name="output">
-                        <p:outputLabel value="#{disbursement.unitCost}" >
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                        </p:outputLabel>
-                    </f:facet>
-                    <f:facet name="input">               
-                        <p:inputNumber value="#{disbursement.unitCost}" />                   
-                    </f:facet>
-                </p:cellEditor>
-            </p:column>
+                <p:column headerText="Q'ty Ordered" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.quantityOrdered}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputNumber value="#{disbursement.quantityOrdered}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-            <p:column headerText="Cost ($)" >
-                <p:outputLabel value="#{disbursement.cost}">
-                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                </p:outputLabel> 
-            </p:column>
+                <p:column headerText="Q'ty Supplied" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.quantityReceived}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">               
+                            <p:inputNumber value="#{disbursement.quantityReceived}" />                   
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
 
-            <p:column>
-                <p:rowEditor editTitle="Edit disbursement"
-                             cancelTitle="Cancel disbursement edit"                             
-                             saveTitle="Save disbursement"/>
-            </p:column>
+                <p:column headerText="Cost ($)" >
+                    <p:outputLabel value="#{disbursement.cost}">
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel> 
+                </p:column>
 
-            <p:column>
-                <p:menuButton id="toolsButton" 
-                              title="Edit or delete disbursement"
-                              icon="pi pi-ellipsis-v" >
-                    <p:menuitem   
-                        value="Edit"
-                        rendered="true"
-                        actionListener="#{inventoryManager.editDisbursement}"
-                        update=":inventoryDisbursementDialogForm"
-                        oncomplete="PF('inventoryDisbursementDialog').show();"
-                        icon="pi pi-pencil"
-                        process="@this" >
+                <p:column>
+                    <p:rowEditor editTitle="Edit disbursement"
+                                 cancelTitle="Cancel disbursement edit"                             
+                                 saveTitle="Save disbursement"/>
+                </p:column>
 
-                        <f:setPropertyActionListener value="#{disbursement}"
-                                                     target="#{inventoryManager.selectedInventoryDisbursement}" />
+                <p:column>
+                    <p:menuButton id="toolsButton" 
+                                  title="Edit or delete disbursement"
+                                  icon="pi pi-ellipsis-v" >
+                        <p:menuitem   
+                            value="Edit"
+                            rendered="true"
+                            actionListener="#{inventoryManager.editDisbursement}"
+                            update=":inventoryDisbursementDialogForm"
+                            oncomplete="PF('inventoryDisbursementDialog').show();"
+                            icon="pi pi-pencil"
+                            process="@this" >
 
-                    </p:menuitem>
+                            <f:setPropertyActionListener value="#{disbursement}"
+                                                         target="#{inventoryManager.selectedInventoryDisbursement}" />
 
-                    <p:menuitem  
-                        value="Delete"                        
-                        onclick="PF('inventoryDisbursementDeleteConfirmDialog').show();"
-                        icon="pi pi-trash"
-                        process="@this">
+                        </p:menuitem>
 
-                        <f:setPropertyActionListener value="#{disbursement}"
-                                                     target="#{inventoryManager.selectedInventoryDisbursement}" />
+                        <p:menuitem  
+                            value="Delete"                        
+                            onclick="PF('inventoryDisbursementDeleteConfirmDialog').show();"
+                            icon="pi pi-trash"
+                            process="@this">
 
-                    </p:menuitem>                   
+                            <f:setPropertyActionListener value="#{disbursement}"
+                                                         target="#{inventoryManager.selectedInventoryDisbursement}" />
 
-                </p:menuButton>                   
-            </p:column>      
+                        </p:menuitem>                   
 
-        </p:dataTable>
+                    </p:menuButton>                   
+                </p:column>    
+
+                <p:columnGroup type="footer" id="totals">
+                    <p:row>
+                        <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
+                        <p:column>
+                            <f:facet name="footer">
+                                <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalQuantityOrdered}" >
+
+                                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <f:facet name="footer">
+                                    <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalQuantityReceived}" >
+
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                    </h:outputText>
+                                </f:facet>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <f:facet name="footer">
+                                    <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalCost}" >
+
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                    </h:outputText>
+                                </f:facet>
+                            </f:facet>
+                        </p:column>
+                    </p:row>
+                </p:columnGroup>
+
+            </p:dataTable>
+
+        </p:panel>
 
         <p:toolbar style="margin-top: 1px;">
             <p:toolbarGroup>
