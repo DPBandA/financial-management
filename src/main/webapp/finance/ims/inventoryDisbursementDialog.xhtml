@@ -85,12 +85,19 @@ Email: info@dpbennett.com.jm
                                         completeMethod="#{inventoryManager.completeInventoryItem}" >
 
                             <p:ajax event="itemSelect" 
-                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+                                    update="inventoryQty,description,unitPrice,cost"
+                                    listener="#{inventoryManager.updateSelectedDisbursementInventoryItem}" />
 
                             <p:ajax event="change"
-                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+                                    update="inventoryQty,description,unitPrice,cost"
+                                    listener="#{inventoryManager.updateSelectedDisbursementInventoryItem}" />
 
                         </p:autoComplete>
+
+                        <p:outputLabel value="" />
+                        <h:outputText value="Available quantity: #{inventoryManager.selectedInventoryDisbursement.inventory.quantity}" 
+                                      id="inventoryQty"
+                                      style="color: orange;font-weight: bold;" />
 
                         <p:outputLabel value="Description" 
                                        for="description"
