@@ -108,7 +108,13 @@ Email: info@dpbennett.com.jm
                                           requiredMessage="Please enter a valid description"
                                           maxlength="1000"
                                           style="width: 100%;"
-                                          rows="3" />
+                                          rows="3" >
+
+                            <p:ajax event="change"
+                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    listener="#{inventoryManager.updateSelectedDisbursement}" />
+
+                        </p:inputTextarea>
 
                         <p:outputLabel value="Quantity ordered" 
                                        for="quantityOrdered"
@@ -116,17 +122,9 @@ Email: info@dpbennett.com.jm
                         <p:inputNumber id="quantityOrdered"
                                        decimalPlaces="0"
                                        required="true"
+                                       inputStyle="text-align: right;"
                                        requiredMessage="Please enter a valid ordered quantity"
-                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityOrdered}" />
-
-                        <p:outputLabel value="Quantity supplied" 
-                                       for="quantitySupplied"
-                                       style="font-weight: bold" />   
-                        <p:inputNumber id="quantitySupplied"
-                                       decimalPlaces="0"
-                                       required="true"
-                                       requiredMessage="Please enter a valid supplied quantity"
-                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityReceived}" >
+                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityOrdered}" >
 
                             <p:ajax event="change"
                                     update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
@@ -134,10 +132,27 @@ Email: info@dpbennett.com.jm
 
                         </p:inputNumber>
 
+                        <p:outputLabel value="Quantity supplied" 
+                                       for="quantitySupplied"
+                                       style="font-weight: bold" />   
+                        <p:inputNumber id="quantitySupplied"
+                                       decimalPlaces="0"
+                                       inputStyle="text-align: right;"
+                                       required="true"
+                                       requiredMessage="Please enter a valid supplied quantity"
+                                       value="#{inventoryManager.selectedInventoryDisbursement.quantityReceived}" >
+
+                            <p:ajax event="change"
+                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    listener="#{inventoryManager.updateSelectedDisbursementQuantitySupplied}" />
+
+                        </p:inputNumber>
+
                         <p:outputLabel value="Unit price" 
                                        for="unitPrice"
                                        style="font-weight: bold" />   
                         <p:inputNumber id="unitPrice"
+                                       inputStyle="text-align: right;"
                                        required="true"
                                        requiredMessage="Please enter a valid unit price"
                                        value="#{inventoryManager.selectedInventoryDisbursement.unitCost}" >
@@ -151,10 +166,12 @@ Email: info@dpbennett.com.jm
                         <p:outputLabel value="Cost" 
                                        for="cost"
                                        style="font-weight: bold" />   
-                        <p:inputNumber id="cost"
-                                       required="true"
-                                       requiredMessage="Please enter a valid cost"
-                                       value="#{inventoryManager.selectedInventoryDisbursement.cost}" />
+                        <p:inputText id="cost"
+                                     readonly="true"
+                                     required="true"
+                                     requiredMessage="Please enter a valid cost"
+                                     styleClass="read-only-number-field"
+                                     value="#{inventoryManager.selectedInventoryDisbursement.cost}" />
 
 
                     </h:panelGrid>
