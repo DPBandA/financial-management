@@ -64,6 +64,9 @@ Email: info@dpbennett.com.jm
                           id="costComponentTable"
                           editable="true"
                           editMode="row"
+                          paginator="true"                                 
+                          rows="15"
+                          paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                           reflow="false"
                           widgetVar="costComponentVar"
                           value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
