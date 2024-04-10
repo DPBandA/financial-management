@@ -55,7 +55,31 @@ Email: info@dpbennett.com.jm
                                  icon="pi pi-plus"
                                  process="@this">
                 </p:commandButton>  
+
             </p:toolbarGroup> 
+
+            <p:toolbarGroup align="right">
+                <h:panelGrid columns="2" cellspacing="5" >
+                    <p:outputLabel value="Disbursement method *" 
+                                   style="font-weight: bold;"
+                                   for="disbursementMethod"/>
+                    <p:selectOneMenu id="disbursementMethod"    
+                                     value="#{inventoryManager.selectedInventory.disbursementMethod}">
+
+                        <f:selectItems  value="#{inventoryManager.inventoryDisbursementMethods}"
+                                        var="disbursementMethod"                            
+                                        itemValue="#{disbursementMethod.value}"
+                                        itemLabel="#{disbursementMethod.label}"/>
+
+                        <p:ajax event="itemSelect"
+                                update=":inventoryDialogForm:inventoryDetailToolbar1"
+                                listener="#{inventoryManager.updateInventory}"
+                                process="@this" />
+
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </p:toolbarGroup>
+            
         </p:toolbar>
 
         <p:panel id="costComponentTablePanel">
