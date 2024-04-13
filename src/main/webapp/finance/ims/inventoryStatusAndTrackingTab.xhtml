@@ -1,6 +1,6 @@
 <!--
 Inventory Management (IM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -26,7 +26,7 @@ Email: info@dpbennett.com.jm
 
     <p:panel style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid id="statusAndTrackingTabPanel" columns="2" cellspacing="5" >            
-           
+
             <p:outputLabel value="Entered by"/>
             <p:inputText readonly="true"
                          maxlength="250"
@@ -49,6 +49,25 @@ Email: info@dpbennett.com.jm
             <p:inputText readonly="true"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventory.dateEdited)}" />           
+
+            <p:outputLabel value="Location" />
+            <h:panelGroup>
+                <p:selectOneMenu
+                    value="#{inventoryManager.selectedInventory.location}"   
+                    id="location"
+                    editable="true">
+
+                    <p:ajax
+                        event="change"
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this" />
+
+                    <f:selectItems value="#{inventoryManager.inventoryLocations}" />
+
+                </p:selectOneMenu>  
+                <p:watermark value="Enter or select a location" for="location"/>
+            </h:panelGroup>
 
             <p:outputLabel value="Status" style="vertical-align: top;" />       
             <p:inputTextarea
@@ -74,7 +93,7 @@ Email: info@dpbennett.com.jm
 
         </h:panelGrid>
     </p:panel>
-    
+
 
 </html>
 
