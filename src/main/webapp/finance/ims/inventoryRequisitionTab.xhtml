@@ -66,6 +66,20 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             <p:outputLabel value="#{inventoryManager.inventoryRequisitionTableHeader}" />
         </f:facet>
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Code"/>
+            </f:facet>
+            <p:outputLabel value="#{inventoryRequisition.code}" />
+        </p:column>
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Entered by"/>
+            </f:facet>
+            <p:outputLabel value="#{inventoryRequisition.enteredBy}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">
@@ -75,22 +89,27 @@ Email: info@dpbennett.com.jm
                 <f:convertDateTime pattern="MMM dd, yyyy"/>
             </p:outputLabel>
         </p:column>
-
+        
         <p:column>
             <f:facet name="header">
-                <p:outputLabel value="Date Entered"/>
+                <p:outputLabel value="Total cost"/>
             </f:facet>
-            <p:outputLabel value="#{inventoryRequisition.dateEntered}">
-                <f:convertDateTime pattern="MMM dd, yyyy"/>
-            </p:outputLabel>
+            <p:outputLabel value="#{purchasingManager.formatAsCurrency(inventoryRequisition.totalQuantityOrdered, '$')}" />   
         </p:column>
-
+        
         <p:column>
             <f:facet name="header">
-                <p:outputLabel value="Entered By"/>
+                <p:outputLabel value="Progress"/>
             </f:facet>
-            <p:outputLabel value="#{inventoryRequisition.enteredBy}" />                
-        </p:column> 
+            <p:outputLabel value="#{inventoryRequisition.workProgress}" />
+        </p:column>
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Department"/>
+            </f:facet>
+            <p:outputLabel value="#{inventoryRequisition.department}" />
+        </p:column>
 
         <p:column>
 

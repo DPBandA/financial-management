@@ -107,6 +107,13 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{inventory.supplier.name}" />                
         </p:column>
+        
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Location"/>
+            </f:facet>
+            <p:outputLabel value="#{inventory.location}" />                
+        </p:column>
 
         <p:column>
             <f:facet name="header">
@@ -119,10 +126,7 @@ Email: info@dpbennett.com.jm
             <f:facet name="header">
                 <p:outputLabel value="Cost"/>
             </f:facet>
-            <p:outputLabel value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" 
-                           styleClass="datatable-number-field" >                
-
-            </p:outputLabel>
+            <p:outputLabel value="#{inventoryManager.formatAsCurrency(inventory.cost, '$')}" /> 
         </p:column>
 
         <p:column>
@@ -142,6 +146,32 @@ Email: info@dpbennett.com.jm
             </p:commandButton>
 
         </p:column>
+
+        <p:columnGroup type="footer" id="totals">
+            <p:row>
+                <p:column colspan="4" style="text-align:right" footerText="Totals:"/>
+                <p:column>
+                    <f:facet name="footer">
+                        <h:outputText value="#{inventoryManager.foundInventoriesTotalQuantity}" >
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                        </h:outputText>
+                    </f:facet>
+                </p:column>
+                <p:column>
+                    <f:facet name="footer">
+                        <f:facet name="footer">
+                            <h:outputText value="#{inventoryManager.formatAsCurrency(inventoryManager.foundInventoriesTotalCost, '$')}" >
+
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                            </h:outputText>
+                        </f:facet>
+                    </f:facet>
+                </p:column>
+            </p:row>
+        </p:columnGroup>
     </p:dataTable>
 
     <p:toolbar>

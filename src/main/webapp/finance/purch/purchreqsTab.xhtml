@@ -80,9 +80,7 @@ Email: info@dpbennett.com.jm
             <f:facet name="header">
                 <p:outputLabel value="Total cost"/>
             </f:facet>
-            <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" styleClass="datatable-number-field" >                
-
-            </p:outputLabel>
+            <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" />  
         </p:column>
 
         <p:column>
