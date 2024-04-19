@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -111,17 +111,37 @@ Email: info@dpbennett.com.jm
 
             </p:calendar>
 
-            <p:outputLabel value="Terms" />       
-            <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
-                         maxlength="20"
-                         value="#{purchasingManager.selectedPurchaseRequisition.terms}" > 
+            <p:outputLabel value="Terms" />      
+            <ui:remove>
+                <p:inputText disabled="#{!purchasingManager.isProcurementOfficer}" 
+                             maxlength="20"
+                             value="#{purchasingManager.selectedPurchaseRequisition.terms}" > 
 
-                <p:ajax event="change"                            
+                    <p:ajax event="change"                            
+                            update=":purchreqDialogForm:purchreqDetailToolbar1"
+                            listener="#{purchasingManager.updatePurchaseReq}"
+                            process="@this"/>
+
+                </p:inputText>
+            </ui:remove>    
+            <p:inputTextarea
+                id="terms"
+                value="#{purchasingManager.selectedPurchaseRequisition.terms}"
+                disabled="#{!purchasingManager.isProcurementOfficer}" 
+                rows="2"
+                counter="termsCharsRemaining"
+                counterTemplate="{0} characters remaining."
+                maxlength="80"
+                autoResize="false" >
+
+                <p:ajax event="change"
                         update=":purchreqDialogForm:purchreqDetailToolbar1"
                         listener="#{purchasingManager.updatePurchaseReq}"
                         process="@this"/>
 
-            </p:inputText>
+            </p:inputTextarea> 
+            <p:outputLabel value="&nbsp;&nbsp;" />
+            <p:outputLabel id="termsCharsRemaining" />
 
             <p:outputLabel value="Please supply" />       
             <p:inputTextarea
