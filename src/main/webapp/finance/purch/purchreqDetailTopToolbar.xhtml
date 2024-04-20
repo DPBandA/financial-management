@@ -1,6 +1,6 @@
 <!--
 Purchase Management (PM) 
-Copyright (C) 2023  D P Bennett & Associates Limited
+Copyright (C) 2024  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -54,25 +54,23 @@ Email: info@dpbennett.com.jm
 
             <p:spacer width="20" />
 
-            <ui:remove>
-                <p:menuButton value="Tools" >  
+            <p:menuButton value="Tools" rendered="false" >  
 
-                    <p:menuitem value="Request approval..."
-                                title="Send a request for approval for this purchase requisition"
-                                actionListener="#{purchasingManager.openRequestApprovalEmailDialog}" 
-                                icon="pi pi-envelope"
-                                process="@this" />
+                <p:menuitem value="Request approval..."
+                            title="Send a request for approval for this purchase requisition"
+                            actionListener="#{purchasingManager.openRequestApprovalEmailDialog}" 
+                            icon="pi pi-envelope"
+                            process="@this" />
 
-                    <p:menuitem value="Send message..."
-                                title="Send a message"
-                                actionListener="#{purchasingManager.openSendEmailDialog}" 
-                                icon="pi pi-envelope"
-                                process="@this" />
+                <p:menuitem value="Send message..."
+                            title="Send a message"
+                            actionListener="#{purchasingManager.openSendEmailDialog}" 
+                            icon="pi pi-envelope"
+                            process="@this" />
 
-                </p:menuButton>
+            </p:menuButton>
 
-                <p:spacer width="20" />
-            </ui:remove>
+            <p:spacer width="20" />
 
             <p:menuButton value="Forms" >
                 <p:menuitem value="Purchase Requisition"

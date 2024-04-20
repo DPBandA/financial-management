@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                             requiredMessage="Department Required"
                             validator="businessEntityValidator"
                             cache="true"
-                            completeMethod="#{inventoryManager.completeActiveDepartment}" >            
+                            completeMethod="#{financeManager.completeActiveDepartment}" >            
 
                 <p:ajax event="itemSelect"
                         update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
@@ -85,7 +85,7 @@ Email: info@dpbennett.com.jm
                             dropdown="true"
                             scrollHeight="200" 
                             cache="true"
-                            completeMethod="#{inventoryManager.completeActiveEmployee}" >
+                            completeMethod="#{financeManager.completeActiveEmployee}" >
 
                 <p:ajax event="itemSelect"
                         update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
