@@ -33,12 +33,19 @@ Email: info@dpbennett.com.jm
                            style="font-weight: bold;" />
             <p:inputText id="poNumberEdit"  
                          style="font-weight: bold;"
-                         disabled="true"  
-                         validator="purchaseOrderNumberValidator"
+                         disabled="#{!purchasingManager.isProcurementOfficer}"
                          required="true"
                          requiredMessage="Purchase Order Number Required"
                          title="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}"
-                         value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" />
+                         value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderNumber}" >
+                
+                
+                 <p:ajax event="change"                            
+                        update=":purchreqDialogForm:purchreqDetailToolbar1,:purchreqDialogForm:purchreqFormTabView:orderDetail"
+                        listener="#{purchasingManager.updatePurchaseReq}"
+                        process="@this"/>
+                
+            </p:inputText>
 
             <p:outputLabel value="Purchase Order Date" />
             <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.purchaseOrderDate}" 

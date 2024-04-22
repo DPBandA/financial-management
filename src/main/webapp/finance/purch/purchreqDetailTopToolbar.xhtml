@@ -54,7 +54,8 @@ Email: info@dpbennett.com.jm
 
             <p:spacer width="20" />
 
-            <p:menuButton value="Tools" rendered="false" >  
+            <p:menuButton value="Tools" 
+                          rendered="#{systemManager.user.hasModule('systemManager')}" >  
 
                 <p:menuitem value="Request approval..."
                             title="Send a request for approval for this purchase requisition"

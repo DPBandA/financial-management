@@ -42,7 +42,7 @@ Email: info@dpbennett.com.jm
 
                         <p:ajax listener="#{purchasingManager.updateWorkProgress}"
                                 global="false"
-                                update="purhReqStatusAndTracking,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1,@this"
+                                update="orderDetail,purhReqStatusAndTracking,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1,@this"
                                 process="@this"/>
 
                     </p:selectOneMenu>
@@ -76,7 +76,7 @@ Email: info@dpbennett.com.jm
                                     forceSelection="true"
                                     dropdown="false"
                                     scrollHeight="200" 
-                                    completeMethod="#{financeManager.completeActiveEmployee}" />
+                                    completeMethod="#{humanResourceManager.completeActiveEmployee}" />
 
                     <p:outputLabel value="Completion date" />
                     <p:inputText readonly="true"
