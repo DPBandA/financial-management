@@ -24,7 +24,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <p:panel style="margin-bottom: 1px;border: 0;" >
+    <p:panel id="statusAndTrackingTabPanel" style="margin-bottom: 1px;border: 0;" >
         <h:panelGrid columns="2" cellspacing="5" >
             <p:outputLabel value="Work progress *" 
                            style="font-weight: bold;"
@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
             </p:selectOneMenu>
         </h:panelGrid>
         <hr/>
-        <h:panelGrid id="statusAndTrackingTabPanel" columns="4" cellspacing="5" >            
+        <h:panelGrid columns="4" cellspacing="5" >            
 
             <p:outputLabel value="Entered by *" style="font-weight: bold;" />
             <p:inputText readonly="true"
@@ -70,29 +70,25 @@ Email: info@dpbennett.com.jm
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEdited)}" />        
 
-            <p:outputLabel value="Approved by *" rendered="false" style="font-weight: bold;" />
+            <p:outputLabel value="Approved by *" style="font-weight: bold;" />
             <p:inputText readonly="true"
-                         rendered="false"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.firstName} #{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.lastName}" />
 
-            <p:outputLabel value="Date approved *" rendered="false" style="font-weight: bold;" />
+            <p:outputLabel value="Date approved *" style="font-weight: bold;" />
             <p:inputText readonly="true"
-                         rendered="false"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateRequisitionApproved)}" />           
 
-            <p:outputLabel value="Received by *" rendered="false" style="font-weight: bold;" />
+            <p:outputLabel value="Received by *" style="font-weight: bold;" />
             <p:inputText readonly="true"
-                         rendered="false"
                          maxlength="250"
                          styleClass="read-only-text-field"
                          value="#{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.firstName} #{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.lastName}" />
 
-            <p:outputLabel value="Date received *" rendered="false" style="font-weight: bold;" />
+            <p:outputLabel value="Date received *" style="font-weight: bold;" />
             <p:inputText readonly="true"
-                         rendered="false"
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryReceived)}" />           
 

@@ -47,7 +47,35 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right" >  
+            <h:panelGroup>
+                <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.approved}"   
+                                         id="approved"
+                                         style="vertical-align: bottom;"
+                                         itemLabel="Approved" >
 
+                    <p:ajax global="false" 
+                            listener="#{inventoryManager.approveInventoryRequisition}"
+                            update="@this,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                            process="@this"/>
+
+                </p:selectBooleanCheckbox>               
+            </h:panelGroup>
+            <p:spacer width="10"/>
+            <h:panelGroup>
+                <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.received}" 
+                                         id="received"   
+                                         style="vertical-align: bottom;"
+                                         itemLabel="Received" >
+
+                    <p:ajax global="false" 
+                            listener="#{inventoryManager.receiveInventory}"
+                            update="@this,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                            process="@this"/>
+
+                </p:selectBooleanCheckbox>               
+            </h:panelGroup>           
+
+            <p:spacer width="10" />
             <p:menuButton value="Forms" >
                 <p:menuitem value="Stores requisition"
                             icon="pi pi-file-pdf"
