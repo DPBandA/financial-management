@@ -50,6 +50,17 @@ Email: info@dpbennett.com.jm
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventory.dateEdited)}" />           
 
+            <p:outputLabel value="Low stock threshold" />
+            <p:spinner value="#{inventoryManager.selectedInventory.lowStockThreshold}"
+                       min="0" >
+
+                <p:ajax event="change"
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:spinner>           
+
             <p:outputLabel value="Location" />
             <h:panelGroup>
                 <p:selectOneMenu
