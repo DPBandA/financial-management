@@ -61,6 +61,20 @@ Email: info@dpbennett.com.jm
                 </p:selectBooleanCheckbox>               
             </h:panelGroup>
             <p:spacer width="10"/>
+             <h:panelGroup>
+                <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.issued}" 
+                                         id="issued"   
+                                         style="vertical-align: bottom;"
+                                         itemLabel="Issued" >
+
+                    <p:ajax global="false" 
+                            listener="#{inventoryManager.issueInventory}"
+                            update="@this,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:statusAndTrackingTab,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                            process="@this"/>
+
+                </p:selectBooleanCheckbox>               
+            </h:panelGroup>    
+            <p:spacer width="10"/>
             <h:panelGroup>
                 <p:selectBooleanCheckbox value="#{inventoryManager.selectedInventoryRequisition.received}" 
                                          id="received"   

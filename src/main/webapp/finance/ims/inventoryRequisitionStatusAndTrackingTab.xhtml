@@ -81,6 +81,18 @@ Email: info@dpbennett.com.jm
                          styleClass="read-only-text-field"
                          value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateRequisitionApproved)}" />           
 
+             <p:outputLabel value="Issued by *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.inventoryIssuedBy.firstName} #{inventoryManager.selectedInventoryRequisition.inventoryIssuedBy.lastName}" />
+
+            <p:outputLabel value="Date issued *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryIssued)}" />           
+            
+            
             <p:outputLabel value="Received by *" style="font-weight: bold;" />
             <p:inputText readonly="true"
                          maxlength="250"
