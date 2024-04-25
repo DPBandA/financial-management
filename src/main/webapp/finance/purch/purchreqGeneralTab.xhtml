@@ -79,7 +79,7 @@ Email: info@dpbennett.com.jm
                                 id="editSupplier"
                                 icon="pi pi-pencil" 
                                 disabled="${!purchasingManager.isSupplierNameValid}"                                
-                                actionListener="#{purchasingManager.editSelectedSupplier}"  
+                                actionListener="#{purchasingManager.editPurchaseReqSupplier}"  
                                 process="@this,supplier"                             
                                 title="View or edit this suppliers's detail">  
 
@@ -107,14 +107,25 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
 
             <p:outputLabel value="Date" 
-                           for="dateOriginated"
+                           for="requisitionDate"
                            style="font-weight: bold" />
-            <p:inputText readonly="true"
-                         id="dateOriginated"
-                         styleClass="read-only-text-field"
-                         required="true"
-                         requiredMessage="Date Required"
-                         value="#{systemManager.getDateStr(purchasingManager.selectedPurchaseRequisition.requisitionDate)}" />           
+            <p:calendar value="#{purchasingManager.selectedPurchaseRequisition.requisitionDate}" 
+                        id="requisitionDate"
+                        readonlyInput="false"
+                        required="true"
+                        requiredMessage="Date Required" 
+                        navigator="true" 
+                        pattern="MMM dd, yyyy" >
+
+                <p:ajax event="dateSelect"
+                        update=":purchreqDialogForm:purchreqDetailToolbar1"
+                        listener="#{purchasingManager.updatePurchaseReq}" />
+
+                <p:ajax event="keyup"
+                        update=":purchreqDialogForm:purchreqDetailToolbar1"
+                        listener="#{purchasingManager.updatePurchaseReq}" />
+
+            </p:calendar>
 
             <p:outputLabel value="Originator *" 
                            for="originator"
