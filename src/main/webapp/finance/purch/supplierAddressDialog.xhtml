@@ -77,49 +77,50 @@ Email: info@dpbennett.com.jm
                     <p:outputLabel value="Address (line 1) *" style="font-weight: bold" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.addressLine1}"
                                  id="addressLine1"
-                                 maxlength="50"
                                  validator="addressLineValidator">
+                        
                         <p:ajax event="change"
                                 global="true"
                                 listener="#{purchasingManager.updateSupplierAddress}"
                                 process="@this"/>
+                        
                     </p:inputText>
 
                     <p:outputLabel value="Address (line 2)" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.addressLine2}"
-                                 id="addressLine2"     
-                                 maxlength="50">
+                                 id="addressLine2" >
                         <p:ajax event="change"
                                 global="true"
                                 listener="#{purchasingManager.updateSupplierAddress}"
                                 process="@this"/>
                     </p:inputText>                
 
-                    <p:outputLabel value="Nearest City/Town *" style="font-weight: bold"/>
+                    <p:outputLabel value="Nearest City/Town" />
                     <p:inputText value="#{purchasingManager.selectedSupplierAddress.city}"
-                                 id="addressCity"
-                                 maxlength="50"
-                                 validator="addressLineValidator" >
+                                 id="addressCity" >
+                        
                         <p:ajax event="change"
                                 global="true"
                                 listener="#{purchasingManager.updateSupplierAddress}"
                                 process="@this"/>
+                        
                     </p:inputText>
 
-                    <p:outputLabel value="Parish/State/Province *" style="font-weight: bold" />
+                    <p:outputLabel value="Parish/State/Province" />
                     <h:panelGroup>
                         <p:selectOneMenu
                             value="#{purchasingManager.selectedSupplierAddress.stateOrProvince}"   
                             id="parishStateProvince"
-                            maxlength="50"
-                            validator="addressLineValidator"
                             editable="true">
+                            
                             <p:ajax
                                 global="true"
                                 event="change"
                                 listener="#{purchasingManager.updateSupplierAddress}"
                                 process="@this" />
+                            
                             <f:selectItems value="#{systemManager.jamaicaParishes}" />
+                            
                         </p:selectOneMenu>  
                         <p:watermark value="enter or select" for="parishStateProvince"/>
                     </h:panelGroup>

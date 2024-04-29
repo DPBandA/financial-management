@@ -4,7 +4,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local MySQL"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.report.description" value="Purchase Order"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="763"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="224"/>
@@ -302,8 +302,8 @@ WHERE
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="578" splitType="Stretch">
-			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		<band height="439" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
 				<reportElement key="table" x="0" y="213" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
 					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
@@ -956,6 +956,56 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>
 			</textField>
+		</band>
+		<band height="271">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="24" width="569" height="30" uuid="30bc75c9-f244-418d-9307-a33cfa0fb6dd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMS AND CONDITIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="55" width="569" height="30" uuid="cae08c73-1908-4f27-b5b7-429ff264b54b"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[This order is subject to strict compliance with the instructions and conditions contained therein.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="85" width="569" height="30" uuid="02440c2f-52e1-42bc-af65-f4fd357db0f8"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[All invoices, advices, and correspondences must quote order number.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="115" width="569" height="45" uuid="fe58330d-9cfe-4613-8d86-f8ed5447c6a7"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[The Bureau of Standards reserves the right to cancel the order, or return part or all of the goods on this order at the supplier’s expense, if for any reason the goods are not in every respect as represented.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="160" width="569" height="30" uuid="0d73db1a-753d-4109-bf0c-8f3935b6fd70">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Rejected goods are the property of the supplier, and remain on the Bureau’s property at the supplier’s risk.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="7" y="190" width="569" height="30" uuid="11e40f21-5459-456c-aaa7-c0c4cc808de9"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Part shipment of goods will be accepted according to prior arrangements.]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
