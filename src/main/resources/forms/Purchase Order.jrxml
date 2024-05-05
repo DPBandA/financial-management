@@ -302,7 +302,7 @@ WHERE
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="439" splitType="Stretch">
+		<band height="420" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
 				<reportElement key="table" x="0" y="213" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
@@ -957,7 +957,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="271">
+		<band height="220">
 			<staticText>
 				<reportElement positionType="Float" mode="Opaque" x="7" y="24" width="569" height="30" uuid="30bc75c9-f244-418d-9307-a33cfa0fb6dd">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -1005,6 +1005,328 @@ WHERE
 					<font size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Part shipment of goods will be accepted according to prior arrangements.]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="10" width="100" height="1" uuid="c0b18baf-a17e-4d18-9931-5b18cd2b7c87"/>
+			</break>
+		</band>
+		<band height="648">
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="15" width="569" height="30" uuid="13a8683a-e586-4540-8846-bf7ace17346c">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box topPadding="5"/>
+				<textElement textAlignment="Left">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Post Evaluation of Suppliers]]></text>
+			</staticText>
+			<break>
+				<reportElement x="0" y="10" width="100" height="1" uuid="939c5d17-7db0-461c-8f68-f155c86c5a8c"/>
+			</break>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="45" width="569" height="45" uuid="09ef8f79-9fe2-400d-be96-efe7ce0afd4c"/>
+				<textElement textAlignment="Left" markup="html">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Suppliers will be subject to a post evaluation by rating each purchase according to the following:  Poor = 1, Satisfactory = 2 or Excellent = 3.  A poor rating (1) is a failing score.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="90" width="569" height="70" uuid="98d84dab-0734-4e92-8373-645f3a745314"/>
+				<textElement textAlignment="Left" markup="html">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Suppliers receiving a score of 1=Poor, will be subjected to the following:
+           1.	Receive a letter which identifies the criteria of the failure.
+           2.	May not be selected for any future delivery. 
+           3.	For future engagements, will need to demonstrate that the issue has been resolved.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="160" width="569" height="20" uuid="f4aff6aa-acc8-4552-9b99-1cb444573da6"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[The criteria for the rating are as follows:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="181" width="198" height="20" uuid="5c73eda8-1fbe-483c-8d2b-b45744d78102"/>
+				<box leftPadding="30">
+					<pen lineWidth="3.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CRITERIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="181" width="191" height="20" uuid="d63731ae-2fbf-4d84-877c-5c51fdabf78a"/>
+				<box leftPadding="30">
+					<pen lineWidth="3.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SERVICES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="181" width="179" height="20" uuid="9a610aa0-a694-4e23-9f03-2f0477c26219"/>
+				<box leftPadding="30">
+					<pen lineWidth="3.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GOODS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="201" width="198" height="38" uuid="416717cd-0d99-432f-82cc-3b9304399399"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Responsiveness]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="201" width="370" height="38" uuid="b0ee0ce3-72c1-47ac-9632-17f6de687207">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Timely responses to queries and progress reports, submission of quotations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="239" width="198" height="38" uuid="1d74d8bd-eaf9-4e5f-a4ea-4d27b209a545"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Courtesy ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="239" width="370" height="38" uuid="1480b3ef-ed3d-4531-9148-7218f364ac3d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Politeness, kind consideration and cooperation of the company’s representatives]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="277" width="198" height="53" uuid="e75609e9-99c0-47e1-ad05-546be711a206"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Timeliness of Service Delivered]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="277" width="191" height="52" uuid="569ecc1d-1775-49b3-be8c-3b17b1bc6c6a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Adhering to contract timelines & schedules]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="277" width="179" height="52" uuid="d213b500-a6e3-4908-b94b-1c548f63e722">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Deliveries made within specified timelines]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="329" width="198" height="53" uuid="0ac37c98-7390-4c13-beeb-61e43af5e7e3"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Knowledge & Experience]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="329" width="191" height="52" uuid="e2ae956e-7724-4430-ab8c-785453214cb6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Demonstration of practical knowledge & experience in the area of expertise]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="329" width="179" height="52" uuid="f56d0e97-f604-4c8e-85f7-8737ed5a2ceb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="381" width="198" height="53" uuid="6acc9be8-40d1-4d63-8454-53bfec06e463"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quality of Work Completed]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="381" width="191" height="53" uuid="820c0113-e303-4471-9310-85c5c1c41145">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Services performed with the degree of skill & diligence normally practiced by professionals performing similar work]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="381" width="179" height="53" uuid="71463f80-95c2-43e0-8514-39b1a61e8106">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="434" width="198" height="53" uuid="6fc76ff5-aeae-4359-b1cc-525ba003ef90"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Meeting Deliverables]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="434" width="191" height="53" uuid="31dfcb2a-8801-4c3d-bfb7-c01203c0f8f6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Deliverables meet the criteria established in the contract]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="434" width="179" height="53" uuid="e0371dd1-3100-4632-ba9f-64d4641df905">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="487" width="198" height="84" uuid="e60bc048-a366-45cc-b8ae-6975ef3386e8"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Presentation of Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="487" width="191" height="84" uuid="2884fe4b-6e7f-42fa-b37c-21b1b0daf029">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="487" width="179" height="84" uuid="67d3f108-8874-422d-a4e9-54a35f4f6d64">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Chemical reagent labels, manuals, calibration certificates and other written instructions on items must be intact, legible and in English]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="571" width="198" height="69" uuid="13f6bff5-b74d-425c-a5ba-420f38524d90"/>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Packaging]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="571" width="191" height="69" uuid="f5fc3d0d-ae80-4bbb-af34-d6b6fa7b9f34">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="571" width="179" height="69" uuid="b5294a95-e35d-4063-ad37-0d85807eed9e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box leftPadding="3">
+					<pen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Items delivered are appropriately sealed, packaged for storage, where applicable, expiry dates stated]]></text>
 			</staticText>
 		</band>
 	</detail>
