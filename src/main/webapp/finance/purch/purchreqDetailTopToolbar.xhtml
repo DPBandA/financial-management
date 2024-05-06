@@ -56,14 +56,14 @@ Email: info@dpbennett.com.jm
 
             <p:menuButton value="Tools" 
                           rendered="#{systemManager.user.hasModule('systemManager')}" >  
-
-                <p:menuitem value="Request approval..."
-                            title="Send a request for approval for this purchase requisition"
-                            actionListener="#{purchasingManager.openRequestApprovalEmailDialog}" 
+                
+                <p:menuitem value="Send PR email"
+                            title="Send a purchase requisition email"
+                            actionListener="#{purchasingManager.openPurchaseRequisistionEmailDialog}" 
                             icon="pi pi-envelope"
                             process="@this" />
 
-                <p:menuitem value="Send message..."
+                <p:menuitem value="Send message"
                             title="Send a message"
                             actionListener="#{purchasingManager.openSendEmailDialog}" 
                             icon="pi pi-envelope"
