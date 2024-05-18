@@ -957,85 +957,71 @@ WHERE
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="220">
+		<band height="648">
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="24" width="569" height="30" uuid="30bc75c9-f244-418d-9307-a33cfa0fb6dd">
+				<reportElement mode="Opaque" x="7" y="24" width="569" height="20" uuid="30bc75c9-f244-418d-9307-a33cfa0fb6dd">
 					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="5"/>
 				<textElement textAlignment="Center">
-					<font size="18" isBold="true"/>
+					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TERMS AND CONDITIONS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="55" width="569" height="30" uuid="cae08c73-1908-4f27-b5b7-429ff264b54b"/>
+				<reportElement mode="Opaque" x="7" y="45" width="569" height="14" uuid="cae08c73-1908-4f27-b5b7-429ff264b54b"/>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[This order is subject to strict compliance with the instructions and conditions contained therein.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="85" width="569" height="30" uuid="02440c2f-52e1-42bc-af65-f4fd357db0f8"/>
+				<reportElement mode="Opaque" x="7" y="59" width="569" height="14" uuid="02440c2f-52e1-42bc-af65-f4fd357db0f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[All invoices, advices, and correspondences must quote order number.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="115" width="569" height="45" uuid="fe58330d-9cfe-4613-8d86-f8ed5447c6a7"/>
+				<reportElement mode="Opaque" x="7" y="73" width="569" height="22" uuid="fe58330d-9cfe-4613-8d86-f8ed5447c6a7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[The Bureau of Standards reserves the right to cancel the order, or return part or all of the goods on this order at the supplier’s expense, if for any reason the goods are not in every respect as represented.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="160" width="569" height="30" uuid="0d73db1a-753d-4109-bf0c-8f3935b6fd70">
+				<reportElement mode="Opaque" x="7" y="95" width="569" height="14" uuid="0d73db1a-753d-4109-bf0c-8f3935b6fd70">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Rejected goods are the property of the supplier, and remain on the Bureau’s property at the supplier’s risk.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="7" y="190" width="569" height="30" uuid="11e40f21-5459-456c-aaa7-c0c4cc808de9"/>
+				<reportElement mode="Opaque" x="7" y="109" width="569" height="14" uuid="11e40f21-5459-456c-aaa7-c0c4cc808de9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Left">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Part shipment of goods will be accepted according to prior arrangements.]]></text>
 			</staticText>
-			<break>
-				<reportElement x="0" y="10" width="100" height="1" uuid="c0b18baf-a17e-4d18-9931-5b18cd2b7c87"/>
-			</break>
 		</band>
 		<band height="648">
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="15" width="569" height="30" uuid="13a8683a-e586-4540-8846-bf7ace17346c">
-					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<reportElement mode="Opaque" x="1" y="84" width="569" height="44" uuid="98d84dab-0734-4e92-8373-645f3a745314">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<box topPadding="5"/>
-				<textElement textAlignment="Left">
-					<font size="18" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Post Evaluation of Suppliers]]></text>
-			</staticText>
-			<break>
-				<reportElement x="0" y="10" width="100" height="1" uuid="939c5d17-7db0-461c-8f68-f155c86c5a8c"/>
-			</break>
-			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="45" width="569" height="45" uuid="09ef8f79-9fe2-400d-be96-efe7ce0afd4c"/>
 				<textElement textAlignment="Left" markup="html">
-					<font size="12" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Suppliers will be subject to a post evaluation by rating each purchase according to the following:  Poor = 1, Satisfactory = 2 or Excellent = 3.  A poor rating (1) is a failing score.]]></text>
-			</staticText>
-			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="90" width="569" height="70" uuid="98d84dab-0734-4e92-8373-645f3a745314"/>
-				<textElement textAlignment="Left" markup="html">
-					<font size="12" isBold="false"/>
+					<font size="8" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Suppliers receiving a score of 1=Poor, will be subjected to the following:
            1.	Receive a letter which identifies the criteria of the failure.
@@ -1044,7 +1030,7 @@ WHERE
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="160" width="569" height="20" uuid="f4aff6aa-acc8-4552-9b99-1cb444573da6"/>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="140" width="569" height="20" uuid="f4aff6aa-acc8-4552-9b99-1cb444573da6"/>
 				<textElement textAlignment="Left">
 					<font size="12" isBold="false"/>
 				</textElement>
@@ -1327,6 +1313,28 @@ WHERE
 					<font size="12" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Items delivered are appropriately sealed, packaged for storage, where applicable, expiry dates stated]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="52" width="569" height="22" uuid="387baceb-973f-41c9-9d8e-922d0044d920">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Suppliers will be subject to a post evaluation by rating each purchase according to the following:  Poor = 1, Satisfactory = 2 or Excellent = 3.  A poor rating (1) is a failing score.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="32" width="565" height="20" uuid="bfb62dbf-e5bf-4c89-84f1-c0db90c3cc57">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box topPadding="5"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Supplier Evaluation]]></text>
 			</staticText>
 		</band>
 	</detail>

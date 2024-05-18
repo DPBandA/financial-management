@@ -24,7 +24,7 @@ Email: info@dpbennett.com.jm
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
-    
+
     <ui:include src="purchReqsSearchToolbar.xhtml"/>
     <ui:include src="purchReqsTabToolbar.xhtml"/>
 
@@ -53,21 +53,42 @@ Email: info@dpbennett.com.jm
                   style="text-align:center"
                   exportable="false" />      
 
-        <p:column>
+        <p:column sortBy="#{pr.number}">
             <f:facet name="header">
-                <p:outputLabel value="No."/>
+                <p:outputLabel value="PR #"/>
             </f:facet>
             <p:outputLabel value="#{pr.number}" />
         </p:column>
 
-        <p:column>
+        <p:column sortBy="#{pr.purchaseOrderNumber}">
+            <f:facet name="header">
+                <p:outputLabel value="PO #"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.purchaseOrderNumber}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.supplier}">
+            <f:facet name="header">
+                <p:outputLabel value="Supplier"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.supplier}" />
+        </p:column>
+        
+        <p:column sortBy="#{pr.originatingDepartment}">
+            <f:facet name="header">
+                <p:outputLabel value="Department"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.originatingDepartment}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.originator}">
             <f:facet name="header">
                 <p:outputLabel value="Originator"/>
             </f:facet>
             <p:outputLabel value="#{pr.originator}" />
         </p:column>
 
-        <p:column>
+        <p:column sortBy="#{pr.requisitionDate}">
             <f:facet name="header">
                 <p:outputLabel value="Requisition date"/>
             </f:facet>
@@ -76,14 +97,14 @@ Email: info@dpbennett.com.jm
             </p:outputLabel>
         </p:column>
 
-        <p:column>
+        <p:column sortBy="#{pr.totalCost}">
             <f:facet name="header">
                 <p:outputLabel value="Total cost"/>
             </f:facet>
             <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" />  
         </p:column>
 
-        <p:column>
+        <p:column sortBy="#{pr.workProgress}">
             <f:facet name="header">
                 <p:outputLabel value="Progress"/>
             </f:facet>
