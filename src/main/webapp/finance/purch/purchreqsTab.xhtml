@@ -103,6 +103,13 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost, pr.currency.symbol)}" />  
         </p:column>
+        
+        <p:column sortBy="#{pr.approversAndRecommendersList}">
+            <f:facet name="header">
+                <p:outputLabel value="Appr'd/Rec'd by"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.approversAndRecommendersList}" />  
+        </p:column>
 
         <p:column sortBy="#{pr.workProgress}">
             <f:facet name="header">

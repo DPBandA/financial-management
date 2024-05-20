@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-    
+
     <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
 
         <p:outputLabel for="supplierActive" value="Active *" style="font-weight: bold;" />  
@@ -56,15 +56,32 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
         <p:outputLabel value="" />
 
-        <p:outputLabel value="Identification type" />        
-        <p:inputText value="#{purchasingManager.selectedSupplier.identificationType}"
-                     id="identificationType"
-                     disabled="#{!purchasingManager.selectedSupplier.isNameAndIdEditable}" >
-            <p:ajax event="change"                    
-                    global="true"                   
-                    listener="#{purchasingManager.updateSupplier}"
-                    process="@this"/>
-        </p:inputText>
+        <p:outputLabel value="Identification type" 
+                       for="identificationType" />
+        <p:selectOneMenu id="identificationType"  
+                         value="#{purchasingManager.selectedSupplier.identificationType}">
+
+            <f:selectItems  value="#{systemManager.identificationTypeList}"
+                            var="identificationType"                            
+                            itemValue="#{type}"
+                            itemLabel="#{type}"/>
+
+             <p:ajax event="change"                    
+                        global="true"                   
+                        listener="#{purchasingManager.updateSupplier}"
+                        process="@this"/>
+
+        </p:selectOneMenu>  
+        <ui:remove>
+            <p:inputText value="#{purchasingManager.selectedSupplier.identificationType}"
+                         id="identificationType"
+                         disabled="#{!purchasingManager.selectedSupplier.isNameAndIdEditable}" >
+                <p:ajax event="change"                    
+                        global="true"                   
+                        listener="#{purchasingManager.updateSupplier}"
+                        process="@this"/>
+            </p:inputText>
+        </ui:remove>
         <p:outputLabel value="" />
 
         <p:outputLabel value="Identification" />        
