@@ -1,0 +1,134 @@
+<!--
+Purchase Management (PM) 
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+    <h:head>
+        <ui:include src="../../head.xhtml" /> 
+        <title>Payment</title>
+        <ui:include src="header.xhtml" /> 
+    </h:head>
+    <h:body>        
+        <ui:include src="/common/commonDialogs.xhtml"/>  
+        <h:form id="cashPaymentDialogForm" >    
+            <p:growl id="cash_payment_dialog_growl" 
+                     life="5000" 
+                     showDetail="false"/>
+
+            <p:toolbar style="margin-bottom: 1px;">
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{purchasingManager.okCashPayment}"
+                                     icon="pi pi-check"
+                                     update="cash_payment_dialog_growl"
+                                     process="@form"/>
+                    <p:spacer height="0" width="5"/>
+                    <p:commandButton value="Cancel"
+                                     immediate="true"
+                                     actionListener="#{purchasingManager.cancelCashPaymentEdit}"
+                                     icon="pi pi-times"
+                                     process="@this"/>    
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right" >  
+                    <h:outputText value="* Field required." style="font-weight: bold;" />            
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:panel>
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Type *" style="font-weight: bold;" />    
+                    <p:selectOneMenu   id="type"                          
+                                       value="#{purchasingManager.selectedCashPayment.type}">
+
+                        <f:selectItems value="#{purchasingManager.paymentTypes}" />
+
+                    </p:selectOneMenu>   
+
+                    <p:outputLabel value="Purpose of payment *" style="font-weight: bold;" />    
+                    <p:selectOneMenu 
+                        id="paymentPurpose"      
+                        value="#{purchasingManager.selectedCashPayment.paymentPurpose}">
+
+                        <f:selectItems value="#{purchasingManager.paymentPurposes}" />
+
+                    </p:selectOneMenu>   
+
+                    <p:outputLabel value="Payment date *" style="font-weight: bold" />
+                    <p:calendar id="paymentDate"
+                                value="#{purchasingManager.selectedCashPayment.dateOfPayment}" 
+                                navigator="true" 
+                                autocomplete="off"
+                                required="true"
+                                requiredMessage="Payment Date Required"
+                                pattern="MMM dd, yyyy" />
+
+                    <p:outputLabel value="Receipt #" />
+                    <p:inputText value="#{purchasingManager.selectedCashPayment.receiptNumber}" 
+                                 maxlength="40" />
+                                
+
+                    <p:outputLabel value="Amount ($) *" style="font-weight: bold;" />
+                    <p:inputText value="#{purchasingManager.selectedCashPayment.payment}"  
+                                 id="paymentAmount"
+                                 styleClass="number-field"
+                                 required="true"
+                                 requiredMessage="Amount Required"
+                                 validator="requiredFieldValidator"
+                                 converterMessage="Invalid payment amount"
+                                 maxlength="15">
+
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                    </p:inputText> 
+
+                    <p:outputLabel value="Terms" />
+                    <p:inputTextarea
+                        value="#{purchasingManager.selectedCashPayment.paymentTerms}"
+                        style="width: 125%;"
+                        maxlength="250"
+                        rows="2" />             
+                </h:panelGrid>
+            </p:panel>
+            <p:toolbar style="margin-bottom: 1px;">
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{purchasingManager.okCashPayment}"
+                                     icon="pi pi-check"
+                                     update="cash_payment_dialog_growl"
+                                     process="@form"/>
+                    <p:spacer height="0" width="5"/>
+                    <p:commandButton value="Cancel"
+                                     immediate="true"
+                                     actionListener="#{purchasingManager.cancelCashPaymentEdit}"
+                                     icon="pi pi-times"
+                                     process="@this"/>    
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right" >  
+                    <h:outputText value="* Field required." style="font-weight: bold;" />            
+                </p:toolbarGroup>
+            </p:toolbar>
+
+        </h:form>      
+    </h:body>
+</html>
