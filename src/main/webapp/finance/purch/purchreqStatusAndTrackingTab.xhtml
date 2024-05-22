@@ -140,14 +140,20 @@ Email: info@dpbennett.com.jm
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
                                  update=":purchreqDialogForm:purchreq_growl,cashPaymentTable"
                                  icon="pi pi-plus"
-                                 process="@this" />
+                                 process="@this" >
+
+                    <p:ajax event="dialogReturn"                   
+                            update="cashPaymentTable"
+                            process="@this"/>
+
+                </p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>               
         <p:dataTable id="cashPaymentTable"
                      style="margin-top: 1px;margin-bottom: 1px;"
                      var="cashPayment"
                      reflow="true"
-                     editable="true"
+                     editable="false"
                      editMode="cell"
                      widgetVar="cashPaymentVar"
                      value="#{purchasingManager.cashPayments}">
@@ -165,6 +171,18 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
+            
+            <p:column headerText="Receipt #">
+                <p:cellEditor>
+                    <f:facet name="output">
+                        <p:outputLabel value="#{cashPayment.receiptNumber}" /> 
+                    </f:facet>
+                    <f:facet name="input">
+                        <p:inputText  value="#{cashPayment.receiptNumber}"/>                   
+                    </f:facet>   
+                </p:cellEditor>
+            </p:column>
+            
             <p:column headerText="Date">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -182,6 +200,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
+            
             <p:column headerText="Type">       
                 <p:cellEditor>
                     <f:facet name="output">
@@ -198,7 +217,8 @@ Email: info@dpbennett.com.jm
                         </p:selectOneMenu> 
                     </f:facet>   
                 </p:cellEditor>
-            </p:column>            
+            </p:column>   
+            
             <p:column headerText="Amount ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
@@ -211,6 +231,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>
                 </p:cellEditor>
             </p:column>
+            
             <p:column headerText="Purpose">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -221,6 +242,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
+            
             <p:column>
                 <p:commandButton 
                     disabled="#{!purchasingManager.isProcurementOfficer}"
@@ -236,7 +258,8 @@ Email: info@dpbennett.com.jm
                             process="@this"/>
 
                 </p:commandButton>          
-            </p:column>            
+            </p:column>    
+            
             <p:columnGroup type="footer">
                 <p:row>
                     <p:column colspan="2" 

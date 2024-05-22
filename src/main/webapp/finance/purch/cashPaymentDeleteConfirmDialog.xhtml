@@ -31,23 +31,21 @@ Email: info@dpbennett.com.jm
 
     <h:body>
         <h:form id="cashPaymentDeleteConfirmDialogForm">  
-            <p:panel style="border: 0">
-                <h:panelGrid cellpadding="5">
-                    <h:panelGroup>
-                        <p:outputLabel value="Are you sure you wish to delete this payment?" />                    
-                    </h:panelGroup>
-                    <h:panelGroup >                        
-                        <p:commandButton value="Yes"      
-                                         actionListener="#{purchasingManager.deleteCashPayment}" 
-                                         icon="pi pi-check"
-                                         process="@this"/>
-                        <p:spacer height="0" width="5"/>
-                        <p:commandButton value="No"
-                                         actionListener="#{purchasingManager.closeDialog}" 
-                                         icon="pi pi-times"/>   
-                    </h:panelGroup>
-                </h:panelGrid>
-            </p:panel>
+            <h:panelGrid cellpadding="5">
+                <h:panelGroup>
+                    <p:outputLabel value="Are you sure you wish to delete this payment?" />                    
+                </h:panelGroup>
+                <h:panelGroup >                        
+                    <p:commandButton value="Yes"      
+                                     actionListener="#{purchasingManager.deleteCashPayment}" 
+                                     icon="pi pi-check"
+                                     process="@this"/>
+                    <p:spacer height="0" width="5"/>
+                    <p:commandButton value="No"
+                                     actionListener="#{purchasingManager.closeDialog}" 
+                                     icon="pi pi-times"/>   
+                </h:panelGroup>
+            </h:panelGrid>
         </h:form>
     </h:body>
 </html>

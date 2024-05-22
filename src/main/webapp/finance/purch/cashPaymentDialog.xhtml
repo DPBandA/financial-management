@@ -81,11 +81,12 @@ Email: info@dpbennett.com.jm
                                 required="true"
                                 requiredMessage="Payment Date Required"
                                 pattern="MMM dd, yyyy" />
+                    
+                    <p:outputLabel value="Invoice #" />
+                    <p:inputText value="#{purchasingManager.selectedCashPayment.invoiceNumber}" />    
 
                     <p:outputLabel value="Receipt #" />
-                    <p:inputText value="#{purchasingManager.selectedCashPayment.receiptNumber}" 
-                                 maxlength="40" />
-                                
+                    <p:inputText value="#{purchasingManager.selectedCashPayment.receiptNumber}" />                                
 
                     <p:outputLabel value="Amount ($) *" style="font-weight: bold;" />
                     <p:inputText value="#{purchasingManager.selectedCashPayment.payment}"  
