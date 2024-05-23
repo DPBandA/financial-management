@@ -171,7 +171,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            
+
             <p:column headerText="Receipt #">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -182,7 +182,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            
+
             <p:column headerText="Date">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -200,7 +200,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            
+
             <p:column headerText="Type">       
                 <p:cellEditor>
                     <f:facet name="output">
@@ -218,7 +218,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>   
-            
+
             <p:column headerText="Amount ($)" >
                 <p:cellEditor>
                     <f:facet name="output">
@@ -231,7 +231,7 @@ Email: info@dpbennett.com.jm
                     </f:facet>
                 </p:cellEditor>
             </p:column>
-            
+
             <p:column headerText="Purpose">
                 <p:cellEditor>
                     <f:facet name="output">
@@ -242,24 +242,44 @@ Email: info@dpbennett.com.jm
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
-            
+
             <p:column>
-                <p:commandButton 
-                    disabled="#{!purchasingManager.isProcurementOfficer}"
-                    actionListener="#{purchasingManager.openCashPaymentDeleteConfirmDialog}"
-                    icon="pi pi-trash" 
-                    title="Delete payment" >
+                <p:menuButton id="toolsButton" 
+                              disabled="#{!purchasingManager.isProcurementOfficer}"
+                              icon="pi pi-pencil" 
+                              title="Edit or delete payment" >
 
-                    <f:setPropertyActionListener value="#{cashPayment}"
-                                                 target="#{purchasingManager.selectedCashPayment}" />
+                    <p:menuitem value="Edit"
+                                actionListener="#{purchasingManager.editCashPayment}"
+                                update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
+                                icon="pi pi-pencil"
+                                process="@this">
 
-                    <p:ajax event="dialogReturn"               
-                            update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
-                            process="@this"/>
+                        <f:setPropertyActionListener value="#{cashPayment}"
+                                                     target="#{purchasingManager.selectedCashPayment}" />
 
-                </p:commandButton>          
+                        <p:ajax event="dialogReturn"               
+                                update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
+                                process="@this"/>
+
+                    </p:menuitem>
+
+                    <p:menuitem value="Delete"
+                                actionListener="#{purchasingManager.openCashPaymentDeleteConfirmDialog}"
+                                icon="pi pi-trash"
+                                process="@this">
+
+                        <f:setPropertyActionListener value="#{cashPayment}"
+                                                     target="#{purchasingManager.selectedCashPayment}" />
+
+                        <p:ajax event="dialogReturn"               
+                                update="cashPaymentTable,:purchreqDialogForm:purchreq_growl"
+                                process="@this"/>
+
+                    </p:menuitem>
+                </p:menuButton>        
             </p:column>    
-            
+
             <p:columnGroup type="footer">
                 <p:row>
                     <p:column colspan="2" 
