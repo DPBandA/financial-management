@@ -67,14 +67,14 @@ Email: info@dpbennett.com.jm
             Financial Options
         </f:facet>
 
-        <p:column headerText="Description">
+        <p:column headerText="Name">
             <p:cellEditor>
                 <f:facet name="output"> 
-                    <p:outputLabel value="#{systemOption.comments}" />
+                    <p:outputLabel value="#{systemOption.name}" />
                 </f:facet>
-                <f:facet name="input"><p:inputText value="#{systemOption.comments}"/></f:facet>
-            </p:cellEditor>                                           
-        </p:column>   
+                <f:facet name="input"><p:inputText value="#{systemOption.name}"/></f:facet>
+            </p:cellEditor>                                         
+        </p:column>  
 
         <p:column headerText="Value">
             <p:cellEditor>
@@ -83,7 +83,16 @@ Email: info@dpbennett.com.jm
                 </f:facet>
                 <f:facet name="input"><p:inputText value="#{systemOption.optionValue}"/></f:facet>
             </p:cellEditor>                                         
-        </p:column>   
+        </p:column>  
+
+        <p:column headerText="Description">
+            <p:cellEditor>
+                <f:facet name="output"> 
+                    <p:outputLabel value="#{systemOption.comments}" />
+                </f:facet>
+                <f:facet name="input"><p:inputText value="#{systemOption.comments}"/></f:facet>
+            </p:cellEditor>                                           
+        </p:column>           
 
         <p:column>
             <p:commandButton title="View or edit system option"   
