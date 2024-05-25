@@ -24,7 +24,7 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <p:toolbar style="margin-bottom: 1px;">
+    <p:toolbar style="margin-bottom: 1px;" id="currencyToolbar">
         <p:toolbarGroup>
             <p:outputLabel value="Currency"
                            for="currency"
@@ -49,23 +49,34 @@ Email: info@dpbennett.com.jm
                             completeMethod="#{purchasingManager.completeCurrency}" >
 
                 <p:ajax event="itemSelect"
-                        update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                        update="currencyToolbar,rate,rateLabel,rateSpacer,:purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
                         listener="#{purchasingManager.updateTotalCost}"
                         process="@this" />
 
             </p:autoComplete> 
         </p:toolbarGroup>   
-        <p:toolbarGroup align="right">
-            <p:outputLabel value="USD-JMD exchange rate"
+        <p:toolbarGroup align="right" >
+            <p:outputLabel value="#{purchasingManager.currencyExchangeRateLabel}"                              
+                           rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                           id="rateLabel"
                            for="rate"
-                           rendered="true"
                            style="font-weight: bold;" />  
-            <p:spacer width="10"/>
-            <p:inputText id="rate" 
-                         rendered="true"
-                         required="true"
-                         requiredMessage="Exchange rate required"
-                         value="" />
+            <p:spacer width="10" 
+                      rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                      id="rateSpacer"/>
+            <p:inputNumber rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                           id="rate"
+                           required="true"
+                           decimalPlaces="4"
+                           requiredMessage="Exchange rate required"
+                           value="#{purchasingManager.selectedPurchaseRequisition.currencyExchangeRate}" >
+
+                <p:ajax event="change"
+                        update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                        listener="#{purchasingManager.updateTotalCost}"
+                        process="@this" />
+
+            </p:inputNumber>
         </p:toolbarGroup>
     </p:toolbar>
 
@@ -256,7 +267,7 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel style="font-weight: bold"
                                value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}):"  />
 
-                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCostExchangeRated}" 
                                id="totalCost"                       
                                style="font-weight: bold"
                                styleClass="datatable-number-field" >
