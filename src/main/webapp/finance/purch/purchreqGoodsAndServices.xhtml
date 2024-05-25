@@ -190,7 +190,7 @@ Email: info@dpbennett.com.jm
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
                 <f:facet name="output">
-                    <p:outputLabel value="#{costComponent.rate}" >
+                    <p:outputLabel value="#{costComponent.convertedRate}" >
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
                     </p:outputLabel>
                 </f:facet>
@@ -210,7 +210,7 @@ Email: info@dpbennett.com.jm
 
         <p:column headerText="Cost (#{purchasingManager.defaultCurrencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
-            <p:outputLabel value="#{costComponent.cost}" >
+            <p:outputLabel value="#{costComponent.convertedCost}" >
                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
             </p:outputLabel>
 
@@ -268,7 +268,7 @@ Email: info@dpbennett.com.jm
                 <p:outputLabel style="font-weight: bold"
                                value="Total (#{purchasingManager.defaultCurrencySymbol}):"  />
 
-                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.convertedTotalCost}" 
                                id="totalCost"                       
                                style="font-weight: bold"
                                styleClass="datatable-number-field" >

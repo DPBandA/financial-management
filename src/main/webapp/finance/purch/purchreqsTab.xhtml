@@ -97,11 +97,11 @@ Email: info@dpbennett.com.jm
             </p:outputLabel>
         </p:column>
 
-        <p:column sortBy="#{pr.totalCost}">
+        <p:column sortBy="#{pr.convertedTotalCost}">
             <f:facet name="header">
                 <p:outputLabel value="Total cost"/>
             </f:facet>
-            <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.totalCost)}" />  
+            <p:outputLabel value="#{purchasingManager.formatAsCurrency(pr.convertedTotalCost)}" />  
         </p:column>
         
         <p:column sortBy="#{pr.approversAndRecommendersList}">
