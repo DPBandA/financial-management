@@ -186,7 +186,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value=" " />
         </p:column>
 
-        <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
+        <p:column headerText="Unit Cost (#{purchasingManager.defaultCurrencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
                 <f:facet name="output">
@@ -208,7 +208,8 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value=" " />
         </p:column>
 
-        <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" rendered="#{!costComponent.isHeading}">
+        <p:column headerText="Cost (#{purchasingManager.defaultCurrencySymbol})" 
+                  rendered="#{!costComponent.isHeading}">
             <p:outputLabel value="#{costComponent.cost}" >
                 <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
             </p:outputLabel>
@@ -265,9 +266,9 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="right">
             <h:panelGrid columns="2" cellspacing="10">
                 <p:outputLabel style="font-weight: bold"
-                               value="Total (#{purchasingManager.selectedPurchaseRequisition.currencySymbol}):"  />
+                               value="Total (#{purchasingManager.defaultCurrencySymbol}):"  />
 
-                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCostExchangeRated}" 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
                                id="totalCost"                       
                                style="font-weight: bold"
                                styleClass="datatable-number-field" >
