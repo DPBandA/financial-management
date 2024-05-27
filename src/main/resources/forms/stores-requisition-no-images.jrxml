@@ -323,7 +323,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField>
+							<textField textAdjust="ScaleFont">
 								<reportElement x="0" y="0" width="71" height="30" uuid="20169df6-d2c4-45f8-b29f-5bbc96592fc3"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$V{itemNum}]]></textFieldExpression>
@@ -341,7 +341,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField textAdjust="StretchHeight">
+							<textField textAdjust="ScaleFont">
 								<reportElement x="0" y="0" width="162" height="30" uuid="1fd42b07-562f-40c6-8ff0-dff2e935d95b">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
@@ -364,7 +364,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField textAdjust="StretchHeight">
+							<textField textAdjust="ScaleFont">
 								<reportElement x="0" y="0" width="63" height="30" uuid="677c538e-02b1-40b6-9d32-2a25bee74b2c">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
@@ -387,7 +387,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField textAdjust="StretchHeight">
+							<textField textAdjust="ScaleFont">
 								<reportElement x="0" y="0" width="91" height="30" uuid="82330ae6-caff-4639-89c0-bb3e4d489b35">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
@@ -410,7 +410,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField textAdjust="StretchHeight" pattern="#,##0.00#;(#,##0.00#-)">
+							<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)">
 								<reportElement x="0" y="0" width="90" height="30" uuid="02583a7e-1366-4ebb-b1df-56c49c825e48">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
@@ -433,7 +433,7 @@ jmts.inventoryrequisition.`ID` = $P{reqId}]]>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
-							<textField textAdjust="StretchHeight" pattern="¤#,##0.00#;¤(#,##0.00#-)">
+							<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)">
 								<reportElement x="0" y="0" width="90" height="30" uuid="f21d2267-9c28-4412-86e1-95bd96d4a171">
 									<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 									<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>

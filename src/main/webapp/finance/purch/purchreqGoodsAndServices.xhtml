@@ -102,7 +102,7 @@ Email: info@dpbennett.com.jm
     <p:dataTable  var="costComponent"
                   id="costComponentTable"
                   rowStyleClass="#{costComponent.isHeading ? 'header' : null}"
-                  editable="true"
+                  editable="false"
                   editMode="row"
                   reflow="true"
                   widgetVar="costComponentVar"
@@ -191,7 +191,9 @@ Email: info@dpbennett.com.jm
             <p:cellEditor>
                 <f:facet name="output">
                     <p:outputLabel value="#{costComponent.convertedRate}" >
-                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        <f:convertNumber minFractionDigits="2" 
+                                         pattern="#,###.##;(#,###.##)"
+                                         maxFractionDigits="2"/>
                     </p:outputLabel>
                 </f:facet>
                 <f:facet name="input">
@@ -211,7 +213,9 @@ Email: info@dpbennett.com.jm
         <p:column headerText="Cost (#{purchasingManager.defaultCurrencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
             <p:outputLabel value="#{costComponent.convertedCost}" >
-                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                <f:convertNumber minFractionDigits="2" 
+                                 pattern="#,###.##;(#,###.##)"
+                                 maxFractionDigits="2"/>
             </p:outputLabel>
 
         </p:column>
@@ -223,7 +227,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value=" " />
         </p:column>
 
-        <p:column>
+        <p:column rendered="false">
             <p:rowEditor editTitle="Edit cost component"
                          cancelTitle="Cancel cost component edit" 
                          saveTitle="Save cost component"/>
@@ -232,7 +236,7 @@ Email: info@dpbennett.com.jm
         <p:column>
             <p:menuButton id="toolsButton" 
                           title="Edit or delete cost component"
-                          icon="pi pi-ellipsis-v" >
+                          icon="pi pi-pencil" >
                 <p:menuitem   
                     value="Edit"
                     actionListener="#{purchasingManager.editCostComponent}"
@@ -272,7 +276,9 @@ Email: info@dpbennett.com.jm
                                id="totalCost"                       
                                style="font-weight: bold"
                                styleClass="datatable-number-field" >
-                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    <f:convertNumber minFractionDigits="2" 
+                                     pattern="#,###.##;(#,###.##)"
+                                     maxFractionDigits="2"/>
                 </p:outputLabel>
             </h:panelGrid>
         </p:toolbarGroup>

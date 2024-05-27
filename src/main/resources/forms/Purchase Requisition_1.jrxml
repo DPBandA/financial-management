@@ -134,6 +134,7 @@ WHERE
 	<parameter name="executiveDirectorRecommendation" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="terms" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="purchaseOrderDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="importLicenceNo" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -391,7 +392,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="StretchHeight" pattern="#,###.##;(-#,###.##)" isBlankWhenNull="true">
+							<textField textAdjust="StretchHeight" pattern="#,###.##;(#,###.##)" isBlankWhenNull="true">
 								<reportElement stretchType="ContainerBottom" mode="Transparent" x="0" y="0" width="70" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8821b420-88b2-4011-b6ff-818e89f00a2a"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
@@ -421,7 +422,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22">
-							<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+							<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="60" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="df961954-2953-484c-aa48-6622162cffb6"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
@@ -448,7 +449,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22">
-							<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+							<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="71" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="7e6aec7b-74c6-4de0-baba-39dff5c7ca94"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
@@ -496,7 +497,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{supplierName2}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Opaque" x="500" y="371" width="71" height="40" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="4ae65019-6e5f-459e-93fb-d7092054b4de"/>
 				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -568,25 +569,25 @@ WHERE
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="80" width="110" height="98" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="cf0c0e73-6a88-4124-918a-4c76b79ab9aa"/>
+			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="0" y="98" width="110" height="80" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="5931df27-1326-410b-8830-c8d9ef871e65"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{importLicenceNo}]]></textFieldExpression>
+			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement mode="Opaque" x="110" y="80" width="121" height="98" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="84021678-0baa-4b9f-9c5d-98c00410e22b"/>
+				<reportElement mode="Opaque" x="110" y="98" width="121" height="80" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="84021678-0baa-4b9f-9c5d-98c00410e22b"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="0.0"/>
@@ -597,10 +598,10 @@ WHERE
 				<textFieldExpression><![CDATA[$P{terms}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
-				<reportElement mode="Opaque" x="231" y="80" width="98" height="98" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="dc93c0ad-0aed-476d-9b6a-4a38bdb26506"/>
+				<reportElement mode="Opaque" x="231" y="98" width="98" height="80" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="dc93c0ad-0aed-476d-9b6a-4a38bdb26506"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="1.0"/>
+					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -1431,6 +1432,45 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{procurementOfficer}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="80" width="110" height="18" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8caa6130-3cc3-4a81-9f7a-061577ba4fd2"/>
+				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineColor="#003366"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="10" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Licence #]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="110" y="80" width="121" height="18" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="05b6e73d-a2c2-4bba-8bf3-977409ad5b69">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineColor="#003366"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="10" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Terms]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="231" y="80" width="98" height="18" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="86cb852e-0b61-425c-809e-1854a4cbf9da">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
+					<pen lineWidth="1.0" lineColor="#003366"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement>
+					<font fontName="SansSerif" size="10" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Date]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<columnFooter>
