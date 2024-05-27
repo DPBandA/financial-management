@@ -19,11 +19,13 @@
 		<queryString>
 			<![CDATA[SELECT purchaserequisition.`ID`,
 	costcomponent.`CONVERTEDRATE`,
+	costcomponent.`RATE`,
 	costcomponent.`HOURS`,
 	costcomponent.`NAME`,
 	costcomponent.`CODE`,
 	costcomponent.`HOURSORQUANTITY`,
 	costcomponent.`CONVERTEDCOST`,
+	costcomponent.`COST`,
 	costcomponent.`UNIT`
 FROM purchaserequisition_costcomponent
 	INNER JOIN costcomponent ON 
@@ -41,6 +43,11 @@ WHERE
 		<field name="CONVERTEDRATE" class="java.lang.Double">
 			<property name="com.jaspersoft.studio.field.name" value="CONVERTEDRATE"/>
 			<property name="com.jaspersoft.studio.field.label" value="CONVERTEDRATE"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="costcomponent"/>
+		</field>
+		<field name="RATE" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="RATE"/>
+			<property name="com.jaspersoft.studio.field.label" value="RATE"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="costcomponent"/>
 		</field>
 		<field name="HOURS" class="java.lang.Double">
@@ -66,6 +73,11 @@ WHERE
 		<field name="CONVERTEDCOST" class="java.lang.Double">
 			<property name="com.jaspersoft.studio.field.name" value="CONVERTEDCOST"/>
 			<property name="com.jaspersoft.studio.field.label" value="CONVERTEDCOST"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="costcomponent"/>
+		</field>
+		<field name="COST" class="java.lang.Double">
+			<property name="com.jaspersoft.studio.field.name" value="COST"/>
+			<property name="com.jaspersoft.studio.field.label" value="COST"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="costcomponent"/>
 		</field>
 		<field name="UNIT" class="java.lang.String">
@@ -160,6 +172,7 @@ WHERE
 	<parameter name="quotationNumber" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["QN-0001"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="currencyExchangeRate" class="java.lang.Double" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -510,7 +523,7 @@ WHERE
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{CONVERTEDRATE}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{RATE}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -541,7 +554,7 @@ WHERE
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
 								</textElement>
-								<textFieldExpression><![CDATA[$F{CONVERTEDCOST}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{COST}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -562,7 +575,9 @@ WHERE
 				<textFieldExpression><![CDATA[$F{supplierName}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="500" y="260" width="71" height="40" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="4ae65019-6e5f-459e-93fb-d7092054b4de"/>
+				<reportElement positionType="Float" mode="Transparent" x="500" y="280" width="71" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="4ae65019-6e5f-459e-93fb-d7092054b4de">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 					<topPen lineWidth="0.0"/>
@@ -626,7 +641,9 @@ WHERE
 				<text><![CDATA[Shipping Instructions]]></text>
 			</staticText>
 			<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
-				<reportElement positionType="Float" mode="Transparent" x="440" y="260" width="60" height="40" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9180788-54bf-47c4-aefe-78e1ec545251"/>
+				<reportElement positionType="Float" mode="Transparent" x="440" y="280" width="60" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9180788-54bf-47c4-aefe-78e1ec545251">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
 				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 					<topPen lineWidth="0.0"/>
@@ -963,6 +980,38 @@ WHERE
 					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Transparent" x="440" y="260" width="60" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f019ceed-b8fd-48dd-82c4-90b4e1210f62">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<pen lineWidth="1.0" lineColor="#003366"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="SansSerif" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EXCH. RATE]]></text>
+			</staticText>
+			<textField textAdjust="StretchHeight" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+				<reportElement positionType="Float" mode="Transparent" x="500" y="260" width="71" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="73b9ac97-539f-4842-a34f-03f72876c5e0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
+					<pen lineWidth="1.0" lineColor="#003366"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{currencyExchangeRate}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="648">

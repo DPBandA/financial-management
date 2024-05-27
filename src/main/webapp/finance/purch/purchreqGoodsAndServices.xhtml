@@ -186,11 +186,11 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value=" " />
         </p:column>
 
-        <p:column headerText="Unit Cost (#{purchasingManager.defaultCurrencySymbol})" 
+        <p:column headerText="Unit Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
             <p:cellEditor>
                 <f:facet name="output">
-                    <p:outputLabel value="#{costComponent.convertedRate}" >
+                    <p:outputLabel value="#{costComponent.rate}" >
                         <f:convertNumber minFractionDigits="2" 
                                          pattern="#,###.##;(#,###.##)"
                                          maxFractionDigits="2"/>
@@ -210,9 +210,9 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value=" " />
         </p:column>
 
-        <p:column headerText="Cost (#{purchasingManager.defaultCurrencySymbol})" 
+        <p:column headerText="Cost (#{purchasingManager.selectedPurchaseRequisition.currencySymbol})" 
                   rendered="#{!costComponent.isHeading}">
-            <p:outputLabel value="#{costComponent.convertedCost}" >
+            <p:outputLabel value="#{costComponent.cost}" >
                 <f:convertNumber minFractionDigits="2" 
                                  pattern="#,###.##;(#,###.##)"
                                  maxFractionDigits="2"/>
