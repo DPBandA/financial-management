@@ -138,12 +138,12 @@ WHERE
 	<parameter name="teamLeaderApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalManagerApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalDirectorApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="teamLeaderApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["Donna Marshall"]]></defaultValueExpression>
@@ -1016,7 +1016,7 @@ WHERE
 		</band>
 		<band height="648">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="206" width="569" height="55" uuid="98d84dab-0734-4e92-8373-645f3a745314">
+				<reportElement mode="Opaque" x="0" y="253" width="569" height="55" uuid="98d84dab-0734-4e92-8373-645f3a745314">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1030,7 +1030,7 @@ WHERE
 ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="264" width="569" height="15" uuid="f4aff6aa-acc8-4552-9b99-1cb444573da6">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="311" width="569" height="15" uuid="f4aff6aa-acc8-4552-9b99-1cb444573da6">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -1039,7 +1039,7 @@ WHERE
 				<text><![CDATA[The criteria for the rating are as follows:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="280" width="198" height="20" uuid="5c73eda8-1fbe-483c-8d2b-b45744d78102"/>
+				<reportElement positionType="Float" mode="Opaque" x="1" y="327" width="198" height="20" uuid="5c73eda8-1fbe-483c-8d2b-b45744d78102"/>
 				<box leftPadding="0">
 					<pen lineWidth="3.0"/>
 				</box>
@@ -1049,7 +1049,7 @@ WHERE
 				<text><![CDATA[CRITERIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="280" width="191" height="20" uuid="d63731ae-2fbf-4d84-877c-5c51fdabf78a"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="327" width="191" height="20" uuid="d63731ae-2fbf-4d84-877c-5c51fdabf78a"/>
 				<box leftPadding="0">
 					<pen lineWidth="3.0"/>
 				</box>
@@ -1059,7 +1059,7 @@ WHERE
 				<text><![CDATA[SERVICES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="280" width="179" height="20" uuid="9a610aa0-a694-4e23-9f03-2f0477c26219"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="327" width="179" height="20" uuid="9a610aa0-a694-4e23-9f03-2f0477c26219"/>
 				<box leftPadding="0">
 					<pen lineWidth="3.0"/>
 				</box>
@@ -1069,7 +1069,7 @@ WHERE
 				<text><![CDATA[GOODS]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="300" width="198" height="20" uuid="416717cd-0d99-432f-82cc-3b9304399399">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="347" width="198" height="20" uuid="416717cd-0d99-432f-82cc-3b9304399399">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1081,7 +1081,7 @@ WHERE
 				<text><![CDATA[Responsiveness]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="300" width="370" height="20" uuid="b0ee0ce3-72c1-47ac-9632-17f6de687207"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="347" width="370" height="20" uuid="b0ee0ce3-72c1-47ac-9632-17f6de687207"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1091,7 +1091,7 @@ WHERE
 				<text><![CDATA[Timely responses to queries and progress reports, submission of quotations]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="320" width="198" height="20" uuid="1d74d8bd-eaf9-4e5f-a4ea-4d27b209a545">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="367" width="198" height="20" uuid="1d74d8bd-eaf9-4e5f-a4ea-4d27b209a545">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1103,7 +1103,7 @@ WHERE
 				<text><![CDATA[Courtesy ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="320" width="370" height="20" uuid="1480b3ef-ed3d-4531-9148-7218f364ac3d"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="367" width="370" height="20" uuid="1480b3ef-ed3d-4531-9148-7218f364ac3d"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1113,7 +1113,7 @@ WHERE
 				<text><![CDATA[Politeness, kind consideration and cooperation of the company’s representatives]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="340" width="198" height="30" uuid="e75609e9-99c0-47e1-ad05-546be711a206">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="387" width="198" height="30" uuid="e75609e9-99c0-47e1-ad05-546be711a206">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1125,7 +1125,7 @@ WHERE
 				<text><![CDATA[Timeliness of Service Delivered]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="340" width="191" height="30" uuid="569ecc1d-1775-49b3-be8c-3b17b1bc6c6a">
+				<reportElement positionType="Float" mode="Opaque" x="199" y="387" width="191" height="30" uuid="569ecc1d-1775-49b3-be8c-3b17b1bc6c6a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1137,7 +1137,7 @@ WHERE
 				<text><![CDATA[Adhering to contract timelines & schedules]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="340" width="179" height="30" uuid="d213b500-a6e3-4908-b94b-1c548f63e722">
+				<reportElement positionType="Float" mode="Opaque" x="390" y="387" width="179" height="30" uuid="d213b500-a6e3-4908-b94b-1c548f63e722">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1149,7 +1149,7 @@ WHERE
 				<text><![CDATA[Deliveries made within specified timelines]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="370" width="198" height="30" uuid="0ac37c98-7390-4c13-beeb-61e43af5e7e3">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="417" width="198" height="30" uuid="0ac37c98-7390-4c13-beeb-61e43af5e7e3">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1161,7 +1161,7 @@ WHERE
 				<text><![CDATA[Knowledge & Experience]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="370" width="191" height="30" uuid="e2ae956e-7724-4430-ab8c-785453214cb6"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="417" width="191" height="30" uuid="e2ae956e-7724-4430-ab8c-785453214cb6"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1171,7 +1171,7 @@ WHERE
 				<text><![CDATA[Demonstration of practical knowledge & experience in the area of expertise]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="370" width="179" height="30" uuid="f56d0e97-f604-4c8e-85f7-8737ed5a2ceb"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="417" width="179" height="30" uuid="f56d0e97-f604-4c8e-85f7-8737ed5a2ceb"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1181,7 +1181,7 @@ WHERE
 				<text><![CDATA[N/A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="400" width="198" height="40" uuid="6acc9be8-40d1-4d63-8454-53bfec06e463">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="447" width="198" height="40" uuid="6acc9be8-40d1-4d63-8454-53bfec06e463">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1193,7 +1193,7 @@ WHERE
 				<text><![CDATA[Quality of Work Completed]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="400" width="191" height="40" uuid="820c0113-e303-4471-9310-85c5c1c41145"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="447" width="191" height="40" uuid="820c0113-e303-4471-9310-85c5c1c41145"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1203,7 +1203,7 @@ WHERE
 				<text><![CDATA[Services performed with the degree of skill & diligence normally practiced by professionals performing similar work]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="400" width="179" height="40" uuid="71463f80-95c2-43e0-8514-39b1a61e8106"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="447" width="179" height="40" uuid="71463f80-95c2-43e0-8514-39b1a61e8106"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1213,7 +1213,7 @@ WHERE
 				<text><![CDATA[N/A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="440" width="198" height="30" uuid="6fc76ff5-aeae-4359-b1cc-525ba003ef90">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="487" width="198" height="30" uuid="6fc76ff5-aeae-4359-b1cc-525ba003ef90">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1225,7 +1225,7 @@ WHERE
 				<text><![CDATA[Meeting Deliverables]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="440" width="191" height="30" uuid="31dfcb2a-8801-4c3d-bfb7-c01203c0f8f6"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="487" width="191" height="30" uuid="31dfcb2a-8801-4c3d-bfb7-c01203c0f8f6"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1235,7 +1235,7 @@ WHERE
 				<text><![CDATA[Deliverables meet the criteria established in the contract]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="440" width="179" height="30" uuid="e0371dd1-3100-4632-ba9f-64d4641df905"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="487" width="179" height="30" uuid="e0371dd1-3100-4632-ba9f-64d4641df905"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1245,7 +1245,7 @@ WHERE
 				<text><![CDATA[N/A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="470" width="198" height="55" uuid="e60bc048-a366-45cc-b8ae-6975ef3386e8">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="517" width="198" height="55" uuid="e60bc048-a366-45cc-b8ae-6975ef3386e8">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1257,7 +1257,7 @@ WHERE
 				<text><![CDATA[Presentation of Product]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="470" width="191" height="55" uuid="2884fe4b-6e7f-42fa-b37c-21b1b0daf029"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="517" width="191" height="55" uuid="2884fe4b-6e7f-42fa-b37c-21b1b0daf029"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1267,7 +1267,7 @@ WHERE
 				<text><![CDATA[N/A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="470" width="179" height="55" uuid="67d3f108-8874-422d-a4e9-54a35f4f6d64"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="517" width="179" height="55" uuid="67d3f108-8874-422d-a4e9-54a35f4f6d64"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1277,7 +1277,7 @@ WHERE
 				<text><![CDATA[Chemical reagent labels, manuals, calibration certificates and other written instructions on items must be intact, legible and in English]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="1" y="525" width="198" height="40" uuid="13f6bff5-b74d-425c-a5ba-420f38524d90">
+				<reportElement positionType="Float" mode="Opaque" x="1" y="572" width="198" height="40" uuid="13f6bff5-b74d-425c-a5ba-420f38524d90">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box leftPadding="3">
@@ -1289,7 +1289,7 @@ WHERE
 				<text><![CDATA[Packaging]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="199" y="525" width="191" height="40" uuid="f5fc3d0d-ae80-4bbb-af34-d6b6fa7b9f34"/>
+				<reportElement positionType="Float" mode="Opaque" x="199" y="572" width="191" height="40" uuid="f5fc3d0d-ae80-4bbb-af34-d6b6fa7b9f34"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1299,7 +1299,7 @@ WHERE
 				<text><![CDATA[N/A]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="390" y="525" width="179" height="40" uuid="b5294a95-e35d-4063-ad37-0d85807eed9e"/>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="572" width="179" height="40" uuid="b5294a95-e35d-4063-ad37-0d85807eed9e"/>
 				<box leftPadding="3">
 					<pen lineWidth="1.0"/>
 				</box>
@@ -1309,7 +1309,7 @@ WHERE
 				<text><![CDATA[Items delivered are appropriately sealed, packaged for storage, where applicable, expiry dates stated]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="176" width="569" height="30" uuid="387baceb-973f-41c9-9d8e-922d0044d920">
+				<reportElement mode="Opaque" x="0" y="223" width="569" height="30" uuid="387baceb-973f-41c9-9d8e-922d0044d920">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1319,7 +1319,7 @@ WHERE
 				<text><![CDATA[Suppliers will be subject to a post evaluation by rating each purchase according to the following:  Poor = 1, Satisfactory = 2 or Excellent = 3.  A poor rating (1) is a failing score.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="156" width="569" height="20" uuid="bfb62dbf-e5bf-4c89-84f1-c0db90c3cc57">
+				<reportElement mode="Opaque" x="0" y="203" width="569" height="20" uuid="bfb62dbf-e5bf-4c89-84f1-c0db90c3cc57">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
@@ -1344,7 +1344,7 @@ WHERE
 				<text><![CDATA[Terms and Conditions]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="50" width="569" height="14" uuid="0e65ac06-39ae-44c5-8c4b-e6ffaf380d2e">
+				<reportElement mode="Opaque" x="0" y="53" width="569" height="14" uuid="0e65ac06-39ae-44c5-8c4b-e6ffaf380d2e">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -1353,7 +1353,7 @@ WHERE
 				<text><![CDATA[This order is subject to strict compliance with the instructions and conditions contained therein.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="64" width="569" height="14" uuid="c4bb42cb-9bb6-45f6-8c21-4c0f0dfbc191">
+				<reportElement mode="Opaque" x="0" y="80" width="569" height="14" uuid="c4bb42cb-9bb6-45f6-8c21-4c0f0dfbc191">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1363,7 +1363,7 @@ WHERE
 				<text><![CDATA[All invoices, advices, and correspondences must quote order number.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="78" width="569" height="30" uuid="9b5c6bfc-2e01-4ca5-bcbb-3e627bc2babd">
+				<reportElement mode="Opaque" x="0" y="107" width="569" height="30" uuid="9b5c6bfc-2e01-4ca5-bcbb-3e627bc2babd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1373,7 +1373,7 @@ WHERE
 				<text><![CDATA[The Bureau of Standards reserves the right to cancel the order, or return part or all of the goods on this order at the supplier’s expense, if for any reason the goods are not in every respect as represented.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="108" width="569" height="14" uuid="392618de-acca-49f2-b2eb-43b4bb4301e1">
+				<reportElement mode="Opaque" x="0" y="147" width="569" height="14" uuid="392618de-acca-49f2-b2eb-43b4bb4301e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left">
@@ -1382,7 +1382,7 @@ WHERE
 				<text><![CDATA[Rejected goods are the property of the supplier, and remain on the Bureau’s property at the supplier’s risk.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="122" width="569" height="14" uuid="05278b71-63bf-4ebf-9a17-fd4b9d5b70af">
+				<reportElement mode="Opaque" x="0" y="175" width="569" height="14" uuid="05278b71-63bf-4ebf-9a17-fd4b9d5b70af">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>
@@ -1392,7 +1392,7 @@ WHERE
 				<text><![CDATA[Part shipment of goods will be accepted according to prior arrangements.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="567" width="569" height="32" uuid="fc809e79-deb1-4a9f-8f4e-9b05cdba4209">
+				<reportElement mode="Opaque" x="0" y="614" width="569" height="32" uuid="fc809e79-deb1-4a9f-8f4e-9b05cdba4209">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 				</reportElement>

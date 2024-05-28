@@ -86,7 +86,7 @@ Email: info@dpbennett.com.jm
 
             <p:dataTable  var="costComponent"
                           id="costComponentTable"
-                          editable="true"
+                          editable="false"
                           editMode="row"
                           paginator="true"                                 
                           rows="15"
@@ -161,7 +161,7 @@ Email: info@dpbennett.com.jm
                     </p:outputLabel> 
                 </p:column>
 
-                <p:column>
+                <p:column rendered="false">
                     <p:rowEditor editTitle="Edit cost component"
                                  cancelTitle="Cancel cost component edit"                             
                                  saveTitle="Save cost component"/>
@@ -170,7 +170,7 @@ Email: info@dpbennett.com.jm
                 <p:column>
                     <p:menuButton id="toolsButton" 
                                   title="Edit or delete cost component"
-                                  icon="pi pi-ellipsis-v" >
+                                  icon="pi pi-pencil" >
                         <p:menuitem   
                             value="Edit"
                             actionListener="#{inventoryManager.editCostComponent}"

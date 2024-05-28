@@ -136,7 +136,7 @@ Email: info@dpbennett.com.jm
 
             <p:dataTable  var="disbursement"
                           id="disbursementTable"
-                          editable="true"
+                          editable="false"
                           editMode="row"
                           reflow="true"
                           paginator="true"                                 
@@ -238,7 +238,7 @@ Email: info@dpbennett.com.jm
                     </p:outputLabel> 
                 </p:column>
 
-                <p:column>
+                <p:column rendered="false">
                     <p:rowEditor editTitle="Edit disbursement"
                                  cancelTitle="Cancel disbursement edit"                             
                                  saveTitle="Save disbursement"/>
@@ -247,7 +247,7 @@ Email: info@dpbennett.com.jm
                 <p:column>
                     <p:menuButton id="toolsButton" 
                                   title="Edit or delete disbursement"
-                                  icon="pi pi-ellipsis-v" >
+                                  icon="pi pi-pencil" >
                         <p:menuitem   
                             value="Edit"
                             rendered="true"

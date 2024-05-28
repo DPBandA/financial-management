@@ -139,18 +139,18 @@ WHERE
 	<parameter name="teamLeaderApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalManagerApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalDirectorApproval" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorApproval" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="teamLeaderApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="teamLeaderRecommendation" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalManagerRecommendation" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="divisionalDirectorRecommendation" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="financeManagerRecommendation" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorRecommendation" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="executiveDirectorRecommendation" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="terms" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="purchaseOrderDate" class="java.lang.String" isForPrompting="false"/>
@@ -1193,7 +1193,7 @@ WHERE
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[FINANCE MANAGER]]></text>
+				<text><![CDATA[FINANCE DIRECTOR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement positionType="Float" mode="Transparent" x="0" y="510" width="140" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c8c6a681-6258-4b1e-8890-4391a65b1087"/>
@@ -1223,7 +1223,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{financeManagerRecommendation}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{financeDirectorRecommendation}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="140" y="510" width="90" height="20" forecolor="#000000" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="58cdc21c-8e56-4193-bae5-9ad4f6061805"/>
@@ -1364,7 +1364,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{financeManagerApproval}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{financeDirectorApproval}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="230" y="510" width="110" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d90eeff7-8a51-4fae-80f5-2ff0e559344f"/>
@@ -1414,7 +1414,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="10" isUnderline="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{financeManagerApprovalDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{financeDirectorApprovalDate}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="368" y="510" width="72" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="ef97a094-adc1-43e7-b046-e216213660f2"/>
