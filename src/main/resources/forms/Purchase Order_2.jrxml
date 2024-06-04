@@ -135,6 +135,16 @@ WHERE
 	<parameter name="purchaseOrderNo" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["445786544"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="teamLeaderApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="divisionalManagerApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="divisionalDirectorApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="executiveDirectorApproval" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="teamLeaderApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="divisionalManagerApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="divisionalDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="financeDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="executiveDirectorApprovalDate" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="procurementOfficer" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["Donna Marshall"]]></defaultValueExpression>
 	</parameter>

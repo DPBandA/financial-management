@@ -26,6 +26,10 @@
     <converter>
         <converter-id>activeInventoryProductConverter</converter-id>
         <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryProductConverter</converter-class>
+    </converter>
+    <converter>
+        <converter-id>activeInventoryConverter</converter-id>
+        <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryConverter</converter-class>
     </converter>   
        
     <validator>
