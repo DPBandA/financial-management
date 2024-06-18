@@ -39,12 +39,15 @@ Email: info@dpbennett.com.jm
                         title="#{purchasingManager.selectedPurchaseRequisition.currency}"
                         itemValue="#{currency}"
                         itemLabel="#{currency.name}"
-                        converter="currencyConverter"
                         validator="businessEntityValidator"
                         required="true"
                         cache="true"
                         requiredMessage="Currency Required"
-                        completeMethod="#{purchasingManager.completeCurrency}" >
+                        completeMethod="#{financeManager.completeCurrency}" >
+
+            <f:converter converterId="currencyConverter"/>
+
+            <f:attribute name="em" value="#{financeManager.entityManager1}"/>
 
             <p:ajax event="itemSelect"
                     update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
@@ -65,9 +68,12 @@ Email: info@dpbennett.com.jm
                         title="#{purchasingManager.selectedPurchaseRequisition.tax}"
                         itemValue="#{tax}"
                         itemLabel="#{tax.name}"
-                        converter="taxConverter"
                         validator="businessEntityValidator"
-                        completeMethod="#{purchasingManager.completeTax}" >
+                        completeMethod="#{financeManager.completeTax}" >
+
+            <f:converter converterId="taxConverter"/>
+
+            <f:attribute name="em" value="#{financeManager.entityManager1}"/>
 
             <p:ajax event="itemSelect"
                     update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
@@ -89,9 +95,12 @@ Email: info@dpbennett.com.jm
                         title="#{purchasingManager.selectedPurchaseRequisition.discount}"
                         itemValue="#{discount}"
                         itemLabel="#{discount.name}"
-                        converter="discountConverter"
                         validator="businessEntityValidator"
-                        completeMethod="#{purchasingManager.completeDiscount}" >
+                        completeMethod="#{financeManager.completeDiscount}" >
+
+            <f:converter converterId="discountConverter"/>
+
+            <f:attribute name="em" value="#{financeManager.entityManager1}"/>
 
             <p:ajax event="itemSelect"
                     update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"

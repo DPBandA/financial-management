@@ -74,7 +74,6 @@ Email: info@dpbennett.com.jm
                                         value="#{inventoryManager.selectedInventoryDisbursement.inventory}"
                                         itemLabel="#{inventoryItem.name}"
                                         itemValue="#{inventoryItem}"
-                                        converter="activeInventoryConverter"  
                                         required="true"
                                         requiredMessage="Inventory Item Required"
                                         validator="businessEntityValidator"
@@ -83,6 +82,10 @@ Email: info@dpbennett.com.jm
                                         dropdown="true"
                                         scrollHeight="200"     
                                         completeMethod="#{inventoryManager.completeInventoryItem}" >
+
+                            <f:converter converterId="activeInventoryConverter"/>
+                           
+                            <f:attribute name="em" value="#{inventoryManager.entityManager1}"/>
 
                             <p:ajax event="itemSelect" 
                                     update="inventoryQty,description,unitPrice,cost"

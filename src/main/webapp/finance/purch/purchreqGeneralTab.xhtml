@@ -57,12 +57,15 @@ Email: info@dpbennett.com.jm
                                 dropdown="false"
                                 scrollHeight="200" 
                                 value="#{purchasingManager.selectedPurchaseRequisition.supplier}"   
-                                converter="activeSupplierConverter"
                                 validator="supplierValidator"
                                 forceSelection="true"
                                 required="true"
                                 requiredMessage="Supplier Required"
                                 completeMethod="#{purchasingManager.completeActiveSupplier}" >
+
+                    <f:converter converterId="activeSupplierConverter"/>
+
+                    <f:attribute name="em" value="#{purchasingManager.entityManager1}"/>
 
                     <p:ajax event="itemSelect"
                             update="purchreqFormTabView:generalTabPanel,:purchreqDialogForm:purchreqDetailToolbar1"

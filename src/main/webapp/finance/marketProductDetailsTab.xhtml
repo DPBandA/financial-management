@@ -23,7 +23,7 @@ Email: info@dpbennett.com.jm
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
-    <h:panelGrid id="generalDetailsPanelGrid" columns="3" cellspacing="5" >
+    <h:panelGrid id="generalDetailsPanelGrid" columns="2" cellspacing="5" >
 
         <p:outputLabel for="marketProductActive" 
                        value="Active *" 
@@ -42,7 +42,6 @@ Email: info@dpbennett.com.jm
             <p:tooltip for="marketProductActive" value="Check to activate this market product" 
                        showEffect="fade" hideEffect="fade" />            
         </h:panelGroup>
-        <p:outputLabel value="" />
 
         <p:outputLabel value="Code" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.code}" >
@@ -53,7 +52,6 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <p:outputLabel value="" />
 
         <p:outputLabel value="Name *" style="font-weight: bold;" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.name}"
@@ -68,7 +66,6 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <p:outputLabel value="" />
 
         <p:outputLabel value="Brand" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.brand}" 
@@ -80,7 +77,6 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <p:outputLabel value="" />
 
         <p:outputLabel value="Model" />       
         <p:inputText value="#{financeManager.selectedMarketProduct.model}"
@@ -92,7 +88,27 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputText>     
-        <p:outputLabel value="" />
+
+        <h:outputText value="Manufacturer" />
+        <p:autoComplete id="manufacturer"      
+                        var="manufacturer"
+                        itemLabel="#{manufacturer.truncatedName}"
+                        itemValue="#{manufacturer}"                   
+                        dropdown="false"
+                        scrollHeight="200" 
+                        value="#{financeManager.selectedMarketProduct.manufacturer}"    
+                        forceSelection="true"
+                        completeMethod="#{humanResourceManager.completeActiveManufacturer}" >
+
+            <f:converter converterId="activeManufacturerConverter"/>
+
+            <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+            <p:ajax event="itemSelect"
+                    listener="#{financeManager.updateMarketProduct}"
+                    process="@this"/>
+
+        </p:autoComplete> 
 
         <p:outputLabel style="vertical-align: top;"
                        value="Categories:" />
@@ -103,12 +119,15 @@ Email: info@dpbennett.com.jm
                                 value="#{financeManager.selectedMarketProduct.categories}"
                                 itemLabel="#{category.name}"
                                 itemValue="#{category}"
-                                converter="activeCategoryConverter"
                                 forceSelection="true"
                                 dropdown="true"
                                 scrollHeight="200"                         
                                 multiple="true"
-                                completeMethod="#{financeManager.completeActiveCategory}" >
+                                completeMethod="#{systemManager.completeActiveCategory}" >
+
+                    <f:converter converterId="activeCategoryConverter"/>
+
+                    <f:attribute name="em" value="#{systemManager.entityManager1}"/>
 
                     <p:ajax event="itemSelect"
                             listener="#{financeManager.updateMarketProduct}"
@@ -132,7 +151,6 @@ Email: info@dpbennett.com.jm
                 </p:commandButton>
             </h:panelGrid>
         </h:panelGroup>
-        <p:outputLabel value="" />
 
         <p:outputLabel value="Description" />                        
         <p:inputTextarea
@@ -151,7 +169,6 @@ Email: info@dpbennett.com.jm
                     process="@this"/>
 
         </p:inputTextarea> 
-        <p:outputLabel value="" />
 
         <p:outputLabel value="" />
         <p:outputLabel id="descriptionCharsRemaining" />

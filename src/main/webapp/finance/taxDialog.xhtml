@@ -98,11 +98,16 @@ Email: info@dpbennett.com.jm
                                     title="#{financeManager.selectedTax.accountingCode}"
                                     itemValue="#{accountingCode}"
                                     itemLabel="#{accountingCode.code} (#{accountingCode.name})"
-                                    converter="accountingCodeConverter"
                                     validator="businessEntityValidator"
                                     required="true"
                                     requiredMessage="Accounting Code Required"
-                                    completeMethod="#{financeManager.completeAccountingCode}" />            
+                                    completeMethod="#{financeManager.completeAccountingCode}" >
+
+                        <f:converter converterId="accountingCodeConverter"/>
+
+                        <f:attribute name="em" value="#{financeManager.entityManager1}"/>
+
+                    </p:autoComplete>
 
                     <p:outputLabel value="Value" 
                                    for="taxValue"

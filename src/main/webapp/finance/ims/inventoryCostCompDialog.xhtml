@@ -124,17 +124,21 @@ Email: info@dpbennett.com.jm
                                  styleClass="number-field"
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Component Quantity">
+                        
                         <f:convertNumber />
+                        
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 update="inventoryCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
+                        
                         <p:ajax event="change"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 update="inventoryCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
+                        
                     </p:inputText>
 
                     <p:outputLabel  rendered="#{!inventoryManager.selectedCostComponent.isHeading}"
@@ -163,17 +167,21 @@ Email: info@dpbennett.com.jm
                                  styleClass="number-field" 
                                  validator="requiredFieldValidator"
                                  converterMessage="Invalid Unit Cost" >
+                        
                         <f:convertNumber />
+                        
                         <p:ajax event="keyup"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 update="inventoryCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
+                        
                         <p:ajax event="change"
                                 global="false"
                                 listener="#{inventoryManager.updateSelectedCostComponent}"
                                 update="inventoryCostingCompDialogForm:costComponentCost"
                                 process="@this"/>
+                        
                     </p:inputText>
 
                     <p:outputLabel rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 

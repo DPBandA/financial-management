@@ -67,14 +67,17 @@ Email: info@dpbennett.com.jm
                                 value="#{inventoryManager.selectedInventory.product}"
                                 title="#{inventoryManager.selectedInventory.product}"
                                 itemLabel="#{inventoryProduct.name}"
-                                itemValue="#{inventoryProduct}"
-                                converter="activeInventoryProductConverter"                                            
+                                itemValue="#{inventoryProduct}"                                          
                                 validator="businessEntityValidator"
                                 validatorMessage="A product name is required"
                                 forceSelection="true"
                                 dropdown="true"
                                 scrollHeight="200"     
                                 completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
+
+                    <f:converter converterId="activeInventoryProductConverter"/>
+
+                    <f:attribute name="em" value="#{inventoryManager.entityManager1}"/>
 
                     <p:ajax event="itemSelect"    
                             update="category,:inventoryDialogForm:inventoryDetailToolbar1"
@@ -129,13 +132,16 @@ Email: info@dpbennett.com.jm
                                 value="#{inventoryManager.selectedInventory.inventoryCategory}"
                                 itemLabel="#{category.name}"
                                 itemValue="#{category}"
-                                converter="activeCategoryConverter"
                                 forceSelection="true"
                                 dropdown="true"
                                 required="true"
                                 requiredMessage="A valid category is required"
                                 scrollHeight="200"   
-                                completeMethod="#{inventoryManager.completeActiveCategory}" >
+                                completeMethod="#{systemManager.completeActiveCategory}" >
+
+                    <f:converter converterId="activeCategoryConverter"/>
+
+                    <f:attribute name="em" value="#{systemManager.entityManager1}"/>
 
                     <p:ajax event="itemSelect"
                             listener="#{inventoryManager.updateInventory}"
@@ -189,12 +195,15 @@ Email: info@dpbennett.com.jm
                                 itemValue="#{supplier}"                 
                                 dropdown="true"
                                 scrollHeight="200" 
-                                value="#{inventoryManager.selectedInventory.supplier}"   
-                                converter="activeSupplierConverter"
+                                value="#{inventoryManager.selectedInventory.supplier}" 
                                 validator="supplierValidator"
                                 validatorMessage="A valid supplier is required"
                                 forceSelection="true"
                                 completeMethod="#{purchasingManager.completeActiveSupplier}" >
+
+                    <f:converter converterId="activeSupplierConverter"/>
+
+                    <f:attribute name="em" value="#{purchasingManager.entityManager1}"/>
 
                     <p:ajax event="itemSelect"
                             update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"

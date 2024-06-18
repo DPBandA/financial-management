@@ -123,11 +123,15 @@ Email: info@dpbennett.com.jm
                                     styleClass="right-inputfield" 
                                     itemValue="#{tax}"
                                     itemLabel="#{tax.name}"
-                                    converter="taxConverter"
                                     validator="businessEntityValidator"
                                     required="true"
                                     requiredMessage="Default Tax Required"
-                                    completeMethod="#{financeManager.completeTax}" />
+                                    completeMethod="#{financeManager.completeTax}" >
+
+                        <f:converter converterId="taxConverter"/>
+                        <f:attribute name="em" value="#{financeManager.entityManager1}"/>
+
+                    </p:autoComplete>
 
                     <p:outputLabel for="earningsJob" 
                                    value="Earnings *" 

@@ -58,9 +58,14 @@ Email: info@dpbennett.com.jm
                                     value="#{purchasingManager.selectedPurchaseRequisition.purchasingDepartment}"
                                     itemValue="#{purchasingDepartment}"
                                     itemLabel="#{purchasingDepartment.name}"
-                                    converter="activeDepartmentConverter"
                                     validator="businessEntityValidator"
-                                    completeMethod="#{humanResourceManager.completeActiveDepartment}" /> 
+                                    completeMethod="#{humanResourceManager.completeActiveDepartment}" >
+
+                        <f:converter converterId="activeDepartmentConverter"/>
+
+                        <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+                    </p:autoComplete>
 
                     <p:outputLabel value="Procurement officer *" style="font-weight: bold" />       
                     <p:autoComplete id="officer"
@@ -71,12 +76,17 @@ Email: info@dpbennett.com.jm
                                     value="#{purchasingManager.selectedPurchaseRequisition.procurementOfficer}"
                                     itemLabel="#{officer.name}"
                                     itemValue="#{officer}"
-                                    converter="activeEmployeeConverter"
                                     validator="businessEntityValidator"
                                     forceSelection="true"
                                     dropdown="false"
                                     scrollHeight="200" 
-                                    completeMethod="#{humanResourceManager.completeActiveEmployee}" />
+                                    completeMethod="#{humanResourceManager.completeActiveEmployee}" >
+
+                        <f:converter converterId="activeEmployeeConverter"/>
+
+                        <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+                    </p:autoComplete>
 
                     <p:outputLabel value="Completion date" />
                     <p:inputText readonly="true"

@@ -29,9 +29,9 @@ Email: info@dpbennett.com.jm
         <ui:include src="header.xhtml" /> 
     </h:head>
     <h:body >  
-        
+
         <ui:include src="/common/commonDialogs.xhtml"/>   
-        
+
         <h:form id="purchaseReqEmailDialogForm">       
 
             <p:growl id="purchaseReqEmailDialog_growl" life="5000" showDetail="true"/>
@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel for="from" value="From" style="font-weight: bold;" />
                     <p:outputLabel id="from" 
-                                  value="#{financeManager.jobManagerEmailName}" />
+                                   value="#{financeManager.jobManagerEmailName}" />
 
                     <p:outputLabel for="to" value="To" style="font-weight: bold;" />       
                     <p:autoComplete id="to"
@@ -65,14 +65,19 @@ Email: info@dpbennett.com.jm
                                     value="#{purchasingManager.toEmployees}"
                                     itemLabel="#{employee.name}"
                                     itemValue="#{employee}"
-                                    converter="activeEmployeeConverter"
                                     forceSelection="true"                                    
                                     dropdown="true"
                                     required="true"
                                     requiredMessage="Email recipients required"
                                     scrollHeight="200"                         
                                     multiple="true"
-                                    completeMethod="#{humanResourceManager.completeActiveEmployee}" />
+                                    completeMethod="#{humanResourceManager.completeActiveEmployee}" >
+
+                        <f:converter converterId="activeEmployeeConverter"/>
+
+                        <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+                    </p:autoComplete>
 
 
                     <p:outputLabel value="Subject" for="emailSubject" style="font-weight: bold;" />
@@ -89,7 +94,7 @@ Email: info@dpbennett.com.jm
                                   secure="false"
                                   required="true" 
                                   requiredMessage="Email content is required"/>
-                    
+
                     <p:outputLabel value="&nbsp;&nbsp;" />
                     <p:outputLabel id="emailSubjectCharsRemaining" /> 
 

@@ -41,12 +41,15 @@ Email: info@dpbennett.com.jm
                             title="#{purchasingManager.selectedPurchaseRequisition.currency}"
                             itemValue="#{currency}"
                             itemLabel="#{currency.name}"
-                            converter="currencyConverter"
                             validator="businessEntityValidator"
                             cache="true"
                             required="true"                           
                             requiredMessage="Currency Required"
-                            completeMethod="#{purchasingManager.completeCurrency}" >
+                            completeMethod="#{financeManager.completeCurrency}" >
+
+                <f:converter converterId="currencyConverter"/>
+
+                <f:attribute name="em" value="#{financeManager.entityManager1}"/>
 
                 <p:ajax event="itemSelect"
                         update="currencyToolbar,rate,rateLabel,rateSpacer,:purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"

@@ -55,12 +55,15 @@ Email: info@dpbennett.com.jm
                             value="#{inventoryManager.selectedInventoryRequisition.department}"
                             itemValue="#{department}"
                             itemLabel="#{department.name}"
-                            converter="activeDepartmentConverter"
                             required="true"
                             requiredMessage="Department Required"
                             validator="businessEntityValidator"
                             cache="true"
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" >            
+
+                <f:converter converterId="activeDepartmentConverter"/>
+
+                <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
 
                 <p:ajax event="itemSelect"
                         update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
@@ -77,7 +80,6 @@ Email: info@dpbennett.com.jm
                             value="#{inventoryManager.selectedInventoryRequisition.contactPerson}"
                             itemLabel="#{contactPerson.name}"
                             itemValue="#{contactPerson}"
-                            converter="activeEmployeeConverter"
                             required="true"
                             requiredMessage="Contact Person Required"
                             validator="businessEntityValidator"
@@ -86,6 +88,10 @@ Email: info@dpbennett.com.jm
                             scrollHeight="200" 
                             cache="true"
                             completeMethod="#{humanResourceManager.completeActiveEmployee}" >
+
+                <f:converter converterId="activeEmployeeConverter"/>
+
+                <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
 
                 <p:ajax event="itemSelect"
                         update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
@@ -165,15 +171,20 @@ Email: info@dpbennett.com.jm
                                             value="#{disbursement.inventory}"
                                             title="#{disbursement.inventory}"
                                             itemLabel="#{inventoryItem.name}"
-                                            itemValue="#{inventoryItem}"
-                                            converter="inventoryConverter"                                            
+                                            itemValue="#{inventoryItem}"                                            
                                             validator="businessEntityValidator"
                                             validatorMessage="An inventory item is required"
                                             forceSelection="true"
                                             size="35"
                                             dropdown="true"
                                             scrollHeight="200"     
-                                            completeMethod="#{inventoryManager.completeInventoryItem}" />
+                                            completeMethod="#{inventoryManager.completeInventoryItem}" >
+
+                                <f:converter converterId="inventoryConverter"/>
+
+                                <f:attribute name="em" value="#{inventoryManager.entityManager1}"/>
+
+                            </p:autoComplete>
 
                         </f:facet>   
                     </p:cellEditor>  
