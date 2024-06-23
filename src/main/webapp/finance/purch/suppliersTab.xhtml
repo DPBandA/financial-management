@@ -75,7 +75,7 @@ Email: info@dpbennett.com.jm
     <p:dataTable id="suppliersTable"
                  var="supplier"
                  style="margin-bottom: 1px;margin-top: 1px;"
-                 editable="true" 
+                 editable="false" 
                  editMode="cell"
                  paginator="true"                                 
                  rows="15"
@@ -88,6 +88,16 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             <p:outputLabel value="Search Results (found: #{purchasingManager.numOfSuppliersFound})" />
         </f:facet>
+        
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{supplier.active}" />
+        </p:column>
 
         <p:column>
             <f:facet name="header">

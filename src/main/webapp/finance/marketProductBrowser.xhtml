@@ -89,6 +89,16 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             <p:outputLabel value="Search Results (found: #{financeManager.numMarketProducts})" />
         </f:facet>
+        
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{marketProduct.active}" />
+        </p:column>
 
         <p:column sortBy="#{marketProduct.name}">
             <f:facet name="header">
@@ -117,20 +127,6 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{marketProduct.description}" />
         </p:column>       
-
-        <p:column headerText="Active?" >                                                                         
-            <p:cellEditor>                
-                <f:facet name="output">
-                    <p:outputLabel value="#{marketProduct.isActive}" />
-                </f:facet>
-                <f:facet name="input">
-                    <p:selectOneMenu value="#{marketProduct.isActive}">
-                        <f:selectItem itemLabel="Yes" itemValue="Yes"/>
-                        <f:selectItem itemLabel="No" itemValue="No"/>
-                    </p:selectOneMenu>
-                </f:facet>
-            </p:cellEditor>         
-        </p:column>
 
         <p:column>
             <p:commandButton icon="pi pi-pencil"

@@ -91,6 +91,16 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Accounting Codes
         </f:facet>
+        
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{accountingCode.active}" />
+        </p:column>
 
         <p:column headerText="Name">
             <p:cellEditor>
