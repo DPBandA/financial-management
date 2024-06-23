@@ -90,6 +90,16 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Services
         </f:facet>
+        
+        <p:column style="width: 30px;">
+            <f:facet name="header">
+                <p:outputLabel value="Active"/>
+            </f:facet>           
+            <p:selectBooleanCheckbox 
+                style="display: block;text-align: center;"
+                disabled="true"
+                value="#{service.active}" />
+        </p:column>
 
         <p:column headerText="Name">
             <p:cellEditor>
@@ -112,20 +122,6 @@ Email: info@dpbennett.com.jm
                 </f:facet>
             </p:cellEditor>                                         
         </p:column>   
-
-        <p:column headerText="Active">
-            <p:cellEditor>
-                <f:facet name="output">
-                    <p:outputLabel value="#{service.usable}" />
-                </f:facet>
-                <f:facet name="input">
-                    <p:selectOneMenu value="#{service.usable}">
-                        <f:selectItem itemLabel="Yes" itemValue="Yes"/>
-                        <f:selectItem itemLabel="No" itemValue="No"/>
-                    </p:selectOneMenu>
-                </f:facet>
-            </p:cellEditor>                                         
-        </p:column>  
 
         <p:column>
             <p:commandButton title="View or edit service"   
