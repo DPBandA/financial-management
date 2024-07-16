@@ -190,6 +190,10 @@ Email: info@dpbennett.com.jm
                                 <h:panelGroup rendered="#{t.id == 'Market Products'}" >
                                     <ui:include src="finance/marketProductBrowser.xhtml" />                                                                
                                 </h:panelGroup>
+                                
+                                <h:panelGroup rendered="#{t.id == 'Trades'}" >
+                                    <ui:include src="finance/tm/tradeTab.xhtml" />                                                                
+                                </h:panelGroup>
 
                             </p:tab>
 
