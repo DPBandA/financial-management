@@ -141,11 +141,11 @@ Email: info@dpbennett.com.jm
             </h:panelGroup>
         </h:panelGrid>
     </p:panel>
-    <p:panel id="cashPayments" header="Payments" >    
+    <p:panel id="cashPayments" header="Invoices" >    
         <p:toolbar>
             <p:toolbarGroup align="left">
                 <p:commandButton value="New"
-                                 title="Add new payment"
+                                 title="Add new invoice"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
                                  update=":purchreqDialogForm:purchreq_growl,cashPaymentTable"
@@ -153,7 +153,7 @@ Email: info@dpbennett.com.jm
                                  process="@this" >
 
                     <p:ajax event="dialogReturn"                   
-                            update="cashPaymentTable"
+                            update="cashPayments,:purchreqDialogForm:purchreq_growl"
                             process="@this"/>
 
                 </p:commandButton>
@@ -182,7 +182,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="Receipt #">
+            <p:column headerText="Receipt #" rendered="false">
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{cashPayment.receiptNumber}" /> 
@@ -211,7 +211,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="Type">       
+            <p:column headerText="Type" rendered="false">       
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{cashPayment.type}" /> 
@@ -242,13 +242,13 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
             </p:column>
 
-            <p:column headerText="Purpose">
+            <p:column headerText="Terms" >
                 <p:cellEditor>
                     <f:facet name="output">
-                        <p:outputLabel value="#{cashPayment.paymentPurpose}" /> 
+                        <p:outputLabel value="#{cashPayment.paymentTerms}" /> 
                     </f:facet>
                     <f:facet name="input">
-                        <p:inputText  value="#{cashPayment.paymentPurpose}"/>                   
+                        <p:inputText  value="#{cashPayment.paymentTerms}"/>                   
                     </f:facet>   
                 </p:cellEditor>
             </p:column>
@@ -257,7 +257,7 @@ Email: info@dpbennett.com.jm
                 <p:menuButton id="toolsButton" 
                               disabled="#{!purchasingManager.isProcurementOfficer}"
                               icon="pi pi-pencil" 
-                              title="Edit or delete payment" >
+                              title="Edit or delete invoice" >
 
                     <p:menuitem value="Edit"
                                 actionListener="#{purchasingManager.editCashPayment}"
@@ -294,7 +294,7 @@ Email: info@dpbennett.com.jm
                 <p:row>
                     <p:column colspan="2" 
                               style="text-align:right;" 
-                              footerText="Total payments ($)"/>                                        
+                              footerText="Total invoice amount ($)"/>                                        
                     <p:column style="text-align:right;"> 
                         <f:facet name="footer">
                             <p:outputLabel value="#{purchasingManager.totalCashPayments}" >
@@ -308,12 +308,18 @@ Email: info@dpbennett.com.jm
         <p:toolbar>
             <p:toolbarGroup align="left">
                 <p:commandButton value="New"
-                                 title="Add new payment"
+                                 title="Add new invoice"
                                  actionListener="#{purchasingManager.createNewCashPayment}"
                                  disabled="#{!purchasingManager.canCreateNewCashPayment}"
                                  update=":purchreqDialogForm:purchreq_growl,cashPaymentTable"
                                  icon="pi pi-plus"
-                                 process="@this" />
+                                 process="@this" >
+
+                    <p:ajax event="dialogReturn"                   
+                            update="cashPayments,:purchreqDialogForm:purchreq_growl"
+                            process="@this"/>
+
+                </p:commandButton>
             </p:toolbarGroup>
         </p:toolbar>
     </p:panel>

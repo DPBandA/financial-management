@@ -25,7 +25,7 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://java.sun.com/jsf/facelets" >
     <h:head>
         <ui:include src="../../head.xhtml" /> 
-        <title>Payment</title>
+        <title>Invoice</title>
         <ui:include src="header.xhtml" /> 
     </h:head>
     <h:body>        
@@ -56,37 +56,32 @@ Email: info@dpbennett.com.jm
             </p:toolbar>
             <p:panel>
                 <h:panelGrid columns="2">
-                    <p:outputLabel value="Type *" style="font-weight: bold;" />    
-                    <p:selectOneMenu   id="type"                          
-                                       value="#{purchasingManager.selectedCashPayment.type}">
+                    <p:outputLabel value="Type *" 
+                                   rendered="false"
+                                   style="font-weight: bold;" />    
+                    <p:selectOneMenu id="type"    
+                                     rendered="false"
+                                     value="#{purchasingManager.selectedCashPayment.type}">
 
                         <f:selectItems value="#{purchasingManager.paymentTypes}" />
 
                     </p:selectOneMenu>   
 
-                    <p:outputLabel value="Purpose of payment *" style="font-weight: bold;" />    
-                    <p:selectOneMenu 
-                        id="paymentPurpose"      
-                        value="#{purchasingManager.selectedCashPayment.paymentPurpose}">
-
-                        <f:selectItems value="#{purchasingManager.paymentPurposes}" />
-
-                    </p:selectOneMenu>   
-
-                    <p:outputLabel value="Payment date *" style="font-weight: bold" />
+                    <p:outputLabel value="Invoice date *" style="font-weight: bold" />
                     <p:calendar id="paymentDate"
                                 value="#{purchasingManager.selectedCashPayment.dateOfPayment}" 
                                 navigator="true" 
                                 autocomplete="off"
                                 required="true"
-                                requiredMessage="Payment Date Required"
+                                requiredMessage="Invoice Date Required"
                                 pattern="MMM dd, yyyy" />
-                    
+
                     <p:outputLabel value="Invoice #" />
                     <p:inputText value="#{purchasingManager.selectedCashPayment.invoiceNumber}" />    
 
-                    <p:outputLabel value="Receipt #" />
-                    <p:inputText value="#{purchasingManager.selectedCashPayment.receiptNumber}" />                                
+                    <p:outputLabel value="Receipt #" rendered="false"/>
+                    <p:inputText rendered="false"
+                                 value="#{purchasingManager.selectedCashPayment.receiptNumber}" />                                
 
                     <p:outputLabel value="Amount ($) *" style="font-weight: bold;" />
                     <p:inputText value="#{purchasingManager.selectedCashPayment.payment}"  
@@ -95,12 +90,20 @@ Email: info@dpbennett.com.jm
                                  required="true"
                                  requiredMessage="Amount Required"
                                  validator="requiredFieldValidator"
-                                 converterMessage="Invalid payment amount"
+                                 converterMessage="Invalid invoice amount"
                                  maxlength="15">
 
                         <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
 
                     </p:inputText> 
+
+                    <p:outputLabel value="Comment" rendered="false"/>    
+                    <p:inputTextarea
+                        rendered="false"
+                        value="#{purchasingManager.selectedCashPayment.comment}"
+                        style="width: 125%;"
+                        maxlength="250"
+                        rows="2" />    
 
                     <p:outputLabel value="Terms" />
                     <p:inputTextarea
