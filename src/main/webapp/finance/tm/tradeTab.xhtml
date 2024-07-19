@@ -25,28 +25,24 @@ Email: info@dpbennett.com.jm
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
+    <p:graphicImage value="#{tradeManager.chart}" 
+                    id="chart"
+                    styleClass="fade-image"
+                    cache="false">
 
-    <p:dashboard model="#{tradeManager.dashboardModel}" 
-                 responsive="true">
+        <p:ajax event="click" 
+                listener="#{tradeManager.updateCharts}" 
+                process="@this"
+                update="@this"/>
 
-        <p:panel id="trades" 
-                 header="Trades" 
-                 closable="false" >
-
-            <p:graphicImage value="#{tradeManager.chart}" cache="false"/>
-            
-        </p:panel>
-
-        <p:panel id="positions" 
-                 header="Positions" 
-                 closable="false"  >      
-            
-            <p:graphicImage value="#{tradeManager.chart}" cache="false" />
-
-        </p:panel>
-
-    </p:dashboard>
-
+    </p:graphicImage>
+   
+    <ui:remove>
+        <p:poll interval="1"
+                update="chart"
+                listener="#{tradeManager.updateCharts}"
+                global="true" />
+    </ui:remove>
 
 </html>
 
