@@ -219,7 +219,7 @@
     
     <managed-bean>
         <managed-bean-name>tradeManager</managed-bean-name>
-        <managed-bean-class>jm.com.dpbennett.fm.manager.TradeManager</managed-bean-class>
+        <managed-bean-class>jm.com.dpbennett.tm.manager.TradeManager</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
