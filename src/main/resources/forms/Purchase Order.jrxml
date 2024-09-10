@@ -4,7 +4,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local MySQL"/>
 	<property name="com.jaspersoft.studio.report.description" value="Purchase Order"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="763"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="224"/>
@@ -90,7 +90,7 @@ WHERE
 		</variable>
 	</subDataset>
 	<parameter name="prId" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[320958L]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[2313653L]]></defaultValueExpression>
 	</parameter>
 	<parameter name="purchReqNo" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["PR-09038992533"]]></defaultValueExpression>
@@ -316,7 +316,7 @@ WHERE
 		<band height="420" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<componentElement>
-				<reportElement key="table" x="0" y="213" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
+				<reportElement key="table" positionType="Float" x="0" y="213" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
 					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -906,7 +906,7 @@ WHERE
 				</reportElement>
 			</break>
 			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="382" y="352" width="90" height="11" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="a204d875-588a-4931-92d1-99ab4345ca07"/>
+				<reportElement positionType="Float" mode="Transparent" x="382" y="358" width="90" height="11" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="a204d875-588a-4931-92d1-99ab4345ca07"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
@@ -944,7 +944,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{procurementOfficer}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="30" y="352" width="110" height="35" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="49df2f7e-3914-432c-8617-89619cb28e33"/>
+				<reportElement positionType="Float" mode="Transparent" x="30" y="358" width="110" height="35" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="49df2f7e-3914-432c-8617-89619cb28e33"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -957,7 +957,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[This Order is subject to the Terms and conditions on the reverse side]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="0" y="313" width="570" height="32" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="293ffef2-c5cd-4677-a508-fcad74d7b276"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -966,7 +966,7 @@ WHERE
 					<bottomPen lineWidth="0.0"/>
 					<rightPen lineWidth="0.0"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>

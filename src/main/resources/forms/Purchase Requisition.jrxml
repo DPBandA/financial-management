@@ -4,7 +4,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BSJ JMTS MySQL"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local MySQL"/>
 	<property name="com.jaspersoft.studio.report.description" value="Purchase Requisition"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="763"/>
 	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="224"/>
@@ -91,7 +91,7 @@ WHERE
 		</variable>
 	</subDataset>
 	<parameter name="prId" class="java.lang.Long">
-		<defaultValueExpression><![CDATA[320958L]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[2313653L]]></defaultValueExpression>
 	</parameter>
 	<parameter name="purchReqNo" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["PR-09038992533"]]></defaultValueExpression>
@@ -284,7 +284,7 @@ WHERE
 	<detail>
 		<band height="601" splitType="Stretch">
 			<componentElement>
-				<reportElement key="table" x="0" y="324" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
+				<reportElement key="table" positionType="Float" x="0" y="324" width="571" height="47" uuid="eb05ffe1-1f71-42b4-b0a2-701baa825e42">
 					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
@@ -313,6 +313,7 @@ WHERE
 								<reportElement x="0" y="0" width="40" height="22" uuid="dd33ffe4-279f-4a34-8ce0-3ea6f3ee59bc"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="1.0"/>
 								</box>
 								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$V{itemNum}]]></textFieldExpression>
@@ -338,6 +339,7 @@ WHERE
 								<reportElement x="0" y="0" width="70" height="22" uuid="7b1a52ff-bdad-42ff-8d1e-df9fcf58a12a"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="1.0"/>
 								</box>
 								<textElement textAlignment="Justified">
 									<font fontName="SansSerif" size="10"/>
@@ -361,10 +363,11 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="190" height="22" uuid="a5a886ef-b1cd-4c5e-9603-dbf22dceef3c"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="1.0"/>
 								</box>
 								<textElement textAlignment="Left">
 									<paragraph rightIndent="2"/>
@@ -391,7 +394,11 @@ WHERE
 							<textField textAdjust="ScaleFont" pattern="#,##0.###;(#,##0.###-)" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="70" height="22" uuid="3cbe7c6c-483f-428a-bdcc-ba8242ecb022"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
-									<pen lineWidth="1.0" lineColor="#003366"/>
+									<pen lineWidth="0.0" lineColor="#003366"/>
+									<topPen lineWidth="1.0"/>
+									<leftPen lineWidth="1.0"/>
+									<bottomPen lineWidth="1.0"/>
+									<rightPen lineWidth="1.0"/>
 								</box>
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
@@ -419,6 +426,7 @@ WHERE
 								<reportElement stretchType="ContainerBottom" mode="Transparent" x="0" y="0" width="70" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8821b420-88b2-4011-b6ff-818e89f00a2a"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="1.0"/>
 								</box>
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
@@ -449,6 +457,7 @@ WHERE
 								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="60" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="df961954-2953-484c-aa48-6622162cffb6"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="0.0"/>
 								</box>
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
@@ -476,6 +485,7 @@ WHERE
 								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="71" height="22" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="7e6aec7b-74c6-4de0-baba-39dff5c7ca94"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#003366"/>
+									<bottomPen lineWidth="0.0"/>
 								</box>
 								<textElement textAlignment="Right">
 									<paragraph rightIndent="2"/>
@@ -638,7 +648,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purchaseOrderDate}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="0" y="178" width="571" height="60" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f3ef8a9d-7bab-41a1-ab45-c09a8d84dfdb"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
@@ -940,7 +950,7 @@ WHERE
 				<text><![CDATA[$]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="238" width="99" height="43" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="36af738a-cf2c-4caf-9626-b8d766363c67"/>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="238" width="99" height="43" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="36af738a-cf2c-4caf-9626-b8d766363c67"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#000000"/>
 					<bottomPen lineWidth="0.0"/>
@@ -952,7 +962,7 @@ WHERE
 				<text><![CDATA[Suggested Supplier:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="99" y="238" width="472" height="43" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="2381aa0c-34c5-4ed7-8971-63a92f1c5de3"/>
+				<reportElement positionType="Float" mode="Transparent" x="99" y="238" width="472" height="43" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="2381aa0c-34c5-4ed7-8971-63a92f1c5de3"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 					<leftPen lineWidth="0.0"/>
@@ -963,7 +973,7 @@ WHERE
 				<textFieldExpression><![CDATA[$F{supplierName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="281" width="118" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="e03720df-dafc-4e87-8f2f-a1a3fa156724"/>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="281" width="118" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="e03720df-dafc-4e87-8f2f-a1a3fa156724"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -973,7 +983,7 @@ WHERE
 				<text><![CDATA[ORIGINATOR]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="0" y="308" width="118" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="54113988-f149-48f8-957d-045e716c18c6"/>
+				<reportElement positionType="Float" mode="Transparent" x="0" y="308" width="118" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="54113988-f149-48f8-957d-045e716c18c6"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -983,7 +993,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{originator}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="118" y="281" width="74" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9695b36-e019-4d96-a629-0c543da7ffeb"/>
+				<reportElement positionType="Float" mode="Transparent" x="118" y="281" width="74" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9695b36-e019-4d96-a629-0c543da7ffeb"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -993,7 +1003,7 @@ WHERE
 				<text><![CDATA[PRIORITY CODE]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="118" y="308" width="74" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="9849d91a-06e3-4d93-bb48-2f374246220b"/>
+				<reportElement positionType="Float" mode="Transparent" x="118" y="308" width="74" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="9849d91a-06e3-4d93-bb48-2f374246220b"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1003,7 +1013,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{priorityCode}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="192" y="281" width="90" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="7ad5705b-25c2-4507-89b4-29088bbe7340"/>
+				<reportElement positionType="Float" mode="Transparent" x="192" y="281" width="90" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="7ad5705b-25c2-4507-89b4-29088bbe7340"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1013,7 +1023,7 @@ WHERE
 				<text><![CDATA[REQUEST DATE]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="192" y="308" width="90" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="669da114-ae4a-4c6e-8a08-70ad45b20c88"/>
+				<reportElement positionType="Float" mode="Transparent" x="192" y="308" width="90" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="669da114-ae4a-4c6e-8a08-70ad45b20c88"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1023,7 +1033,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{requisitionDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="282" y="281" width="118" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="708581d3-ba7c-4952-b301-cd3f1474cbfc"/>
+				<reportElement positionType="Float" mode="Transparent" x="282" y="281" width="118" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="708581d3-ba7c-4952-b301-cd3f1474cbfc"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1033,7 +1043,7 @@ WHERE
 				<text><![CDATA[LAST ORDER No. & DATE]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="282" y="308" width="118" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="436e2404-be1e-4cb0-ae34-c7f71b1e86a7"/>
+				<reportElement positionType="Float" mode="Transparent" x="282" y="308" width="118" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="436e2404-be1e-4cb0-ae34-c7f71b1e86a7"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1042,7 +1052,7 @@ WHERE
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="400" y="281" width="89" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="de82cc47-aebd-4381-88dd-99b033f323d9"/>
+				<reportElement positionType="Float" mode="Transparent" x="400" y="281" width="89" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="de82cc47-aebd-4381-88dd-99b033f323d9"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1052,7 +1062,7 @@ WHERE
 				<text><![CDATA[ON HAND NOW]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="400" y="308" width="89" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="62ccf87f-42e4-43d7-a4e4-1a11ea99186c"/>
+				<reportElement positionType="Float" mode="Transparent" x="400" y="308" width="89" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="62ccf87f-42e4-43d7-a4e4-1a11ea99186c"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 				</box>
@@ -1061,7 +1071,7 @@ WHERE
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="490" y="281" width="81" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="e5d44fd4-cb3d-46ec-b8c8-bafc9e91464b"/>
+				<reportElement positionType="Float" mode="Transparent" x="490" y="281" width="81" height="27" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="e5d44fd4-cb3d-46ec-b8c8-bafc9e91464b"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 					<leftPen lineWidth="0.0"/>
@@ -1072,7 +1082,7 @@ WHERE
 				<text><![CDATA[DATE REQUIRED]]></text>
 			</staticText>
 			<textField pattern="MMM d, yyyy" isBlankWhenNull="true">
-				<reportElement mode="Transparent" x="490" y="308" width="81" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="b511d8ca-cdeb-4f26-a367-d02b2b445961"/>
+				<reportElement positionType="Float" mode="Transparent" x="490" y="308" width="81" height="16" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="b511d8ca-cdeb-4f26-a367-d02b2b445961"/>
 				<box topPadding="0" leftPadding="2" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0" lineColor="#003366"/>
 					<leftPen lineWidth="0.0"/>
@@ -1277,7 +1287,7 @@ WHERE
 				<reportElement positionType="Float" mode="Transparent" x="340" y="470" width="28" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="2afdd4a0-87b4-4ea6-8784-4de05faaa324"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -1291,7 +1301,6 @@ WHERE
 				<reportElement positionType="Float" mode="Transparent" x="340" y="490" width="28" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="287d176d-05fa-4866-8c03-d42cf205c92f"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -1305,7 +1314,6 @@ WHERE
 				<reportElement positionType="Float" mode="Transparent" x="340" y="510" width="28" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="8b853cb5-c00d-4100-93d4-3fde9bec33c8"/>
 				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="1.0"/>
-					<topPen lineWidth="0.0"/>
 					<leftPen lineWidth="1.0"/>
 					<bottomPen lineWidth="1.0"/>
 					<rightPen lineWidth="1.0"/>
@@ -1534,7 +1542,7 @@ WHERE
 	<pageFooter>
 		<band height="58">
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="18" width="570" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="49df2f7e-3914-432c-8617-89619cb28e33"/>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="18" width="570" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="49df2f7e-3914-432c-8617-89619cb28e33"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 				</box>
@@ -1544,7 +1552,7 @@ WHERE
 				<text><![CDATA[SHADED AREA TO BE COMPLETED BY PROCUREMENT OFFICER ONLY]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="41" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="5a6e1c71-98e1-4a3b-9c14-2a4bc1f90017"/>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="41" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="5a6e1c71-98e1-4a3b-9c14-2a4bc1f90017"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 				</box>
@@ -1554,7 +1562,7 @@ WHERE
 				<text><![CDATA[FORM NO: F&A_70_F_01/00]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="be5cbfbb-3e89-4f38-9592-35834253c9e5"/>
+				<reportElement positionType="Float" mode="Transparent" x="1" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="be5cbfbb-3e89-4f38-9592-35834253c9e5"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 				</box>
@@ -1564,7 +1572,7 @@ WHERE
 				<text><![CDATA[ISSUE DATE: DECEMBER 2018]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="461" y="41" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="bdc5a8fd-ead6-470b-945e-680556657c98"/>
+				<reportElement positionType="Float" mode="Transparent" x="461" y="41" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="bdc5a8fd-ead6-470b-945e-680556657c98"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 				</box>
@@ -1574,7 +1582,7 @@ WHERE
 				<text><![CDATA[REVISION NO: 01]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="461" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c24a7bc6-4cf1-468c-b402-8560994291f1"/>
+				<reportElement positionType="Float" mode="Transparent" x="461" y="49" width="110" height="8" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="c24a7bc6-4cf1-468c-b402-8560994291f1"/>
 				<box topPadding="0" leftPadding="3" bottomPadding="0" rightPadding="0">
 					<pen lineWidth="0.0"/>
 				</box>
