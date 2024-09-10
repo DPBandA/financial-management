@@ -145,6 +145,7 @@ Email: info@dpbennett.com.jm
                                     value="UOM" />
                     <p:inputText  rendered="#{!inventoryManager.selectedCostComponent.isHeading}" 
                                   id="costComponentUnit"
+                                  styleClass="number-field"
                                   value="#{inventoryManager.selectedCostComponent.unit}" >
 
                         <p:ajax event="keyup"
