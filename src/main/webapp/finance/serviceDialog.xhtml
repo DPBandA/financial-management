@@ -68,10 +68,12 @@ Email: info@dpbennett.com.jm
                                              id="serviceActive"
                                              value="#{financeManager.selectedService.active}" />    
 
-                    <p:outputLabel value="Internal *" 
-                                   for="serviceInternal" 
+                    <p:outputLabel value="Internal *"  
+                                   rendered="false"
+                                   for="serviceInternal"                                    
                                    style="font-weight: bold;" />               
                     <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             rendered="false"
                                              id="serviceInternal"
                                              value="#{financeManager.selectedService.internal}" />  
 
