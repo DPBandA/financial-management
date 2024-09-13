@@ -76,15 +76,15 @@ Email: info@dpbennett.com.jm
 
                 <p:menuButton id="supplierActionsMenu" 
                               icon="pi pi-pencil" 
-                              title="Add or edit supplier">
+                              title="Wiew/Add/Edit supplier">
 
-                    <p:menuitem value="Edit supplier"
+                    <p:menuitem value="View/Edit supplier"
                                 id="editSupplier"
                                 icon="pi pi-pencil" 
                                 disabled="${!purchasingManager.isSupplierNameValid}"                                
                                 actionListener="#{purchasingManager.editPurchaseReqSupplier}"  
                                 process="@this,supplier"                             
-                                title="View or edit this suppliers's detail">  
+                                title="View/Edit this suppliers's detail">  
 
                         <p:ajax event="dialogReturn" 
                                 listener="#{purchasingManager.purchaseReqSupplierDialogReturn}"
