@@ -152,7 +152,6 @@ ORDER BY
 		<defaultValueExpression><![CDATA["Enter additional note here"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="responsibleDepartment" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="signatureURL" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT
      job.`ID` AS job_ID,
@@ -238,8 +237,8 @@ WHERE
 				<textFieldExpression><![CDATA[$P{proformaNumber}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="6" width="125" height="40" uuid="2fa55e7c-634c-4aa4-865c-f774b7d73e41"/>
-				<imageExpression><![CDATA["C:/Projects/financial-management/src/main/resources/forms/BSJ Logo - H41.png"]]></imageExpression>
+				<reportElement x="5" y="6" width="125" height="40" uuid="2fa55e7c-634c-4aa4-865c-f774b7d73e41"/>
+				<imageExpression><![CDATA["C:/jasperreports/BSJ Logo - H41.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>

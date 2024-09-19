@@ -152,7 +152,6 @@ ORDER BY
 		<defaultValueExpression><![CDATA["Enter additional note here"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="responsibleDepartment" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="signatureURL" class="java.lang.String" isForPrompting="false"/>
 	<queryString>
 		<![CDATA[SELECT
      job.`ID` AS job_ID,
@@ -238,8 +237,8 @@ WHERE
 				<textFieldExpression><![CDATA[$P{proformaNumber}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="6" width="125" height="40" uuid="2fa55e7c-634c-4aa4-865c-f774b7d73e41"/>
-				<imageExpression><![CDATA["C:/Projects/financial-management/src/main/resources/forms/BSJ Logo - H41.png"]]></imageExpression>
+				<reportElement x="5" y="6" width="125" height="40" uuid="2fa55e7c-634c-4aa4-865c-f774b7d73e41"/>
+				<imageExpression><![CDATA["C:/jasperreports/BSJ Logo - H41.png"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
@@ -277,7 +276,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="90" height="22" uuid="dd33ffe4-279f-4a34-8ce0-3ea6f3ee59bc"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
@@ -286,9 +285,7 @@ WHERE
 									<bottomPen lineWidth="1.0"/>
 									<rightPen lineWidth="1.0"/>
 								</box>
-								<textElement textAlignment="Center">
-									<font size="12"/>
-								</textElement>
+								<textElement textAlignment="Center"/>
 								<textFieldExpression><![CDATA[$V{itemNum}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
@@ -311,7 +308,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="222" height="22" uuid="7b1a52ff-bdad-42ff-8d1e-df9fcf58a12a"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
@@ -345,7 +342,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="ScaleFont" isBlankWhenNull="true">
+							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="73" height="22" uuid="a5a886ef-b1cd-4c5e-9603-dbf22dceef3c"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
@@ -379,7 +376,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
+							<textField pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="81" height="22" uuid="3cbe7c6c-483f-428a-bdcc-ba8242ecb022"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
@@ -414,7 +411,7 @@ WHERE
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell height="22" rowSpan="1">
-							<textField textAdjust="ScaleFont" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+							<textField pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="106" height="22" uuid="8821b420-88b2-4011-b6ff-818e89f00a2a"/>
 								<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0"/>
