@@ -24,21 +24,25 @@ Email: info@dpbennett.com.jm
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"> 
 
-    <p:toolbar style="margin-bottom: 1px;" id="currencyToolbar">
+    <p:toolbar style="margin-bottom: 1px;" 
+               rendered="#{financeManager.useMulticurrency}"
+               id="currencyToolbar">
+        
         <p:toolbarGroup>
             <p:outputLabel value="Currency"
                            for="currency"
+                           title="This is currency for the goods and services"
                            rendered="#{financeManager.useMulticurrency}"
                            style="font-weight: bold;" />   
             <p:spacer width="10"/>               
             <p:autoComplete id="currency"  
                             var="currency"
                             rendered="#{financeManager.useMulticurrency}"
-                            forceSelection="true"      
+                            forceSelection="true"   
+                            title="This is currency for the goods and services"
                             dropdown="true"
                             scrollHeight="200" 
                             value="#{purchasingManager.selectedPurchaseRequisition.currency}"
-                            title="#{purchasingManager.selectedPurchaseRequisition.currency}"
                             itemValue="#{currency}"
                             itemLabel="#{currency.name}"
                             validator="businessEntityValidator"
@@ -57,22 +61,56 @@ Email: info@dpbennett.com.jm
                         process="@this" />
 
             </p:autoComplete> 
+            <p:spacer width="10"/>   
+            <p:outputLabel value="Payment"
+                           for="paymentCurrency"
+                           title="This is payment currency for the goods and services"
+                           rendered="#{financeManager.useMulticurrency}"
+                           style="font-weight: bold;" />   
+            <p:spacer width="10"/>               
+            <p:autoComplete id="paymentCurrency"  
+                            var="currency"
+                            rendered="#{financeManager.useMulticurrency}"
+                            forceSelection="true"   
+                            title="This is payment currency for the goods and services"
+                            dropdown="true"
+                            scrollHeight="200" 
+                            value="#{purchasingManager.selectedPurchaseRequisition.paymentCurrency}"
+                            itemValue="#{currency}"
+                            itemLabel="#{currency.name}"
+                            validator="businessEntityValidator"
+                            cache="true"
+                            required="true"                           
+                            requiredMessage="Payment Currency Required"
+                            completeMethod="#{financeManager.completeCurrency}" >
+
+                <f:converter converterId="currencyConverter"/>
+
+                <f:attribute name="em" value="#{financeManager.entityManager1}"/>
+
+                <p:ajax event="itemSelect"
+                        update="currencyToolbar,rate,rateLabel,rateSpacer,:purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
+                        listener="#{purchasingManager.updateTotalCost}"
+                        process="@this" />
+
+            </p:autoComplete> 
         </p:toolbarGroup>   
-        <p:toolbarGroup align="right" >
+        <p:toolbarGroup align="right" style="margin-top: 10px;">
             <p:outputLabel value="#{purchasingManager.currencyExchangeRateLabel}"                              
-                           rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                           rendered="#{financeManager.useMulticurrency}"
                            id="rateLabel"
                            for="rate"
                            style="font-weight: bold;" />  
             <p:spacer width="10" 
-                      rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                      rendered="#{financeManager.useMulticurrency}"
                       id="rateSpacer"/>
-            <p:inputNumber rendered="#{purchasingManager.renderCurrencyExchangeRate}"
-                           id="rate"
-                           required="true"
-                           decimalPlaces="4"
-                           requiredMessage="Exchange rate required"
-                           value="#{purchasingManager.selectedPurchaseRequisition.currencyExchangeRate}" >
+            <p:inputNumber  rendered="#{financeManager.useMulticurrency}"
+                            id="rate"
+                            required="true"
+                            inputStyle="width: 85px;"
+                            decimalPlaces="4"
+                            requiredMessage="Exchange rate required"
+                            value="#{purchasingManager.selectedPurchaseRequisition.currencyExchangeRate}" >
 
                 <p:ajax event="change"
                         update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
