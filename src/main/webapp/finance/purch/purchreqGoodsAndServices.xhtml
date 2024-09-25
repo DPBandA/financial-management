@@ -27,9 +27,9 @@ Email: info@dpbennett.com.jm
     <p:toolbar style="margin-bottom: 1px;" 
                rendered="#{financeManager.useMulticurrency}"
                id="currencyToolbar">
-        
+
         <p:toolbarGroup>
-            <p:outputLabel value="Currency"
+            <p:outputLabel value="Costing"
                            for="currency"
                            title="This is currency for the goods and services"
                            rendered="#{financeManager.useMulticurrency}"
@@ -57,7 +57,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="itemSelect"
                         update="currencyToolbar,rate,rateLabel,rateSpacer,:purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
-                        listener="#{purchasingManager.updateTotalCost}"
+                        listener="#{purchasingManager.updatePurchaseReq}"
                         process="@this" />
 
             </p:autoComplete> 
@@ -90,31 +90,32 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="itemSelect"
                         update="currencyToolbar,rate,rateLabel,rateSpacer,:purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
-                        listener="#{purchasingManager.updateTotalCost}"
+                        listener="#{purchasingManager.updatePurchaseReq}"
                         process="@this" />
 
             </p:autoComplete> 
         </p:toolbarGroup>   
-        <p:toolbarGroup align="right" style="margin-top: 10px;">
-            <p:outputLabel value="#{purchasingManager.currencyExchangeRateLabel}"                              
-                           rendered="#{financeManager.useMulticurrency}"
+        <p:toolbarGroup align="right"                                                      
+                        rendered="#{purchasingManager.renderCurrencyExchangeRate}"
+                        style="margin-top: 10px;">
+            <p:outputLabel value="#{purchasingManager.currencyExchangeRateLabel}" 
                            id="rateLabel"
+                           title="This is the default to payment currency exchange rate"
                            for="rate"
                            style="font-weight: bold;" />  
             <p:spacer width="10" 
                       rendered="#{financeManager.useMulticurrency}"
                       id="rateSpacer"/>
-            <p:inputNumber  rendered="#{financeManager.useMulticurrency}"
-                            id="rate"
-                            required="true"
-                            inputStyle="width: 85px;"
-                            decimalPlaces="4"
-                            requiredMessage="Exchange rate required"
-                            value="#{purchasingManager.selectedPurchaseRequisition.currencyExchangeRate}" >
+            <p:inputNumber   id="rate"
+                             title="This is the default to payment currency exchange rate"
+                             required="true"
+                             decimalPlaces="4"
+                             requiredMessage="Exchange rate required"
+                             value="#{purchasingManager.selectedPurchaseRequisition.currencyExchangeRate}" >
 
                 <p:ajax event="change"
                         update=":purchreqDialogForm:purchreqDetailToolbar1,costComponentTable"
-                        listener="#{purchasingManager.updateTotalCost}"
+                        listener="#{purchasingManager.updatePurchaseReq}"
                         process="@this" />
 
             </p:inputNumber>
@@ -150,7 +151,7 @@ Email: info@dpbennett.com.jm
                   value="#{purchasingManager.selectedPurchaseRequisition.allSortedCostComponents}">
 
         <p:ajax event="rowEdit" listener="#{purchasingManager.onCostComponentRowEdit}" 
-                update=":purchreqDialogForm:purchreqFormTabView:totalCost,costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
+                update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
         <p:ajax event="rowEditCancel" listener="#{purchasingManager.onCostComponentRowCancel}" 
                 update="costComponentTable,:purchreqDialogForm:purchreq_growl,:purchreqDialogForm:purchreqDetailToolbar1"/>
 
@@ -304,16 +305,14 @@ Email: info@dpbennett.com.jm
                 </p:menuitem>                   
 
             </p:menuButton>                   
-        </p:column>      
+        </p:column>   
 
-    </p:dataTable>
-    <p:toolbar style="margin-top: 1px;">
-        <p:toolbarGroup align="right">
-            <h:panelGrid columns="2" cellspacing="10">
+        <f:facet name="footer">
+            <div style="text-align: right;">
                 <p:outputLabel style="font-weight: bold"
-                               value="Total (#{purchasingManager.defaultCurrencySymbol}):"  />
-
-                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.convertedTotalCost}" 
+                               value="Costing total (#{purchasingManager.costingCurrencySymbol}):"  />
+                <p:spacer width="5"/> 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.totalCost}" 
                                id="totalCost"                       
                                style="font-weight: bold"
                                styleClass="datatable-number-field" >
@@ -321,10 +320,23 @@ Email: info@dpbennett.com.jm
                                      pattern="#,###.##;(#,###.##)"
                                      maxFractionDigits="2"/>
                 </p:outputLabel>
-            </h:panelGrid>
-        </p:toolbarGroup>
-    </p:toolbar>
+                <br/><br/>
+                <p:outputLabel style="font-weight: bold"
+                               value="Payment total (#{purchasingManager.paymentCurrencySymbol}):"  />
+                <p:spacer width="5"/> 
+                <p:outputLabel value="#{purchasingManager.selectedPurchaseRequisition.convertedTotalCost}" 
+                               id="totalPayment"                       
+                               style="font-weight: bold"
+                               styleClass="datatable-number-field" >
+                    <f:convertNumber minFractionDigits="2" 
+                                     pattern="#,###.##;(#,###.##)"
+                                     maxFractionDigits="2"/>
+                </p:outputLabel>
+            </div>
+        </f:facet>
 
+    </p:dataTable>
+  
     <p:toolbar style="margin-top: 1px;">
         <p:toolbarGroup>
             <p:commandButton title="Add new cost component"
