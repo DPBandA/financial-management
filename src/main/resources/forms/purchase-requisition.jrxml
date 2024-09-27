@@ -164,6 +164,9 @@ WHERE
 	<parameter name="paymentCurrencySymbol" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="currencyExchangeRateLabel" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["EXCH. RATE"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -1120,7 +1123,7 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{originatorSignature}]]></textFieldExpression>
 			</textField>
-			<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Opaque" x="440" y="391" width="60" height="20" forecolor="#003366" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9180788-54bf-47c4-aefe-78e1ec545251">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1532,7 +1535,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["EXCH. RATE"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{currencyExchangeRateLabel}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Opaque" x="500" y="371" width="71" height="20" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="09fa6ede-1e68-4cce-bf7d-f16f1f1ac4f6">

@@ -13,6 +13,8 @@
 	<subDataset name="Cost Components" uuid="a7e613e8-cf98-4942-94d6-f734eb7f6361">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Local MySQL"/>
+		<parameter name="paymentCurrencySymbol" class="java.lang.String"/>
+		<parameter name="costingCurrencySymbol" class="java.lang.String"/>
 		<parameter name="costComponent_prId" class="java.lang.Long">
 			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 		</parameter>
@@ -163,6 +165,15 @@ WHERE
 		<defaultValueExpression><![CDATA["QN-0001"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="currencyExchangeRate" class="java.lang.Double" isForPrompting="false"/>
+	<parameter name="paymentCurrencySymbol" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="currencyExchangeRateLabel" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["EXCH. RATE"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="costingCurrencySymbol" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -320,9 +331,15 @@ WHERE
 					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Cost Components" uuid="c61bed3e-ff8c-4559-a360-011379305739">
+					<datasetRun subDataset="Cost Components" uuid="8f216922-bd29-490a-888d-8b10d4484a18">
 						<datasetParameter name="costComponent_prId">
 							<datasetParameterExpression><![CDATA[$P{prId}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="paymentCurrencySymbol">
+							<datasetParameterExpression><![CDATA[$P{paymentCurrencySymbol}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="costingCurrencySymbol">
+							<datasetParameterExpression><![CDATA[$P{costingCurrencySymbol}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
@@ -485,8 +502,8 @@ WHERE
 							<box>
 								<pen lineColor="rgba(102, 153, 204, 0.49019608)"/>
 							</box>
-							<staticText>
-								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="60" height="50" forecolor="#FFFFFF" backcolor="#6C4256" uuid="fde7339d-000e-4c51-86e7-085aae49520a"/>
+							<textField textAdjust="ScaleFont">
+								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="60" height="50" forecolor="#FFFFFF" backcolor="#6C4256" uuid="97552c9e-96b6-4fbc-8087-6699bae2c06c"/>
 								<box topPadding="1" leftPadding="2" bottomPadding="1" rightPadding="2">
 									<pen lineWidth="1.0" lineColor="#FFFFFF"/>
 									<topPen lineWidth="1.0"/>
@@ -497,8 +514,8 @@ WHERE
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="SansSerif" size="10" isBold="false"/>
 								</textElement>
-								<text><![CDATA[UNIT PRICE ($)]]></text>
-							</staticText>
+								<textFieldExpression><![CDATA["UNIT PRICE (" + $P{costingCurrencySymbol} + ") "]]></textFieldExpression>
+							</textField>
 						</jr:columnHeader>
 						<jr:detailCell height="22">
 							<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
@@ -520,16 +537,16 @@ WHERE
 					<jr:column width="71" uuid="2f8483ff-188a-4038-b832-c4d395e6a379">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:columnHeader height="50" rowSpan="1">
-							<staticText>
-								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="71" height="50" forecolor="#FFFFFF" backcolor="#6C4256" uuid="095fd356-b3ce-4594-a5f8-dd816865234e"/>
+							<textField textAdjust="ScaleFont">
+								<reportElement stretchType="ContainerBottom" mode="Opaque" x="0" y="0" width="71" height="50" forecolor="#FFFFFF" backcolor="#6C4256" uuid="a025611f-93c3-4958-8876-111f4c86013d"/>
 								<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
 									<pen lineWidth="1.0" lineColor="#FFFFFF"/>
 								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="SansSerif" size="10" isBold="false"/>
 								</textElement>
-								<text><![CDATA[TOTAL ($)]]></text>
-							</staticText>
+								<textFieldExpression><![CDATA["TOTAL (" + $P{costingCurrencySymbol} + ") "]]></textFieldExpression>
+							</textField>
 						</jr:columnHeader>
 						<jr:detailCell height="22">
 							<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
@@ -630,7 +647,7 @@ WHERE
 				</textElement>
 				<text><![CDATA[Shipping Instructions]]></text>
 			</staticText>
-			<textField textAdjust="StretchHeight" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
+			<textField textAdjust="ScaleFont" pattern="#,##0.00;(-#,##0.00)" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="440" y="280" width="60" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f9180788-54bf-47c4-aefe-78e1ec545251">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -644,7 +661,7 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["TOTAL $"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["TOTAL (" + $P{paymentCurrencySymbol} + ")"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="0" y="80" width="161" height="64" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="bb6086a9-61b8-4386-b987-2672e0b09646"/>
@@ -971,8 +988,8 @@ WHERE
 				</textElement>
 				<textFieldExpression><![CDATA[$P{purposeOfOrder}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement positionType="Float" mode="Transparent" x="440" y="260" width="60" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="f019ceed-b8fd-48dd-82c4-90b4e1210f62">
+			<textField textAdjust="ScaleFont">
+				<reportElement positionType="Float" mode="Transparent" x="440" y="260" width="60" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="d871188c-f730-4c85-b2fb-d07999d8a9fd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<box topPadding="1" leftPadding="3" bottomPadding="1" rightPadding="3">
@@ -985,8 +1002,8 @@ WHERE
 				<textElement textAlignment="Left" verticalAlignment="Bottom">
 					<font fontName="SansSerif" size="8" isBold="true"/>
 				</textElement>
-				<text><![CDATA[EXCH. RATE]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$P{currencyExchangeRateLabel}]]></textFieldExpression>
+			</textField>
 			<textField textAdjust="ScaleFont" pattern="#,##0.00;(#,##0.00)" isBlankWhenNull="true">
 				<reportElement positionType="Float" mode="Transparent" x="500" y="260" width="71" height="20" forecolor="#6C4256" backcolor="rgba(102, 153, 204, 0.49019608)" uuid="73b9ac97-539f-4842-a34f-03f72876c5e0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
