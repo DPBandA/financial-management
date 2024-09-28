@@ -174,6 +174,9 @@ WHERE
 	<parameter name="costingCurrencySymbol" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["$"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="logoURL" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:/Projects/job-management-tracking-system/src/main/webapp/images/BSJ Logo - H41.png"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT purchaserequisition.`ID`,
 	purchaserequisition.`DESCRIPTION`,
@@ -250,7 +253,7 @@ WHERE
 			</staticText>
 			<image>
 				<reportElement x="2" y="2" width="170" height="42" uuid="dca0a256-6da6-40fc-9c33-3a10940310b0"/>
-				<imageExpression><![CDATA["C:/jasperreports/BSJ Logo - H41.png"]]></imageExpression>
+				<imageExpression><![CDATA[$P{logoURL}]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="180" y="13" width="220" height="11" forecolor="#6C4256" uuid="5b32076e-3061-4a79-be98-cd298c1224f1"/>

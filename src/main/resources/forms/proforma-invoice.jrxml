@@ -617,9 +617,9 @@ WHERE
 				<textFieldExpression><![CDATA[$P{issueDate}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="300" y="30" width="32" height="20" forecolor="#FFFFFF" uuid="4e618559-c661-4ad8-a323-0472cecb9ec6">
+				<reportElement positionType="Float" x="300" y="30" width="35" height="20" forecolor="#FFFFFF" uuid="4e618559-c661-4ad8-a323-0472cecb9ec6">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
@@ -641,6 +641,7 @@ WHERE
 				<reportElement positionType="Float" x="300" y="85" width="20" height="20" forecolor="#FFFFFF" uuid="da1b080d-1a30-4dea-9d9a-a837d1baeeea">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement>
 					<font size="12"/>
@@ -658,7 +659,7 @@ WHERE
 				<textFieldExpression><![CDATA[$P{customerAddress}]]></textFieldExpression>
 			</textField>
 			<textField textAdjust="ScaleFont">
-				<reportElement positionType="Float" x="334" y="30" width="226" height="20" forecolor="#FFFFFF" uuid="f3849ef7-66f8-4f2f-85bf-5a580b240aed">
+				<reportElement positionType="Float" x="335" y="30" width="225" height="20" forecolor="#FFFFFF" uuid="f3849ef7-66f8-4f2f-85bf-5a580b240aed">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
