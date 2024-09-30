@@ -70,6 +70,9 @@ Email: info@dpbennett.com.jm
                          var="procurementTask"  
                          widgetVar="procurementTasksTableVar"
                          emptyMessage="No active purchase requisitions found"
+                         paginator="true"
+                         rows="15"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                          value="#{purchasingManager.procurementTasks}">
 
                 <f:facet name="header">
@@ -175,7 +178,7 @@ Email: info@dpbennett.com.jm
 
                     </p:commandLink>           
                 </p:column>
-                
+
             </p:dataTable> 
 
         </p:panel>
