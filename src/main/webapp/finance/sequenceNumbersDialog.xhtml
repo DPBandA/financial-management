@@ -1,0 +1,102 @@
+<!--
+Financial Management(FM)  
+Copyright (C) 2024  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <ui:include src="../head.xhtml" />
+        <title>Sequence Numbers</title>
+        <ui:include src="header.xhtml" />
+    </h:head>
+
+    <h:body >  
+
+        <ui:include src="../common/commonDialogs.xhtml"/>  
+
+        <h:form id="sequenceNumbersDialogForm">        
+            <p:growl id="growl" life="5000" showDetail="true"/>
+
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{purchasingManager.saveSequenceNumbers}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+            </p:toolbar>
+
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="4">   
+
+                    <p:outputLabel value="Purchase req. #" 
+                                   for="PurchaseReqNumber"
+                                   style="font-weight: bold;" />
+                    <p:inputNumber value="#{purchasingManager.lastPurchaseReqNumber.sequentialNumber}"    
+                                   id="PurchaseReqNumber"
+                                   required="true"
+                                   decimalPlaces="0"
+                                   requiredMessage="Purchase req. # required" >
+
+                    </p:inputNumber>  
+
+                    <p:outputLabel value="Purchase order #" 
+                                   for="PurchaseOrderNumber"
+                                   style="font-weight: bold;" />
+                    <p:inputNumber value="#{purchasingManager.lastPurchaseOrderNumber.sequentialNumber}"    
+                                   id="PurchaseOrderNumber"
+                                   required="true"
+                                   decimalPlaces="0"
+                                   requiredMessage="Purchase order # required" >
+
+                    </p:inputNumber>  
+
+                </h:panelGrid>
+            </p:panel>
+
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{purchasingManager.saveSequenceNumbers}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{purchasingManager.cancelDialogEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+            </p:toolbar>
+
+        </h:form> 
+    </h:body>
+</html>

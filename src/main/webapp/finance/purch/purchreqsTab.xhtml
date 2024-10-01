@@ -87,6 +87,13 @@ Email: info@dpbennett.com.jm
             </f:facet>
             <p:outputLabel value="#{pr.originator}" />
         </p:column>
+        
+        <p:column sortBy="#{pr.priorityCode}">
+            <f:facet name="header">
+                <p:outputLabel value="Priority"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.priorityCode}" />
+        </p:column>
 
         <p:column sortBy="#{pr.requisitionDate}">
             <f:facet name="header">
