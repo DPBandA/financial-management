@@ -156,6 +156,9 @@ Email: info@dpbennett.com.jm
                          var="inventoryTask"  
                          widgetVar="inventoryTasksTableVar"
                          emptyMessage="No active inventory requisitions found"
+                         paginator="true"
+                         rows="15"
+                         paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
                          value="#{inventoryManager.inventoryTasks}">
 
                 <f:facet name="header">

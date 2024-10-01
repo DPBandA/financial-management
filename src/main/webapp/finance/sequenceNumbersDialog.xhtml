@@ -51,10 +51,23 @@ Email: info@dpbennett.com.jm
                                      icon="pi pi-times" /> 
                 </p:toolbarGroup>
 
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+
             </p:toolbar>
 
             <p:panel style="margin-top: 1px;margin-bottom: 1px;">
-                <h:panelGrid columns="4">   
+                <h:panelGrid columns="2" cellspacing="10">   
+
+                    <p:outputLabel value="Purchase req. # yearly *" 
+                                   for="resetPRSequenceNumberYearly"
+                                   style="font-weight: bold;" />
+                    <p:toggleSwitch id="resetPRSequenceNumberYearly"
+                                    value="#{purchasingManager.resetPRSequenceNumberYearly.boolean}"/>
 
                     <p:outputLabel value="Purchase req. #" 
                                    for="PurchaseReqNumber"
@@ -63,9 +76,13 @@ Email: info@dpbennett.com.jm
                                    id="PurchaseReqNumber"
                                    required="true"
                                    decimalPlaces="0"
-                                   requiredMessage="Purchase req. # required" >
+                                   requiredMessage="Purchase req. # required" />
 
-                    </p:inputNumber>  
+                    <p:outputLabel value="Purchase order # yearly *" 
+                                   for="resetPOSequenceNumberYearly"
+                                   style="font-weight: bold;" />
+                    <p:toggleSwitch id="resetPOSequenceNumberYearly"
+                                    value="#{purchasingManager.resetPOSequenceNumberYearly.boolean}"/>
 
                     <p:outputLabel value="Purchase order #" 
                                    for="PurchaseOrderNumber"
@@ -74,9 +91,7 @@ Email: info@dpbennett.com.jm
                                    id="PurchaseOrderNumber"
                                    required="true"
                                    decimalPlaces="0"
-                                   requiredMessage="Purchase order # required" >
-
-                    </p:inputNumber>  
+                                   requiredMessage="Purchase order # required" />
 
                 </h:panelGrid>
             </p:panel>
@@ -93,6 +108,13 @@ Email: info@dpbennett.com.jm
                                      actionListener="#{purchasingManager.cancelDialogEdit}" 
                                      immediate="true" 
                                      icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
                 </p:toolbarGroup>
 
             </p:toolbar>
