@@ -229,7 +229,7 @@ Email: info@dpbennett.com.jm
                 </p:cellEditor>
             </p:column>   
 
-            <p:column headerText="Amount ($)" >
+            <p:column headerText="Amount (#{purchasingManager.paymentCurrencySymbol})" >
                 <p:cellEditor>
                     <f:facet name="output">
                         <p:outputLabel value="#{cashPayment.payment}" >
@@ -294,7 +294,7 @@ Email: info@dpbennett.com.jm
                 <p:row>
                     <p:column colspan="2" 
                               style="text-align:right;" 
-                              footerText="Total invoice amount ($)"/>                                        
+                              footerText="Total invoice amount (#{purchasingManager.paymentCurrencySymbol}):"/>                                        
                     <p:column style="text-align:right;"> 
                         <f:facet name="footer">
                             <p:outputLabel value="#{purchasingManager.totalCashPayments}" >
