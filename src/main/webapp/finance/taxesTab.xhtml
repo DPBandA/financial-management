@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doTaxSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:taxesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:taxesTable"/>
 
 
             </p:commandButton>
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="taxSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doTaxSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:taxesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:taxesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeTaxesOnly"
                                          value="#{financeManager.isActiveTaxesOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:taxesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:taxesTable"
                              listener="#{financeManager.doTaxSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -147,7 +147,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doTaxSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:taxesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:taxesTable"/>
 
             </p:commandButton>           
         </p:column>

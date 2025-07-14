@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.doInventoryProductSearch}"
-                        update=":appForm:mainTabView:inventoryProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryProductsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="inventoryProductSearchButton"
                                  class="search-button"   
                                  actionListener="#{inventoryManager.doInventoryProductSearch}"
-                                 update=":appForm:mainTabView:inventoryProductsTable"
+                                 update=":mainTabViewForm:mainTabView:inventoryProductsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeInventoryProductsOnly"
                                          value="#{inventoryManager.activeInventoryProductsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:inventoryProductsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:inventoryProductsTable"
                              listener="#{inventoryManager.doInventoryProductSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -142,7 +142,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.doInventoryProductSearch}"
-                        update=":appForm:mainTabView:inventoryProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryProductsTable"/>
 
             </p:commandButton>
         </p:column>
@@ -160,7 +160,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.doInventoryProductSearch}"
-                        update=":appForm:mainTabView:inventoryProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryProductsTable"/>
 
             </p:commandButton>
 

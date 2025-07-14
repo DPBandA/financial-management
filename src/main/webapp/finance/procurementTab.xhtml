@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new procurement method"                                  
                              value="New"
                              actionListener="#{financeManager.createNewProcurementMethod}"
-                             update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
+                             update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doProcurementMethodSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />   
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="procurementMethodSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doProcurementMethodSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>            
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeProcurementMethodsOnly"
                                          value="#{financeManager.isActiveProcurementMethodsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                              listener="#{financeManager.doProcurementMethodSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -178,7 +178,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable" />
 
                 <f:setPropertyActionListener value="#{procurementMethod}"                                                                    
                                              target="#{financeManager.selectedProcurementMethod}" />

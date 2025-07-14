@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn"  
                         listener="#{financeManager.doClassificationSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable" />
 
             </p:commandButton>
             <p:spacer width="20" />   
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="classificationSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doClassificationSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeClassificationsOnly"
                                          value="#{financeManager.isActiveClassificationsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable"
                              listener="#{financeManager.doClassificationSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -156,7 +156,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn"                         
-                        update=":appForm:mainTabView:financialAdminTabView:ClassificationsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:ClassificationsTable" />
 
                 <f:setPropertyActionListener value="#{classification}"                                                                    
                                              target="#{financeManager.selectedClassification}" />

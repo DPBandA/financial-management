@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doJobSubcategorySearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:JobSubcategoriesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobSubcategoriesTable" />
 
             </p:commandButton>  
             <p:spacer width="20" />   
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="jobSubCategorySearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doJobSubcategorySearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:JobSubcategoriesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:JobSubcategoriesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeJobSubcategoriesOnly"
                                          value="#{financeManager.isActiveJobSubcategoriesOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:JobSubcategoriesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:JobSubcategoriesTable"
                              listener="#{financeManager.doJobSubcategorySearch}"
                              event="change"                                      
                              process="@this"/>
@@ -144,7 +144,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:financialAdminTabView:JobSubcategoriesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobSubcategoriesTable" />
 
                 <f:setPropertyActionListener value="#{jobSubcategory}"                                                                    
                                              target="#{financeManager.selectedJobSubcategory}" />

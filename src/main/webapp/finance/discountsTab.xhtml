@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doDiscountSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:discountsTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:discountsTable"/>
 
 
             </p:commandButton>
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="discountSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doDiscountSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:discountsTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:discountsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeDiscountsOnly"
                                          value="#{financeManager.isActiveDiscountsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:discountsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:discountsTable"
                              listener="#{financeManager.doDiscountSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -148,7 +148,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doDiscountSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:discountsTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:discountsTable"/>
 
             </p:commandButton>           
         </p:column>

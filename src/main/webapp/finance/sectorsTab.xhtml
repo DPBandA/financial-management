@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new sector"                                  
                              value="New"
                              actionListener="#{financeManager.createNewSector}"
-                             update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
+                             update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doSectorSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:SectorsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />  
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="sectorSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doSectorSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeSectorsOnly"
                                          value="#{financeManager.isActiveSectorsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:SectorsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
                              listener="#{financeManager.doSectorSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -131,7 +131,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:financialAdminTabView:SectorsTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable" />
 
                 <f:setPropertyActionListener value="#{sector}"                                                                    
                                              target="#{financeManager.selectedSector}" />

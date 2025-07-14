@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryDialogReturn}"
-                        update=":appForm:mainTabView:inventoryTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>     
             <p:spacer width="20" />
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="inventorySearchButton"
                                  class="search-button"   
                                  actionListener="#{inventoryManager.doInventorySearch}"
-                                 update=":appForm:mainTabView:inventoryTable"
+                                 update=":mainTabViewForm:mainTabView:inventoryTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeInventoryOnly"
                                          value="#{inventoryManager.activeInventoryOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:inventoryTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:inventoryTable"
                              listener="#{inventoryManager.doInventorySearch}"
                              event="change"                                      
                              process="@this"/>
@@ -151,7 +151,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryDialogReturn}"
-                        update=":appForm:mainTabView:inventoryTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>
 
@@ -195,7 +195,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryDialogReturn}"
-                        update=":appForm:mainTabView:inventoryTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>           
         </p:toolbarGroup>

@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{purchasingManager.purchaseReqDialogReturn}"
-                        update=":appForm:mainTabView:purchasereqsTable"/>
+                        update=":mainTabViewForm:mainTabView:purchasereqsTable"/>
 
             </p:commandButton>
 
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-circle"
                 actionListener="#{purchasingManager.approvePurchaseReqs}"                                            
                 process="@this"
-                update="@this,recommend1,:appForm:mainTabView:approve2,:appForm:mainTabView:recommend2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,recommend1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend2,:mainTabViewForm:mainTabView:purchasereqsTable,headerForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Approve the selected purchase requisitions" >
             </p:commandButton>  
@@ -58,7 +58,7 @@ Email: info@dpbennett.com.jm
                 icon="pi pi-check-square"
                 actionListener="#{purchasingManager.recommendPurchaseReqs}"                                            
                 process="@this"
-                update="@this,approve1,:appForm:mainTabView:recommend2,:appForm:mainTabView:approve2,:appForm:mainTabView:purchasereqsTable,appForm:growl3"
+                update="@this,approve1,:mainTabViewForm:mainTabView:recommend2,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:purchasereqsTable,headerForm:growl3"
                 disabled="#{!purchasingManager.hasSelectedPRs()}"
                 title="Recommend the selected purchase requisitions" >
             </p:commandButton>

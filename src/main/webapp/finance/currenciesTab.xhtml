@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doCurrencySearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:currenciesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"/>
 
 
             </p:commandButton>
@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="currencySearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doCurrencySearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:currenciesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -118,7 +118,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doCurrencySearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:currenciesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:currenciesTable"/>
 
             </p:commandButton>           
         </p:column>

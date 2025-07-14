@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doJobCategorySearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
 
             </p:commandButton>  
             <p:spacer width="20" />  
@@ -46,7 +46,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="jobCategorySearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doJobCategorySearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeJobCategoriesOnly"
                                          value="#{financeManager.isActiveJobCategoriesOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable"
                              listener="#{financeManager.doJobCategorySearch}"
                              event="change"                                      
                              process="@this"/>
@@ -140,7 +140,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:JobCategoriesTable" />
 
                 <f:setPropertyActionListener value="#{jobCategory}"                                                                    
                                              target="#{financeManager.selectedJobCategory}" />

@@ -35,7 +35,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn"                         
-                        update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="settingSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doSettingSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -105,7 +105,7 @@ Email: info@dpbennett.com.jm
                                              target="#{systemManager.selectedSystemOption}" />
 
                 <p:ajax event="dialogReturn"                        
-                        update=":appForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:financialSystemOptionsTable"/>
 
             </p:commandButton>           
         </p:column>

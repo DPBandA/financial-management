@@ -29,14 +29,14 @@ Email: info@dpbennett.com.jm
             <p:commandButton title="Add new service"                                  
                              value="New"
                              actionListener="#{financeManager.createNewService}"
-                             update=":appForm:mainTabView:financialAdminTabView:servicesTable"
+                             update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doServiceSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:servicesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable" />
 
             </p:commandButton>     
             <p:spacer width="20" />  
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="serviceSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doServiceSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:servicesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeServicesOnly"
                                          value="#{financeManager.isActiveServicesOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:servicesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
                              listener="#{financeManager.doServiceSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -131,7 +131,7 @@ Email: info@dpbennett.com.jm
                              icon="pi pi-pencil">
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:financialAdminTabView:servicesTable" />
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable" />
 
                 <f:setPropertyActionListener value="#{service}"                                                                    
                                              target="#{financeManager.selectedService}" />

@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doMarketProductSearch}"
-                        update=":appForm:mainTabView:marketProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:marketProductsTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="marketProductSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doMarketProductSearch}"
-                                 update=":appForm:mainTabView:marketProductsTable"
+                                 update=":mainTabViewForm:mainTabView:marketProductsTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="isActiveMarketProductsOnly"
                                          value="#{financeManager.isActiveMarketProductsOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:marketProductsTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:marketProductsTable"
                              listener="#{financeManager.doMarketProductSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -139,7 +139,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doMarketProductSearch}"
-                        update=":appForm:mainTabView:marketProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:marketProductsTable"/>
 
             </p:commandButton>
         </p:column>
@@ -157,7 +157,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doMarketProductSearch}"
-                        update=":appForm:mainTabView:marketProductsTable"/>
+                        update=":mainTabViewForm:mainTabView:marketProductsTable"/>
 
             </p:commandButton>
 

@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{purchasingManager.doSupplierSearch}"
-                        update=":appForm:mainTabView:suppliersTable"/>
+                        update=":mainTabViewForm:mainTabView:suppliersTable"/>
 
             </p:commandButton>
             <p:spacer width="20" />
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="supplierSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doSupplierSearch}"
-                                 update=":appForm:mainTabView:suppliersTable"
+                                 update=":mainTabViewForm:mainTabView:suppliersTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -60,7 +60,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle"
                                          id="activeSuppliersOnly"
                                          value="#{purchasingManager.isActiveSuppliersOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:suppliersTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:suppliersTable"
                              listener="#{purchasingManager.doSupplierSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -147,7 +147,7 @@ Email: info@dpbennett.com.jm
                                              target="#{purchasingManager.selectedSupplier}" />
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:suppliersTable"/>
+                        update=":mainTabViewForm:mainTabView:suppliersTable"/>
 
             </p:commandButton>
         </p:column>
@@ -163,7 +163,7 @@ Email: info@dpbennett.com.jm
                 title="Add a new supplier" >
 
                 <p:ajax event="dialogReturn" 
-                        update=":appForm:mainTabView:suppliersTable"/>
+                        update=":mainTabViewForm:mainTabView:suppliersTable"/>
 
             </p:commandButton>
 

@@ -36,7 +36,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
-                        update=":appForm:mainTabView:inventoryRequisitionTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"/>
 
             </p:commandButton>   
             <p:spacer width="20" />
@@ -47,7 +47,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="inventoryRequisitionSearchButton"
                                  class="search-button"   
                                  actionListener="#{inventoryManager.doInventoryRequisitionSearch}"
-                                 update=":appForm:mainTabView:inventoryRequisitionTable"
+                                 update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -123,7 +123,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
-                        update=":appForm:mainTabView:inventoryRequisitionTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"/>
 
             </p:commandButton>
 
@@ -141,7 +141,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
-                        update=":appForm:mainTabView:inventoryRequisitionTable"/>
+                        update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"/>
 
             </p:commandButton>           
         </p:toolbarGroup>

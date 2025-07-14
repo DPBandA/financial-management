@@ -37,7 +37,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doAccountingCodeSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:accountingCodesTable"/>
 
 
             </p:commandButton>
@@ -48,7 +48,7 @@ Email: info@dpbennett.com.jm
                 <p:commandButton id="accountingCodeSearchButton"
                                  class="search-button"   
                                  actionListener="#{financeManager.doAccountingCodeSearch}"
-                                 update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
+                                 update=":mainTabViewForm:mainTabView:financialAdminTabView:accountingCodesTable"
                                  icon="pi pi-search"
                                  process="@form" />
             </h:panelGroup>
@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
                                          id="activeAccountingCodesOnly"
                                          value="#{financeManager.isActiveAccountingCodesOnly}" >
-                    <p:ajax  update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"
+                    <p:ajax  update=":mainTabViewForm:mainTabView:financialAdminTabView:accountingCodesTable"
                              listener="#{financeManager.doAccountingCodeSearch}"
                              event="change"                                      
                              process="@this"/>
@@ -158,7 +158,7 @@ Email: info@dpbennett.com.jm
 
                 <p:ajax event="dialogReturn" 
                         listener="#{financeManager.doAccountingCodeSearch}"
-                        update=":appForm:mainTabView:financialAdminTabView:accountingCodesTable"/>
+                        update=":mainTabViewForm:mainTabView:financialAdminTabView:accountingCodesTable"/>
 
             </p:commandButton>           
         </p:column>
