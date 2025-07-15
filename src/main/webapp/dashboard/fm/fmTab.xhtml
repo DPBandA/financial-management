@@ -1,5 +1,5 @@
 <!--
-Job Management & Tracking System (JMTS) 
+Financial Management(FM) 
 Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -17,116 +17,172 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <p:toolbar style="margin-bottom: 1px;">
 
-        <p:toolbarGroup align="left" >
+    <p:panel id="procurementTasks" 
+             header="Procurement" 
+             closable="false" >
 
-            <p:menuButton value="New" >  
-                <p:menuitem value="Job"
-                            title="Create new job"
-                            icon="pi pi-plus"
-                            actionListener="#{jobManager.createNewJob}"  
-                            process="@this" >
+        <p:panelGrid columns="1" layout="grid">
+
+            <p:commandButton 
+                value="New purchase requisition"
+                actionListener="#{purchasingManager.createNewPurchaseReq}"                                            
+                process="@this" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{purchasingManager.purchaseReqDialogReturn}"
+                        update=":dashboardForm:dashboardAccordion:procurementTasksTable"/>
+
+            </p:commandButton>
+
+            <p:commandButton 
+                value="New goods/services supplier" 
+                actionListener="#{purchasingManager.addNewSupplier}"                                            
+                process="@this" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{purchasingManager.doSupplierSearch}"
+                        update=":mainTabViewForm:mainTabView:suppliersTable"/>
+
+            </p:commandButton>
+
+            <p:commandButton value="Browse purchase requisitions"
+                             actionListener="#{purchasingManager.openPurchaseReqsTab}"
+                             process="@this" />                                
+
+            <p:commandButton value="Browse goods/services suppliers"
+                             actionListener="#{purchasingManager.openSuppliersTab}"
+                             process="@this" />
+
+        </p:panelGrid>
+
+        <p:dataTable id="procurementTasksTable"
+                     var="procurementTask"  
+                     widgetVar="procurementTasksTableVar"
+                     emptyMessage="No active purchase requisitions found"
+                     paginator="true"
+                     rows="15"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     value="#{purchasingManager.procurementTasks}">
+
+            <f:facet name="header">
+                <h:outputText value="Active Purchase Requisitions"/> 
+            </f:facet>
+
+            <p:column>
+                <p:commandLink actionListener="#{purchasingManager.editSelectedPurchaseReq}"
+                               global="true"
+                               value="#{procurementTask.number} - #{procurementTask.description}"
+                               title="Click to view or edit"
+                               process="@this">
+
+                    <f:setPropertyActionListener value="#{procurementTask}"                                                                    
+                                                 target="#{purchasingManager.selectedPurchaseRequisition}" />
 
                     <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView"
-                            listener="#{jobManager.jobDialogReturn}" />
+                            listener="#{purchasingManager.purchaseReqDialogReturn}"
+                            update=":dashboardForm:dashboardAccordion:procurementTasksTable"/>
 
-                </p:menuitem>    
-                <p:separator />
-                <p:menuitem
-                    actionListener="#{clientManager.createNewClient}"                
-                    disabled="#{!clientManager.user.can('AddClient')}"
-                    global="true"  
-                    rendered="false"
-                    onerror="PF('connectionErrorDialog').show();"
-                    value="Client"       
-                    update="headerForm:growl3"
-                    title="Create new client"
-                    icon="pi pi-plus"
-                    process="@this" >
+                </p:commandLink>           
+            </p:column>
+        </p:dataTable> 
+
+    </p:panel>
+
+    <p:panel id="inventoryTasks" 
+             header="Inventory" 
+             closable="false"  >                
+
+        <p:panelGrid columns="1" layout="grid">
+
+            <p:commandButton 
+                value="New inventory product"
+                actionListener="#{inventoryManager.createNewInventoryProduct}"                                            
+                process="@this" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.doInventoryProductSearch}"
+                        update=":mainTabViewForm:mainTabView:inventoryProductsTable"/>
+
+            </p:commandButton>
+
+            <p:commandButton 
+                value="New inventory item"
+                actionListener="#{inventoryManager.createNewInventory}"                                            
+                process="@this" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryDialogReturn}"
+                        update=":mainTabViewForm:mainTabView:inventoryTable"/>
+
+            </p:commandButton>  
+
+            <p:commandButton 
+                value="New inventory requisition"
+                actionListener="#{inventoryManager.createNewInventoryRequisition}"                                            
+                process="@this" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
+                        update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"/>
+
+            </p:commandButton> 
+
+            <p:commandButton value="Browse inventory products"
+                             actionListener="#{inventoryManager.openInventoryProductBrowser}"
+                             process="@this" />                                  
+
+            <p:commandButton value="Browse inventory items"
+                             actionListener="#{inventoryManager.openInventoryTab}"
+                             process="@this" />
+
+            <p:commandButton value="Browse inventory requisitions"
+                             actionListener="#{inventoryManager.openInventoryRequisitionTab}"
+                             process="@this" />
+
+        </p:panelGrid>
+
+        <p:dataTable id="inventoryTasksTable"
+                     var="inventoryTask"  
+                     widgetVar="inventoryTasksTableVar"
+                     emptyMessage="No active inventory requisitions found"
+                     paginator="true"
+                     rows="15"
+                     paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                     value="#{inventoryManager.inventoryTasks}">
+
+            <f:facet name="header">
+                <h:outputText value="Active Inventory Requisitions"/> 
+            </f:facet>
+
+            <p:column>
+                <p:commandLink actionListener="#{inventoryManager.editSelectedInventoryRequisition}"
+                               global="true"
+                               value="#{inventoryTask.code} - #{inventoryTask.department.name}, #{inventoryTask.contactPerson.name}"
+                               title="Click to view or edit"
+                               process="@this">
+
+                    <f:setPropertyActionListener value="#{inventoryTask}"                                                                    
+                                                 target="#{inventoryManager.selectedInventoryRequisition}" />
 
                     <p:ajax event="dialogReturn" 
-                            update=":mainTabViewForm:mainTabView:clientsTable" />
+                            listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
+                            update=":dashboardForm:dashboardAccordion:inventoryTasksTable"/>
 
-                </p:menuitem>
-                <p:separator />
-                <p:menuitem value="Proforma Invoice"
-                            title="Create new proforma invoice"
-                            icon="pi pi-plus"
-                            disabled="false"
-                            actionListener="#{jobFinanceManager.openNewProformaInvoiceDialog}" 
-                            process="@this" >
+                </p:commandLink>           
+            </p:column>
 
-                    <p:ajax event="dialogReturn" 
-                            listener="#{jobFinanceManager.proformaDialogReturn}"
-                            update=""/>
+        </p:dataTable> 
 
-                </p:menuitem> 
-                <p:menuitem value="Cost Estimate"
-                            title="Create new cost estimate"
-                            icon="pi pi-plus"
-                            disabled="false"
-                            actionListener="#{jobFinanceManager.openNewCostEstimateDialog}" 
-                            process="@this" >
-
-                    <p:ajax event="dialogReturn" 
-                            listener="#{jobFinanceManager.costEstimateDialogReturn}"
-                            update=""/>
-
-                </p:menuitem>
-            </p:menuButton>    
-
-        </p:toolbarGroup>
-
-        <p:toolbarGroup align="right">            
-            <p:menuButton value="Tools" >  
-                <p:menuitem value="Job Browser"
-                            title="Open the Job Browser tab"
-                            actionListener="#{jobManager.openJobBrowser}" 
-                            process="@this" />              
-                <p:separator />
-                <p:menuitem value="Client Management"
-                            title="Open the Clients tab"
-                            actionListener="#{jobManager.openClientsTab}" 
-                            process="@this" />
-
-                <p:menuitem actionListener="#{jobFinanceManager.updateAccPacClient}"                                       
-                            value="Client Credit Status"
-                            rendered="false"
-                            update=":accPacClientInformationTabView:accPacClientCreditStatusForm"
-                            process="@this" />
-
-                <p:separator />
-                <p:menuitem value="Proforma Invoices"
-                            title="Browse proforma invoices"
-                            disabled="false"
-                            actionListener="#{jobFinanceManager.openProformaInvoicesDialog}" 
-                            process="@this" />
-                <p:menuitem value="Price List"
-                            title="Browse price list"
-                            disabled="false"
-                            actionListener="#{jobFinanceManager.openPriceListDialog}" 
-                            process="@this" />
-                <p:separator />
-                <p:menuitem value="Reports"
-                            title="Open the Reports tab"
-                            actionListener="#{jobManager.openReportsTab}" 
-                            process="@this" />
-
-            </p:menuButton>         
-        </p:toolbarGroup>
-    </p:toolbar>
-
-    <ui:remove>
-        <ui:include src="search.xhtml"/>   
-    </ui:remove>
+    </p:panel>
 
 </html>
-
 

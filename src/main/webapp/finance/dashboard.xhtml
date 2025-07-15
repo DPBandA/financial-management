@@ -1,6 +1,6 @@
 <!--
 Financial Management(FM) 
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -41,7 +41,7 @@ Email: info@dpbennett.com.jm
 
                     <p:ajax event="dialogReturn" 
                             listener="#{purchasingManager.purchaseReqDialogReturn}"
-                            update=":mainTabViewForm:mainTabView:procurementTasksTable"/>
+                            update=":dashboardForm:dashboardAccordion:procurementTasksTable"/>
 
                 </p:commandButton>
 
@@ -91,7 +91,7 @@ Email: info@dpbennett.com.jm
 
                         <p:ajax event="dialogReturn" 
                                 listener="#{purchasingManager.purchaseReqDialogReturn}"
-                                update=":mainTabViewForm:mainTabView:procurementTasksTable"/>
+                                update=":dashboardForm:dashboardAccordion:procurementTasksTable"/>
 
                     </p:commandLink>           
                 </p:column>
@@ -177,7 +177,7 @@ Email: info@dpbennett.com.jm
 
                         <p:ajax event="dialogReturn" 
                                 listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
-                                update=":mainTabViewForm:mainTabView:inventoryTasksTable"/>
+                                update=":dashboardForm:dashboardAccordion:inventoryTasksTable"/>
 
                     </p:commandLink>           
                 </p:column>
