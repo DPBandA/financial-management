@@ -25,28 +25,46 @@ Email: info@dpbennett.com.jm
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"> 
 
     <p:panel id="PRSearchPanel" header="Search">
-        <p:toolbar style="margin-bottom: 1px;padding-top: 0;" >
-            <p:toolbarGroup align="left">             
 
-                <p:panelGrid columns="3" layout="grid">
-                    <h:panelGroup>
-                        <p:inputText value="#{financeManager.purchaseReqSearchText}"  
-                                     placeholder="Enter search text"
-                                     id="purchaseReqSearchText" />
-                        <p:commandButton id="purchaseReqSearchButton"
-                                         class="search-button"   
-                                         actionListener="#{financeManager.doPurchaseReqSearch}"
-                                         update=":mainTabViewForm:mainTabView:purchasereqsTable"
-                                         icon="pi pi-search"
-                                         process="@form" />
-                    </h:panelGroup>
+        <div class="field grid">
+            <p:inputText value="#{financeManager.purchaseReqSearchText}"  
+                         style="margin-right: 5px;"
+                         class="col-12 mb-2 md:col-2 md:mb-0"
+                         placeholder="Enter search text"
+                         id="purchaseReqSearchText" />
+            <div class="col-12 md:col-10">
+                <p:commandButton id="purchaseReqSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financeManager.doPurchaseReqSearch}"
+                                 update=":mainTabViewForm:mainTabView:purchasereqsTable"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </div>
+        </div>
 
-                    <p:selectOneMenu value="#{financeManager.searchType}"
-                                     title="Select the search type">
+        <div class="field grid">
+            <label for="PRsearchType" class="col-12 mb-2 md:col-2 md:mb-0">
+                Type
+            </label>
+            <div class="col-12 md:col-10">
+                <p:selectOneMenu value="#{financeManager.searchType}"
+                                 id="PRsearchType"
+                                 title="Select the search type">
 
-                        <f:selectItems value="#{financeManager.purchReqSearchTypes}" />
+                    <f:selectItems value="#{financeManager.purchReqSearchTypes}" />
 
-                    </p:selectOneMenu>
+                </p:selectOneMenu>
+            </div>
+        </div>
+
+    </p:panel>
+
+    <ui:remove>
+
+        <p:toolbar style="margin-bottom: 1px;" >
+            <p:toolbarGroup align="left" >             
+
+                <p:panelGrid columns="3" layout="grid">                  
 
                     <p:selectOneMenu value="#{financeManager.dateSearchPeriod.dateField}" 
                                      id="prDateField"
@@ -93,6 +111,7 @@ Email: info@dpbennett.com.jm
             </p:toolbarGroup>
 
         </p:toolbar>   
-    </p:panel>
+
+    </ui:remove>
 
 </html>
