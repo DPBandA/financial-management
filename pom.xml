@@ -7,7 +7,7 @@
     <version>2.0.0</version>
     <packaging>war</packaging>
 
-    <name>FM</name>
+    <name>e.FM</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
