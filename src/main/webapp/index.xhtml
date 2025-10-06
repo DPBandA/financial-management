@@ -156,6 +156,7 @@ Email: info@dpbennett.com.jm
 
                                 <p:accordionPanel id="dashboardAccordion" 
                                                   value="#{financeManager.dashboard.tabs}" 
+                                                  activeIndex="#{financeManager.dashboard.tabIndex}"
                                                   var="t"   
                                                   widgetVar="dashboardAccordionVar"
                                                   rendered="true"
@@ -204,6 +205,7 @@ Email: info@dpbennett.com.jm
                                         <p:tabView id="mainTabView"  
                                                    rendered="#{financeManager.mainTabView.render}"
                                                    value="#{financeManager.mainTabView.tabs}" 
+                                                   activeIndex="#{financeManager.dashboard.tabIndex}"
                                                    var="t" 
                                                    dynamic="false"
                                                    widgetVar="mainTabViewVar">
@@ -310,7 +312,7 @@ Email: info@dpbennett.com.jm
                     </div>
                 </footer>
 
-                <p:poll interval="60" 
+                <p:poll interval="#{financeManager.pollInterval}" 
                         global="false"
                         onerror="PF('connectionErrorDialog').show();"
                         listener="#{financeManager.handleKeepAlive}" />
