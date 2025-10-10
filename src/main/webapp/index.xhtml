@@ -155,8 +155,8 @@ Email: info@dpbennett.com.jm
                                 <p:divider style="margin-top: 0;"/>
 
                                 <p:accordionPanel id="dashboardAccordion" 
-                                                  value="#{financeManager.dashboard.tabs}" 
-                                                  activeIndex="#{financeManager.dashboard.tabIndex}"
+                                                  value="#{systemManager.dashboard.tabs}" 
+                                                  activeIndex="#{systemManager.dashboard.tabIndex}"
                                                   var="t"   
                                                   widgetVar="dashboardAccordionVar"
                                                   rendered="true"
@@ -166,11 +166,11 @@ Email: info@dpbennett.com.jm
                                             immediate="true"
                                             process="@this"
                                             update=":mainTabViewForm"
-                                            listener="#{financeManager.onDashboardTabChange}" />
+                                            listener="#{systemManager.onDashboardTabChange}" />
 
                                     <p:tab title="#{t.name}" >
 
-                                        <p:defaultCommand target="#{financeManager.defaultCommandTarget}" />
+                                        <p:defaultCommand target="#{systemManager.defaultCommandTarget}" />
 
                                         <h:panelGroup  rendered="#{t.id == 'Financial Administration'}">
                                             <ui:include src="dashboard/fm/fmTab.xhtml" /> 
@@ -203,9 +203,9 @@ Email: info@dpbennett.com.jm
                                         <ui:include src="menubar.xhtml" /> 
 
                                         <p:tabView id="mainTabView"  
-                                                   rendered="#{financeManager.mainTabView.render}"
-                                                   value="#{financeManager.mainTabView.tabs}" 
-                                                   activeIndex="#{financeManager.dashboard.tabIndex}"
+                                                   rendered="#{systemManager.mainTabView.render}"
+                                                   value="#{systemManager.mainTabView.tabs}" 
+                                                   activeIndex="#{systemManager.mainTabView.tabIndex}"
                                                    var="t" 
                                                    dynamic="false"
                                                    widgetVar="mainTabViewVar">
@@ -213,17 +213,17 @@ Email: info@dpbennett.com.jm
                                             <p:ajax event="tabClose" 
                                                     immediate="true"
                                                     process="@this"
-                                                    listener="#{financeManager.onMainViewTabClose}" />  
+                                                    listener="#{systemManager.onMainViewTabClose}" />  
 
                                             <p:ajax event="tabChange" 
                                                     process="@form"      
                                                     update=":mainTabViewForm"
-                                                    listener="#{financeManager.onMainViewTabChange}" />  
+                                                    listener="#{systemManager.onMainViewTabChange}" />  
 
 
                                             <p:tab title="#{t.name}" closable="true"  >
 
-                                                <p:defaultCommand target="#{financeManager.defaultCommandTarget}" />
+                                                <p:defaultCommand target="#{systemManager.defaultCommandTarget}" />
 
                                                 <h:panelGroup rendered="#{t.id == 'System Administration'}" >
                                                     <ui:include src="admin/generalAdminTab.xhtml" /> 

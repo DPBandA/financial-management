@@ -1,6 +1,6 @@
 <!--
 Financial Management (FM)  
-Copyright (C) 2024  D P Bennett & Associates Limited
+Copyright (C) 2025  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as published by
@@ -33,7 +33,7 @@ Email: info@dpbennett.com.jm
                        icon="pi pi-plus" >
 
                 <p:submenu label="Procurement" 
-                           rendered="#{systemManager.user.hasModule('purchasingManager')}"
+                           rendered="#{financeManager.user.hasModule('purchasingManager')}"
                            icon="pi pi-plus" >
 
                     <p:menuitem 
@@ -65,7 +65,7 @@ Email: info@dpbennett.com.jm
                 </p:submenu>
 
                 <p:submenu label="Inventory" 
-                           rendered="#{systemManager.user.hasModule('inventoryManager')}"
+                           rendered="#{financeManager.user.hasModule('inventoryManager')}"
                            icon="pi pi-plus" >
 
                     <p:menuitem 
@@ -114,7 +114,7 @@ Email: info@dpbennett.com.jm
             <p:divider />
 
             <p:submenu label="Procurement" 
-                       rendered="#{systemManager.user.hasModule('purchasingManager')}"
+                       rendered="#{financeManager.user.hasModule('purchasingManager')}"
                        icon="pi pi-dollar" >
 
                 <p:menuitem value="Purchase Requisitions"
@@ -129,10 +129,10 @@ Email: info@dpbennett.com.jm
                             actionListener="#{purchasingManager.openSuppliersTab}" 
                             process="@this" />
 
-                <p:divider rendered="#{systemManager.user.can('BeFinancialAdministrator')}" />
+                <p:divider rendered="#{financeManager.user.can('BeFinancialAdministrator')}" />
 
                 <p:menuitem value="Sequence numbers"
-                            rendered="#{systemManager.user.can('BeFinancialAdministrator')}"
+                            rendered="#{financeManager.user.can('BeFinancialAdministrator')}"
                             title="Edit sequence numbers"
                             icon="pi pi-id-card"
                             actionListener="#{purchasingManager.editSequenceNumbers}" 
@@ -143,7 +143,7 @@ Email: info@dpbennett.com.jm
             <p:divider />
 
             <p:submenu label="Inventory" 
-                       rendered="#{systemManager.user.hasModule('inventoryManager')}"
+                       rendered="#{financeManager.user.hasModule('inventoryManager')}"
                        icon="pi pi-list" >
 
                 <p:menuitem value="Inventory Products"
@@ -166,20 +166,20 @@ Email: info@dpbennett.com.jm
 
             </p:submenu>
 
-            <p:divider rendered="#{systemManager.user.can('BeFinancialAdministrator')}"/>
+            <p:divider rendered="#{financeManager.user.can('BeFinancialAdministrator')}"/>
 
             <p:menuitem value="Administration"
                         icon="pi pi-fw pi-briefcase"
                         title="Financial administration" 
-                        rendered="#{systemManager.user.can('BeFinancialAdministrator')}"
+                        rendered="#{financeManager.user.can('BeFinancialAdministrator')}"
                         actionListener="#{financeManager.openFinancialAdministration}" />
 
         </p:submenu>
 
         <p:menuitem 
-            actionListener="#{systemManager.mainTabView.openTab('System Administration')}" 
+            actionListener="#{financeManager.mainTabView.openTab('System Administration')}" 
             title="System administration" 
-            rendered="#{systemManager.user.hasModule('systemManager')}"
+            rendered="#{financeManager.user.hasModule('systemManager')}"
             value="System Administration" 
             icon="pi pi-server" />  
 
