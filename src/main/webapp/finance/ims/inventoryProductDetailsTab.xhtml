@@ -108,7 +108,8 @@ Email: info@dpbennett.com.jm
         </p:inputText>     
 
         <h:outputText value="Manufacturer" />
-        <p:autoComplete id="manufacturer"      
+        <p:autoComplete id="manufacturer"     
+                        escape="false"
                         var="manufacturer"
                         itemLabel="#{manufacturer.truncatedName}"
                         itemValue="#{manufacturer}"                   
@@ -134,6 +135,7 @@ Email: info@dpbennett.com.jm
         <h:panelGroup>
 
             <p:autoComplete id="categories"
+                            escape="false"
                             var="category"   
                             value="#{inventoryManager.selectedInventoryProduct.categories}"
                             itemLabel="#{category.name}"

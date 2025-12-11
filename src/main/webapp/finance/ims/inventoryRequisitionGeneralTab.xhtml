@@ -48,6 +48,7 @@ Email: info@dpbennett.com.jm
                            for="department" 
                            style="font-weight: bold" />
             <p:autoComplete id="department" 
+                            escape="false"
                             var="department"
                             forceSelection="true"      
                             dropdown="true"
@@ -61,7 +62,7 @@ Email: info@dpbennett.com.jm
                             cache="true"
                             completeMethod="#{humanResourceManager.completeActiveDepartment}" >            
 
-                <f:converter converterId="activeDepartmentConverter"/>
+                <f:converter converterId="departmentConverter"/>
 
                 <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
 
@@ -77,6 +78,7 @@ Email: info@dpbennett.com.jm
                            for="contactPerson"
                            style="font-weight: bold" />       
             <p:autoComplete id="contactPerson"
+                            escape="false"
                             value="#{inventoryManager.selectedInventoryRequisition.contactPerson}"
                             itemLabel="#{contactPerson.name}"
                             itemValue="#{contactPerson}"
@@ -167,6 +169,7 @@ Email: info@dpbennett.com.jm
                         </f:facet>
                         <f:facet name="input">
                             <p:autoComplete id="inventoryItem"
+                                            escape="false"
                                             var="inventoryItem"   
                                             value="#{disbursement.inventory}"
                                             title="#{disbursement.inventory}"
