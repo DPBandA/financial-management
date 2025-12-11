@@ -63,6 +63,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="Product *" style="font-weight: bold;" /> 
             <h:panelGroup>
                 <p:autoComplete id="inventoryProduct"
+                                escape="false"
                                 var="inventoryProduct"   
                                 value="#{inventoryManager.selectedInventory.product}"
                                 title="#{inventoryManager.selectedInventory.product}"
@@ -128,6 +129,7 @@ Email: info@dpbennett.com.jm
                            value="Category *" />
             <h:panelGroup>
                 <p:autoComplete id="category"
+                                escape="false"
                                 var="category"   
                                 value="#{inventoryManager.selectedInventory.inventoryCategory}"
                                 itemLabel="#{category.name}"
@@ -190,6 +192,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="Supplier *" style="font-weight: bold" />
             <h:panelGroup>                
                 <p:autoComplete id="supplier"
+                                escape="false"
                                 var="supplier"
                                 itemLabel="#{supplier.truncatedName}"
                                 itemValue="#{supplier}"                 

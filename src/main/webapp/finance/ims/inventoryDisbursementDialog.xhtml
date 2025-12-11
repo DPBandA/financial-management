@@ -70,6 +70,7 @@ Email: info@dpbennett.com.jm
                                        for="inventoryItem"
                                        style="font-weight: bold" />
                         <p:autoComplete id="inventoryItem"
+                                        escape="false"
                                         var="inventoryItem"   
                                         value="#{inventoryManager.selectedInventoryDisbursement.inventory}"
                                         itemLabel="#{inventoryItem.name}"
