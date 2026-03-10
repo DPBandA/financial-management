@@ -31,10 +31,15 @@ Email: info@dpbennett.com.jm
                widgetVar="financialAdminTabVar" 
                dynamic="false">
 
+        <p:ajax event="tabClose" 
+                immediate="true"
+                process="@this"
+                listener="#{systemManager.onMainViewTabClose}" />  
+
         <p:ajax event="tabChange" 
                 process="@form"    
                 update=":mainTabViewForm"
-                listener="#{systemManager.onMainViewTabChange}" />  
+                listener="#{systemManager.onCentreViewTabChange}" />  
 
         <ui:remove>
             <p:tab title="Charts of Accounts">
