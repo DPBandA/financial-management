@@ -142,9 +142,10 @@ Email: info@dpbennett.com.jm
 
                     <p:outputLabel for="positions" 
                                    style="font-weight: bold;"
-                                   value="Required signatory position(s): " />       
+                                   value="Required signatory position(s)" />       
                     <p:autoComplete id="positions"
                                     escape="false"
+                                    unique="true"
                                     var="position"   
                                     value="#{financeManager.selectedProcurementMethod.requiredSignatoryPositions}"
                                     itemLabel="#{position.title}"
