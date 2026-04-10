@@ -63,7 +63,11 @@ Email: info@dpbennett.com.jm
 
                             <h:panelGroup  rendered="#{t.id == 'Financial Administration'}">
                                 <ui:include src="finance/financialAdminTab.xhtml" /> 
-                            </h:panelGroup>                                      
+                            </h:panelGroup>           
+
+                            <h:panelGroup  rendered="#{t.id == 'Accounts'}">
+                                <ui:include src="finance/financialAccountsTab.xhtml"/>
+                            </h:panelGroup>
 
                             <h:panelGroup rendered="#{t.id == 'Purchase Requisitions'}" >
                                 <ui:include src="finance/purch/purchreqsTab.xhtml" />                                                                
