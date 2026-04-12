@@ -1,5 +1,5 @@
 <!--
-Financial Management(FM)  
+Financial Account Management(FM)  
 Copyright (C) 2026  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -29,19 +29,60 @@ Email: info@dpbennett.com.jm
 
     <p:toolbar>
         <p:toolbarGroup align="left" >   
+            <p:commandButton title="Add new account"                                  
+                             value="New"
+                             actionListener="#{financialAccountingManager.createNewFinancialAccount}"
+                             update=":mainTabViewForm:mainTabView:chartOfAccounts"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-plus" >
 
+                <p:ajax event="dialogReturn" 
+                        listener="#{financialAccountingManager.doFinancialAccountSearch}"
+                        update=":mainTabViewForm:mainTabView:chartOfAccounts" />
+
+            </p:commandButton>  
+            <p:spacer width="20" />  
+            <h:panelGroup>
+                <p:inputText id="financialAccountSearchText" 
+                             value="#{financialAccountingManager.financialAccountSearchText}"
+                             placeholder="Enter search text" />
+                <p:commandButton id="financialAccountSearchButton"
+                                 class="search-button"   
+                                 actionListener="#{financialAccountingManager.doFinancialAccountSearch}"
+                                 update=":mainTabViewForm:mainTabView:chartOfAccounts"
+                                 icon="pi pi-search"
+                                 process="@form" />
+            </h:panelGroup>
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
+            <p:outputLabel for="activeFinancialAccountsOnly" value="Active accounts only" />  
+            <p:spacer height="0" width="10"/>
+            <h:panelGroup>
+                <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
+                                         id="activeFinancialAccountsOnly"
+                                         value="#{financialAccountingManager.isActiveFinancialAccountsOnly}" >
 
+                    <p:ajax  update=":mainTabViewForm:mainTabView:chartOfAccounts"
+                             listener="#{financialAccountingManager.doFinancialAccountSearch}"
+                             event="change"                                      
+                             process="@this"/>
+
+                </p:selectBooleanCheckbox>            
+                <p:tooltip for="activeFinancialAccountsOnly" value="Check to show active accounts only" 
+                           showEffect="fade" hideEffect="fade" />
+                <p:spacer width="15" />                
+            </h:panelGroup>
         </p:toolbarGroup>
-    </p:toolbar>    
+
+    </p:toolbar>  
 
     <p:treeTable value="#{financialAccountingManager.chartOfAccounts}" 
                  id="chartOfAccounts"
                  editable="false"
                  var="account">      
-        
+
         <p:column headerText="Name">
             <p:outputLabel value="#{account.name}"/>
         </p:column>
@@ -52,11 +93,21 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="#{account.total}"/>
         </p:column>   
         <p:column>
-            <p:commandButton update="" title="View Detail" icon="pi pi-search">
+            <p:commandButton title="View or edit account"   
+                             actionListener="#{financialAccountingManager.openFinancialAccountDialog}"
+                             global="true"
+                             process="@this"
+                             icon="pi pi-pencil">
 
-            </p:commandButton>
+                <p:ajax event="dialogReturn" 
+                        update=":mainTabViewForm:mainTabView:chartOfAccounts" />
+
+                <f:setPropertyActionListener value="#{account}"                                                                    
+                                             target="#{financialAccountingManager.selectedFinancialAccount}" />
+
+            </p:commandButton>      
         </p:column>
-        
+
     </p:treeTable>     
 
 </html>
