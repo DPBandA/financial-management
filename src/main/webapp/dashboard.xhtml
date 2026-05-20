@@ -54,6 +54,14 @@ Email: info@dpbennett.com.jm
                     <h:panelGroup  rendered="#{t.id == 'Financial Administration'}">
                         <ui:include src="dashboard/fm/fmTab.xhtml" /> 
                     </h:panelGroup>
+                    
+                    <h:panelGroup  rendered="#{t.id == 'Procurement'}">
+                        <ui:include src="dashboard/pm/pmTab.xhtml" /> 
+                    </h:panelGroup>
+                    
+                    <h:panelGroup  rendered="#{t.id == 'Inventory Management'}">
+                        <ui:include src="dashboard/im/imTab.xhtml" /> 
+                    </h:panelGroup>
 
                     <h:panelGroup rendered="#{t.id == 'System Administration'}" >
                         <ui:include src="dashboard/admin/generalAdminTab.xhtml" /> 
