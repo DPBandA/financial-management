@@ -45,7 +45,7 @@ Email: info@dpbennett.com.jm
                         immediate="true"
                         process="@this"
                         update=":dashboardForm,:mainTabViewForm"
-                        listener="#{systemManager.onDashboardTabChange}" />
+                        listener="#{financeManager.onDashboardTabChange}" />
 
                 <p:tab title="#{t.name}" >
 
@@ -59,7 +59,7 @@ Email: info@dpbennett.com.jm
                         <ui:include src="dashboard/pm/pmTab.xhtml" /> 
                     </h:panelGroup>
                     
-                    <h:panelGroup  rendered="#{t.id == 'Inventory Management'}">
+                    <h:panelGroup  rendered="#{t.id == 'Inventory'}">
                         <ui:include src="dashboard/im/imTab.xhtml" /> 
                     </h:panelGroup>
 

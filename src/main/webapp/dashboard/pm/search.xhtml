@@ -1,5 +1,5 @@
 <!--
-Financial Management(FM) 
+Job Management & Tracking System (JMTS) 
 Copyright (C) 2026  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
 
         <div class="field">
             <h:outputText value="Type" style="margin-right: 5px;font-weight: bold;" />
-            <p:selectOneMenu value="#{jobManager.searchType}" >
+            <p:selectOneMenu value="#{jobManager.searchType}">
 
                 <f:selectItems value="#{jobManager.groupedSearchTypes}" />
 
@@ -91,9 +91,10 @@ Email: info@dpbennett.com.jm
 
         <div class="field">
             <p:inputText value="#{jobManager.searchText}"  
-                         style="margin-right: 5px;"
+                         style="margin-right: 5px;width: 75%;"
                          placeholder="Enter search text"
                          id="jobSearchText" />  
+            
             <p:commandButton id="jobSearchButton"   
                              class="search-button"   
                              actionListener="#{jobManager.doDefaultSearch}"

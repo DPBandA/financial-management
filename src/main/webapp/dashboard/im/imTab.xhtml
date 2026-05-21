@@ -1,5 +1,5 @@
 <!--
-Inventory Management(FM) 
+Financial Management(FM)
 Copyright (C) 2026  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:p="http://primefaces.org/ui"
@@ -27,13 +27,79 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+    <p:toolbar style="margin-bottom: 1px;">
 
-    <p:panel header="Inventory" 
-             closable="false" >
+        <p:toolbarGroup align="left" >
 
-        Welcome to Inventory Management!
+            <p:menuButton value="New" >  
+                <p:menuitem 
+                    value="Inventory Product"
+                    icon="pi pi-plus" 
+                    actionListener="#{inventoryManager.createNewInventoryProduct}"                                            
+                    process="@this"
+                    title="Add a new product" >
 
-    </p:panel>
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.doInventoryProductSearch}"
+                            update=":mainTabViewForm:mainTabView:inventoryProductsTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem 
+                    value="Inventory Item"
+                    icon="pi pi-plus"
+                    actionListener="#{inventoryManager.createNewInventory}"                                            
+                    process="@this"
+                    title="Add a new inventory" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDialogReturn}"
+                            update=":mainTabViewForm:mainTabView:inventoryTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem 
+                    value="Inventory Requisition"
+                    icon="pi pi-plus"
+                    actionListener="#{inventoryManager.createNewInventoryRequisition}"                                            
+                    process="@this"
+                    title="Add a new inventory requisition" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryRequisitionDialogReturn}"
+                            update=":mainTabViewForm:mainTabView:inventoryRequisitionTable"/>
+
+                </p:menuitem>
+            </p:menuButton>    
+
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="right">            
+            <p:menuButton value="Tools" >  
+                <p:menuitem value="Inventory Products"
+                            title="Open Inventory Requisitions browswer" 
+                            icon="pi pi-list"
+                            actionListener="#{inventoryManager.openInventoryProductBrowser}" 
+                            process="@this" /> 
+
+                <p:menuitem value="Inventory Items"
+                            title="Open Inventory browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryTab}" 
+                            process="@this" /> 
+
+                <p:menuitem value="Inventory Requisitions"
+                            title="Open Inventory Requisitions browswer" 
+                            icon="pi pi-fw pi-list"
+                            actionListener="#{inventoryManager.openInventoryRequisitionTab}" 
+                            process="@this" /> 
+            </p:menuButton>         
+        </p:toolbarGroup>
+    </p:toolbar>
+
+    <ui:include src="search.xhtml"/>   
+
 
 </html>
+
 

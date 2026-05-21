@@ -1,5 +1,5 @@
 <!--
-Purchase Management(FM) 
+Job Management & Tracking System (JMTS) 
 Copyright (C) 2026  D P Bennett & Associates Limited
 
 This program is free software: you can redistribute it and/or modify
@@ -17,7 +17,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Email: info@dpbennett.com.jm
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:p="http://primefaces.org/ui"
@@ -27,13 +27,71 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
+    <p:toolbar style="margin-bottom: 1px;">
 
-    <p:panel header="Procurement" 
-             closable="false" >
+        <p:toolbarGroup align="left" >
 
-        Welcome to Procurement!
+            <p:menuButton value="New" >  
+                <p:menuitem 
+                    value="Purchase Requisition"
+                    icon="pi pi-plus"
+                    actionListener="#{purchasingManager.createNewPurchaseReq}"                                            
+                    process="@this"
+                    title="Add a new purchase requisition" >
 
-    </p:panel>
+                    <p:ajax event="dialogReturn" 
+                            listener="#{purchasingManager.purchaseReqDialogReturn}"
+                            update=":mainTabViewForm:mainTabView:purchasereqsTable"/>
+
+                </p:menuitem>
+
+                <p:menuitem 
+                    value="Supplier"
+                    icon="pi pi-plus" 
+                    actionListener="#{purchasingManager.addNewSupplier}"                                            
+                    process="@this"
+                    title="Add a new supplier" >
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{purchasingManager.doSupplierSearch}"
+                            update=":mainTabViewForm:mainTabView:suppliersTable"/>
+
+                </p:menuitem>
+            </p:menuButton>    
+
+        </p:toolbarGroup>
+
+        <p:toolbarGroup align="right">            
+            <p:menuButton value="Tools" >  
+                <p:menuitem value="Purchase Requisitions"
+                            title="Open purchase requisition browswer" 
+                            icon="pi pi-dollar"                                
+                            actionListener="#{purchasingManager.openPurchaseReqsTab}" 
+                            process="@this" />
+
+                <p:menuitem value="Suppliers"
+                            title="Open suppliers tab"
+                            icon="pi pi-id-card"
+                            actionListener="#{purchasingManager.openSuppliersTab}" 
+                            process="@this" />
+
+                <p:divider rendered="#{financeManager.user.can('BeFinancialAdministrator')}" />
+
+                <p:menuitem value="Sequence numbers"
+                            rendered="#{financeManager.user.can('BeFinancialAdministrator')}"
+                            title="Edit sequence numbers"
+                            icon="pi pi-id-card"
+                            actionListener="#{purchasingManager.editSequenceNumbers}" 
+                            process="@this" />
+
+            </p:menuButton>         
+        </p:toolbarGroup>
+    </p:toolbar>
+
+    <ui:remove>
+        <ui:include src="search.xhtml"/>   
+    </ui:remove>
 
 </html>
+
 
