@@ -27,7 +27,6 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <ui:include src="purchReqsSearchToolbar.xhtml"/>
     <ui:include src="purchReqsTabToolbar.xhtml"/>
 
     <p:dataTable id="purchasereqsTable"
@@ -83,14 +82,14 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="#{pr.originatingDepartment}" />
         </p:column>
 
-        <p:column sortBy="#{pr.originator}">
+        <p:column sortBy="#{pr.originator}" rendered="false" >
             <f:facet name="header">
                 <p:outputLabel value="Originator"/>
             </f:facet>
             <p:outputLabel value="#{pr.originator}" />
         </p:column>
         
-        <p:column sortBy="#{pr.priorityCode}">
+        <p:column sortBy="#{pr.priorityCode}" rendered="false" >
             <f:facet name="header">
                 <p:outputLabel value="Priority"/>
             </f:facet>
@@ -113,7 +112,7 @@ Email: info@dpbennett.com.jm
             <p:outputLabel value="#{pr.paymentCurrency.symbol}#{purchasingManager.formatAsCurrency(pr.convertedTotalCost)}" />  
         </p:column>
         
-        <p:column sortBy="#{pr.approversAndRecommendersList}">
+        <p:column sortBy="#{pr.approversAndRecommendersList}" rendered="false" >
             <f:facet name="header">
                 <p:outputLabel value="Appr'd/Rec'd by"/>
             </f:facet>
