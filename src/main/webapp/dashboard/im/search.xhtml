@@ -50,30 +50,30 @@ Email: info@dpbennett.com.jm
 
         <div class="field">
             <h:outputText value="Period" style="margin-right: 5px;font-weight: bold;"/>               
-            <p:selectOneMenu value= "#{jobManager.dateSearchPeriod.name}"
-                             id="jobDatePeriod"
+            <p:selectOneMenu value= "#{inventoryManager.dateSearchPeriod.name}"
+                             id="imDatePeriod"
                              title="Select the date period">
 
-                <p:ajax listener="#{jobManager.dateSearchPeriod.initDatePeriod}"
+                <p:ajax listener="#{inventoryManager.dateSearchPeriod.initDatePeriod}"
                         global="false"
-                        update="jobStartSearchDate,jobEndSearchDate"
+                        update="imStartSearchDate,imEndSearchDate"
                         process="@this" />
 
-                <f:selectItems value="#{jobManager.datePeriods}"/>
+                <f:selectItems value="#{inventoryManager.datePeriods}"/>
 
             </p:selectOneMenu>
         </div>
 
         <div class="field">
             <h:outputText value="Start" style="margin-right: 5px;font-weight: bold;" />
-            <p:calendar value="#{jobManager.dateSearchPeriod.startDate}"  
-                        id="jobStartSearchDate"
+            <p:calendar value="#{inventoryManager.dateSearchPeriod.startDate}"  
+                        id="imStartSearchDate"
                         title="Select or enter the start of the date period"
                         size="17"
                         navigator="true"
                         autocomplete="off"
                         validator="requiredFieldValidator"
-                        disabled="#{jobManager.dateSearchPeriod.startDateDisabled}"
+                        disabled="#{inventoryManager.dateSearchPeriod.startDateDisabled}"
                         pattern="MMM dd, yyyy" />
         </div>
 
