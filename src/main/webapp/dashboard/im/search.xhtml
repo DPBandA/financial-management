@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <p:panel id="jobSearchPanel" header="Search">
+    <p:panel id="imSearchPanel" header="Search">
 
         <div class="field">
             <h:outputText value="Type" style="margin-right: 5px;font-weight: bold;" />
@@ -79,25 +79,25 @@ Email: info@dpbennett.com.jm
 
         <div class="field">
             <h:outputText value="End" style="margin-right: 5px;font-weight: bold;" />
-            <p:calendar value="#{jobManager.dateSearchPeriod.endDate}"
-                        id="jobEndSearchDate"
+            <p:calendar value="#{inventoryManager.dateSearchPeriod.endDate}"
+                        id="imEndSearchDate"
                         title="Select or enter the end of the date period"
                         size="17"
                         navigator="true"
                         validator="requiredFieldValidator"
-                        disabled="#{jobManager.dateSearchPeriod.endDateDisabled}"
+                        disabled="#{inventoryManager.dateSearchPeriod.endDateDisabled}"
                         pattern="MMM dd, yyyy" />
         </div>
 
         <div class="field">
-            <p:inputText value="#{jobManager.searchText}"  
+            <p:inputText value="#{inventoryManager.searchText}"  
                          style="margin-right: 5px;width: 75%;"
                          placeholder="Enter search text"
-                         id="jobSearchText" />  
+                         id="imSearchText" />  
             
-            <p:commandButton id="jobSearchButton"   
+            <p:commandButton id="imSearchButton"   
                              class="search-button"   
-                             actionListener="#{jobManager.doDefaultSearch}"
+                             actionListener="#{inventoryManager.doDefaultSearch}"
                              update=":mainTabViewForm:mainTabView"
                              icon="pi pi-search"
                              process="@form" />
