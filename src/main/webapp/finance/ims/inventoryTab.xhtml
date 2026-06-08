@@ -41,8 +41,8 @@ Email: info@dpbennett.com.jm
                         update=":mainTabViewForm:mainTabView:inventoryTable"/>
 
             </p:commandButton>     
-            <p:spacer width="20" />
-            <h:panelGroup>
+            <p:spacer width="20" rendered="false" />
+            <h:panelGroup rendered="false" >
                 <p:inputText id="inventorySearchText" 
                              placeholder="Enter search text"
                              value="#{inventoryManager.inventorySearchText}" />
@@ -56,7 +56,7 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeInventoryOnly" value="Active inventories only" />  
+            <p:outputLabel for="activeInventoryOnly" value="Active inventory only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
