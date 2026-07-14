@@ -206,8 +206,8 @@
     </managed-bean>
     
     <managed-bean>
-        <managed-bean-name>accountingManager</managed-bean-name>
-        <managed-bean-class>jm.com.dpbennett.fm.manager.AccountingManager</managed-bean-class>
+        <managed-bean-name>financialAccountingManager</managed-bean-name>
+        <managed-bean-class>jm.com.dpbennett.fm.manager.FinancialAccountingManager</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
