@@ -40,15 +40,12 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{inventoryManager.okDisbursement}"
-                                     update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
                                      icon="pi pi-check"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel" 
                                      immediate="true"
                                      actionListener="#{inventoryManager.cancelDisbursementEdit}"
-                                     update=""                              
-                                     oncomplete="PF('inventoryDisbursementDialog').hide();"
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
 
@@ -118,7 +115,7 @@ Email: info@dpbennett.com.jm
                                           rows="3" >
 
                             <p:ajax event="change"
-                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    update="cost"
                                     listener="#{inventoryManager.updateSelectedDisbursement}" />
 
                         </p:inputTextarea>
@@ -134,7 +131,7 @@ Email: info@dpbennett.com.jm
                                        value="#{inventoryManager.selectedInventoryDisbursement.quantityOrdered}" >
 
                             <p:ajax event="change"
-                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    update="cost"
                                     listener="#{inventoryManager.updateSelectedDisbursement}" />
 
                         </p:inputNumber>
@@ -150,7 +147,7 @@ Email: info@dpbennett.com.jm
                                        value="#{inventoryManager.selectedInventoryDisbursement.quantityReceived}" >
 
                             <p:ajax event="change"
-                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    update="cost"
                                     listener="#{inventoryManager.updateSelectedDisbursementQuantitySupplied}" />
 
                         </p:inputNumber>
@@ -165,7 +162,7 @@ Email: info@dpbennett.com.jm
                                        value="#{inventoryManager.selectedInventoryDisbursement.unitCost}" >
 
                             <p:ajax event="change"
-                                    update="cost,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                    update="cost"
                                     listener="#{inventoryManager.updateSelectedDisbursement}" />
 
                         </p:inputNumber>
@@ -191,14 +188,13 @@ Email: info@dpbennett.com.jm
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"
                                      actionListener="#{inventoryManager.okDisbursement}"
-                                     update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                                     update=""
                                      icon="pi pi-check"
                                      process="@form"/>
                     <p:spacer width="5" />
                     <p:commandButton value="Cancel" 
                                      immediate="true"
                                      actionListener="#{inventoryManager.cancelDisbursementEdit}"
-                                     oncomplete="PF('inventoryDisbursementDialog').hide();"
                                      icon="pi pi-times"/>
                 </p:toolbarGroup>
 
