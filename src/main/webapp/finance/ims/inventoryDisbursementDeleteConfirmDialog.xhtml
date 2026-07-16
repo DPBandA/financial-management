@@ -36,7 +36,6 @@ Email: info@dpbennett.com.jm
                          width="400">
             <p:commandButton value="Yes"      
                              actionListener="#{inventoryManager.deleteSelectedDisbursement}"
-                             update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
                              oncomplete="PF('inventoryDisbursementDeleteConfirmDialog').hide();"
                              icon="pi pi-check"
                              process="@this"/>

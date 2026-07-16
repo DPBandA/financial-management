@@ -135,10 +135,14 @@ Email: info@dpbennett.com.jm
                 <p:commandButton title="Add new disbursement"
                                  value="New"
                                  action="#{inventoryManager.addNewDisbursement}"
-                                 update=":inventoryDisbursementDialogForm"
-                                 oncomplete="PF('inventoryDisbursementDialog').show();"
                                  icon="pi pi-plus"
                                  process="@this">
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDisbursementDialogReturn}"
+                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                            />
+
                 </p:commandButton>  
             </p:toolbarGroup> 
         </p:toolbar>
@@ -269,8 +273,6 @@ Email: info@dpbennett.com.jm
                             value="Edit"
                             rendered="true"
                             actionListener="#{inventoryManager.editDisbursement}"
-                            update=":inventoryDisbursementDialogForm"
-                            oncomplete="PF('inventoryDisbursementDialog').show();"
                             icon="pi pi-pencil"
                             process="@this" >
 
@@ -339,10 +341,14 @@ Email: info@dpbennett.com.jm
                 <p:commandButton title="Add new disbursement"
                                  value="New"
                                  action="#{inventoryManager.addNewDisbursement}"
-                                 update=":inventoryDisbursementDialogForm"
-                                 oncomplete="PF('inventoryDisbursementDialog').show();"
                                  icon="pi pi-plus"
                                  process="@this">
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDisbursementDialogReturn}"
+                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                            />
+
                 </p:commandButton>  
             </p:toolbarGroup> 
         </p:toolbar>
