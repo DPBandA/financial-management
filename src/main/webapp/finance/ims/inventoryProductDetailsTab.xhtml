@@ -124,7 +124,7 @@ Email: info@dpbennett.com.jm
                         forceSelection="true"
                         completeMethod="#{humanResourceManager.completeActiveManufacturer}" >
 
-            <f:converter converterId="activeManufacturerConverter"/>
+            <f:converter converterId="manufacturerConverter"/>
 
             <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
 
@@ -150,7 +150,7 @@ Email: info@dpbennett.com.jm
                             multiple="true"
                             completeMethod="#{systemManager.completeActiveCategory}" >
 
-                <f:converter converterId="activeCategoryConverter"/>
+                <f:converter converterId="categoryConverter"/>
 
                 <f:attribute name="em" value="#{systemManager.entityManager1}"/>
 

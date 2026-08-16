@@ -3,35 +3,7 @@
               xmlns="http://java.sun.com/xml/ns/javaee" 
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-    <converter>
-        <converter-id>activeSupplierConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ActiveSupplierConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>classificationConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ClassificationConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>jobCategoryConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.JobCategoryConverter</converter-class>
-    </converter> 
-    <converter>
-        <converter-id>jobSubCategoryConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.JobSubCategoryConverter</converter-class>
-    </converter> 
-    <converter>
-        <converter-id>sectorConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.SectorConverter</converter-class>
-    </converter>    
-    <converter>
-        <converter-id>activeInventoryProductConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryProductConverter</converter-class>
-    </converter>
-    <converter>
-        <converter-id>activeInventoryConverter</converter-id>
-        <converter-class>jm.com.dpbennett.fm.converter.ActiveInventoryConverter</converter-class>
-    </converter>   
-       
+          
     <validator>
         <validator-id>supplierValidator</validator-id>
         <validator-class>jm.com.dpbennett.fm.validator.SupplierValidator</validator-class>
