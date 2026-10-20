@@ -31,7 +31,6 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new accounting code"                                  
                              value="New"
-                             style="margin-bottom: 5px;"
                              actionListener="#{financeManager.createNewAccountingCode}"                                                     
                              global="true"
                              process="@this"
@@ -48,7 +47,8 @@ Email: info@dpbennett.com.jm
                 <p:inputText value="#{financeManager.accountingCodeSearchText}"                                             
                              placeholder="Enter search text" />            
                 <p:commandButton id="accountingCodeSearchButton"
-                                 class="search-button"   
+                                 class="search-button"  
+                                 style="margin-top: 5px;"
                                  actionListener="#{financeManager.doAccountingCodeSearch}"
                                  update=":mainTabViewForm:mainTabView:financialAdminTabView:accountingCodesTable"
                                  icon="pi pi-search"
@@ -57,7 +57,8 @@ Email: info@dpbennett.com.jm
         </p:toolbarGroup>
 
         <p:toolbarGroup align="right">
-            <p:outputLabel for="activeAccountingCodesOnly" value="Active accounting codes only" />  
+            <p:outputLabel for="activeAccountingCodesOnly" 
+                           value="Active accounting codes only" />  
             <p:spacer height="0" width="10"/>
             <h:panelGroup>
                 <p:selectBooleanCheckbox style="vertical-align: middle;margin-top: 5px;"
@@ -93,7 +94,7 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Accounting Codes
         </f:facet>
-        
+
         <p:column style="width: 30px;">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>

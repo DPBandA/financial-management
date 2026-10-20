@@ -27,15 +27,10 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
 
-    <p:tabView id="financialAdminTabView"  
-               widgetVar="financialAdminTabVar" 
-               tabindex="#{financeManager.innerTabIndex}"
-               dynamic="false">
-
-        <p:ajax event="tabClose" 
-                immediate="true"
-                process="@this"
-                listener="#{systemManager.onMainViewTabClose}" />  
+    <p:accordionPanel id="financialAdminTabView"  
+                      widgetVar="financialAdminTabVar" 
+                      tabindex="#{financeManager.innerTabIndex}"
+                      dynamic="false">
 
         <p:ajax event="tabChange" 
                 process="@form"    
@@ -86,7 +81,7 @@ Email: info@dpbennett.com.jm
             <ui:include src="financialSettingsTab.xhtml"/> 
         </p:tab>          
 
-    </p:tabView>
+    </p:accordionPanel>
 
 </html>
 
