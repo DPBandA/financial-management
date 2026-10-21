@@ -48,7 +48,8 @@ Email: info@dpbennett.com.jm
                              value="#{financeManager.sectorSearchText}"
                              placeholder="Enter search text" />
                 <p:commandButton id="sectorSearchButton"
-                                 class="search-button"   
+                                 class="search-button"  
+                                 style="margin-top: 5px;"
                                  actionListener="#{financeManager.doSectorSearch}"
                                  update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
                                  icon="pi pi-search"
@@ -93,7 +94,7 @@ Email: info@dpbennett.com.jm
         <f:facet name="header">
             Sectors
         </f:facet>
-        
+
         <p:column style="width: 30px;">
             <f:facet name="header">
                 <p:outputLabel value="Active"/>
