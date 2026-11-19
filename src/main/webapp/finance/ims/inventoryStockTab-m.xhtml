@@ -1,0 +1,252 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+
+    <p:panel style="margin-bottom: 1px;border: 0;" id="stockPanel">
+        <h:panelGrid id="costingTabPanel" columns="2" cellspacing="5" >    
+
+            <p:outputLabel value="Budget ($)" rendered="false"/> 
+            <p:inputText value="#{inventoryManager.selectedInventory.budget}"
+                         id="budget"
+                         rendered="false"
+                         converterMessage="Invalid Budget"
+                         styleClass="number-field">
+
+                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}" />
+
+            </p:inputText>
+
+
+        </h:panelGrid>
+
+        <p:toolbar style="margin-top: 1px;margin-bottom: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new stock item"
+                                 value="New"
+                                 action="#{inventoryManager.addNewCostComponent}"
+                                 update=":inventoryCostingCompDialogForm"
+                                 oncomplete="PF('inventoryCostingCompDialog').show();"
+                                 icon="pi pi-plus"
+                                 process="@this">
+                </p:commandButton>  
+
+            </p:toolbarGroup> 
+
+            <p:toolbarGroup align="right">
+                <h:panelGrid columns="2" cellspacing="5" >
+                    <p:outputLabel value="Disbursement method *" 
+                                   style="font-weight: bold;"
+                                   for="disbursementMethod"/>
+                    <p:selectOneMenu id="disbursementMethod"    
+                                     value="#{inventoryManager.selectedInventory.disbursementMethod}">
+
+                        <f:selectItems  value="#{inventoryManager.inventoryDisbursementMethods}"
+                                        var="disbursementMethod"                            
+                                        itemValue="#{disbursementMethod.value}"
+                                        itemLabel="#{disbursementMethod.label}"/>
+
+                        <p:ajax event="itemSelect"
+                                update=":inventoryDialogForm:inventoryDetailToolbar1"
+                                listener="#{inventoryManager.updateInventory}"
+                                process="@this" />
+
+                    </p:selectOneMenu>
+                </h:panelGrid>
+            </p:toolbarGroup>
+            
+        </p:toolbar>
+
+        <p:panel id="costComponentTablePanel">
+
+            <p:dataTable  var="costComponent"
+                          id="costComponentTable"
+                          editable="false"
+                          editMode="row"
+                          paginator="true"                                 
+                          rows="15"
+                          paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                          reflow="false"
+                          widgetVar="costComponentVar"
+                          value="#{inventoryManager.selectedInventory.allSortedCostComponents}">
+
+                <p:ajax event="rowEdit" listener="#{inventoryManager.onCostComponentRowEdit}" 
+                        update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+                <p:ajax event="rowEditCancel" listener="#{inventoryManager.onCostComponentRowCancel}" 
+                        update="costComponentTable,:inventoryDialogForm:inventory_growl,:inventoryDialogForm:inventoryDetailToolbar1"/>
+
+                <p:column headerText="Date" >   
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{costComponent.costDate}">
+                                <f:convertDateTime pattern="MMM dd, yyyy"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:calendar value="#{costComponent.costDate}" 
+                                        readonlyInput="true"
+                                        focusOnSelect="true"
+                                        navigator="true"                                 
+                                        pattern="MMM dd, yyyy" >
+                            </p:calendar>
+                        </f:facet>
+                    </p:cellEditor>  
+                </p:column>
+
+                <p:column headerText="Unit Cost ($)" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{costComponent.rate}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputNumber value="#{costComponent.rate}"/>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="UOM" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{costComponent.unit}" /> 
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText  value="#{costComponent.unit}"/>
+                        </f:facet>   
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Quantity" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{costComponent.hoursOrQuantity}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">               
+                            <p:inputNumber value="#{costComponent.hoursOrQuantity}"/>                   
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Cost ($)" >
+                    <p:outputLabel value="#{costComponent.cost}">
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel> 
+                </p:column>
+
+                <p:column rendered="false">
+                    <p:rowEditor editTitle="Edit cost component"
+                                 cancelTitle="Cancel cost component edit"                             
+                                 saveTitle="Save cost component"/>
+                </p:column>
+
+                <p:column>
+                    <p:menuButton id="toolsButton" 
+                                  title="Edit or delete cost component"
+                                  icon="pi pi-pencil" >
+                        <p:menuitem   
+                            value="Edit"
+                            actionListener="#{inventoryManager.editCostComponent}"
+                            disabled="#{!costComponent.isEditable}"
+                            update=":inventoryCostingCompDialogForm"
+                            oncomplete="PF('inventoryCostingCompDialog').show();"
+                            icon="pi pi-pencil"
+                            process="@this" >
+
+                            <f:setPropertyActionListener value="#{costComponent}"
+                                                         target="#{inventoryManager.selectedCostComponent}" />
+
+                        </p:menuitem>
+
+                        <p:menuitem  
+                            value="Delete"
+                            onclick="PF('inventoryCostCompDeleteConfirmDialog').show();"
+                            icon="pi pi-trash"
+                            process="@this">
+
+                            <f:setPropertyActionListener value="#{costComponent}"
+                                                         target="#{inventoryManager.selectedCostComponent}" />
+
+                        </p:menuitem>                   
+
+                    </p:menuButton>                   
+                </p:column>    
+
+                <p:columnGroup type="footer" id="totals">
+                    <p:row>
+                        <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
+                        <p:column>
+                            <f:facet name="footer">
+                                <h:outputText value="#{inventoryManager.selectedInventory.quantity}" >
+
+                                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <f:facet name="footer">
+                                    <h:outputText value="#{inventoryManager.selectedInventory.cost}" >
+
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                    </h:outputText>
+                                </f:facet>
+                            </f:facet>
+                        </p:column>
+                    </p:row>
+                </p:columnGroup>
+
+            </p:dataTable>
+        </p:panel>
+
+        <p:toolbar style="margin-top: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new stock item"
+                                 value="New"
+                                 action="#{inventoryManager.addNewCostComponent}"
+                                 update=":inventoryCostingCompDialogForm"
+                                 oncomplete="PF('inventoryCostingCompDialog').show();"
+                                 icon="pi pi-plus"
+                                 process="@this">
+                </p:commandButton> 
+            </p:toolbarGroup> 
+        </p:toolbar>
+
+    </p:panel>
+
+
+</html>
+
+

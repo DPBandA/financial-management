@@ -1,0 +1,177 @@
+<!--
+Financial Management (FM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<ui:composition
+    template="/jmts-ui/templates/jmts-dialog.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="head">
+        <title>Classification</title>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <ui:include src="../common/commonDialogs.xhtml"/>      
+       
+        <h:form id="classificationDialogForm">   
+            
+            <p:growl id="growl" life="5000" showDetail="true"/>
+
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{financeManager.saveSelectedClassification}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{financeManager.cancelClassificationEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+            </p:toolbar>
+
+            <p:panel style="margin-top: 1px;margin-bottom: 1px;">
+                <h:panelGrid columns="2">     
+                    <p:outputLabel for="classificationActive" 
+                                   value="Active *" 
+                                   style="font-weight: bold;" />               
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             id="classificationActive"
+                                             value="#{financeManager.selectedClassification.active}" /> 
+
+                    <p:outputLabel value="Name" 
+                                   for="classificationName"
+                                   style="font-weight: bold;" />
+                    <p:inputText value="#{financeManager.selectedClassification.name}"    
+                                 id="classificationName"
+                                 required="true"
+                                 requiredMessage="Name Required" >
+
+                        <f:validator validatorId="identifierValidator" />
+
+                    </p:inputText> 
+
+                    <p:outputLabel value="Category" 
+                                   for="classificationCategory"
+                                   style="font-weight: bold;" />
+                    <p:selectOneMenu value="#{financeManager.selectedClassification.category}" 
+                                     required="true"
+                                     requiredMessage="Category Required"
+                                     id="classificationCategory" >
+
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                        <f:selectItems value="#{financeManager.classificationCategories}"/>
+
+                    </p:selectOneMenu>
+
+                    <p:outputLabel value="Description" 
+                                   for="classificationDescription"
+                                   style="font-weight: bold;" />
+                    <p:inputTextarea  value="#{financeManager.selectedClassification.description}"
+                                      id="classificationDescription"
+                                      maxlength="1000"
+                                      autoResize="false"
+                                      rows="4"
+                                      required="true"
+                                      requiredMessage="Description Required">
+
+                        <f:validator validatorId="requiredFieldValidator" />
+
+                    </p:inputTextarea>  
+
+                    <p:outputLabel value="Default tax (%/$)" 
+                                   for="classificationDefaultFax"
+                                   style="font-weight: bold" />
+                    <p:autoComplete id="classificationDefaultFax"  
+                                    escape="false"
+                                    var="tax"
+                                    forceSelection="true"      
+                                    dropdown="true"
+                                    scrollHeight="200" 
+                                    maxlength="40"
+                                    value="#{financeManager.selectedClassification.defaultTax}"
+                                    title="#{financeManager.selectedClassification.defaultTax}"
+                                    styleClass="right-inputfield" 
+                                    itemValue="#{tax}"
+                                    itemLabel="#{tax.name}"
+                                    validator="businessEntityValidator"
+                                    required="true"
+                                    requiredMessage="Default Tax Required"
+                                    completeMethod="#{financeManager.completeTax}" >
+
+                        <f:converter converterId="taxConverter"/>
+                        <f:attribute name="em" value="#{financeManager.entityManager1}"/>
+
+                    </p:autoComplete>
+
+                    <p:outputLabel for="earningsJob" 
+                                   value="Earnings *" 
+                                   style="font-weight: bold" />               
+                    <p:selectBooleanCheckbox style="vertical-align: middle"
+                                             id="earningsJob"
+                                             value="#{financeManager.selectedClassification.isEarning}" /> 
+
+                </h:panelGrid>
+            </p:panel>
+
+            <p:toolbar>
+                <p:toolbarGroup align="left">
+                    <p:commandButton value="Ok"
+                                     actionListener="#{financeManager.saveSelectedClassification}"
+                                     icon="pi pi-check"
+                                     update="growl"
+                                     process="@form"/>
+                    <p:spacer width="5" />
+                    <p:commandButton value="Cancel"
+                                     actionListener="#{financeManager.cancelClassificationEdit}" 
+                                     immediate="true" 
+                                     icon="pi pi-times" /> 
+                </p:toolbarGroup>
+
+                <p:toolbarGroup align="right">
+
+                    <h:outputText value="* Field required." 
+                                  style="font-weight: bold;" /> 
+
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:spacer height="10" />
+            
+        </h:form> 
+        
+    </ui:define>
+
+</ui:composition>

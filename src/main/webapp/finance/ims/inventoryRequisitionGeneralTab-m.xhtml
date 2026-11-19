@@ -1,0 +1,361 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2026 D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+
+    <p:panel style="margin-bottom: 1px;border: 0;" >
+        <h:panelGrid id="generalTabPanel" columns="2">    
+
+            <p:outputLabel value="Code" 
+                           for="code"
+                           style="font-weight: bold;" />          
+            <p:inputText value="#{inventoryManager.selectedInventoryRequisition.code}"
+                         id="code" 
+                         maxlength="250"
+                         required="true"
+                         placeholder="Use N/A as default"
+                         requiredMessage="Code Required" >
+
+                <p:ajax event="change"                            
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this"/>
+
+            </p:inputText>            
+
+            <p:outputLabel value="Receiving branch/dept./unit" 
+                           for="department" 
+                           style="font-weight: bold" />
+            <p:autoComplete id="department" 
+                            escape="false"
+                            var="department"
+                            forceSelection="true"      
+                            dropdown="true"
+                            scrollHeight="200" 
+                            value="#{inventoryManager.selectedInventoryRequisition.department}"
+                            itemValue="#{department}"
+                            itemLabel="#{department.name}"
+                            required="true"
+                            requiredMessage="Department Required"
+                            validator="businessEntityValidator"
+                            cache="true"
+                            completeMethod="#{humanResourceManager.completeActiveDepartment}" >            
+
+                <f:converter converterId="departmentConverter"/>
+
+                <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+                <p:ajax event="itemSelect"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this" />
+
+
+            </p:autoComplete>   
+
+            <p:outputLabel value="Contact person" 
+                           for="contactPerson"
+                           style="font-weight: bold" />       
+            <p:autoComplete id="contactPerson"
+                            escape="false"
+                            value="#{inventoryManager.selectedInventoryRequisition.contactPerson}"
+                            itemLabel="#{contactPerson.name}"
+                            itemValue="#{contactPerson}"
+                            required="true"
+                            requiredMessage="Contact Person Required"
+                            validator="businessEntityValidator"
+                            forceSelection="true"
+                            dropdown="true"
+                            scrollHeight="200" 
+                            cache="true"
+                            completeMethod="#{humanResourceManager.completeActiveEmployee}" >
+
+                <f:converter converterId="employeeConverter"/>
+
+                <f:attribute name="em" value="#{humanResourceManager.entityManager1}"/>
+
+                <p:ajax event="itemSelect"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this" />
+
+            </p:autoComplete>
+
+            <p:outputLabel value="Requisition date" 
+                           for="requisitionDate"
+                           style="font-weight: bold" />
+            <p:calendar value="#{inventoryManager.selectedInventoryRequisition.dateOfRequisition}" 
+                        id="requisitionDate"
+                        readonlyInput="true"
+                        required="true"
+                        requiredMessage="A valid date is required"
+                        navigator="true" 
+                        pattern="MMM dd, yyyy" >
+
+                <p:ajax event="dateSelect"
+                        global="false"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}" />
+
+                <p:ajax event="keyup"
+                        global="false"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}" />
+
+            </p:calendar>
+
+        </h:panelGrid>
+
+        <p:toolbar style="margin-top: 1px;margin-bottom: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new disbursement"
+                                 value="New"
+                                 action="#{inventoryManager.addNewDisbursement}"
+                                 icon="pi pi-plus"
+                                 process="@this">
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDisbursementDialogReturn}"
+                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                            />
+
+                </p:commandButton>  
+            </p:toolbarGroup> 
+        </p:toolbar>
+
+        <p:panel id="disbursementTablePanel">
+
+            <p:dataTable  var="disbursement"
+                          id="disbursementTable"
+                          editable="false"
+                          editMode="row"
+                          reflow="true"
+                          paginator="true"                                 
+                          rows="15"
+                          paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                          widgetVar="disbursementVar"
+                          value="#{inventoryManager.selectedInventoryRequisition.allSortedInventoryDisbursements}">
+
+                <p:ajax event="rowEdit" listener="#{inventoryManager.onDisbursementRowEdit}" 
+                        update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
+                <p:ajax event="rowEditCancel" listener="#{inventoryManager.onDisbursementRowCancel}" 
+                        update="disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl,:inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"/>
+
+                <f:facet name="header">
+                    <p:outputLabel value="Disbursements" style="font-weight: bold;"/> 
+                </f:facet>
+
+                <p:column headerText="Inventory Item" >   
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.inventory}" /> 
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:autoComplete id="inventoryItem"
+                                            escape="false"
+                                            var="inventoryItem"   
+                                            value="#{disbursement.inventory}"
+                                            title="#{disbursement.inventory}"
+                                            itemLabel="#{inventoryItem.name}"
+                                            itemValue="#{inventoryItem}"                                            
+                                            validator="businessEntityValidator"
+                                            validatorMessage="An inventory item is required"
+                                            forceSelection="true"
+                                            size="35"
+                                            dropdown="true"
+                                            scrollHeight="200"     
+                                            completeMethod="#{inventoryManager.completeInventoryItem}" >
+
+                                <f:converter converterId="inventoryConverter"/>
+
+                                <f:attribute name="em" value="#{inventoryManager.entityManager1}"/>
+
+                            </p:autoComplete>
+
+                        </f:facet>   
+                    </p:cellEditor>  
+                </p:column>
+
+                <p:column headerText="Description" >   
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.description}" /> 
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputTextarea  value="#{disbursement.description}"
+                                              maxlength="250"
+                                              rows="2"
+                                              autoResize="false" />
+                        </f:facet>   
+                    </p:cellEditor>  
+                </p:column>
+
+                <p:column headerText="Unit Price" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.unitCost}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">               
+                            <p:inputNumber value="#{disbursement.unitCost}" />                   
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Q'ty Ordered" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.quantityOrdered}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputNumber value="#{disbursement.quantityOrdered}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Q'ty Supplied" >
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <p:outputLabel value="#{disbursement.quantityReceived}" >
+                                <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            </p:outputLabel>
+                        </f:facet>
+                        <f:facet name="input">               
+                            <p:inputNumber value="#{disbursement.quantityReceived}" />                   
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Cost ($)" >
+                    <p:outputLabel value="#{disbursement.cost}">
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:outputLabel> 
+                </p:column>
+
+                <p:column rendered="false">
+                    <p:rowEditor editTitle="Edit disbursement"
+                                 cancelTitle="Cancel disbursement edit"                             
+                                 saveTitle="Save disbursement"/>
+                </p:column>
+
+                <p:column>
+                    <p:menuButton id="toolsButton" 
+                                  title="Edit or delete disbursement"
+                                  icon="pi pi-pencil" >
+                        <p:menuitem   
+                            value="Edit"
+                            rendered="true"
+                            actionListener="#{inventoryManager.editDisbursement}"
+                            icon="pi pi-pencil"
+                            process="@this" >
+
+                            <f:setPropertyActionListener value="#{disbursement}"
+                                                         target="#{inventoryManager.selectedInventoryDisbursement}" />
+
+                        </p:menuitem>
+
+                        <p:menuitem  
+                            value="Delete"                        
+                            onclick="PF('inventoryDisbursementDeleteConfirmDialog').show();"
+                            icon="pi pi-trash"
+                            process="@this">
+
+                            <f:setPropertyActionListener value="#{disbursement}"
+                                                         target="#{inventoryManager.selectedInventoryDisbursement}" />
+
+                        </p:menuitem>                   
+
+                    </p:menuButton>                   
+                </p:column>    
+
+                <p:columnGroup type="footer" id="totals">
+                    <p:row>
+                        <p:column colspan="3" style="text-align:right" footerText="Totals:"/>
+                        <p:column>
+                            <f:facet name="footer">
+                                <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalQuantityOrdered}" >
+
+                                    <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                </h:outputText>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <f:facet name="footer">
+                                    <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalQuantityReceived}" >
+
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                    </h:outputText>
+                                </f:facet>
+                            </f:facet>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="footer">
+                                <f:facet name="footer">
+                                    <h:outputText value="#{inventoryManager.selectedInventoryRequisition.totalCost}" >
+
+                                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                                    </h:outputText>
+                                </f:facet>
+                            </f:facet>
+                        </p:column>
+                    </p:row>
+                </p:columnGroup>
+
+            </p:dataTable>
+
+        </p:panel>
+
+        <p:toolbar style="margin-top: 1px;">
+            <p:toolbarGroup>
+                <p:commandButton title="Add new disbursement"
+                                 value="New"
+                                 action="#{inventoryManager.addNewDisbursement}"
+                                 icon="pi pi-plus"
+                                 process="@this">
+
+                    <p:ajax event="dialogReturn" 
+                            listener="#{inventoryManager.inventoryDisbursementDialogReturn}"
+                            update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1,:inventoryRequisitionDialogForm:inventoryRequisitionFormTabView:disbursementTable,:inventoryRequisitionDialogForm:inventory_requisition_growl"
+                            />
+
+                </p:commandButton>  
+            </p:toolbarGroup> 
+        </p:toolbar>
+
+    </p:panel>
+
+
+</html>
+
+

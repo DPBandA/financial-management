@@ -25,10 +25,24 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>purchreqDialog-m</from-outcome>
+            <to-view-id>/finance/purch/purchreqDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>inventoryDialog</from-outcome>
             <to-view-id>/finance/ims/inventoryDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inventoryDialog-m</from-outcome>
+            <to-view-id>/finance/ims/inventoryDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -39,10 +53,24 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>inventoryRequisitionDialog-m</from-outcome>
+            <to-view-id>/finance/ims/inventoryRequisitionDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>purchaseReqEmailDialog</from-outcome>
             <to-view-id>/finance/purch/purchaseReqEmailDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>purchaseReqEmailDialog-m</from-outcome>
+            <to-view-id>/finance/purch/purchaseReqEmailDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>  
     <navigation-rule>
@@ -53,10 +81,24 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>supplierDialog-m</from-outcome>
+            <to-view-id>/finance/purch/supplierDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>cashPaymentDialog</from-outcome>
             <to-view-id>/finance/purch/cashPaymentDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>cashPaymentDialog-m</from-outcome>
+            <to-view-id>/finance/purch/cashPaymentDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -67,24 +109,24 @@
         </navigation-case>
     </navigation-rule>  
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/index-m.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>priceListDialog</from-outcome>
-            <to-view-id>/dashboard/finance/priceListDialog.xhtml</to-view-id>
+            <from-outcome>cashPaymentDeleteConfirmDialog-m</from-outcome>
+            <to-view-id>/finance/purch/cashPaymentDeleteConfirmDialog-m.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-outcome>jobCostEstimateDialog</from-outcome>
-            <to-view-id>/dashboard/finance/jobCostEstimateDialog.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>
+    </navigation-rule>  
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>classificationDialog</from-outcome>
             <to-view-id>/finance/classificationDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>classificationDialog-m</from-outcome>
+            <to-view-id>/finance/classificationDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -95,17 +137,38 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobCategoryDialog-m</from-outcome>
+            <to-view-id>/finance/jobCategoryDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>jobSubcategoryDialog</from-outcome>
             <to-view-id>/finance/jobSubcategoryDialog.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>     
+    </navigation-rule>   
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>jobSubcategoryDialog-m</from-outcome>
+            <to-view-id>/finance/jobSubcategoryDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>   
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>sectorDialog</from-outcome>
             <to-view-id>/finance/sectorDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>sectorDialog-m</from-outcome>
+            <to-view-id>/finance/sectorDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -116,6 +179,13 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>serviceDialog-m</from-outcome>
+            <to-view-id>/finance/serviceDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>procurementMethodDialog</from-outcome>
@@ -123,10 +193,24 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>procurementMethodDialog-m</from-outcome>
+            <to-view-id>/finance/procurementMethodDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>accountingCodeDialog</from-outcome>
             <to-view-id>/finance/accountingCodeDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>accountingCodeDialog-m</from-outcome>
+            <to-view-id>/finance/accountingCodeDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -139,8 +223,15 @@
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>discountDialog</from-outcome>
-            <to-view-id>/finance/discountDialog.xhtml</to-view-id>
+            <from-outcome>taxDialog</from-outcome>
+            <to-view-id>/finance/taxDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>discountDialog-m</from-outcome>
+            <to-view-id>/finance/discountDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -148,6 +239,13 @@
         <navigation-case>
             <from-outcome>currencyDialog</from-outcome>
             <to-view-id>/finance/currencyDialog.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>currencyDialog-m</from-outcome>
+            <to-view-id>/finance/currencyDialog-m.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>

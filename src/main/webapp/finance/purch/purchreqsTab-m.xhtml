@@ -1,0 +1,197 @@
+<!--
+Purchase Management (PM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:include src="purchReqsTabToolbar.xhtml"/>
+
+    <p:dataTable id="purchasereqsTable"
+                 var="pr"
+                 style="margin-bottom: 1px;margin-top: 1px;"
+                 paginator="true"                                 
+                 rows="15"
+                 reflow="true"
+                 paginatorTemplate="{FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 selection="#{purchasingManager.selectedPurchaseRequisitions}"
+                 rowKey="#{pr.id}"
+                 value="#{purchasingManager.foundPurchaseReqs}">                        
+
+        <f:facet name="header">
+            <p:outputLabel value="#{purchasingManager.purchaseReqsTableHeader}" />
+        </f:facet>
+
+        <p:ajax event="rowSelect" update=":mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:recommend2"/>
+        <p:ajax event="rowUnselect" update=":mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:recommend2"/>
+        <p:ajax event="rowSelectCheckbox" update=":mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:recommend2"/>
+        <p:ajax event="rowUnselectCheckbox" update=":mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:recommend2"/>
+        <p:ajax event="toggleSelect" update=":mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:recommend2"/>
+
+        <p:column selectionMode="multiple" 
+                  style="text-align:center"
+                  exportable="false" />      
+
+        <p:column sortBy="#{pr.number}">
+            <f:facet name="header">
+                <p:outputLabel value="PR #"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.number}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.purchaseOrderNumber}">
+            <f:facet name="header">
+                <p:outputLabel value="PO #"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.purchaseOrderNumber}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.supplier}">
+            <f:facet name="header">
+                <p:outputLabel value="Supplier"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.supplier}" />
+        </p:column>
+        
+        <p:column sortBy="#{pr.originatingDepartment}">
+            <f:facet name="header">
+                <p:outputLabel value="Department"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.originatingDepartment}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.originator}" rendered="false" >
+            <f:facet name="header">
+                <p:outputLabel value="Originator"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.originator}" />
+        </p:column>
+        
+        <p:column sortBy="#{pr.priorityCode}" rendered="false" >
+            <f:facet name="header">
+                <p:outputLabel value="Priority"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.priorityCode}" />
+        </p:column>
+
+        <p:column sortBy="#{pr.requisitionDate}">
+            <f:facet name="header">
+                <p:outputLabel value="Requisition date"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.requisitionDate}">
+                <f:convertDateTime pattern="MMM dd, yyyy"/>
+            </p:outputLabel>
+        </p:column>
+
+        <p:column sortBy="#{pr.convertedTotalCost}">
+            <f:facet name="header">
+                <p:outputLabel value="Total cost"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.paymentCurrency.symbol}#{purchasingManager.formatAsCurrency(pr.convertedTotalCost)}" />  
+        </p:column>
+        
+        <p:column sortBy="#{pr.approversAndRecommendersList}" rendered="false" >
+            <f:facet name="header">
+                <p:outputLabel value="Appr'd/Rec'd by"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.approversAndRecommendersList}" />  
+        </p:column>
+
+        <p:column sortBy="#{pr.workProgress}">
+            <f:facet name="header">
+                <p:outputLabel value="Progress"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.workProgress}" />                
+        </p:column>
+
+        <p:column>
+            <f:facet name="header">
+                <p:outputLabel value="Description"/>
+            </f:facet>
+            <p:outputLabel value="#{pr.description}" />                
+        </p:column>
+
+        <p:column>
+
+            <p:commandButton icon="pi pi-pencil"
+                             actionListener="#{purchasingManager.editSelectedPurchaseReq}"
+                             process="@this"
+                             title="View or edit this PR's detail">
+
+                <f:setPropertyActionListener value="#{pr}" 
+                                             target="#{purchasingManager.selectedPurchaseRequisition}" />
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{purchasingManager.purchaseReqDialogReturn}"
+                        update=":mainTabViewForm:mainTabView:purchasereqsTable"/>
+
+            </p:commandButton>
+
+        </p:column>
+    </p:dataTable>
+
+    <p:toolbar>
+        <p:toolbarGroup align="left" >              
+            <p:commandButton 
+                value="New"
+                icon="pi pi-plus" 
+                actionListener="#{purchasingManager.createNewPurchaseReq}"                                            
+                process="@this"
+                title="Add a new purchase requisition" >
+
+                <p:ajax event="dialogReturn" 
+                        listener="#{purchasingManager.purchaseReqDialogReturn}"
+                        update=":mainTabViewForm:mainTabView:purchasereqsTable"/>
+
+            </p:commandButton>
+            <p:spacer width="100" />
+            <p:commandButton 
+                value="Approve"
+                id="approve2"
+                icon="pi pi-check-circle"
+                actionListener="#{purchasingManager.approvePurchaseReqs}"                                            
+                process="@this"
+                update="@this,recommend2,:mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:purchasereqsTable,headerForm:growl3"
+                disabled="#{!purchasingManager.hasSelectedPRs()}"
+                title="Approve the selected purchase requisitions" >
+            </p:commandButton>
+            <p:spacer width="10" />
+            <p:commandButton 
+                value="Recommend"
+                id="recommend2"
+                icon="pi pi-check-square"
+                actionListener="#{purchasingManager.recommendPurchaseReqs}"                                            
+                process="@this"
+                update="@this,approve2,:mainTabViewForm:mainTabView:recommend1,:mainTabViewForm:mainTabView:approve1,:mainTabViewForm:mainTabView:purchasereqsTable,headerForm:growl3"
+                disabled="#{!purchasingManager.hasSelectedPRs()}"
+                title="Recommend the selected purchase requisitions" >
+            </p:commandButton>
+
+        </p:toolbarGroup>
+
+    </p:toolbar>
+
+</html>
+

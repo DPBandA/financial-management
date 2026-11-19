@@ -1,0 +1,128 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+
+    <p:panel id="statusAndTrackingTabPanel" style="margin-bottom: 1px;border: 0;" >
+        <h:panelGrid columns="2" cellspacing="5" >
+            <p:outputLabel value="Work progress *" 
+                           style="font-weight: bold;"
+                           for="workProgress"/>
+            <p:selectOneMenu id="workProgress"    
+                             value="#{inventoryManager.selectedInventoryRequisition.workProgress}">
+
+                <f:selectItems  value="#{systemManager.workProgressList}"
+                                var="progress"                            
+                                itemValue="#{progress.value}"
+                                itemLabel="#{progress.label}"/>
+
+                <p:ajax event="itemSelect"
+                        update=":inventoryRequisitionDialogForm:inventoryRequisitionDetailToolbar1"
+                        listener="#{inventoryManager.updateInventoryRequisition}"
+                        process="@this" />
+
+            </p:selectOneMenu>
+        </h:panelGrid>
+        <hr/>
+        <h:panelGrid columns="4" cellspacing="5" >            
+
+            <p:outputLabel value="Entered by *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.enteredBy.firstName} #{inventoryManager.selectedInventoryRequisition.enteredBy.lastName}" />
+
+            <p:outputLabel value="Date entered *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEntered)}" />           
+
+
+            <p:outputLabel value="Last edited by *" style="font-weight: bold;"/>
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.editedBy.firstName} #{inventoryManager.selectedInventoryRequisition.editedBy.lastName}" />
+
+            <p:outputLabel value="Date edited *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateEdited)}" />        
+
+            <p:outputLabel value="Approved by *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.firstName} #{inventoryManager.selectedInventoryRequisition.requisitionApprovedBy.lastName}" />
+
+            <p:outputLabel value="Date approved *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateRequisitionApproved)}" />           
+
+             <p:outputLabel value="Issued by *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.inventoryIssuedBy.firstName} #{inventoryManager.selectedInventoryRequisition.inventoryIssuedBy.lastName}" />
+
+            <p:outputLabel value="Date issued *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryIssued)}" />           
+            
+            
+            <p:outputLabel value="Received by *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         maxlength="250"
+                         styleClass="read-only-text-field"
+                         value="#{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.firstName} #{inventoryManager.selectedInventoryRequisition.inventoryReceivedBy.lastName}" />
+
+            <p:outputLabel value="Date received *" style="font-weight: bold;" />
+            <p:inputText readonly="true"
+                         styleClass="read-only-text-field"
+                         value="#{systemManager.getDateStr(inventoryManager.selectedInventoryRequisition.dateInventoryReceived)}" />           
+
+        </h:panelGrid>
+
+        <ui:remove>
+            <h:panelGrid id="statusGrid" columns="2" cellspacing="5" >
+                <p:outputLabel value="Description *" style="font-weight: bold;" />
+                <p:inputTextarea  value="#{inventoryManager.selectedInventoryRequisition.status}"
+                                  id="inventoryRequisitionStatus"
+                                  maxlength="1000"
+                                  rows="4"
+                                  autoResize="false"
+                                  style="width:100%;" >
+                </p:inputTextarea>  
+            </h:panelGrid>
+        </ui:remove>
+    </p:panel>
+
+</html>
+
+
