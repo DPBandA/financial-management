@@ -1,0 +1,291 @@
+<!--
+Inventory Management (IM) 
+Copyright (C) 2026  D P Bennett & Associates Limited
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Email: info@dpbennett.com.jm
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"   
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"> 
+
+    <p:panel style="margin-bottom: 1px;border: 0;" >
+        <h:panelGrid id="generalTabPanel" columns="2">   
+            <p:outputLabel for="inventoryActive" value="Active *" style="font-weight: bold;" />  
+            <h:panelGroup>
+                <p:selectBooleanCheckbox style="vertical-align: middle"
+                                         id="inventoryActive"
+                                         value="#{inventoryManager.selectedInventory.active}" >
+
+                    <p:ajax event="change"                            
+                            update=":inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this"/>
+
+                </p:selectBooleanCheckbox>     
+
+                <p:tooltip for="inventoryActive" value="Check to activate this inventory" 
+                           showEffect="fade" hideEffect="fade" />            
+            </h:panelGroup>
+
+            <p:outputLabel value="Name *" 
+                           style="font-weight: bold;" 
+                           rendered="false" />          
+            <p:inputText  rendered="false"
+                          id="inventoryName"
+                          maxlength="40"
+                          readonly="true"
+                          styleClass="read-only-text-field"
+                          value="#{inventoryManager.selectedInventory.name}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>      
+
+            <p:outputLabel value="Product *" style="font-weight: bold;" /> 
+            <h:panelGroup>
+                <p:autoComplete id="inventoryProduct"
+                                escape="false"
+                                var="inventoryProduct"   
+                                value="#{inventoryManager.selectedInventory.product}"
+                                title="#{inventoryManager.selectedInventory.product}"
+                                itemLabel="#{inventoryProduct.name}"
+                                itemValue="#{inventoryProduct}"                                          
+                                validator="businessEntityValidator"
+                                validatorMessage="A product name is required"
+                                forceSelection="true"
+                                dropdown="true"
+                                scrollHeight="200"     
+                                completeMethod="#{inventoryManager.completeActiveInventoryProduct}" >
+
+                    <f:converter converterId="inventoryProductConverter"/>
+
+                    <f:attribute name="em" value="#{inventoryManager.entityManager1}"/>
+
+                    <p:ajax event="itemSelect"    
+                            update="category,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this" />
+
+                    <p:ajax event="change"    
+                            update="category,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this" />
+
+                </p:autoComplete>                                
+                <p:spacer height="0" width="5"/>
+                <p:menuButton icon="pi pi-pencil" 
+                              id="inventoryProductMenuButton"
+                              title="Add or edit product">
+
+                    <p:menuitem value="Edit product"
+                                icon="pi pi-pencil" 
+                                disabled="${!inventoryManager.isInventoryProductNameValid}"                                 
+                                actionListener="#{inventoryManager.editInventoryProduct}"  
+                                process="@this"                             
+                                title="View or edit this product's detail">  
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{inventoryManager.inventoryProductDialogReturn}"
+                                update="inventoryProduct,inventoryProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+
+                    <p:menuitem 
+                        icon="pi pi-plus" 
+                        actionListener="#{inventoryManager.createNewInventoryProductInDialog}"                                            
+                        process="@this"
+                        value="Add a new product"
+                        title="Add a new product to the products database" >
+
+                        <p:ajax event="dialogReturn"                                 
+                                listener="#{inventoryManager.inventoryProductDialogReturn}"
+                                update="inventoryProduct,inventoryProductMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+
+                </p:menuButton>
+            </h:panelGroup>
+
+            <p:outputLabel style="vertical-align: top;font-weight: bold;"
+                           value="Category *" />
+            <h:panelGroup>
+                <p:autoComplete id="category"
+                                escape="false"
+                                var="category"   
+                                value="#{inventoryManager.selectedInventory.inventoryCategory}"
+                                itemLabel="#{category.name}"
+                                itemValue="#{category}"
+                                forceSelection="true"
+                                dropdown="true"
+                                required="true"
+                                requiredMessage="A valid category is required"
+                                scrollHeight="200"   
+                                completeMethod="#{systemManager.completeActiveCategory}" >
+
+                    <f:converter converterId="activeCategoryConverter"/>
+
+                    <f:attribute name="em" value="#{systemManager.entityManager1}"/>
+
+                    <p:ajax event="itemSelect"
+                            listener="#{inventoryManager.updateInventory}"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            process="@this"/>
+
+                    <p:ajax event="change"
+                            listener="#{inventoryManager.updateInventory}"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            process="@this"/>
+
+                </p:autoComplete>
+                <p:spacer height="0" width="5"/>
+                <p:menuButton id="editCategoryMenuButton"
+                              icon="pi pi-pencil" 
+                              title="Add or edit category" >
+
+                    <p:menuitem value="Edit category"
+                                id="editCategory"
+                                icon="pi pi-pencil" 
+                                disabled="${!inventoryManager.isCategoryNameValid}"                                
+                                actionListener="#{inventoryManager.editInventoryCategory}"  
+                                process="@this,category"                             
+                                title="View or edit this category's detail">  
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{inventoryManager.inventoryCategoryDialogReturn}"
+                                update="category,editCategoryMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+
+                    <p:menuitem value="Add a new category" 
+                                icon="pi pi-plus"  
+                                actionListener="#{inventoryManager.createNewProductCategory}"                                            
+                                process="@this" >
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{inventoryManager.inventoryCategoryDialogReturn}"
+                                update="category,editCategoryMenuButton,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+
+                </p:menuButton>
+            </h:panelGroup>
+
+            <p:outputLabel value="Supplier *" style="font-weight: bold" />
+            <h:panelGroup>                
+                <p:autoComplete id="supplier"
+                                escape="false"
+                                var="supplier"
+                                itemLabel="#{supplier.truncatedName}"
+                                itemValue="#{supplier}"                 
+                                dropdown="true"
+                                scrollHeight="200" 
+                                value="#{inventoryManager.selectedInventory.supplier}" 
+                                validator="supplierValidator"
+                                validatorMessage="A valid supplier is required"
+                                forceSelection="true"
+                                completeMethod="#{purchasingManager.completeActiveSupplier}" >
+
+                    <f:converter converterId="activeSupplierConverter"/>
+
+                    <f:attribute name="em" value="#{purchasingManager.entityManager1}"/>
+
+                    <p:ajax event="itemSelect"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this"/>
+
+                    <p:ajax event="change"
+                            update="inventoryFormTabView:generalTabPanel,:inventoryDialogForm:inventoryDetailToolbar1"
+                            listener="#{inventoryManager.updateInventory}"
+                            process="@this"/>
+
+                </p:autoComplete>     
+                <p:spacer height="0" width="5"/>
+                <p:menuButton id="supplierActionsMenu" 
+                              icon="pi pi-pencil" 
+                              title="Add or edit supplier">
+
+                    <p:menuitem value="Edit supplier"
+                                id="editSupplier"
+                                icon="pi pi-pencil" 
+                                disabled="${!inventoryManager.isSupplierNameValid}"                                
+                                actionListener="#{inventoryManager.editInventorySupplier}"  
+                                process="@this,supplier"                             
+                                title="View or edit this suppliers's detail">  
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{inventoryManager.inventorySupplierDialogReturn}"
+                                update="supplier,supplierActionsMenu,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+
+                    <p:menuitem 
+                        value="Add new supplier"
+                        icon="pi pi-plus"                    
+                        disabled="#{!inventoryManager.user.can('AddSupplier')}"
+                        actionListener="#{purchasingManager.createNewPurhaseReqSupplier}"                                            
+                        process="@this"
+                        title="Add a new supplier">
+
+                        <p:ajax event="dialogReturn" 
+                                listener="#{inventoryManager.inventorySupplierDialogReturn}"
+                                update="supplier,supplierActionsMenu,:inventoryDialogForm:inventoryDetailToolbar1" />
+
+                    </p:menuitem>
+                </p:menuButton>      
+
+            </h:panelGroup>
+
+            <p:outputLabel value="SKU" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.stockKeepingUnit}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>  
+
+            <p:outputLabel value="Code" />          
+            <p:inputText  size="15"
+                          maxlength="40"
+                          value="#{inventoryManager.selectedInventory.code}">
+
+                <p:ajax event="change"                            
+                        update=":inventoryDialogForm:inventoryDetailToolbar1"
+                        listener="#{inventoryManager.updateInventory}"
+                        process="@this"/>
+
+            </p:inputText>
+
+        </h:panelGrid>
+    </p:panel>
+
+
+</html>
+
+
