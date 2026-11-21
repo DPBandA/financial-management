@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new category"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewJobCategory}"
+                             actionListener="#{financeManager.createNewJobCategory('jobCategoryDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-plus">
@@ -138,7 +138,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit job category"   
-                             actionListener="#{financeManager.editJobCategory}"
+                             actionListener="#{financeManager.editJobCategory('jobCategoryDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new sector"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewSector}"
+                             actionListener="#{financeManager.createNewSector('sectorDialog')}"
                              update=":mainTabViewForm:mainTabView:financialAdminTabView:SectorsTable"
                              global="true"
                              process="@this"
@@ -129,7 +129,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit sector"   
-                             actionListener="#{financeManager.editSector}"
+                             actionListener="#{financeManager.editSector('sectorDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

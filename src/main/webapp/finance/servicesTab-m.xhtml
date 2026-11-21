@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new service"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewService}"
+                             actionListener="#{financeManager.createNewService('serviceDialog-m')}"
                              update=":mainTabViewForm:mainTabView:financialAdminTabView:servicesTable"
                              global="true"
                              process="@this"
@@ -129,7 +129,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit service"   
-                             actionListener="#{financeManager.editService}"
+                             actionListener="#{financeManager.editService('serviceDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

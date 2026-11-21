@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new currency"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewCurrency}"                                                     
+                             actionListener="#{financeManager.createNewCurrency('currencyDialog')}"                                                     
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
@@ -111,7 +111,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit currency"   
-                             actionListener="#{financeManager.editCurrency}"
+                             actionListener="#{financeManager.editCurrency('currencyDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

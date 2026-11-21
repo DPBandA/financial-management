@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new classification"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewClassification}"
+                             actionListener="#{financeManager.createNewClassification('classificationDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-plus">
@@ -154,7 +154,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit classification"   
-                             actionListener="#{financeManager.editClassification}"
+                             actionListener="#{financeManager.editClassification('classificationDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

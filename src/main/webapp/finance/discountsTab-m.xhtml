@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new discount"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewDiscount}" 
+                             actionListener="#{financeManager.createNewDiscount('discountDialog-m')}" 
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
@@ -141,7 +141,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit discount"   
-                             actionListener="#{financeManager.editDiscount}"
+                             actionListener="#{financeManager.editDiscount('discountDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

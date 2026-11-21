@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new tax"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewTax}"
+                             actionListener="#{financeManager.createNewTax('taxDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-plus" >
@@ -140,7 +140,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit tax"   
-                             actionListener="#{financeManager.editTax}"
+                             actionListener="#{financeManager.editTax('taxDialog')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

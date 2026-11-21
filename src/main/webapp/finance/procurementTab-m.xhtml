@@ -31,7 +31,7 @@ Email: info@dpbennett.com.jm
         <p:toolbarGroup align="left" >   
             <p:commandButton title="Add new procurement method"                                  
                              value="New"
-                             actionListener="#{financeManager.createNewProcurementMethod}"
+                             actionListener="#{financeManager.createNewProcurementMethod('procurementMethodDialog-m')}"
                              update=":mainTabViewForm:mainTabView:financialAdminTabView:procurementMethodsTable"
                              global="true"
                              process="@this"
@@ -176,7 +176,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton title="View or edit procurement method"   
-                             actionListener="#{financeManager.editProcurementMethod}"
+                             actionListener="#{financeManager.editProcurementMethod('procurementMethodDialog-m')}"
                              global="true"
                              process="@this"
                              icon="pi pi-pencil">

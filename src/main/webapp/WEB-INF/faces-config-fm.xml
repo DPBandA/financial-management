@@ -221,10 +221,17 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
+        <from-view-id>/index-m.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>taxDialog-m</from-outcome>
+            <to-view-id>/finance/taxDialog-m.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
-            <from-outcome>taxDialog</from-outcome>
-            <to-view-id>/finance/taxDialog.xhtml</to-view-id>
+            <from-outcome>discountDialog</from-outcome>
+            <to-view-id>/finance/discountDialog.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
