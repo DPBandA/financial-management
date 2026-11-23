@@ -27,7 +27,7 @@ Email: info@dpbennett.com.jm
     xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
-    <ui:include src="purchReqsTabToolbar.xhtml"/>
+    <ui:include src="purchReqsTabToolbar-m.xhtml"/>
 
     <p:dataTable id="purchasereqsTable"
                  var="pr"
@@ -136,7 +136,7 @@ Email: info@dpbennett.com.jm
         <p:column>
 
             <p:commandButton icon="pi pi-pencil"
-                             actionListener="#{purchasingManager.editSelectedPurchaseReq}"
+                             actionListener="#{purchasingManager.editSelectedPurchaseReq('purchreqDialog-m')}"
                              process="@this"
                              title="View or edit this PR's detail">
 

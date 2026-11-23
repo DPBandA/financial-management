@@ -33,7 +33,7 @@ Email: info@dpbennett.com.jm
             <p:commandButton 
                 value="New"
                 icon="pi pi-plus" 
-                actionListener="#{inventoryManager.createNewInventoryProduct}"                                            
+                actionListener="#{inventoryManager.createNewInventoryProduct('inventoryProductDialog')}"                                            
                 process="@this"
                 title="Add a new product" >
 
@@ -135,7 +135,7 @@ Email: info@dpbennett.com.jm
 
         <p:column>
             <p:commandButton icon="pi pi-pencil"
-                             actionListener="#{inventoryManager.editSelectedInventoryProduct}"
+                             actionListener="#{inventoryManager.editSelectedInventoryProduct('inventoryProductDialog')}"
                              process="@this"
                              title="View or edit this product's detail">
 
