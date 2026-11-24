@@ -61,7 +61,7 @@ Email: info@dpbennett.com.jm
 
             </p:toolbar>
 
-            <p:tabView id="inventoryProductFormTabView"
+            <p:accordionPanel id="inventoryProductFormTabView"
                        dynamic="false"
                        style="margin-top: 1px;margin-bottom: 1px;"
                        widgetVar="inventoryProductFormTabVar" >
@@ -70,7 +70,8 @@ Email: info@dpbennett.com.jm
                     <ui:include src="inventoryProductDetailsTab.xhtml"/>
                 </p:tab>
 
-            </p:tabView>
+            </p:accordionPanel>
+            
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Ok"

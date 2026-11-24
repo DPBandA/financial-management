@@ -68,10 +68,11 @@ Email: info@dpbennett.com.jm
 
             </p:toolbar>
 
-            <p:tabView id="supplierFormTabView"
+            <p:accordionPanel id="supplierFormTabView"
                        dynamic="false"
                        style="margin-top: 1px;margin-bottom: 1px;"
                        widgetVar="supplierFormTabVar" >
+                
                 <p:tab id="supplierDetailsTab" title="General details">
                     <ui:include src="supplierDetailsTab.xhtml"/>
                 </p:tab>
@@ -86,7 +87,8 @@ Email: info@dpbennett.com.jm
                 <p:tab title="Tracking">
                     <ui:include src="supplierTrackingTab.xhtml" />
                 </p:tab>
-            </p:tabView>
+                
+            </p:accordionPanel>
 
             <p:toolbar>
                 <p:toolbarGroup>
